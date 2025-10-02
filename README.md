@@ -96,7 +96,7 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:aama` | AAMA20.lsp | ![aama.bmp](INSTALLAZIONE/menu/LEONARDO/aama.bmp) | Funzione principale AAMA per processare sagome e creare blocchi per nesting |
+| `c:aama` | AAMA20.lsp | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Funzione principale AAMA per processare sagome e creare blocchi per nesting |
 | `c:aamar` | aama_rifilo2.LSP | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa sagome RIFILO con materiale standard |
 | `c:Modaris-AAMA` | MODARIS-AAMA.lsp | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora blocchi Modaris v3.0 con centroide e dati |
 
@@ -150,7 +150,7 @@ LEONARDO/
 | `c:nestinglinea` | bl.lsp | ![nestinglinea.bmp](INSTALLAZIONE/menu/LEONARDO/nestinglinea.bmp) | Posiziona pezzi in linea o multi-riga ordinati per dimensioni |
 | `c:nesting1` | bl.lsp | ![nesting1.bmp](INSTALLAZIONE/menu/LEONARDO/nesting1.bmp) | Nesting semplificato in singola linea orizzontale |
 | `c:nestingarea` | bl.lsp | ![nestingarea.bmp](INSTALLAZIONE/menu/LEONARDO/nestingarea.bmp) | Definisce area di lavoro con rettangolo temporaneo |
-| `c:nesting3` | nesting33.lsp | ![nesting3.bmp](INSTALLAZIONE/menu/LEONARDO/nesting3.bmp) | Nesting avanzato con gestione overflow e creazione nuove tavole |
+| `c:nesting3` | nesting33.lsp | ![nesting.bmp](INSTALLAZIONE/menu/LEONARDO/nesting.bmp) | Nesting avanzato con gestione overflow e creazione nuove tavole |
 
 ### Altri Comandi Elaborazione
 
@@ -158,13 +158,13 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:DIMA` | DIMA.lsp | ![DIMA.bmp](INSTALLAZIONE/menu/LEONARDO/DIMA.bmp) | Crea dima da layer ENDCUT con offset su OUTCUT/INTCUT |
+| `c:DIMA` | DIMA.lsp | ![DIMA_ATOM.bmp](INSTALLAZIONE/menu/LEONARDO/DIMA_ATOM.bmp) | Crea dima da layer ENDCUT con offset su OUTCUT/INTCUT |
 | `c:geber` | geber.lsp | ![geber.bmp](INSTALLAZIONE/menu/LEONARDO/geber.bmp) | Processore batch tacche: converte blocchi tacca in POINT su layer "4" |
 | `c:set_geber_tolerance` | geber.lsp | ![set_geber_tolerance.bmp](INSTALLAZIONE/menu/LEONARDO/set_geber_tolerance.bmp) | Imposta tolleranze globali per conversione tacche |
 | `c:ofi` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | OFFSET RINGRANO v4.0 - sposta originale su layer "0" e offset su "OUTCUT" |
-| `c:OL` | offset-delete-script2.lsp | ![OL.bmp](INSTALLAZIONE/menu/LEONARDO/OL.bmp) | Alias per c:ofi |
-| `c:OR` | offset-delete-script2.lsp | ![OR.bmp](INSTALLAZIONE/menu/LEONARDO/OR.bmp) | Alias per c:ofi |
-| `c:O` | offset-delete-script2.lsp | ![O.bmp](INSTALLAZIONE/menu/LEONARDO/O.bmp) | Alias per c:ofi |
+| `c:OL` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
+| `c:OR` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
+| `c:O` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
 | `c:blocchi_in_punti` | sostituisci punti blocco.lsp | ![blocchi_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/blocchi_in_punti.bmp) | Converte blocchi "PitRTak" in oggetti POINT |
 
 ---
@@ -178,7 +178,7 @@ LEONARDO/
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
 | `c:ATC` | AlignTextToCurveV1-2.lsp | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea testo (esistente o nuovo) a curva selezionata |
-| `c:ZR` | ZeroRottaion.LSP | ![ZR.bmp](INSTALLAZIONE/menu/LEONARDO/ZR.bmp) | Azzera rotazione di testo, blocchi o MLeader |
+| `c:ZR` | ZeroRottaion.LSP | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Azzera rotazione di testo, blocchi o MLeader |
 | `c:EDT` | ruota testo.lsp | ![EDT.bmp](INSTALLAZIONE/menu/LEONARDO/EDT.bmp) | Ruota testi basandosi su angolo definito da due punti |
 
 ### Inserimento Testi Predefiniti - Diciture
@@ -228,8 +228,8 @@ LEONARDO/
 | `c:WAR` | ![WAR.bmp](INSTALLAZIONE/menu/LEONARDO/WAR.bmp) | Inserisce blocco "ATTENZIONE" |
 | `c:EQ` | ![EQ.bmp](INSTALLAZIONE/menu/LEONARDO/EQ.bmp) | Inserisce blocco "EQUALIZZARE" |
 | `c:TABT` | ![TABT.bmp](INSTALLAZIONE/menu/LEONARDO/TABT.bmp) | Inserisce blocco "tabella_testi" |
-| `c:PEL` | ![PEL.bmp](INSTALLAZIONE/menu/LEONARDO/PEL.bmp) | Inserisce blocco "PELLE" |
-| `c:FOD` | ![FOD.bmp](INSTALLAZIONE/menu/LEONARDO/FOD.bmp) | Inserisce blocco "fodera" |
+| `c:PEL` | ![pelle.bmp](INSTALLAZIONE/menu/LEONARDO/pelle.bmp) | Inserisce blocco "PELLE" |
+| `c:FOD` | ![FOD.BMP](INSTALLAZIONE/menu/LEONARDO/FOD.BMP) | Inserisce blocco "fodera" |
 
 ### Blocchi Numerazione
 
@@ -245,8 +245,8 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:NUM` | numero_articolo.lsp | ![NUM.bmp](INSTALLAZIONE/menu/LEONARDO/NUM.bmp) | Inserisce blocco numero articolo |
-| `c:SPESSORE` | SPESSORE.LSP | ![SPESSORE.bmp](INSTALLAZIONE/menu/LEONARDO/SPESSORE.bmp) | Inserisce blocco spessore materiale con prefisso "SP." |
+| `c:NUM` | numero_articolo.lsp | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocco numero articolo |
+| `c:SPESSORE` | SPESSORE.LSP | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce blocco spessore materiale con prefisso "SP." |
 | `c:LEO_FUST` | LEO_FUST.lsp | ![LEO_FUST.bmp](INSTALLAZIONE/menu/LEONARDO/LEO_FUST.bmp) | Inserisce blocco "Leo_Fust" (foro fustella) layer "0" colore 6 |
 
 ---
@@ -258,14 +258,14 @@ LEONARDO/
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
 | `c:centro` | centro.lsp | ![centro.bmp](INSTALLAZIONE/menu/LEONARDO/centro.bmp) | Disegna linee forzando angolo 90° dopo primo segmento |
-| `c:LEORETTANGOLO` | LeoRettangolo.lsp | ![LEORETTANGOLO.bmp](INSTALLAZIONE/menu/LEONARDO/LEORETTANGOLO.bmp) | Disegna rettangolo definendo centro, larghezza e altezza |
-| `c:LeoA3` | LeoRettangolo.lsp | ![LeoA3.bmp](INSTALLAZIONE/menu/LEONARDO/LeoA3.bmp) | Disegna rettangolo A3 (297 x 420) |
-| `c:LeoA4` | LeoRettangolo.lsp | ![LeoA4.bmp](INSTALLAZIONE/menu/LEONARDO/LeoA4.bmp) | Disegna rettangolo A4 (210 x 297) |
-| `c:LeoUM` | LeoRettangolo.lsp | ![LeoUM.bmp](INSTALLAZIONE/menu/LEONARDO/LeoUM.bmp) | Disegna rettangolo standard (650 x 950) |
-| `c:LeoUM2` | LeoRettangolo.lsp | ![LeoUM2.bmp](INSTALLAZIONE/menu/LEONARDO/LeoUM2.bmp) | Disegna rettangolo standard (1300 x 950) |
-| `c:LeoUM4` | LeoRettangolo.lsp | ![LeoUM4.bmp](INSTALLAZIONE/menu/LEONARDO/LeoUM4.bmp) | Disegna rettangolo standard (1300 x 1800) |
-| `c:LeoRACRETT` | LeoRettangolo.lsp | ![LeoRACRETT.bmp](INSTALLAZIONE/menu/LEONARDO/LeoRACRETT.bmp) | Disegna rettangolo raccordato |
-| `c:Passante` | Passante.lsp | ![Passante.bmp](INSTALLAZIONE/menu/LEONARDO/Passante.bmp) | Calcola e disegna passante tracolla |
+| `c:LEORETTANGOLO` | LeoRettangolo.lsp | ![RECT.bmp](INSTALLAZIONE/menu/LEONARDO/RECT.bmp) | Disegna rettangolo definendo centro, larghezza e altezza |
+| `c:LeoA3` | LeoRettangolo.lsp | ![tavola-vuota.BMP](INSTALLAZIONE/menu/LEONARDO/tavola-vuota.BMP) | Disegna rettangolo A3 (297 x 420) |
+| `c:LeoA4` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_A4.BMP](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.BMP) | Disegna rettangolo A4 (210 x 297) |
+| `c:LeoUM` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_VUOTA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp) | Disegna rettangolo standard (650 x 950) |
+| `c:LeoUM2` | LeoRettangolo.lsp | ![leoum2.bmp](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp) | Disegna rettangolo standard (1300 x 950) |
+| `c:LeoUM4` | LeoRettangolo.lsp | ![leoum4.bmp](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp) | Disegna rettangolo standard (1300 x 1800) |
+| `c:LeoRACRETT` | LeoRettangolo.lsp | ![rettangoloraccordato.bmp](INSTALLAZIONE/menu/LEONARDO/rettangoloraccordato.bmp) | Disegna rettangolo raccordato |
+| `c:Passante` | Passante.lsp | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna passante tracolla |
 | `c:TRAPI` | trapi.LSP | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna trapezio definendo basi e altezza |
 
 ---
@@ -278,10 +278,10 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione | Protezione |
 |---------|------|-------|-------------|------------|
-| `c:MAT` | Materiale.lsp | ![MAT.bmp](INSTALLAZIONE/menu/LEONARDO/MAT.bmp) | Apre dialogo DCL per inserimento materiale e calcolo AREANETTA | ✅ |
-| `c:NOM` | Nome_pezzo.lsp | ![NOM.bmp](INSTALLAZIONE/menu/LEONARDO/NOM.bmp) | Apre dialogo DCL per composizione nome pezzo | ✅ |
-| `c:NUM` | numero_articolo.lsp | ![NUM.bmp](INSTALLAZIONE/menu/LEONARDO/NUM.bmp) | Inserisce blocchi "NUM" e "RIF" con numero articolo | ❌ |
-| `c:SPESSORE` | SPESSORE.LSP | ![SPESSORE.bmp](INSTALLAZIONE/menu/LEONARDO/SPESSORE.bmp) | Inserisce blocco spessore | ❌ |
+| `c:MAT` | Materiale.lsp | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre dialogo DCL per inserimento materiale e calcolo AREANETTA | ✅ |
+| `c:NOM` | Nome_pezzo.lsp | ![nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/nome_pezzo.bmp) | Apre dialogo DCL per composizione nome pezzo | ✅ |
+| `c:NUM` | numero_articolo.lsp | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocchi "NUM" e "RIF" con numero articolo | ❌ |
+| `c:SPESSORE` | SPESSORE.LSP | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce blocco spessore | ❌ |
 
 ### Modifica Dati
 
@@ -289,13 +289,13 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione | Protezione |
 |---------|------|-------|-------------|------------|
-| `c:ED-MAT` | ED-MAT.lsp | ![ED-MAT.bmp](INSTALLAZIONE/menu/LEONARDO/ED-MAT.bmp) | Modifica Materiale/Quantità/Tipologia blocco DATIM via DCL | ❌ |
-| `c:ED-NOM` | ED-NOM.lsp | ![ED-NOM.bmp](INSTALLAZIONE/menu/LEONARDO/ED-NOM.bmp) | Modifica nome pezzo tramite dialogo DCL | ❌ |
-| `c:ED-MATERIALE` | ED-MATERIALE.lsp | ![ED-MATERIALE.bmp](INSTALLAZIONE/menu/LEONARDO/ED-MATERIALE.bmp) | Modifica rapida Quantità e Tipologia di DATIM | ✅ |
-| `c:ED-INFUST` | ED-INFUST.lsp | ![ED-INFUST.bmp](INSTALLAZIONE/menu/LEONARDO/ED-INFUST.bmp) | Aggiunge prefisso "Infustitura" al nome pezzo | ❌ |
-| `c:ED-FOD` | ED-INFUST.lsp | ![ED-FOD.bmp](INSTALLAZIONE/menu/LEONARDO/ED-FOD.bmp) | Aggiunge prefisso "Fodera" al nome pezzo | ❌ |
-| `c:ED-RIF` | ED-INFUST.lsp | ![ED-RIF.bmp](INSTALLAZIONE/menu/LEONARDO/ED-RIF.bmp) | Aggiunge prefisso "Rifilo" al nome pezzo | ❌ |
-| `c:ED-SBOZ` | ED-INFUST.lsp | ![ED-SBOZ.bmp](INSTALLAZIONE/menu/LEONARDO/ED-SBOZ.bmp) | Aggiunge prefisso "Taglio" al nome pezzo | ❌ |
+| `c:ED-MAT` | ED-MAT.lsp | ![ed_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_materiale.bmp) | Modifica Materiale/Quantità/Tipologia blocco DATIM via DCL | ❌ |
+| `c:ED-NOM` | ED-NOM.lsp | ![ed_nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/ed_nome_pezzo.bmp) | Modifica nome pezzo tramite dialogo DCL | ❌ |
+| `c:ED-MATERIALE` | ED-MATERIALE.lsp | ![ed_numero_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_numero_materiale.bmp) | Modifica rapida Quantità e Tipologia di DATIM | ✅ |
+| `c:ED-INFUST` | ED-INFUST.lsp | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-infust.bmp) | Aggiunge prefisso "Infustitura" al nome pezzo | ❌ |
+| `c:ED-FOD` | ED-INFUST.lsp | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-fod.bmp) | Aggiunge prefisso "Fodera" al nome pezzo | ❌ |
+| `c:ED-RIF` | ED-INFUST.lsp | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-rif.bmp) | Aggiunge prefisso "Rifilo" al nome pezzo | ❌ |
+| `c:ED-SBOZ` | ED-INFUST.lsp | ![ed-sboz.bmp](INSTALLAZIONE/menu/LEONARDO/ed-sboz.bmp) | Aggiunge prefisso "Taglio" al nome pezzo | ❌ |
 
 ---
 
@@ -318,14 +318,14 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione | Protezione |
 |---------|------|-------|-------------|------------|
-| `c:CS` | ChainSelV1-1.lsp | ![CS.bmp](INSTALLAZIONE/menu/LEONARDO/CS.bmp) | Chain Selection: selezione automatica oggetti connessi | ✅ |
-| `c:CookieCutter2` | CookieCutter2 v1.2.lsp | ![CookieCutter2.bmp](INSTALLAZIONE/menu/LEONARDO/CookieCutter2.bmp) | Cookie Cutter: trim avanzato con esplosione blocchi | ❌ |
-| `c:CC` | CookieCutter2 v1.2.lsp | ![CC.bmp](INSTALLAZIONE/menu/LEONARDO/CC.bmp) | Shortcut per CookieCutter2 | ❌ |
-| `c:RACCORDA_0` | RACCORDA_0.LSP | ![RACCORDA_0.bmp](INSTALLAZIONE/menu/LEONARDO/RACCORDA_0.bmp) | Raccorda con raggio 0 tra due entità | ❌ |
-| `c:SPEZZA_PUNTO` | SPEZZA_PUNTO.LSP | ![SPEZZA_PUNTO.bmp](INSTALLAZIONE/menu/LEONARDO/SPEZZA_PUNTO.bmp) | Interrompe linea/polilinea/arco in punto selezionato | ✅ |
+| `c:CS` | ChainSelV1-1.lsp | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.bmp) | Chain Selection: selezione automatica oggetti connessi | ✅ |
+| `c:CookieCutter2` | CookieCutter2 v1.2.lsp | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Cookie Cutter: trim avanzato con esplosione blocchi | ❌ |
+| `c:CC` | CookieCutter2 v1.2.lsp | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Shortcut per CookieCutter2 | ❌ |
+| `c:RACCORDA_0` | RACCORDA_0.LSP | ![RAGGIO_0.BMP](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Raccorda con raggio 0 tra due entità | ❌ |
+| `c:SPEZZA_PUNTO` | SPEZZA_PUNTO.LSP | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Interrompe linea/polilinea/arco in punto selezionato | ✅ |
 | `c:splitcir` | splitCir.lsp | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe cerchio in due punti e disegna arco | ❌ |
 | `c:TROVA_GAP` | TROVA_GAP.lsp | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca gap tra entità e disegna cerchio su layer "GAP" | ❌ |
-| `c:QM` | QM.lsp | ![QM.bmp](INSTALLAZIONE/menu/LEONARDO/QM.bmp) | Mirror rapido di oggetti | ❌ |
+| `c:QM` | QM.lsp | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Mirror rapido di oggetti | ❌ |
 
 ---
 
@@ -341,7 +341,7 @@ LEONARDO/
 | `c:gnames` | gnames.lsp | ![gnames.bmp](INSTALLAZIONE/menu/LEONARDO/gnames.bmp) | Gestisce liste nomi pezzi (Nome1/2/3.txt) via DCL | ❌ |
 | `c:NOG` | NOG.lsp | ![NOG.bmp](INSTALLAZIONE/menu/LEONARDO/NOG.bmp) | Calcolo Consumi Materiale: genera report CSV/Excel | ✅ |
 | `c:sostmat` | scambio.lsp | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituzione materiale in batch mantenendo quantità/tipologia | ❌ |
-| `c:mat1` | visualizza-per-mat.lsp | ![mat1.bmp](INSTALLAZIONE/menu/LEONARDO/mat1.bmp) | Visualizza e zoom su pezzi per materiale selezionato | ❌ |
+| `c:mat1` | visualizza-per-mat.lsp | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zoom su pezzi per materiale selezionato | ❌ |
 
 ---
 
@@ -356,7 +356,7 @@ LEONARDO/
 | `c:csj` | chains.lsp | ![csj.bmp](INSTALLAZIONE/menu/LEONARDO/csj.bmp) | Chain Selection con visualizzazione dinamica e frecce colorate |
 | `c:leo-poliauto` | chains.lsp | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Selezione concatenata con unione automatica |
 | `c:JoinAll` | join.lsp | ![JoinAll.bmp](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp) | Unisce Linee/Archi/Polilinee con _.pedit M _j |
-| `c:PC` | PC.lsp | ![PC.bmp](INSTALLAZIONE/menu/LEONARDO/PC.bmp) | Chiude polilinee leggere (LWPOLYLINE) aperte |
+| `c:PC` | PC.lsp | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude polilinee leggere (LWPOLYLINE) aperte |
 | `c:PJ` | PJ.LSP | ![PJ.bmp](INSTALLAZIONE/menu/LEONARDO/PJ.bmp) | Unisce Linee/Archi/Polilinee con ._pedit _m _j |
 | `c:Y` | y.LSP | ![Y.bmp](INSTALLAZIONE/menu/LEONARDO/Y.bmp) | Filtra e congiunge Linee/Archi in Polilinee leggere |
 
@@ -366,8 +366,8 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:el2pl` | el2pl.lsp | ![el2pl.bmp](INSTALLAZIONE/menu/LEONARDO/el2pl.bmp) | Converte Ellisse o arco ellittico in Polilinea |
-| `c:s2p` | spline-to-pline.lsp | ![s2p.bmp](INSTALLAZIONE/menu/LEONARDO/s2p.bmp) | Converte spline in polilinee con numero segmenti definito |
+| `c:el2pl` | el2pl.lsp | ![Spl2.bmp](INSTALLAZIONE/menu/LEONARDO/Spl2.bmp) | Converte Ellisse o arco ellittico in Polilinea |
+| `c:s2p` | spline-to-pline.lsp | ![SP2P.BMP](INSTALLAZIONE/menu/LEONARDO/SP2P.BMP) | Converte spline in polilinee con numero segmenti definito |
 
 ### Direzione e Visualizzazione
 
@@ -377,9 +377,9 @@ LEONARDO/
 |---------|------|-------|-------------|
 | `c:PLDREV_SETCOLOR` | PLD.lsp | ![PLDREV_SETCOLOR.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETCOLOR.bmp) | Imposta colore frecce direzione |
 | `c:PLDREV_SETPOS` | PLD.lsp | ![PLDREV_SETPOS.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETPOS.bmp) | Imposta posizione frecce (Interne/Esterne) |
-| `c:PLD` | PLD.lsp | ![PLD.bmp](INSTALLAZIONE/menu/LEONARDO/PLD.bmp) | Visualizza direzione polilinea con frecce e permette inversione |
+| `c:PLD` | PLD.lsp | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Visualizza direzione polilinea con frecce e permette inversione |
 | `c:PLDREV_SHOW_DIRECTION` | PLDREV_SHOW_DIRECTION.lsp | ![PLDREV_SHOW_DIRECTION.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SHOW_DIRECTION.bmp) | Mostra direzione rotazione e punto inizio polilinea |
-| `c:RvrsLine` | PLDREV_SHOW_DIRECTION.lsp | ![RvrsLine.bmp](INSTALLAZIONE/menu/LEONARDO/RvrsLine.bmp) | Inverte direzione Linee/Polyline/LWPolyline |
+| `c:RvrsLine` | PLDREV_SHOW_DIRECTION.lsp | ![INVERTI_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Inverte direzione Linee/Polyline/LWPolyline |
 
 ---
 
@@ -392,9 +392,9 @@ LEONARDO/
 | Comando | File | Icona | Descrizione | Protezione |
 |---------|------|-------|-------------|------------|
 | `c:SBOZZO` | sbozzo.lsp | ![SBOZZO.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO.bmp) | Crea sbozzo: cancella tacche, offset polilinea, sposta su OUTCUT | ❌ |
-| `c:CopyArray` | sbozzomultiplo.lsp | ![CopyArray.bmp](INSTALLAZIONE/menu/LEONARDO/CopyArray.bmp) | Array rettangolare con sbozzo e bounding box complessivo | ✅ |
+| `c:CopyArray` | sbozzomultiplo.lsp | ![sbozzomultiplo.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzomultiplo.bmp) | Array rettangolare con sbozzo e bounding box complessivo | ✅ |
 | `c:SBOZZO_BOUND` | sbozzo_bounding.lsp | ![SBOZZO_BOUND.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO_BOUND.bmp) | Disegna bounding box rettangolare per polilinee | ❌ |
-| `c:SBOZZO_RETT` | sbozzo_rettangolare.lsp | ![SBOZZO_RETT.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO_RETT.bmp) | Crea bounding box, offset e avvia NESTING3 | ❌ |
+| `c:SBOZZO_RETT` | sbozzo_rettangolare.lsp | ![SBOZZO_RETT.BMP](INSTALLAZIONE/menu/LEONARDO/SBOZZO_RETT.BMP) | Crea bounding box, offset e avvia NESTING3 | ❌ |
 
 ### Tavole di Stampa
 
@@ -403,8 +403,8 @@ LEONARDO/
 | Comando | File | Icona | Descrizione | Protezione |
 |---------|------|-------|-------------|------------|
 | `c:PRESTAMPA` | PRESTAMPA.LSP | ![PRESTAMPA.bmp](INSTALLAZIONE/menu/LEONARDO/PRESTAMPA.bmp) | Prepara polilinee su layer TAVOLA_DI_STAMPA_TAGLIO, crea blocchi con centroide | ❌ |
-| `c:TAVOLA_DI_STAMPA_ANTIBUG` | TAVOLA_DI_STAMPA.lsp | ![TAVOLA_DI_STAMPA_ANTIBUG.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_DI_STAMPA_ANTIBUG.bmp) | Prepara sagome e avvia NESTING3 | ✅ |
-| `c:TAVOLA_DI_STAMPA_A3` | TAVOLA_DI_STAMPA_A3.lsp | ![TAVOLA_DI_STAMPA_A3.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_DI_STAMPA_A3.bmp) | Prepara sagome per A3 e avvia NESTING3 | ❌ |
+| `c:TAVOLA_DI_STAMPA_ANTIBUG` | TAVOLA_DI_STAMPA.lsp | ![TAVOLA_STAMPA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA.bmp) | Prepara sagome e avvia NESTING3 | ✅ |
+| `c:TAVOLA_DI_STAMPA_A3` | TAVOLA_DI_STAMPA_A3.lsp | ![TAVOLA_STAMPA_A3.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A3.bmp) | Prepara sagome per A3 e avvia NESTING3 | ❌ |
 
 ---
 
@@ -416,11 +416,11 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:INSERISCI_TACCA` | inserisci_tacca.lsp | ![INSERISCI_TACCA.bmp](INSTALLAZIONE/menu/LEONARDO/INSERISCI_TACCA.bmp) | Inserisce blocco tacca sulla polilinea |
-| `c:tacca_da_misura` | tacca_da_misura.lsp | ![tacca_da_misura.bmp](INSTALLAZIONE/menu/LEONARDO/tacca_da_misura.bmp) | Inserisce tacca a distanza specifica da punto partenza |
-| `c:tacca_dapoli` | tacca_dapoli.lsp | ![tacca_dapoli.bmp](INSTALLAZIONE/menu/LEONARDO/tacca_dapoli.bmp) | Copia distanza tra due punti su polilinea sorgente e inserisce tacca su destinazione |
-| `c:COPIA_TACCHE` | copia_tacche.lsp | ![COPIA_TACCHE.bmp](INSTALLAZIONE/menu/LEONARDO/COPIA_TACCHE.bmp) | Copia tacche da polilinea sorgente a destinazione |
-| `c:MISURATRT` | misuratrt.lsp | ![MISURATRT.bmp](INSTALLAZIONE/menu/LEONARDO/MISURATRT.bmp) | Misura tratto su polilinea e inserisce valore come testo |
+| `c:INSERISCI_TACCA` | inserisci_tacca.lsp | ![TakP.bmp](INSTALLAZIONE/menu/LEONARDO/TakP.bmp) | Inserisce blocco tacca sulla polilinea |
+| `c:tacca_da_misura` | tacca_da_misura.lsp | ![TACCA_DISTANZA.BMP](INSTALLAZIONE/menu/LEONARDO/TACCA_DISTANZA.BMP) | Inserisce tacca a distanza specifica da punto partenza |
+| `c:tacca_dapoli` | tacca_dapoli.lsp | ![TACCA_dapoli.BMP](INSTALLAZIONE/menu/LEONARDO/TACCA_dapoli.BMP) | Copia distanza tra due punti su polilinea sorgente e inserisce tacca su destinazione |
+| `c:COPIA_TACCHE` | copia_tacche.lsp | ![COPIA_TACCHE.BMP](INSTALLAZIONE/menu/LEONARDO/COPIA_TACCHE.BMP) | Copia tacche da polilinea sorgente a destinazione |
+| `c:MISURATRT` | misuratrt.lsp | ![MISURA_TRATTO.BMP](INSTALLAZIONE/menu/LEONARDO/MISURA_TRATTO.BMP) | Misura tratto su polilinea e inserisce valore come testo |
 
 ### Modifica Tacche
 
@@ -429,8 +429,8 @@ LEONARDO/
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
 | `c:INVERTI_TACCA` | inverti tacca.lsp | ![INVERTI_TACCA.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_TACCA.bmp) | Inverte direzione tacche selezionate |
-| `c:TACCA_RIBALTA` | ribalta tacca.lsp | ![TACCA_RIBALTA.bmp](INSTALLAZIONE/menu/LEONARDO/TACCA_RIBALTA.bmp) | Ribalta tacche selezionate |
-| `c:riposiziona_tacche` | riposiziona_tacche.lsp | ![riposiziona_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/riposiziona_tacche.bmp) | Riposiziona tacche su nuova polilinea |
+| `c:TACCA_RIBALTA` | ribalta tacca.lsp | ![RIBALTA.BMP](INSTALLAZIONE/menu/LEONARDO/RIBALTA.BMP) | Ribalta tacche selezionate |
+| `c:riposiziona_tacche` | riposiziona_tacche.lsp | ![riposiziona.BMP](INSTALLAZIONE/menu/LEONARDO/riposiziona.BMP) | Riposiziona tacche su nuova polilinea |
 | `c:METTI_V` | METTI_V.lsp | ![METTI_V.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V.bmp) | Inserisce rientranza a 'V' su polilinea |
 
 ### Conversione Tacche
@@ -439,7 +439,7 @@ LEONARDO/
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:sostituisci_tacche` | ![sostituisci_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/sostituisci_tacche.bmp) | Menu scelta rapida per conversione tra tipi tacche/punti |
+| `c:sostituisci_tacche` | ![SOS_TACCHE.bmp](INSTALLAZIONE/menu/LEONARDO/SOS_TACCHE.bmp) | Menu scelta rapida per conversione tra tipi tacche/punti |
 | `c:tacche_in_tagliate` | ![tacche_in_tagliate.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_tagliate.bmp) | Converte tacche standard in tacche tagliate (tacca_t) |
 | `c:tagliate_in_tacche` | ![tagliate_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/tagliate_in_tacche.bmp) | Converte tacche tagliate in tacche standard |
 | `c:tacche_in_punti` | ![tacche_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_punti.bmp) | Converte tacche/PitRTak in oggetti POINT |
@@ -460,7 +460,7 @@ LEONARDO/
 | `c:ENDCUT` | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | Sposta su layer ENDCUT (crea layer se necessario) | ENDCUT | 4 (Ciano) |
 | `c:OUTCUT` | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | Sposta su layer OUTCUT (taglio esterno/rifilo) | OUTCUT | 1 (Rosso) |
 | `c:INTCUT` | ![INTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/INTCUT.bmp) | Sposta su layer INTCUT (taglio interno) | INTCUT | 5 (Blu) |
-| `c:PENNA` | ![PENNA.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Ripristina oggetti su layer "0" con colore BYLAYER | 0 | BYLAYER |
+| `c:PENNA` | ![Penna.bmp](INSTALLAZIONE/menu/LEONARDO/Penna.bmp) | Ripristina oggetti su layer "0" con colore BYLAYER | 0 | BYLAYER |
 
 **Nota:** Tutti i comandi impostano automaticamente il colore su BYLAYER dopo lo spostamento.
 
@@ -470,11 +470,11 @@ LEONARDO/
 
 | Comando | Icona | Descrizione | Colore ACI |
 |---------|-------|-------------|------------|
-| `c:BBB` | ![BBB.bmp](INSTALLAZIONE/menu/LEONARDO/BBB.bmp) | Cambia colore oggetto in Bianco/Nero e sposta su layer "0" | 254 |
-| `c:GGG` | ![GGG.bmp](INSTALLAZIONE/menu/LEONARDO/GGG.bmp) | Cambia colore oggetto in Giallo e sposta su layer "0" | 2 |
-| `c:AAA` | ![AAA.bmp](INSTALLAZIONE/menu/LEONARDO/AAA.bmp) | Cambia colore oggetto in Arancio e sposta su layer "0" | 30 |
-| `c:VVV` | ![VVV.bmp](INSTALLAZIONE/menu/LEONARDO/VVV.bmp) | Cambia colore oggetto in Verde e sposta su layer "0" | 3 |
-| `c:FFF` | ![FFF.bmp](INSTALLAZIONE/menu/LEONARDO/FFF.bmp) | Cambia colore oggetto in Fucsia/Magenta e sposta su layer "0" | 6 |
+| `c:BBB` | ![bianco.bmp](INSTALLAZIONE/menu/LEONARDO/bianco.bmp) | Cambia colore oggetto in Bianco/Nero e sposta su layer "0" | 254 |
+| `c:GGG` | ![giallo.bmp](INSTALLAZIONE/menu/LEONARDO/giallo.bmp) | Cambia colore oggetto in Giallo e sposta su layer "0" | 2 |
+| `c:AAA` | ![arancio.bmp](INSTALLAZIONE/menu/LEONARDO/arancio.bmp) | Cambia colore oggetto in Arancio e sposta su layer "0" | 30 |
+| `c:VVV` | ![verde.bmp](INSTALLAZIONE/menu/LEONARDO/verde.bmp) | Cambia colore oggetto in Verde e sposta su layer "0" | 3 |
+| `c:FFF` | ![fuxia.bmp](INSTALLAZIONE/menu/LEONARDO/fuxia.bmp) | Cambia colore oggetto in Fucsia/Magenta e sposta su layer "0" | 6 |
 
 **Nota:** Tutti i comandi operano sugli oggetti pre-selezionati.
 
@@ -488,14 +488,14 @@ LEONARDO/
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:oft_2` | ![oft_2.bmp](INSTALLAZIONE/menu/LEONARDO/oft_2.bmp) | Offset 2 unità con tipo linea CUCITURA (scala 0.3) |
-| `c:oft_3` | ![oft_3.bmp](INSTALLAZIONE/menu/LEONARDO/oft_3.bmp) | Offset 3 unità con tipo linea CUCITURA |
-| `c:oft_4` | ![oft_4.bmp](INSTALLAZIONE/menu/LEONARDO/oft_4.bmp) | Offset 4 unità con tipo linea CUCITURA |
-| `c:oft_5` | ![oft_5.bmp](INSTALLAZIONE/menu/LEONARDO/oft_5.bmp) | Offset 5 unità con tipo linea CUCITURA |
+| `c:oft_2` | ![OF2T.BMP](INSTALLAZIONE/menu/LEONARDO/OF2T.BMP) | Offset 2 unità con tipo linea CUCITURA (scala 0.3) |
+| `c:oft_3` | ![OF3T.BMP](INSTALLAZIONE/menu/LEONARDO/OF3T.BMP) | Offset 3 unità con tipo linea CUCITURA |
+| `c:oft_4` | ![OF4T.BMP](INSTALLAZIONE/menu/LEONARDO/OF4T.BMP) | Offset 4 unità con tipo linea CUCITURA |
+| `c:oft_5` | ![OF5T.BMP](INSTALLAZIONE/menu/LEONARDO/OF5T.BMP) | Offset 5 unità con tipo linea CUCITURA |
 | `c:oft_6` | ![oft_6.bmp](INSTALLAZIONE/menu/LEONARDO/oft_6.bmp) | Offset 6 unità con tipo linea CUCITURA |
-| `c:oft_8` | ![oft_8.bmp](INSTALLAZIONE/menu/LEONARDO/oft_8.bmp) | Offset 8 unità con tipo linea CUCITURA |
-| `c:oft_10` | ![oft_10.bmp](INSTALLAZIONE/menu/LEONARDO/oft_10.bmp) | Offset 10 unità con tipo linea CUCITURA |
-| `c:oft` | ![oft.bmp](INSTALLAZIONE/menu/LEONARDO/oft.bmp) | Offset distanza personalizzata con tipo linea CUCITURA |
+| `c:oft_8` | ![OF8T.BMP](INSTALLAZIONE/menu/LEONARDO/OF8T.BMP) | Offset 8 unità con tipo linea CUCITURA |
+| `c:oft_10` | ![OFT10T.bmp](INSTALLAZIONE/menu/LEONARDO/OFT10T.bmp) | Offset 10 unità con tipo linea CUCITURA |
+| `c:oft` | ![OFt.bmp](INSTALLAZIONE/menu/LEONARDO/OFt.bmp) | Offset distanza personalizzata con tipo linea CUCITURA |
 
 ### Gestione Tipo Linea
 
@@ -503,8 +503,8 @@ LEONARDO/
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:CUCITURA` | ![CUCITURA.bmp](INSTALLAZIONE/menu/LEONARDO/CUCITURA.bmp) | Imposta tipo linea CUCITURA (layer 0, scala 0.3) |
-| `c:CONTINUA` | ![CONTINUA.bmp](INSTALLAZIONE/menu/LEONARDO/CONTINUA.bmp) | Ripristina tipo linea BYLAYER (continuo) |
+| `c:CUCITURA` | ![Cuci.bmp](INSTALLAZIONE/menu/LEONARDO/Cuci.bmp) | Imposta tipo linea CUCITURA (layer 0, scala 0.3) |
+| `c:CONTINUA` | ![Cont.bmp](INSTALLAZIONE/menu/LEONARDO/Cont.bmp) | Ripristina tipo linea BYLAYER (continuo) |
 
 ---
 
