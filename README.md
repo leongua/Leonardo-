@@ -620,21 +620,7 @@ Per visualizzare tutte le scorciatoie, digitare **ALIASEDIT** nella riga di coma
 | `nog_config.txt` | Configurazione calcolo consumi materiali |
 | `license.dat` | File licenza (generato automaticamente) |
 
-### File Interfacce DCL
 
-**Directory:** `wolfang/core/`
-
-| File DCL | Utilizzato da | Funzione |
-|----------|---------------|----------|
-| `MaterialManager1.dcl` | gestmat.lsp | Gestione archivio materiali |
-| `Nome_pezzo.dcl` | Nome_pezzo.lsp, ED-NOM.lsp | Composizione nomi pezzo |
-| `Tabella-materiale.dcl` | Visualizza-per-mat.lsp | Visualizzazione per materiale |
-| `SCAMBIO.dcl` | scambio.lsp | Sostituzione materiali batch |
-| `Materialex.dcl` | ED-MAT.lsp, Materiale.lsp | Gestione materiali (extended) |
-| `Materialenew.dcl` | ED-MAT.lsp, Materiale.lsp | Gestione materiali (new) |
-| `gestione_nomi.dcl` | gnames.lsp | Gestione archivio nomi |
-
-### Struttura File Menu
 
 **Directory:** `LEONARDO/INSTALLAZIONE/menu/LEONARDO/`
 
