@@ -77,7 +77,7 @@ LEONARDO/
 ---
 
 ## 1. GESTIONE LICENZA
-![licenza.jpg](INSTALLAZIONE/licenza.jpg)
+![licenza.png](INSTALLAZIONE/licenza.png)
 **File:** `Codice_licenza.lsp`
 
 | Comando | Icona | Descrizione |
