@@ -330,7 +330,7 @@ LEONARDO/
 ---
 
 ## 9. UTILITÀ E CALCOLO
-
+![gnames.png](INSTALLAZIONE/gnames.png)![gnames.png](INSTALLAZIONE/materiali.png)
 **File:** `convesadec4.lsp`, `elenca-font.lsp`, `gestmat.lsp`, `gnames.lsp`, `NOG.lsp`, `scambio.lsp`, `visualizza-per-mat.lsp`
 
 | Comando | File | Icona | Descrizione | Protezione |
@@ -409,7 +409,7 @@ LEONARDO/
 ---
 
 ## 12. GESTIONE TACCHE
-
+![tacche.png](INSTALLAZIONE/tacche.png)
 ### Inserimento e Copia Tacche
 
 **File:** `inserisci_tacca.lsp`, `tacca_da_misura.lsp`, `tacca_dapoli.lsp`, `copia_tacche.lsp`, `misuratrt.lsp`
