@@ -355,6 +355,8 @@ LEONARDO/
 
 **File:** `chains.lsp`, `join.lsp`, `PC.lsp`, `PJ.LSP`, `y.LSP`
 
+![poliauto.png](INSTALLAZIONE/poliauto.png)
+
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
 | `c:leo-poliauto` | chains.lsp | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Selezione concatenata con unione automatica |
