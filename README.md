@@ -462,7 +462,7 @@ LEONARDO/
 | `c:ENDCUT` | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | Sposta su layer ENDCUT (crea layer se necessario) | ENDCUT | 4 (Ciano) |
 | `c:OUTCUT` | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | Sposta su layer OUTCUT (taglio esterno/rifilo) | OUTCUT | 1 (Rosso) |
 | `c:INTCUT` | ![INTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/INTCUT.bmp) | Sposta su layer INTCUT (taglio interno) | INTCUT | 5 (Blu) |
-| `c:PENNA` | ![Penna.bmp](INSTALLAZIONE/menu/LEONARDO/Penna.bmp) | Ripristina oggetti su layer "0" con colore BYLAYER | 0 | BYLAYER |
+| `c:PENNA` | ![PENNA.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Ripristina oggetti su layer "0" con colore BYLAYER | 0 | BYLAYER |
 
 **Nota:** Tutti i comandi impostano automaticamente il colore su BYLAYER dopo lo spostamento.
 
