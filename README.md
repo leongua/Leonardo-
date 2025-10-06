@@ -331,7 +331,7 @@ LEONARDO/
 ---
 
 ## 9. UTILITÀ E CALCOLO
-![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)
+![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)![sostmat.png](INSTALLAZIONE/sostmat.png)
 **File:** `convesadec4.lsp`, `elenca-font.lsp`, `gestmat.lsp`, `gnames.lsp`, `NOG.lsp`, `scambio.lsp`, `visualizza-per-mat.lsp`
 
 | Comando | File | Icona | Descrizione | Protezione |
