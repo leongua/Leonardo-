@@ -273,8 +273,9 @@ LEONARDO/
 ## 6. GESTIONE DATI PEZZI
 
 ### Inserimento Dati
-![nome-pezzo.png](INSTALLAZIONE/nome-pezzo.png)![materiali.png](INSTALLAZIONE/materiali.png)
 **File:** `Materiale.lsp`, `Nome_pezzo.lsp`, `numero_articolo.lsp`, `SPESSORE.LSP`
+![nome-pezzo.png](INSTALLAZIONE/nome-pezzo.png)![materiali.png](INSTALLAZIONE/materiali.png)
+
 
 | Comando | File | Icona | Descrizione | Protezione |
 |---------|------|-------|-------------|------------|
@@ -330,7 +331,7 @@ LEONARDO/
 ---
 
 ## 9. UTILITÀ E CALCOLO
-![gnames.png](INSTALLAZIONE/gnames.png)![gnames.png](INSTALLAZIONE/materiali.png)
+![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)
 **File:** `convesadec4.lsp`, `elenca-font.lsp`, `gestmat.lsp`, `gnames.lsp`, `NOG.lsp`, `scambio.lsp`, `visualizza-per-mat.lsp`
 
 | Comando | File | Icona | Descrizione | Protezione |
@@ -353,7 +354,6 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:csj` | chains.lsp | ![csj.bmp](INSTALLAZIONE/menu/LEONARDO/csj.bmp) | Chain Selection con visualizzazione dinamica e frecce colorate |
 | `c:leo-poliauto` | chains.lsp | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Selezione concatenata con unione automatica |
 | `c:JoinAll` | join.lsp | ![JoinAll.bmp](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp) | Unisce Linee/Archi/Polilinee con _.pedit M _j |
 | `c:PC` | PC.lsp | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude polilinee leggere (LWPOLYLINE) aperte |
@@ -428,8 +428,7 @@ LEONARDO/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:INVERTI_TACCA` | inverti tacca.lsp | ![INVERTI_TACCA.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_TACCA.bmp) | Inverte direzione tacche selezionate |
-| `c:TACCA_RIBALTA` | ribalta tacca.lsp | ![RIBALTA.BMP](INSTALLAZIONE/menu/LEONARDO/RIBALTA.BMP) | Ribalta tacche selezionate |
+| `c:TACCA_RIBALTA` | ribalta tacca.lsp | ![RIBALTA.BMP](INSTALLAZIONE/menu/LEONARDO/RIBALTA.BMP) | Ribalta direzione tacche selezionate |
 | `c:riposiziona_tacche` | riposiziona_tacche.lsp | ![riposiziona.BMP](INSTALLAZIONE/menu/LEONARDO/riposiziona.BMP) | Riposiziona tacche su nuova polilinea |
 | `c:METTI_V` | METTI_V.lsp | ![METTI_V.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V.bmp) | Inserisce rientranza a 'V' su polilinea |
 
