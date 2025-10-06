@@ -331,7 +331,8 @@ LEONARDO/
 ---
 
 ## 9. UTILITÀ E CALCOLO
-![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)![sostmat.png](INSTALLAZIONE/sostmat.png)
+![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)
+
 **File:** `convesadec4.lsp`, `elenca-font.lsp`, `gestmat.lsp`, `gnames.lsp`, `NOG.lsp`, `scambio.lsp`, `visualizza-per-mat.lsp`
 
 | Comando | File | Icona | Descrizione | Protezione |
@@ -343,6 +344,8 @@ LEONARDO/
 | `c:NOG` | NOG.lsp | ![NOG.bmp](INSTALLAZIONE/menu/LEONARDO/NOG.bmp) | Calcolo Consumi Materiale: genera report CSV/Excel | ✅ |
 | `c:sostmat` | scambio.lsp | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituzione materiale in batch mantenendo quantità/tipologia | ❌ |
 | `c:mat1` | visualizza-per-mat.lsp | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zoom su pezzi per materiale selezionato | ❌ |
+
+![sostmat.png](INSTALLAZIONE/sostmat.png)![mat1.png](INSTALLAZIONE/mat1.png)
 
 ---
 
