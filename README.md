@@ -273,7 +273,7 @@ LEONARDO/
 ## 6. GESTIONE DATI PEZZI
 
 ### Inserimento Dati
-
+![nome-pezzo.png](INSTALLAZIONE/nome-pezzo.png)![materiali.png](INSTALLAZIONE/materiali.png)
 **File:** `Materiale.lsp`, `Nome_pezzo.lsp`, `numero_articolo.lsp`, `SPESSORE.LSP`
 
 | Comando | File | Icona | Descrizione | Protezione |
