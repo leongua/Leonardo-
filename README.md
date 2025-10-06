@@ -2,7 +2,7 @@
 ![1759432038064.jpg](INSTALLAZIONE/1759432038064.jpg)
 ## GUIDA PER L'UTILIZZO - VERSIONE DEFINITIVA
 
-**VERSIONE 1.3.0**
+**VERSIONE 2.7.0**
 
 **CONCESSA A USO LUDICO E DIMOSTRATIVO**
 
@@ -38,7 +38,7 @@ Tutti i diritti riservati.
 ## Struttura del Software
 
 Il nucleo delle funzionalità di Leonardo Pattern Design Software risiede nella cartella **wolfang/core/**. Questa cartella contiene numerosi file LISP (.lsp) che definiscono i comandi e le logiche operative del programma.
-
+la cartella è disponibile solo in fase di compilazione. 
 ### Tipologie di File
 
 * **File LISP (.lsp)**: Contengono il codice sorgente per le funzioni personalizzate di AutoCAD/ZWCAD. Ogni comando è definito da una `(defun c:NOMECOMANDO ...)` nel codice LISP.
@@ -77,7 +77,7 @@ LEONARDO/
 ---
 
 ## 1. GESTIONE LICENZA
-
+![licenza.jpg](INSTALLAZIONE/licenza.jpg)
 **File:** `Codice_licenza.lsp`
 
 | Comando | Icona | Descrizione |
