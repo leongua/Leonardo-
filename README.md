@@ -260,7 +260,7 @@ LEONARDO/
 | `c:centro` | centro.lsp | ![centro.bmp](INSTALLAZIONE/menu/LEONARDO/centro.bmp) | Disegna linee forzando angolo 90° dopo primo segmento |
 | `c:LEORETTANGOLO` | LeoRettangolo.lsp | ![RECT.bmp](INSTALLAZIONE/menu/LEONARDO/RECT.bmp) | Disegna rettangolo definendo centro, larghezza e altezza |
 | `c:LeoA3` | LeoRettangolo.lsp | ![tavola-vuota.BMP](INSTALLAZIONE/menu/LEONARDO/tavola-vuota.BMP) | Disegna rettangolo A3 (297 x 420) |
-| `c:LeoA4` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_A4.BMP](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.BMP) | Disegna rettangolo A4 (210 x 297) |
+| `c:LeoA4` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_A4.BMP](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.bmp) | Disegna rettangolo A4 (210 x 297) |
 | `c:LeoUM` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_VUOTA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp) | Disegna rettangolo standard (650 x 950) |
 | `c:LeoUM2` | LeoRettangolo.lsp | ![leoum2.bmp](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp) | Disegna rettangolo standard (1300 x 950) |
 | `c:LeoUM4` | LeoRettangolo.lsp | ![leoum4.bmp](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp) | Disegna rettangolo standard (1300 x 1800) |
