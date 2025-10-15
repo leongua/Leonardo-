@@ -2,7 +2,7 @@
 ![1759432038064.jpg](INSTALLAZIONE/1759432038064.jpg)
 ## GUIDA PER L'UTILIZZO - VERSIONE DEFINITIVA
 
-**VERSIONE 2.7.0**
+**VERSIONE 2.7.1**
 
 **CONCESSA A USO LUDICO E DIMOSTRATIVO**
 
@@ -37,41 +37,34 @@ Tutti i diritti riservati.
 
 ## Struttura del Software
 
-Il nucleo delle funzionalità di Leonardo Pattern Design Software risiede nella cartella **wolfang/core/**. Questa cartella contiene numerosi file LISP (.lsp) che definiscono i comandi e le logiche operative del programma.
-la cartella è disponibile solo in fase di compilazione. 
+Il nucleo delle funzionalità di Leonardo Pattern Design Software risiede nella cartella **C:/program files x86/zwcad/support/**, **C:/leonardo/**. Questa cartella contiene numerosi file che definiscono i comandi e le logiche operative del programma.
+
 ### Tipologie di File
 
-* **File LISP (.lsp)**: Contengono il codice sorgente per le funzioni personalizzate di AutoCAD/ZWCAD. Ogni comando è definito da una `(defun c:NOMECOMANDO ...)` nel codice LISP.
+* **File LISP (.lsp .vlx)**: Contengono il codice sorgente per le funzioni personalizzate di AutoCAD/ZWCAD.
 
 * **File DCL (.dcl)**: Definiscono l'interfaccia utente (finestre di dialogo):
-    * MaterialManager1.dcl (per gestmat.lsp)
-    * Nome_pezzo.dcl (per Nome_pezzo.lsp e ED-NOM.lsp)
-    * Tabella-materiale.dcl (per Visualizza-per-mat.lsp)
-    * SCAMBIO.dcl (per scambio.lsp)
-    * Materialex.dcl e Materialenew.dcl (per ED-MAT.lsp e Materiale.lsp)
-    * gestione_nomi.dcl (per gnames.lsp)
-
+   
 * **File di Menu (.mns, .menuc, .menur)**: Definiscono la struttura dei menu a tendina e delle barre degli strumenti
 
-* **File di Configurazione (.txt)**: Liste di materiali, nomi, e altre configurazioni (es. Pelle.txt, Nome1.txt in INSTALLAZIONE/common/)
+* **File di Configurazione Leonardo (.txt)**: Liste di materiali, nomi, e altre configurazioni (es. Pelle.txt, Nome1.txt in INSTALLAZIONE/common/)
 
-* **File Icone (.bmp)**: Localizzati in **INSTALLAZIONE/menu/LEONARDO/**
+* **File Icone Leonardo(.bmp)**: Localizzati in **INSTALLAZIONE/menu/LEONARDO/**
 
 ### Directory Principali
 
 ```
-LEONARDO/
-├── INSTALLAZIONE/
-│   ├── menu/
-│   │   └── LEONARDO/          # File icone (.bmp) e menu
-│   └── common/                # File configurazione (.txt)
-└── wolfang/
-    └── core/                  # File LISP (.lsp) e DCL (.dcl)
+C/
+├── leonardo/
+│   ├── common/        # File configurazione (.txt)
+│   │   menu/          # File icone (.bmp)      
+└── programmi x86/
+    └── zwcad2015+/ # 
+           └── support  File LISP (.lsp) e DCL (.dcl)
 ```
-
 ### Compatibilità
 
-- **AutoCAD** - Compatibilità completa
+- **AutoCAD** - Compatibilita parziale
 - **ZWCAD** - Compatibilità completa con comandi specifici
 
 ---
