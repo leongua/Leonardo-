@@ -327,6 +327,7 @@
                 </p>
                 <p class="hero-version">Versione 2.7.1 - Oltre 160 comandi specializzati</p>
                 <div class="cta-buttons">
+                    <a href="#download" class="btn btn-primary">Scarica Ora</a>
                     <a href="#features" class="btn btn-secondary">Scopri di Più</a>
                 </div>
             </div>
@@ -400,6 +401,9 @@
                 <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://github.com/leongua/Leonardo-" target="_blank" class="btn btn-primary">
                         📚 Documentazione Completa
+                    </a>
+                    <a href="https://github.com/leongua/Leonardo-/releases" target="_blank" class="btn btn-secondary">
+                        ⬇️ Download Software
                     </a>
                 </div>
             </div>
