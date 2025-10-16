@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leonardo Pattern Design Software</title>
+    <title>Leonardo Pattern Design Software - CAD Pelletteria</title>
     <style>
         * {
             margin: 0;
@@ -83,13 +83,20 @@
 
         .tagline {
             font-size: 3.5rem;
-            margin-bottom: 2.2rem;
+            margin-bottom: 1rem;
             font-weight: bold;
             background: linear-gradient(45deg, #fff, #f0f0f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 20px rgba(255,255,255,0.3);
             filter: drop-shadow(0 4px 10px rgba(255,255,255,0.5));
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            margin-bottom: 2.2rem;
+            color: #4CAF50;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-description {
@@ -152,8 +159,34 @@
             transform: translateY(-3px);
         }
 
-        .features {
+        .btn-small {
+            padding: 0.8rem 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .why-leonardo {
             padding: 6rem 2rem;
+            background-image: url('1759432038064.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .why-leonardo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .why-leonardo .container {
+            position: relative;
+            z-index: 10;
         }
 
         .section-title {
@@ -161,6 +194,51 @@
             font-size: 2.5rem;
             margin-bottom: 4rem;
             color: #fff;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid #4CAF50;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            background: rgba(76, 175, 80, 0.2);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
+        }
+
+        .why-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+
+        .why-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .why-description {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .features {
+            padding: 6rem 2rem;
         }
 
         .features-grid {
@@ -202,9 +280,148 @@
             line-height: 1.6;
         }
 
+        .integrazioni {
+            padding: 6rem 2rem;
+            background-image: url('1759432038064.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .integrazioni::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .integrazioni .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .integrazioni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .integrazioni-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .integrazioni-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .integrazioni-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .integrazioni-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .roadmap {
+            padding: 6rem 2rem;
+        }
+
+        .roadmap-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .roadmap-item {
+            background: rgba(26, 26, 26, 0.9);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #4CAF50;
+            backdrop-filter: blur(10px);
+        }
+
+        .roadmap-version {
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-description {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .faq {
+            padding: 6rem 2rem;
+            background: #1a1a1a;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(26, 26, 26, 0.9);
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: #aaa;
+        }
+
+        .faq-item.open .faq-answer {
+            padding: 0 2rem 2rem 2rem;
+            max-height: 500px;
+        }
+
         .download-section {
             padding: 6rem 2rem;
-            text-align: center;
         }
 
         .download-card {
@@ -243,6 +460,7 @@
 
         .contact {
             padding: 6rem 2rem;
+            background: #1a1a1a;
         }
 
         .contact-content {
@@ -275,7 +493,7 @@
 
         .contact-icon {
             font-size: 2rem;
-            color: #999;
+            color: #4CAF50;
         }
 
         footer {
@@ -296,6 +514,10 @@
                 font-size: 2.5rem;
             }
 
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
             .hero-description {
                 font-size: 1rem;
             }
@@ -312,28 +534,86 @@
             .download-title {
                 font-size: 2rem;
             }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- PRIMA PAGINA: Logo e presentazione -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <img src="log.jpg" alt="Leonardo Logo" class="logo">
                 <p class="tagline">Leonardo</p>
+                <p class="hero-subtitle">Il CAD che i modellisti scelgono</p>
                 <p class="hero-description">
                     Pattern Design Software CAD per il settore Pelletteria
                 </p>
                 <p class="hero-version">Versione 2.7.1 - Oltre 160 comandi specializzati</p>
                 <div class="cta-buttons">
-                    <a href="#features" class="btn btn-secondary">Scopri di Più</a>
+                    <a href="#why-leonardo" class="btn btn-secondary">Scopri Perché Sceglierci</a>
+                    <a href="#features" class="btn btn-secondary">Funzionalità</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PAGINE SUCCESSIVE: Con sfondo immagine -->
+    <!-- PERCHÉ LEONARDO -->
+    <section id="why-leonardo" class="why-leonardo">
+        <div class="container">
+            <h2 class="section-title">Perché Scegliere Leonardo</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">⚡</div>
+                    <h3 class="why-title">Apprendimento Rapido</h3>
+                    <p class="why-description">
+                        Interfaccia intuitiva progettata per modellisti. Lavora come pensi, non come il software vuole.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🎯</div>
+                    <h3 class="why-title">Specializzato 100%</h3>
+                    <p class="why-description">
+                        Creato esclusivamente per pelletteria. Nessun compromesso, tutte le funzioni che ti servono.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📈</div>
+                    <h3 class="why-title">160+ Comandi Specializzati</h3>
+                    <p class="why-description">
+                        Dalla elaborazione AAMA al nesting automatico. Tutte le soluzioni in un unico software.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💰</div>
+                    <h3 class="why-title">ROI Garantito</h3>
+                    <p class="why-description">
+                        Modellisti riportano 40% riduzione tempi di prototipazione e 30% meno sprechi di materiali.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🛠️</div>
+                    <h3 class="why-title">Supporto Attivo</h3>
+                    <p class="why-description">
+                        Team dedicato con risposta entro 24h. Community di professionisti sempre disponibili.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🔄</div>
+                    <h3 class="why-title">Aggiornamenti Continui</h3>
+                    <p class="why-description">
+                        Nuove versioni ogni mese con feedback diretto degli utenti. Il tuo software evolve con te.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNZIONALITÀ -->
     <section id="features" class="features bg-section">
         <div class="container">
             <h2 class="section-title">Funzionalità Professionali</h2>
@@ -384,6 +664,101 @@
         </div>
     </section>
 
+    <!-- INTEGRAZIONI -->
+    <section class="integrazioni">
+        <div class="container">
+            <h2 class="section-title">Integrazioni e Compatibilità</h2>
+            <div class="integrazioni-grid">
+                <div class="integrazioni-item">
+                    <div class="integrazioni-icon">📋</div>
+                    <div class="integrazioni-title">CAD</div>
+                    <div class="integrazioni-desc">ZWCAD, AutoCAD, Modaris</div>
+                </div>
+                <div class="integrazioni-item">
+                    <div class="integrazioni-icon">🔪</div>
+                    <div class="integrazioni-title">Sistemi di Taglio</div>
+                    <div class="integrazioni-desc">Plotter, Laser, Getto d'acqua</div>
+                </div>
+                <div class="integrazioni-item">
+                    <div class="integrazioni-icon">💼</div>
+                    <div class="integrazioni-title">Gestionali</div>
+                    <div class="integrazioni-desc">PDM, ERP, Inventario</div>
+                </div>
+                <div class="integrazioni-item">
+                    <div class="integrazioni-icon">📊</div>
+                    <div class="integrazioni-title">Export</div>
+                    <div class="integrazioni-desc">Excel, PDF, DXF, AAMA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Domande Frequenti</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Con quali software è compatibile Leonardo?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Leonardo funziona perfettamente con ZWCAD, ha compatibilità parziale con AutoCAD e supporta l'estrazione da Modaris. Supporta anche integrazione con tutti i principali sistemi di taglio (plotter, laser, getto d'acqua) tramite standard AAMA.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual è il tempo di apprendimento?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        I modellisti esperti partono da zero e sono operativi in 2-3 settimane. La curva di apprendimento è molto rapida grazie all'interfaccia intuitiva disegnata proprio per pellettieri. La documentazione completa su GitHub e il supporto tecnico accelerano il processo.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Come funziona il calcolo dei consumi?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Leonardo offre due metodi: metodo automatico con 3 livelli di scarto configurabili, e metodo di piazzamento manuale per controllo totale. Genera report in formato testo o Excel, esportabili verso gestionali e PDM. I risultati sono precisi fino al 95% con materiali standard.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso usare i miei file attuali?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sì! Leonardo legge file DXF, AAMA e da Modaris. La migrazione da altri software è guidata dal nostro team tecnico. Offriamo supporto completo nella conversione dei tuoi archivi attuali.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Che supporto ricevo?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Supporto tecnico 24h entro 24 ore via email. Community attiva di utenti su forum dedicato. Webinar mensili su nuove funzioni. Aggiornamenti continui con miglioramenti basati sui feedback degli utenti.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quale è il modello di licensing?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Offriamo licenze perpetue, subscription mensile/annuale, e piani enterprise personalizzati. Prova gratuita 30 giorni senza vincoli. Contattaci per un preventivo personalizzato sulla base delle tue esigenze.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD -->
     <section id="download" class="download-section bg-section">
         <div class="container">
             <div class="download-card">
@@ -398,33 +773,37 @@
                     <p class="download-feature-item">✓ Nesting e Stampa</p>
                 </div>
                 <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://github.com/leongua/Leonardo-" target="_blank" class="btn btn-primary">
-                        📚 Documentazione Completa
+                    <a href="https://github.com/leongua/Leonardo-" target="_blank" class="btn btn-primary btn-small">
+                        📚 Documentazione
+                    </a>
+                    <a href="#contact" class="btn btn-secondary btn-small">
+                        💬 Prova Gratuita
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="contact bg-section">
         <div class="container">
             <div class="contact-content">
                 <h2 class="section-title">Contattaci</h2>
                 <p class="contact-description">
-                    Hai domande sul software Leonardo Pattern Design? Contattaci per supporto tecnico, licenze o informazioni.
+                    Hai domande? Il nostro team è pronto ad aiutarti con supporto tecnico, demo personalizzate o informazioni su licensing.
                 </p>
                 <div class="contact-info">
                     <div class="contact-item">
                         <span class="contact-icon">📧</span>
-                        <span>leonardo@guasqui.it</span>
+                        <span><strong>leonardo@guasqui.it</strong></span>
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">🌐</span>
-                        <span>www.guasqui.it</span>
+                        <span><strong>www.guasqui.it</strong></span>
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">💬</span>
-                        <span>Supporto Tecnico</span>
+                        <span><strong>Supporto 24h</strong></span>
                     </div>
                 </div>
             </div>
@@ -435,5 +814,29 @@
         <p>&copy; 2025 Leonardo Guasqui - Tutti i diritti riservati</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Leonardo Pattern Design Software v2.7.1</p>
     </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
