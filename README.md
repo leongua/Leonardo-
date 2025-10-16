@@ -4,7 +4,7 @@
 
 **VERSIONE 2.7.1**
 
-**CONCESSA A USO LUDICO E DIMOSTRATIVO**
+**CONCESSA A USO DIMOSTRATIVO**
 
 Sviluppatore: LEONARDO GUASQUI  
 Contatti: leonardo@guasqui.it  
