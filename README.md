@@ -85,13 +85,12 @@ C/
 
 ### Processori AAMA Principali
 
-**File:** `AAMA20.lsp`, `aama_rifilo2.LSP`, `MODARIS-AAMA.lsp`
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:aama` | AAMA20.lsp | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Funzione principale AAMA per processare sagome e creare blocchi per nesting |
-| `c:aamar` | aama_rifilo2.LSP | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa sagome RIFILO con materiale standard |
-| `c:Modaris-AAMA` | MODARIS-AAMA.lsp | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora blocchi Modaris v3.0 con centroide e dati |
+| `c:aama` | AAMA20 | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Funzione principale AAMA per processare sagome e creare blocchi per nesting |
+| `c:aamar` | aama_rifilo2 | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa sagome RIFILO con materiale standard |
+| `c:Modaris-AAMA` | MODARIS-AAMA | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora blocchi Modaris v3.0 con centroide e dati |
 
 ### Comandi di Configurazione AAMA
 
@@ -99,8 +98,8 @@ C/
 
 | Comando | Descrizione |
 |---------|-------------|
-| `c:aama_spacing` | Imposta spaziatura tra blocchi (*AAMA-BLOCK-SPACING*) |
-| `c:aama_debug` | Attiva/disattiva modalità debug (*AAMA-DEBUG-MODE*) |
+| `c:aama_spacing` | Imposta spaziatura tra blocchi variabile (*AAMA-BLOCK-SPACING*) |
+| `c:aama_debug` | Attiva/disattiva modalità debug (*AAMA-DEBUG-MODE*)  |
 | `c:aama_errors` | Visualizza log dettagliato errori |
 | `c:aama_clear_errors` | Pulisce log errori registrati |
 | `c:aama_settings` | Mostra tutte le impostazioni correnti |
@@ -108,7 +107,7 @@ C/
 
 ### Comandi RIFILO
 
-**File:** `aama_rifilo2.LSP`
+**File:** AAMAR
 
 | Comando | Descrizione |
 |---------|-------------|
@@ -131,8 +130,8 @@ C/
 |---------|------|-------|-------------|
 | `c:MA-test` | MODARIS-AAMA.lsp | ![MA-test.bmp](INSTALLAZIONE/menu/LEONARDO/MA-test.bmp) | Test attributi Modaris (PNAME, MNAME) e centroide |
 | `c:MA-config` | MODARIS-AAMA.lsp | ![MA-config.bmp](INSTALLAZIONE/menu/LEONARDO/MA-config.bmp) | Visualizza parametri configurazione globali Modaris |
-| `c:test-multipli` | moschino punti batch6.lsp | ![test-multipli.bmp](INSTALLAZIONE/menu/LEONARDO/test-multipli.bmp) | Test estrazione blocchi multipli |
-| `c:AAMA_ESTRAI` | AAMA_ESTRAI_2.lsp | ![AAMA_ESTRAI.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA_ESTRAI.bmp) | Esporta oggetti layer "1" in DXF e cancella dal disegno |
+| `c:test-multipli` | - | ![test-multipli.bmp](INSTALLAZIONE/menu/LEONARDO/test-multipli.bmp) | Test estrazione blocchi multipli |
+| `c:AAMA_ESTRAI` | AAMA_ESTRAI | ![AAMA_ESTRAI.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA_ESTRAI.bmp) | Esporta oggetti AAMA in DXF, per ripristinarli premi indietro |
 
 ### Funzioni Nesting
 
@@ -140,25 +139,21 @@ C/
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:nestinglinea` | bl.lsp | ![nestinglinea.bmp](INSTALLAZIONE/menu/LEONARDO/nestinglinea.bmp) | Posiziona pezzi in linea o multi-riga ordinati per dimensioni |
-| `c:nesting1` | bl.lsp | ![nesting1.bmp](INSTALLAZIONE/menu/LEONARDO/nesting1.bmp) | Nesting semplificato in singola linea orizzontale |
+| `c:nestinglinea` | nestinglinea | ![nestinglinea.bmp](INSTALLAZIONE/menu/LEONARDO/nestinglinea.bmp) | Posiziona pezzi in linea o multi-riga ordinati per dimensioni |
+| `c:nesting1` | nesting1 | ![nesting1.bmp](INSTALLAZIONE/menu/LEONARDO/nesting1.bmp) | Nesting semplificato |
 | `c:nestingarea` | bl.lsp | ![nestingarea.bmp](INSTALLAZIONE/menu/LEONARDO/nestingarea.bmp) | Definisce area di lavoro con rettangolo temporaneo |
-| `c:nesting3` | nesting33.lsp | ![nesting.bmp](INSTALLAZIONE/menu/LEONARDO/nesting.bmp) | Nesting avanzato con gestione overflow e creazione nuove tavole |
+| `c:nesting3` | nesting3 | ![nesting.bmp](INSTALLAZIONE/menu/LEONARDO/nesting.bmp) | Nesting avanzato con gestione overflow e creazione nuove tavole |
 
 ### Altri Comandi Elaborazione
 
-**File:** `DIMA.lsp`, `geber.lsp`, `offset-delete-script2.lsp`, `sostituisci punti blocco.lsp`
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:DIMA` | DIMA.lsp | ![DIMA_ATOM.bmp](INSTALLAZIONE/menu/LEONARDO/DIMA_ATOM.bmp) | Crea dima da layer ENDCUT con offset su OUTCUT/INTCUT |
-| `c:geber` | geber.lsp | ![geber.bmp](INSTALLAZIONE/menu/LEONARDO/geber.bmp) | Processore batch tacche: converte blocchi tacca in POINT su layer "4" |
-| `c:set_geber_tolerance` | geber.lsp | ![set_geber_tolerance.bmp](INSTALLAZIONE/menu/LEONARDO/set_geber_tolerance.bmp) | Imposta tolleranze globali per conversione tacche |
-| `c:ofi` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | OFFSET RINGRANO v4.0 - sposta originale su layer "0" e offset su "OUTCUT" |
-| `c:OL` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
-| `c:OR` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
-| `c:O` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
-| `c:blocchi_in_punti` | sostituisci punti blocco.lsp | ![blocchi_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/blocchi_in_punti.bmp) | Converte blocchi "PitRTak" in oggetti POINT |
+| `c:DIMA` | DIMA | ![DIMA_ATOM.bmp](INSTALLAZIONE/menu/LEONARDO/DIMA_ATOM.bmp) | Crea dima partendo da un netto /INTCUT |
+| `c:geber` | geber | ![geber.bmp](INSTALLAZIONE/menu/LEONARDO/geber.bmp) | Processore batch tacche: converte le tacche in tacche AAMA con tolleranze impostsbili |
+| `c:set_geber_tolerance` | geber | ![set_geber_tolerance.bmp](INSTALLAZIONE/menu/LEONARDO/set_geber_tolerance.bmp) | Imposta tolleranze globali per conversione tacche |
+| `c:ofi` | ofi | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | OFFSET ringrano: imposta l offset per poter reinserire un pezzo in dima  
+| `c:blocchi_in_punti` | sostituisci punti blocco | ![blocchi_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/blocchi_in_punti.bmp) | Converte blocchi "PitRTak" in oggetti POINT |
 
 ---
 
@@ -166,11 +161,10 @@ C/
 
 ### Allineamento e Rotazione
 
-**File:** `AlignTextToCurveV1-2.lsp`, `ZeroRottaion.LSP`, `ruota testo.lsp`
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:ATC` | AlignTextToCurveV1-2.lsp | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea testo (esistente o nuovo) a curva selezionata |
+| `c:ATC` | ATC | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea testo (esistente o nuovo) a curva selezionata |
 | `c:ZR` | ZeroRottaion.LSP | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Azzera rotazione di testo, blocchi o MLeader |
 | `c:EDT` | ruota testo.lsp | ![EDT.bmp](INSTALLAZIONE/menu/LEONARDO/EDT.bmp) | Ruota testi basandosi su angolo definito da due punti |
 
