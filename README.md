@@ -1,6 +1,4 @@
-# LEONARDO PATTERN DESIGN SOFTWARE
-![1759432038064.jpg](INSTALLAZIONE/1759432038064.jpg)
-## GUIDA PER L'UTILIZZO - VERSIONE DEFINITIVA
+# Leonardo Pattern Design Software - Documentazione Dettagliata
 
 **VERSIONE 2.7.1**
 
@@ -35,308 +33,248 @@ Tutti i diritti riservati.
 
 ---
 
-## Struttura del Software
+## Compatibilità
 
-Il nucleo delle funzionalità di Leonardo Pattern Design Software risiede nella cartella **C:/program files x86/zwcad/support/**, **C:/leonardo/**. Questa cartella contiene numerosi file che definiscono i comandi e le logiche operative del programma.
+Leonardo Pattern Design Software è stato sviluppato principalmente per funzionare in ambiente **ZWCAD**, dove offre piena compatibilità e integrazione con tutti i comandi specifici del programma. Questo garantisce un'esperienza utente fluida e accesso a funzionalità avanzate che potrebbero non essere disponibili in altre piattaforme.
 
-### Tipologie di File
-
-* **File LISP (.lsp .vlx)**: Contengono il codice sorgente per le funzioni personalizzate di AutoCAD/ZWCAD.
-
-* **File DCL (.dcl)**: Definiscono l'interfaccia utente (finestre di dialogo):
-   
-* **File di Menu (.mns, .menuc, .menur)**: Definiscono la struttura dei menu a tendina e delle barre degli strumenti
-
-* **File di Configurazione Leonardo (.txt)**: Liste di materiali, nomi, e altre configurazioni (es. Pelle.txt, Nome1.txt in INSTALLAZIONE/common/)
-
-* **File Icone Leonardo(.bmp)**: Localizzati in **INSTALLAZIONE/menu/LEONARDO/**
-
-### Directory Principali
-
-```
-C/
-├── leonardo/
-│   ├── common/        # File configurazione (.txt)
-│   │   menu/          # File icone (.bmp)      
-└── programmi x86/
-    └── zwcad2015+/ # 
-           └── support  File LISP (.lsp) e DCL (.dcl)
-```
-### Compatibilità
-
-- **AutoCAD** - Compatibilita parziale
-- **ZWCAD** - Compatibilità completa con comandi specifici
+Tuttavia, il software può essere installato e utilizzato anche su **AutoCAD**. In questo caso, la compatibilità è **parziale**. Alcune funzionalità specifiche, specialmente quelle legate a comandi ZWCAD proprietari o a interazioni molto specifiche con l'interfaccia, potrebbero non funzionare correttamente o presentare comportamenti diversi. Si consiglia di testare le funzionalità chiave in un ambiente AutoCAD prima di utilizzare il software in produzione.
 
 ---
 
 ## 1. GESTIONE LICENZA
+
+La gestione della licenza è un aspetto fondamentale del software. Senza una licenza valida, il software non funzionerà correttamente. Questa sezione descrive i comandi necessari per attivare, verificare e gestire lo stato della licenza.
+
+Il sistema di licenza è progettato per essere sicuro e flessibile. Ogni installazione del software genera un ID univoco basato sulle caratteristiche hardware del computer. Questo ID viene utilizzato dallo sviluppatore per generare un codice di attivazione specifico per quella macchina.
+
 ![licenza.png](INSTALLAZIONE/licenza.png)
-**File:** `Codice_licenza.lsp`
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:activate-license` | ![activate-license.bmp](INSTALLAZIONE/menu/LEONARDO/activate-license.bmp) | Avvia il processo di attivazione della licenza |
-| `c:show-system-id` | ![show-system-id.bmp](INSTALLAZIONE/menu/LEONARDO/show-system-id.bmp) | Mostra l'ID univoco del sistema |
-| `c:reset-license` | ![reset-license.bmp](INSTALLAZIONE/menu/LEONARDO/reset-license.bmp) | Resetta lo stato della licenza (solo debug) |
+| `c:activate-license` | ![activate-license.bmp](INSTALLAZIONE/menu/LEONARDO/activate-license.bmp) | Avvia il processo per attivare la tua licenza software. Questo comando richiederà il codice di attivazione fornito dallo sviluppatore. |
+| `c:show-system-id` | ![show-system-id.bmp](INSTALLAZIONE/menu/LEONARDO/show-system-id.bmp) | Visualizza l'identificativo unico del tuo sistema, utile per il supporto. Questo ID è necessario per ottenere il codice di attivazione. |
+| `c:reset-license` | ![reset-license.bmp](INSTALLAZIONE/menu/LEONARDO/reset-license.bmp) | Resetta lo stato della licenza (utilizzato solo per scopi di diagnostica). Questo comando dovrebbe essere utilizzato solo su richiesta dello sviluppatore. |
 
 ---
 
-## 2. ELABORAZIONE PEZZI AAMA
+## 2. ELABORAZIONE PEZzi AAMA
+
+I comandi in questa sezione sono centrali per il processo di preparazione dei pezzi per il nesting e la produzione. AAMA è un acronimo che rappresenta la standardizzazione e l'ottimizzazione del disegno del pattern. Il termine AAMA deriva probabilmente da un protocollo o standard interno al settore calzaturiero o pellettiero, e questi comandi sono progettati per convertire le sagome grezze in blocchi strutturati e pronti per la fase di nesting.
 
 ### Processori AAMA Principali
 
-**File:** `AAMA20.lsp`, `aama_rifilo2.LSP`, `MODARIS-AAMA.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:aama` | AAMA20.lsp | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Funzione principale AAMA per processare sagome e creare blocchi per nesting |
-| `c:aamar` | aama_rifilo2.LSP | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa sagome RIFILO con materiale standard |
-| `c:Modaris-AAMA` | MODARIS-AAMA.lsp | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora blocchi Modaris v3.0 con centroide e dati |
-
-### Comandi di Configurazione AAMA
-
-**File:** `AAMA20.lsp`
-
-| Comando | Descrizione |
-|---------|-------------|
-| `c:aama_spacing` | Imposta spaziatura tra blocchi (*AAMA-BLOCK-SPACING*) |
-| `c:aama_debug` | Attiva/disattiva modalità debug (*AAMA-DEBUG-MODE*) |
-| `c:aama_errors` | Visualizza log dettagliato errori |
-| `c:aama_clear_errors` | Pulisce log errori registrati |
-| `c:aama_settings` | Mostra tutte le impostazioni correnti |
-| `c:aama_test` | Test su singola sagoma con debug attivo |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:aama` | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Processa le sagome AAMA per prepararle al nesting, creando blocchi ottimizzati. Questo comando richiede la selezione di polilinee chiuse e ne estrae i dati (come nome, materiale, quantità, tipologia) dai blocchi DATIM associati. Successivamente, crea un singolo blocco per ogni sagoma, posizionandola in modo da ottimizzare lo spazio futuro. |
+| `c:aamar` | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa le sagome di "RIFILO" applicando un materiale standard. Questo comando è specifico per i pezzi di rifilo. Estrae la geometria e applica automaticamente un materiale standard precedentemente definito. |
+| `c:Modaris-AAMA` | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora i blocchi Modaris v3.0, aggiungendo informazioni sul centroide e altri dati. Questo comando è pensato per integrare i dati provenienti da sistemi CAD Modaris, estraendone le informazioni e preparandole per il flusso AAMA. |
 
 ### Comandi RIFILO
 
-**File:** `aama_rifilo2.LSP`
+I comandi specifici per la gestione dei pezzi di RIFILO consentono di applicare standard uniformi. Questi comandi sono strettamente legati al comando `c:aamar` e consentono di definire i valori standard da applicare.
 
 | Comando | Descrizione |
 |---------|-------------|
-| `c:aamar_init` | Inizializza variabili RIFILO a valori default |
-| `c:aamar_material` | Imposta materiale standard |
-| `c:aamar_tipologia` | Imposta tipologia standard |
-| `c:aamar_quantita` | Imposta quantità standard |
-| `c:aamar_spacing` | Imposta spaziatura blocchi RIFILO |
-| `c:aamar_debug` | Attiva/disattiva debug RIFILO |
-| `c:aamar_errors` | Visualizza log errori RIFILO |
-| `c:aamar_clear_errors` | Pulisce log errori RIFILO |
-| `c:aamar_settings` | Mostra impostazioni RIFILO correnti |
-| `c:aamar_test` | Test RIFILO su singola sagoma |
+| `c:aamar_material` | Imposta il materiale standard per le sagome RIFILO. Questo valore verrà applicato automaticamente dal comando `c:aamar`. |
+| `c:aamar_tipologia` | Imposta la tipologia standard per le sagome RIFILO. |
+| `c:aamar_quantita` | Imposta la quantità standard per le sagome RIFILO. |
+| `c:aamar_spacing` | Definisce la spaziatura tra i blocchi RIFILO. Questo valore influisce sull'output del comando `c:aama` quando vengono creati i blocchi. |
+| `c:aamar_settings` | Visualizza le impostazioni correnti per i comandi RIFILO. Utile per controllare cosa è stato impostato. |
 
-### Comandi Test e Supporto
+### Funzioni di Nesting
 
-**File:** `MODARIS-AAMA.lsp`, `moschino punti batch6.lsp`, `AAMA_ESTRAI_2.lsp`
+I comandi di nesting sono essenziali per posizionare i pezzi in modo efficiente sul materiale, minimizzando lo spreco. Il nesting è il processo di posizionamento ottimale delle sagome all'interno di un'area data (la tavola di materiale), tenendo conto di margini, rotazioni e spaziature.
 
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:MA-test` | MODARIS-AAMA.lsp | ![MA-test.bmp](INSTALLAZIONE/menu/LEONARDO/MA-test.bmp) | Test attributi Modaris (PNAME, MNAME) e centroide |
-| `c:MA-config` | MODARIS-AAMA.lsp | ![MA-config.bmp](INSTALLAZIONE/menu/LEONARDO/MA-config.bmp) | Visualizza parametri configurazione globali Modaris |
-| `c:test-multipli` | moschino punti batch6.lsp | ![test-multipli.bmp](INSTALLAZIONE/menu/LEONARDO/test-multipli.bmp) | Test estrazione blocchi multipli |
-| `c:AAMA_ESTRAI` | AAMA_ESTRAI_2.lsp | ![AAMA_ESTRAI.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA_ESTRAI.bmp) | Esporta oggetti layer "1" in DXF e cancella dal disegno |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:nestinglinea` | ![nestinglinea.bmp](INSTALLAZIONE/menu/LEONARDO/nestinglinea.bmp) | Posiziona i pezzi in linea o su più righe, ordinandoli per dimensione. Utile per una disposizione manuale controllata. |
+| `c:nesting1` | ![nesting1.bmp](INSTALLAZIONE/menu/LEONARDO/nesting1.bmp) | Esegue un nesting semplificato su una singola linea orizzontale. |
+| `c:nestingarea` | ![nestingarea.bmp](INSTALLAZIONE/menu/LEONARDO/nestingarea.bmp) | Definisce un'area di lavoro temporanea per il nesting tramite un rettangolo. |
+| `c:nesting3` | ![nesting.bmp](INSTALLAZIONE/menu/LEONARDO/nesting.bmp) | Esegue un nesting avanzato, gestendo l'overflow e creando nuove tavole se necessario. Questo è il comando principale per il nesting automatico. |
 
-### Funzioni Nesting
+### Altri Comandi di Elaborazione
 
-**File:** `bl.lsp`, `nesting33.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:nestinglinea` | bl.lsp | ![nestinglinea.bmp](INSTALLAZIONE/menu/LEONARDO/nestinglinea.bmp) | Posiziona pezzi in linea o multi-riga ordinati per dimensioni |
-| `c:nesting1` | bl.lsp | ![nesting1.bmp](INSTALLAZIONE/menu/LEONARDO/nesting1.bmp) | Nesting semplificato in singola linea orizzontale |
-| `c:nestingarea` | bl.lsp | ![nestingarea.bmp](INSTALLAZIONE/menu/LEONARDO/nestingarea.bmp) | Definisce area di lavoro con rettangolo temporaneo |
-| `c:nesting3` | nesting33.lsp | ![nesting.bmp](INSTALLAZIONE/menu/LEONARDO/nesting.bmp) | Nesting avanzato con gestione overflow e creazione nuove tavole |
-
-### Altri Comandi Elaborazione
-
-**File:** `DIMA.lsp`, `geber.lsp`, `offset-delete-script2.lsp`, `sostituisci punti blocco.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:DIMA` | DIMA.lsp | ![DIMA_ATOM.bmp](INSTALLAZIONE/menu/LEONARDO/DIMA_ATOM.bmp) | Crea dima da layer ENDCUT con offset su OUTCUT/INTCUT |
-| `c:geber` | geber.lsp | ![geber.bmp](INSTALLAZIONE/menu/LEONARDO/geber.bmp) | Processore batch tacche: converte blocchi tacca in POINT su layer "4" |
-| `c:set_geber_tolerance` | geber.lsp | ![set_geber_tolerance.bmp](INSTALLAZIONE/menu/LEONARDO/set_geber_tolerance.bmp) | Imposta tolleranze globali per conversione tacche |
-| `c:ofi` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | OFFSET RINGRANO v4.0 - sposta originale su layer "0" e offset su "OUTCUT" |
-| `c:OL` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
-| `c:OR` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
-| `c:O` | offset-delete-script2.lsp | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Alias per c:ofi |
-| `c:blocchi_in_punti` | sostituisci punti blocco.lsp | ![blocchi_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/blocchi_in_punti.bmp) | Converte blocchi "PitRTak" in oggetti POINT |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:DIMA` | ![DIMA_ATOM.bmp](INSTALLAZIONE/menu/LEONARDO/DIMA_ATOM.bmp) | Crea una dima da un layer specifico, applicando un offset. Utile per generare sagome di controllo o di base. |
+| `c:geber` | ![geber.bmp](INSTALLAZIONE/menu/LEONARDO/geber.bmp) | Converte in batch i blocchi tacca in oggetti punto. |
+| `c:set_geber_tolerance` | ![set_geber_tolerance.bmp](INSTALLAZIONE/menu/LEONARDO/set_geber_tolerance.bmp) | Imposta le tolleranze globali per la conversione delle tacche. |
+| `c:ofi` | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Esegue un offset "RINGRANO" (sposta l'originale su layer "0" e l'offset su "OUTCUT"). |
+| `c:blocchi_in_punti` | ![blocchi_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/blocchi_in_punti.bmp) | Converte i blocchi "PitRTak" in oggetti punto. |
 
 ---
 
 ## 3. GESTIONE TESTO E ATTRIBUTI
 
+I comandi in questa sezione consentono di gestire il testo all'interno del disegno, allineandolo, ruotandolo e inserendo testi predefiniti. La gestione del testo è cruciale per etichettare i pezzi, indicare caratteristiche specifiche e fornire informazioni aggiuntive visibili nel disegno.
+
 ### Allineamento e Rotazione
-
-**File:** `AlignTextToCurveV1-2.lsp`, `ZeroRottaion.LSP`, `ruota testo.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:ATC` | AlignTextToCurveV1-2.lsp | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea testo (esistente o nuovo) a curva selezionata |
-| `c:ZR` | ZeroRottaion.LSP | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Azzera rotazione di testo, blocchi o MLeader |
-| `c:EDT` | ruota testo.lsp | ![EDT.bmp](INSTALLAZIONE/menu/LEONARDO/EDT.bmp) | Ruota testi basandosi su angolo definito da due punti |
-
-### Inserimento Testi Predefiniti - Diciture
-
-**File:** `DICITURE.lsp`
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:EDG` | ![EDG.bmp](INSTALLAZIONE/menu/LEONARDO/EDG.bmp) | Inserisce testo "COSTOLA" |
-| `c:FIL` | ![FIL.bmp](INSTALLAZIONE/menu/LEONARDO/FIL.bmp) | Inserisce testo "FILO" |
-| `c:SCA` | ![SCA.bmp](INSTALLAZIONE/menu/LEONARDO/SCA.bmp) | Inserisce testo "SCARNIRE" |
-| `c:SOT` | ![SOT.bmp](INSTALLAZIONE/menu/LEONARDO/SOT.bmp) | Inserisce testo "SOTTOMETTITURA" |
-| `c:RIM` | ![RIM.bmp](INSTALLAZIONE/menu/LEONARDO/RIM.bmp) | Inserisce testo "RIMBOCCO" |
-| `c:TAL` | ![TAL.bmp](INSTALLAZIONE/menu/LEONARDO/TAL.bmp) | Inserisce testo "TALYN" |
-| `c:SAL` | ![SAL.bmp](INSTALLAZIONE/menu/LEONARDO/SAL.bmp) | Inserisce testo "SALPA" |
-| `c:ANT` | ![ANT.bmp](INSTALLAZIONE/menu/LEONARDO/ANT.bmp) | Inserisce testo "ANTISTRAPPO" |
-| `c:BOM` | ![BOM.bmp](INSTALLAZIONE/menu/LEONARDO/BOM.bmp) | Inserisce testo "BOMBATURA" |
-| `c:RIN` | ![RIN.bmp](INSTALLAZIONE/menu/LEONARDO/RIN.bmp) | Inserisce testo "RINFORZO" |
-| `c:BOR` | ![BOR.bmp](INSTALLAZIONE/menu/LEONARDO/BOR.bmp) | Inserisce testo "BORDATURA" |
-| `c:VAL` | ![VAL.bmp](INSTALLAZIONE/menu/LEONARDO/VAL.bmp) | Inserisce testo "VALIGIAIA" |
-| `c:C5` | ![C5.bmp](INSTALLAZIONE/menu/LEONARDO/C5.bmp) | Inserisce testo "CUC.ROV. 5MM" |
-| `c:C5P` | ![C5P.bmp](INSTALLAZIONE/menu/LEONARDO/C5P.bmp) | Inserisce testo "CUC.ROV. 5MM CON PIPING" |
-| `c:C7` | ![C7.bmp](INSTALLAZIONE/menu/LEONARDO/C7.bmp) | Inserisce testo "CUC.ROV. 7MM" |
-| `c:C7P` | ![C7P.bmp](INSTALLAZIONE/menu/LEONARDO/C7P.bmp) | Inserisce testo "CUC.ROV. 7MM CON PIPING" |
+| `c:ATC` | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea il testo (esistente o nuovo) a una curva selezionata. Questo comando è particolarmente utile quando si deve allineare testo lungo un bordo curvo del pattern. |
+| `c:ZR` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Azzera la rotazione di testo, blocchi o MLeader. |
+| `c:EDT` | ![EDT.bmp](INSTALLAZIONE/menu/LEONARDO/EDT.bmp) | Ruota il testo in base a un angolo definito da due punti. |
+
+### Inserimento Testi Predefiniti (Diciture)
+
+Questa serie di comandi consente di inserire rapidamente testi standard utilizzati frequentemente nel settore. Questi testi predefiniti sono memorizzati internamente e vengono inseriti come testo normale.
+
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:EDG` | ![EDG.bmp](INSTALLAZIONE/menu/LEONARDO/EDG.bmp) | Inserisce il testo predefinito "COSTOLA". |
+| `c:FIL` | ![FIL.bmp](INSTALLAZIONE/menu/LEONARDO/FIL.bmp) | Inserisce il testo predefinito "FILO". |
+| `c:SCA` | ![SCA.bmp](INSTALLAZIONE/menu/LEONARDO/SCA.bmp) | Inserisce il testo predefinito "SCARNIRE". |
+| `c:SOT` | ![SOT.bmp](INSTALLAZIONE/menu/LEONARDO/SOT.bmp) | Inserisce il testo predefinito "SOTTOMETTITURA". |
+| `c:RIM` | ![RIM.bmp](INSTALLAZIONE/menu/LEONARDO/RIM.bmp) | Inserisce il testo predefinito "RIMBOCCO". |
+| `c:TAL` | ![TAL.bmp](INSTALLAZIONE/menu/LEONARDO/TAL.bmp) | Inserisce il testo predefinito "TALYN". |
+| `c:SAL` | ![SAL.bmp](INSTALLAZIONE/menu/LEONARDO/SAL.bmp) | Inserisce il testo predefinito "SALPA". |
+| `c:ANT` | ![ANT.bmp](INSTALLAZIONE/menu/LEONARDO/ANT.bmp) | Inserisce il testo predefinito "ANTISTRAPPO". |
+| `c:BOM` | ![BOM.bmp](INSTALLAZIONE/menu/LEONARDO/BOM.bmp) | Inserisce il testo predefinito "BOMBATURA". |
+| `c:RIN` | ![RIN.bmp](INSTALLAZIONE/menu/LEONARDO/RIN.bmp) | Inserisce il testo predefinito "RINFORZO". |
+| `c:BOR` | ![BOR.bmp](INSTALLAZIONE/menu/LEONARDO/BOR.bmp) | Inserisce il testo predefinito "BORDATURA". |
+| `c:VAL` | ![VAL.bmp](INSTALLAZIONE/menu/LEONARLO/VAL.bmp) | Inserisce il testo predefinito "VALIGIAIA". |
+| `c:C5` | ![C5.bmp](INSTALLAZIONE/menu/LEONARDO/C5.bmp) | Inserisce il testo predefinito "CUC.ROV. 5MM". |
+| `c:C5P` | ![C5P.bmp](INSTALLAZIONE/menu/LEONARDO/C5P.bmp) | Inserisce il testo predefinito "CUC.ROV. 5MM CON PIPING". |
+| `c:C7` | ![C7.bmp](INSTALLAZIONE/menu/LEONARDO/C7.bmp) | Inserisce il testo predefinito "CUC.ROV. 7MM". |
+| `c:C7P` | ![C7P.bmp](INSTALLAZIONE/menu/LEONARDO/C7P.bmp) | Inserisce il testo predefinito "CUC.ROV. 7MM CON PIPING". |
 
 ### Modifica Testi
 
-**File:** `sost testo.lsp`, `TCASE.LSP`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:chg` | sost testo.lsp | ![chg.bmp](INSTALLAZIONE/menu/LEONARDO/chg.bmp) | Sostituisce Old String con New String in oggetti TEXT |
-| `c:TCASE` | TCASE.LSP | ![TCASE.bmp](INSTALLAZIONE/menu/LEONARDO/TCASE.bmp) | Converte testo in maiuscolo o minuscolo |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:chg` | ![chg.bmp](INSTALLAZIONE/menu/LEONARDO/chg.bmp) | Sostituisce una stringa di testo esistente con una nuova all'interno degli oggetti TEXT. |
+| `c:TCASE` | ![TCASE.bmp](INSTALLAZIONE/menu/LEONARDO/TCASE.bmp) | Converte il testo selezionato in maiuscolo o minuscolo. |
 
 ---
 
 ## 4. INSERIMENTO BLOCCHI E SIMBOLI
 
-### Blocchi Indicazioni
+Questa sezione raccoglie i comandi per l'inserimento rapido di blocchi standard utilizzati per indicare particolari, numerazioni e spessori. I blocchi sono oggetti complessi composti da geometria e attributi, e sono fondamentali per mantenere uno standard visivo e informativo nel disegno.
 
-**File:** `BLOCCHI.LSP`
-
-| Comando | Icona | Descrizione |
-|---------|-------|-------------|
-| `c:VR` | ![VR.bmp](INSTALLAZIONE/menu/LEONARDO/VR.bmp) | Inserisce blocco "verticale" scala 1.5 |
-| `c:OR` | ![OR.bmp](INSTALLAZIONE/menu/LEONARDO/OR.bmp) | Inserisce blocco "orizzontale" scala 1.5 |
-| `c:WAR` | ![WAR.bmp](INSTALLAZIONE/menu/LEONARDO/WAR.bmp) | Inserisce blocco "ATTENZIONE" |
-| `c:EQ` | ![EQ.bmp](INSTALLAZIONE/menu/LEONARDO/EQ.bmp) | Inserisce blocco "EQUALIZZARE" |
-| `c:TABT` | ![TABT.bmp](INSTALLAZIONE/menu/LEONARDO/TABT.bmp) | Inserisce blocco "tabella_testi" |
-| `c:PEL` | ![pelle.bmp](INSTALLAZIONE/menu/LEONARDO/pelle.bmp) | Inserisce blocco "PELLE" |
-| `c:FOD` | ![FOD.BMP](INSTALLAZIONE/menu/LEONARDO/FOD.BMP) | Inserisce blocco "fodera" |
-
-### Blocchi Numerazione
-
-**File:** `conta.LSP`
+### Blocchi di Indicazione
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:conta` | ![conta.bmp](INSTALLAZIONE/menu/LEONARDO/conta.bmp) | Inserisce blocchi numerati progressivamente |
+| `c:VR` | ![VR.bmp](INSTALLAZIONE/menu/LEONARDO/VR.bmp) | Inserisce un blocco di indicazione "verticale" con scala 1.5. |
+| `c:OR` | ![OR.bmp](INSTALLAZIONE/menu/LEONARDO/OR.bmp) | Inserisce un blocco di indicazione "orizzontale" con scala 1.5. |
+| `c:WAR` | ![WAR.bmp](INSTALLAZIONE/menu/LEONARDO/WAR.bmp) | Inserisce un blocco di "ATTENZIONE". |
+| `c:EQ` | ![EQ.bmp](INSTALLAZIONE/menu/LEONARDO/EQ.bmp) | Inserisce un blocco per "EQUALIZZARE". |
+| `c:TABT` | ![TABT.bmp](INSTALLAZIONE/menu/LEONARDO/TABT.bmp) | Inserisce un blocco per la "tabella_testi". |
+| `c:PEL` | ![pelle.bmp](INSTALLAZIONE/menu/LEONARDO/pelle.bmp) | Inserisce un blocco per indicare "PELLE". |
+| `c:FOD` | ![FOD.BMP](INSTALLAZIONE/menu/LEONARDO/FOD.BMP) | Inserisce un blocco per indicare "fodera". |
+
+### Blocchi di Numerazione
+
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:conta` | ![conta.bmp](INSTALLAZIONE/menu/LEONARDO/conta.bmp) | Inserisce blocchi numerati in modo progressivo. |
 
 ### Altri Blocchi
 
-**File:** `numero_articolo.lsp`, `SPESSORE.LSP`, `LEO_FUST.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:NUM` | numero_articolo.lsp | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocco numero articolo |
-| `c:SPESSORE` | SPESSORE.LSP | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce blocco spessore materiale con prefisso "SP." |
-| `c:LEO_FUST` | LEO_FUST.lsp | ![LEO_FUST.bmp](INSTALLAZIONE/menu/LEONARDO/LEO_FUST.bmp) | Inserisce blocco "Leo_Fust" (foro fustella) layer "0" colore 6 |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce un blocco per il numero dell'articolo. |
+| `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce un blocco per indicare lo spessore del materiale, con prefisso "SP.". |
+| `c:LEO_FUST` | ![LEO_FUST.bmp](INSTALLAZIONE/menu/LEONARDO/LEO_FUST.bmp) | Inserisce il blocco "Leo_Fust" (foro fustella) sul layer "0" con colore 6. |
 
 ---
 
 ## 5. DISEGNO GEOMETRICO
 
-**File:** `centro.lsp`, `LeoRettangolo.lsp`, `Passante.lsp`, `trapi.LSP`
+I comandi in questa sezione facilitano la creazione di forme geometriche di base, utili per la creazione di tavole di stampa o per disegni ausiliari. Questi comandi semplificano la creazione di rettangoli standard, forme specifiche come trapezi o passanti, e linee con angolazioni fisse.
 
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:centro` | centro.lsp | ![centro.bmp](INSTALLAZIONE/menu/LEONARDO/centro.bmp) | Disegna linee forzando angolo 90° dopo primo segmento |
-| `c:LEORETTANGOLO` | LeoRettangolo.lsp | ![RECT.bmp](INSTALLAZIONE/menu/LEONARDO/RECT.bmp) | Disegna rettangolo definendo centro, larghezza e altezza |
-| `c:LeoA3` | LeoRettangolo.lsp | ![tavola-vuota.BMP](INSTALLAZIONE/menu/LEONARDO/tavola-vuota.BMP) | Disegna rettangolo A3 (297 x 420) |
-| `c:LeoA4` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_A4.BMP](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.bmp) | Disegna rettangolo A4 (210 x 297) |
-| `c:LeoUM` | LeoRettangolo.lsp | ![TAVOLA_STAMPA_VUOTA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp) | Disegna rettangolo standard (650 x 950) |
-| `c:LeoUM2` | LeoRettangolo.lsp | ![leoum2.bmp](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp) | Disegna rettangolo standard (1300 x 950) |
-| `c:LeoUM4` | LeoRettangolo.lsp | ![leoum4.bmp](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp) | Disegna rettangolo standard (1300 x 1800) |
-| `c:LeoRACRETT` | LeoRettangolo.lsp | ![rettangoloraccordato.bmp](INSTALLAZIONE/menu/LEONARDO/rettangoloraccordato.bmp) | Disegna rettangolo raccordato |
-| `c:Passante` | Passante.lsp | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna passante tracolla |
-| `c:TRAPI` | trapi.LSP | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna trapezio definendo basi e altezza |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:centro` | ![centro.bmp](INSTALLAZIONE/menu/LEONARDO/centro.bmp) | Disegna linee forzando un angolo di 90° dopo il primo segmento. |
+| `c:LEORETTANGOLO` | ![RECT.bmp](INSTALLAZIONE/menu/LEONARDO/RECT.bmp) | Disegna un rettangolo definendo il centro, la larghezza e l'altezza. |
+| `c:LeoA3` | ![tavola-vuota.BMP](INSTALLAZIONE/menu/LEONARDO/tavola-vuota.BMP) | Disegna un rettangolo in formato A3 (297 x 420). |
+| `c:LeoA4` | ![TAVOLA_STAMPA_A4.BMP](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.bmp) | Disegna un rettangolo in formato A4 (210 x 297). |
+| `c:LeoUM` | ![TAVOLA_STAMPA_VUOTA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp) | Disegna un rettangolo standard (650 x 950). |
+| `c:LeoUM2` | ![leoum2.bmp](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp) | Disegna un rettangolo standard (1300 x 950). |
+| `c:LeoUM4` | ![leoum4.bmp](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp) | Disegna un rettangolo standard (1300 x 1800). |
+| `c:LeoRACRETT` | ![rettangoloraccordato.bmp](INSTALLAZIONE/menu/LEONARDO/rettangoloraccordato.bmp) | Disegna un rettangolo con angoli raccordati. |
+| `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla. |
+| `c:TRAPI` | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna un trapezio definendo le basi e l'altezza. |
 
 ---
 
 ## 6. GESTIONE DATI PEZZI
 
-### Inserimento Dati
-**File:** `Materiale.lsp`, `Nome_pezzo.lsp`, `numero_articolo.lsp`, `SPESSORE.LSP`
+Questa sezione è dedicata all'inserimento e alla modifica dei dati principali associati ai pezzi, come nome e materiale. Questi dati sono fondamentali per la produzione e per il calcolo dei consumi.
+
 ![nome-pezzo.png](INSTALLAZIONE/nome-pezzo.png)![materiali.png](INSTALLAZIONE/materiali.png)
 
+### Inserimento Dati
 
-| Comando | File | Icona | Descrizione | Protezione |
-|---------|------|-------|-------------|------------|
-| `c:MAT` | Materiale.lsp | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre dialogo DCL per inserimento materiale e calcolo AREANETTA | ✅ |
-| `c:NOM` | Nome_pezzo.lsp | ![nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/nome_pezzo.bmp) | Apre dialogo DCL per composizione nome pezzo | ✅ |
-| `c:NUM` | numero_articolo.lsp | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocchi "NUM" e "RIF" con numero articolo | ❌ |
-| `c:SPESSORE` | SPESSORE.LSP | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce blocco spessore | ❌ |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:MAT` | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre una finestra di dialogo per inserire il materiale e calcolare l'AREA NETTA. |
+| `c:NOM` | ![nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/nome_pezzo.bmp) | Apre una finestra di dialogo per comporre il nome del pezzo. |
+| `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocchi "NUM" e "RIF" con il numero dell'articolo. |
+| `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce un blocco per lo spessore del materiale. |
 
 ### Modifica Dati
 
-**File:** `ED-MAT.lsp`, `ED-NOM.lsp`, `ED-MATERIALE.lsp`, `ED-INFUST.lsp`
-
-| Comando | File | Icona | Descrizione | Protezione |
-|---------|------|-------|-------------|------------|
-| `c:ED-MAT` | ED-MAT.lsp | ![ed_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_materiale.bmp) | Modifica Materiale/Quantità/Tipologia blocco DATIM via DCL | ❌ |
-| `c:ED-NOM` | ED-NOM.lsp | ![ed_nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/ed_nome_pezzo.bmp) | Modifica nome pezzo tramite dialogo DCL | ❌ |
-| `c:ED-MATERIALE` | ED-MATERIALE.lsp | ![ed_numero_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_numero_materiale.bmp) | Modifica rapida Quantità e Tipologia di DATIM | ✅ |
-| `c:ED-INFUST` | ED-INFUST.lsp | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-infust.bmp) | Aggiunge prefisso "Infustitura" al nome pezzo | ❌ |
-| `c:ED-FOD` | ED-INFUST.lsp | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-fod.bmp) | Aggiunge prefisso "Fodera" al nome pezzo | ❌ |
-| `c:ED-RIF` | ED-INFUST.lsp | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-rif.bmp) | Aggiunge prefisso "Rifilo" al nome pezzo | ❌ |
-| `c:ED-SBOZ` | ED-INFUST.lsp | ![ed-sboz.bmp](INSTALLAZIONE/menu/LEONARDO/ed-sboz.bmp) | Aggiunge prefisso "Taglio" al nome pezzo | ❌ |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:ED-MAT` | ![ed_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_materiale.bmp) | Modifica il materiale, la quantità e la tipologia di un blocco DATIM tramite una finestra di dialogo. |
+| `c:ED-NOM` | ![ed_nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/ed_nome_pezzo.bmp) | Modifica il nome del pezzo tramite una finestra di dialogo. |
+| `c:ED-MATERIALE` | ![ed_numero_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_numero_materiale.bmp) | Modifica rapidamente la quantità e la tipologia di un blocco DATIM. |
+| `c:ED-INFUST` | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-infust.bmp) | Aggiunge il prefisso "Infustitura" al nome del pezzo. |
+| `c:ED-FOD` | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-fod.bmp) | Aggiunge il prefisso "Fodera" al nome del pezzo. |
+| `c:ED-RIF` | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-rif.bmp) | Aggiunge il prefisso "Rifilo" al nome del pezzo. |
+| `c:ED-SBOZ` | ![ed-sboz.bmp](INSTALLAZIONE/menu/LEONARDO/ed-sboz.bmp) | Aggiunge il prefisso "Taglio" al nome del pezzo. |
 
 ---
 
 ## 7. ESTRAZIONE MODARIS
 
-**File:** `CONP.lsp`, `CONP_C.lsp`, `MODARIS AAMA.lsp`, `moschino punti batch6.lsp`
+I comandi in questa sezione sono specifici per l'elaborazione e l'estrazione di dati da blocchi Modaris. Modaris è un sistema CAD leader nel settore calzaturiero e pellettiero, e questi comandi permettono di importare e convertire i dati in un formato compatibile con il flusso di lavoro di Leonardo.
 
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:CONP` | CONP.lsp | ![CONP.bmp](INSTALLAZIONE/menu/LEONARDO/CONP.bmp) | Calcola centroide polilinee layer "0" e inserisce POINT |
-| `c:CONP_C` | CONP_C.lsp | ![CONP_C.bmp](INSTALLAZIONE/menu/LEONARDO/CONP_C.bmp) | Converte cerchi layer "0" in POINT nel centro |
-| `c:estrai-multipli` | MODARIS AAMA.lsp | ![estrai-multipli.bmp](INSTALLAZIONE/menu/LEONARDO/estrai-multipli.bmp) | Estrazione batch: inserisce DATIT/DATIM, esplode, pulisce attributi |
-| `c:estrai-singolo` | MODARIS AAMA.lsp | ![estrai-singolo.bmp](INSTALLAZIONE/menu/LEONARDO/estrai-singolo.bmp) | Estrazione singolo blocco con pulizia completa |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:CONP` | ![CONP.bmp](INSTALLAZIONE/menu/LEONARDO/CONP.bmp) | Calcola il centroide delle polilinee sul layer "0" e inserisce un punto. |
+| `c:CONP_C` | ![CONP_C.bmp](INSTALLAZIONE/menu/LEONARDO/CONP_C.bmp) | Converte i cerchi sul layer "0" in punti al loro centro. |
+| `c:estrai-multipli` | ![estrai-multipli.bmp](INSTALLAZIONE/menu/LEONARDO/estrai-multipli.bmp) | Esegue l'estrazione in batch, inserendo DATIT/DATIM, esplodendo e pulendo gli attributi. |
+| `c:estrai-singolo` | ![estrai-singolo.bmp](INSTALLAZIONE/menu/LEONARDO/estrai-singolo.bmp) | Esegue l'estrazione di un singolo blocco con pulizia completa. |
 
 ---
 
 ## 8. MODIFICA AVANZATA
 
-**File:** `ChainSelV1-1.lsp`, `CookieCutter2 v1.2.lsp`, `RACCORDA_0.LSP`, `SPEZZA_PUNTO.LSP`, `splitCir.lsp`, `TROVA_GAP.lsp`, `QM.lsp`
+Questa sezione contiene comandi per operazioni di modifica complesse, come la selezione concatenata, il taglio avanzato e la gestione dei gap. Questi strumenti sono utili per correggere e ottimizzare la geometria del disegno.
 
-| Comando | File | Icona | Descrizione | Protezione |
-|---------|------|-------|-------------|------------|
-| `c:CS` | ChainSelV1-1.lsp | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.bmp) | Chain Selection: selezione automatica oggetti connessi | ✅ |
-| `c:CookieCutter2` | CookieCutter2 v1.2.lsp | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Cookie Cutter: trim avanzato con esplosione blocchi | ❌ |
-| `c:CC` | CookieCutter2 v1.2.lsp | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Shortcut per CookieCutter2 | ❌ |
-| `c:RACCORDA_0` | RACCORDA_0.LSP | ![RAGGIO_0.BMP](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Raccorda con raggio 0 tra due entità | ❌ |
-| `c:SPEZZA_PUNTO` | SPEZZA_PUNTO.LSP | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Interrompe linea/polilinea/arco in punto selezionato | ✅ |
-| `c:splitcir` | splitCir.lsp | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe cerchio in due punti e disegna arco | ❌ |
-| `c:TROVA_GAP` | TROVA_GAP.lsp | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca gap tra entità e disegna cerchio su layer "GAP" | ❌ |
-| `c:QM` | QM.lsp | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Mirror rapido di oggetti | ❌ |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:CS` | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.bmp) | Esegue una "Chain Selection" per selezionare automaticamente gli oggetti connessi. |
+| `c:CookieCutter2` | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Esegue un "Cookie Cutter" per un taglio avanzato con esplosione dei blocchi. |
+| `c:RACCORDA_0` | ![RAGGIO_0.BMP](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Raccorda due entità con un raggio di 0. |
+| `c:SPEZZA_PUNTO` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Interrompe una linea, polilinea o arco nel punto selezionato. |
+| `c:splitcir` | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe un cerchio in due punti e disegna un arco. |
+| `c:TROVA_GAP` | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca i gap tra le entità e disegna un cerchio sul layer "GAP". |
+| `c:QM` | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Esegue un mirror rapido degli oggetti. |
 
 ---
 
 ## 9. UTILITÀ E CALCOLO
+
+I comandi in questa sezione offrono funzionalità di utilità generale e calcolo, come la gestione dei materiali e il calcolo dei consumi. Questi strumenti sono essenziali per la pianificazione della produzione e la gestione dei costi.
+
 ![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)
 
-**File:** `convesadec4.lsp`, `elenca-font.lsp`, `gestmat.lsp`, `gnames.lsp`, `NOG.lsp`, `scambio.lsp`, `visualizza-per-mat.lsp`
-
-| Comando | File | Icona | Descrizione | Protezione |
-|---------|------|-------|-------------|------------|
-| `c:HexDecConverter` | convesadec4.lsp | ![HexDecConverter.bmp](INSTALLAZIONE/menu/LEONARDO/HexDecConverter.bmp) | Converte testo tra esadecimale (0x) e decimale | ❌ |
-| `c:font_test` | elenca-font.lsp | ![font_test.bmp](INSTALLAZIONE/menu/LEONARDO/font_test.bmp) | Crea righe testo per testare font .shx da directory | ❌ |
-| `c:gestmat` | gestmat.lsp | ![gestmat.bmp](INSTALLAZIONE/menu/LEONARDO/gestmat.bmp) | Gestore Liste Materiali con interfaccia DCL | ❌ |
-| `c:gnames` | gnames.lsp | ![gnames.bmp](INSTALLAZIONE/menu/LEONARDO/gnames.bmp) | Gestisce liste nomi pezzi (Nome1/2/3.txt) via DCL | ❌ |
-| `c:NOG` | NOG.lsp | ![NOG.bmp](INSTALLAZIONE/menu/LEONARDO/NOG.bmp) | Calcolo Consumi Materiale: genera report CSV/Excel | ✅ |
-| `c:sostmat` | scambio.lsp | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituzione materiale in batch mantenendo quantità/tipologia | ❌ |
-| `c:mat1` | visualizza-per-mat.lsp | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zoom su pezzi per materiale selezionato | ❌ |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:HexDecConverter` | ![HexDecConverter.bmp](INSTALLAZIONE/menu/LEONARDO/HexDecConverter.bmp) | Converte il testo tra formato esadecimale (0x) e decimale. |
+| `c:font_test` | ![font_test.bmp](INSTALLAZIONE/menu/LEONARDO/font_test.bmp) | Crea righe di testo per testare i font .shx da una directory. |
+| `c:gestmat` | ![gestmat.bmp](INSTALLAZIONE/menu/LEONARDO/gestmat.bmp) | Gestisce le liste dei materiali tramite un'interfaccia a finestra di dialogo. |
+| `c:gnames` | ![gnames.bmp](INSTALLAZIONE/menu/LEONARDO/gnames.bmp) | Gestisce le liste dei nomi dei pezzi (Nome1/2/3.txt) tramite una finestra di dialogo. |
+| `c:NOG` | ![NOG.bmp](INSTALLAZIONE/menu/LEONARDO/NOG.bmp) | Calcola i consumi di materiale e genera un report in formato CSV/Excel. |
+| `c:NOG-CONFIG` | | Modifica la configurazione generale per il calcolo dei consumi (per categorie di materiale). |
+| `c:NOG-ADDMAT` | | Aggiunge o aggiorna i parametri di un materiale specifico (per nome completo). |
+| `c:sostmat` | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituisce il materiale in batch, mantenendo quantità e tipologia. |
+| `c:mat1` | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zooma sui pezzi in base al materiale selezionato. |
+| `c:mat1-get` | | Seleziona tutti i blocchi con un materiale specifico. |
 
 ![sostmat.png](INSTALLAZIONE/sostmat.png)![mat1.png](INSTALLAZIONE/mat1.png)
 
@@ -344,70 +282,68 @@ C/
 
 ## 10. GESTIONE POLILINEE
 
-### Selezione e Unione
-
-**File:** `chains.lsp`, `join.lsp`, `PC.lsp`, `PJ.LSP`, `y.LSP`
+Questa sezione raccoglie i comandi per la gestione, l'unione, la conversione e la visualizzazione delle direzioni delle polilinee. Le polilinee sono l'elemento geometrico base per rappresentare i contorni dei pezzi.
 
 ![poliauto.png](INSTALLAZIONE/poliauto.png)
 
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:leo-poliauto` | chains.lsp | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Selezione concatenata con unione automatica |
-| `c:JoinAll` | join.lsp | ![JoinAll.bmp](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp) | Unisce Linee/Archi/Polilinee con _.pedit M _j |
-| `c:PC` | PC.lsp | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude polilinee leggere (LWPOLYLINE) aperte |
-| `c:PJ` | PJ.LSP | ![PJ.bmp](INSTALLAZIONE/menu/LEONARDO/PJ.bmp) | Unisce Linee/Archi/Polilinee con ._pedit _m _j |
-| `c:Y` | y.LSP | ![Y.bmp](INSTALLAZIONE/menu/LEONARDO/Y.bmp) | Filtra e congiunge Linee/Archi in Polilinee leggere |
+### Selezione e Unione
+
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:leo-poliauto` | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Esegue una selezione concatenata con unione automatica delle polilinee. |
+| `c:JoinAll` | ![JoinAll.bmp](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp) | Unisce linee, archi e polilinee. |
+| `c:PC` | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude le polilinee leggere (LWPOLYLINE) aperte. |
+| `c:PJ` | ![PJ.bmp](INSTALLAZIONE/menu/LEONARDO/PJ.bmp) | Unisce linee, archi e polilinee. |
+| `c:Y` | ![Y.bmp](INSTALLAZIONE/menu/LEONARDO/Y.bmp) | Filtra e congiunge linee e archi in polilinee leggere. |
 
 ### Conversione
 
-**File:** `el2pl.lsp`, `spline-to-pline.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:el2pl` | el2pl.lsp | ![Spl2.bmp](INSTALLAZIONE/menu/LEONARDO/Spl2.bmp) | Converte Ellisse o arco ellittico in Polilinea |
-| `c:s2p` | spline-to-pline.lsp | ![SP2P.BMP](INSTALLAZIONE/menu/LEONARDO/SP2P.BMP) | Converte spline in polilinee con numero segmenti definito |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:el2pl` | ![Spl2.bmp](INSTALLAZIONE/menu/LEONARDO/Spl2.bmp) | Converte un'ellisse o un arco ellittico in una polilinea. |
+| `c:s2p` | ![SP2P.BMP](INSTALLAZIONE/menu/LEONARDO/SP2P.BMP) | Converte una spline in polilinee, definendo il numero di segmenti. |
 
 ### Direzione e Visualizzazione
 
-**File:** `PLD.lsp`, `PLDREV_SHOW_DIRECTION.lsp`
-
-| Comando | File | Icona | Descrizione |
-|---------|------|-------|-------------|
-| `c:PLDREV_SETCOLOR` | PLD.lsp | ![PLDREV_SETCOLOR.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETCOLOR.bmp) | Imposta colore frecce direzione |
-| `c:PLDREV_SETPOS` | PLD.lsp | ![PLDREV_SETPOS.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETPOS.bmp) | Imposta posizione frecce (Interne/Esterne) |
-| `c:PLD` | PLD.lsp | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Visualizza direzione polilinea con frecce e permette inversione |
-| `c:PLDREV_SHOW_DIRECTION` | PLDREV_SHOW_DIRECTION.lsp | ![PLDREV_SHOW_DIRECTION.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SHOW_DIRECTION.bmp) | Mostra direzione rotazione e punto inizio polilinea |
-| `c:RvrsLine` | PLDREV_SHOW_DIRECTION.lsp | ![INVERTI_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Inverte direzione Linee/Polyline/LWPolyline |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:PLDREV_SETCOLOR` | ![PLDREV_SETCOLOR.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETCOLOR.bmp) | Imposta il colore delle frecce che indicano la direzione della polilinea. |
+| `c:PLDREV_SETPOS` | ![PLDREV_SETPOS.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETPOS.bmp) | Imposta la posizione delle frecce (interne o esterne alla polilinea). |
+| `c:PLD` | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Visualizza la direzione della polilinea con frecce e permette di invertirla. |
+| `c:PLDREV_SHOW_DIRECTION` | ![PLDREV_SHOW_DIRECTION.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SHOW_DIRECTION.bmp) | Mostra la direzione di rotazione e il punto di inizio della polilinea. |
+| `c:RvrsLine` | ![INVERTI_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Inverte la direzione di linee, polilinee o LWPolyline. |
 
 ---
 
 ## 11. PREPARAZIONE STAMPA E NESTING
 
+I comandi in questa sezione sono dedicati alla preparazione dei disegni per la stampa o per il nesting, inclusa la creazione di sbozzi e tavole. Questa è la fase finale del processo di design, dove i pezzi vengono organizzati per la produzione.
+
 ### Preparazione Sbozzi
 
-**File:** `sbozzo.lsp`, `sbozzomultiplo.lsp`, `sbozzo_bounding.lsp`, `sbozzo_rettangolare.lsp`
-
-| Comando | File | Icona | Descrizione | Protezione |
-|---------|------|-------|-------------|------------|
-| `c:SBOZZO` | sbozzo.lsp | ![SBOZZO.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO.bmp) | Crea sbozzo: cancella tacche, offset polilinea, sposta su OUTCUT | ❌ |
-| `c:CopyArray` | sbozzomultiplo.lsp | ![sbozzomultiplo.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzomultiplo.bmp) | Array rettangolare con sbozzo e bounding box complessivo | ✅ |
-| `c:SBOZZO_BOUND` | sbozzo_bounding.lsp | ![SBOZZO_BOUND.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO_BOUND.bmp) | Disegna bounding box rettangolare per polilinee | ❌ |
-| `c:SBOZZO_RETT` | sbozzo_rettangolare.lsp | ![SBOZZO_RETT.BMP](INSTALLAZIONE/menu/LEONARDO/SBOZZO_RETT.BMP) | Crea bounding box, offset e avvia NESTING3 | ❌ |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:SBOZZO` | ![SBOZZO.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO.bmp) | Crea uno sbozzo: cancella le tacche, applica un offset alla polilinea e sposta su OUTCUT. |
+| `c:CopyArray` | ![sbozzomultiplo.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzomultiplo.bmp) | Crea un array rettangolare con sbozzo e un bounding box complessivo. |
+| `c:SBOZZO_BOUND` | ![SBOZZO_BOUND.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO_BOUND.bmp) | Disegna un bounding box rettangolare per le polilinee. |
+| `c:SBOZZO_RETT` | ![SBOZZO_RETT.BMP](INSTALLAZIONE/menu/LEONARDO/SBOZZO_RETT.BMP) | Crea un bounding box, applica un offset e avvia il processo di NESTING3. |
 
 ### Tavole di Stampa
 
-**File:** `PRESTAMPA.LSP`, `TAVOLA_DI_STAMPA.lsp`, `TAVOLA_DI_STAMPA_A3.lsp`
-
-| Comando | File | Icona | Descrizione | Protezione |
-|---------|------|-------|-------------|------------|
-| `c:PRESTAMPA` | PRESTAMPA.LSP | ![PRESTAMPA.bmp](INSTALLAZIONE/menu/LEONARDO/PRESTAMPA.bmp) | Prepara polilinee su layer TAVOLA_DI_STAMPA_TAGLIO, crea blocchi con centroide | ❌ |
-| `c:TAVOLA_DI_STAMPA_ANTIBUG` | TAVOLA_DI_STAMPA.lsp | ![TAVOLA_STAMPA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA.bmp) | Prepara sagome e avvia NESTING3 | ✅ |
-| `c:TAVOLA_DI_STAMPA_A3` | TAVOLA_DI_STAMPA_A3.lsp | ![TAVOLA_STAMPA_A3.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A3.bmp) | Prepara sagome per A3 e avvia NESTING3 | ❌ |
+| Comando | Icona | Descrizione |
+|---------|-------|-------------|
+| `c:PRESTAMPA` | ![PRESTAMPA.bmp](INSTALLAZIONE/menu/LEONARDO/PRESTAMPA.bmp) | Prepara le polilinee sul layer "TAVOLA_DI_STAMPA_TAGLIO" e crea blocchi con centroide. |
+| `c:TAVOLA_DI_STAMPA_ANTIBUG` | ![TAVOLA_STAMPA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA.bmp) | Prepara le sagome e avvia il processo di NESTING3. |
+| `c:TAVOLA_DI_STAMPA_A3` | ![TAVOLA_STAMPA_A3.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A3.bmp) | Prepara le sagome per il formato A3 e avvia il processo di NESTING3. |
 
 ---
 
 ## 12. GESTIONE TACCHE
+
+Questa sezione è interamente dedicata alla gestione delle tacche, inclusi inserimento, copia, modifica e conversione. Le tacche sono elementi cruciali per l'assemblaggio dei pezzi.
+
 ![tacche.png](INSTALLAZIONE/tacche.png)
+
 ### Inserimento e Copia Tacche
 
 **File:** `inserisci_tacca.lsp`, `tacca_da_misura.lsp`, `tacca_dapoli.lsp`, `copia_tacche.lsp`, `misuratrt.lsp`
@@ -448,6 +384,8 @@ C/
 
 ## 13. GESTIONE LAYER E COLORI
 
+I comandi in questa sezione semplificano lo spostamento degli oggetti su layer specifici e la modifica rapida del colore. La gestione dei layer e dei colori è fondamentale per mantenere l'ordine e la chiarezza del disegno.
+
 ### Gestione Layer di Taglio
 
 **File:** `DEFLINEA.LSP`
@@ -478,6 +416,8 @@ C/
 ---
 
 ## 14. GESTIONE OFFSET
+
+I comandi in questa sezione applicano offset con tipi di linea specifici, particolarmente utili per le linee di cucitura. L'offset è una tecnica fondamentale per creare sagome di controllo o linee di cucitura parallele.
 
 ### Offset con Tipo Linea
 
@@ -617,8 +557,6 @@ Per visualizzare tutte le scorciatoie, digitare **ALIASEDIT** nella riga di coma
 | `nog_config.txt` | Configurazione calcolo consumi materiali |
 | `license.dat` | File licenza (generato automaticamente) |
 
-
-
 **Directory:** `LEONARDO/INSTALLAZIONE/menu/LEONARDO/`
 
 | File | Tipo | Descrizione |
@@ -641,14 +579,14 @@ Per visualizzare tutte le scorciatoie, digitare **ALIASEDIT** nella riga di coma
 - **Gestione Dati Pezzi:** 12 comandi
 - **Estrazione Modaris:** 4 comandi
 - **Modifica Avanzata:** 8 comandi
-- **Utilità e Calcolo:** 7 comandi
+- **Utilità e Calcolo:** 10 comandi
 - **Gestione Polilinee:** 13 comandi
 - **Preparazione Stampa:** 7 comandi
 - **Gestione Tacche:** 18 comandi
 - **Gestione Layer e Colori:** 9 comandi
 - **Gestione Offset:** 10 comandi
 
-**TOTALE COMANDI DOCUMENTATI:** 161 comandi
+**TOTALE COMANDI DOCUMENTATI:** 164 comandi
 
 ---
 
@@ -678,5 +616,5 @@ Leonardo Pattern Design Software è un sistema completo per il design di pattern
 
 **Tutti i diritti riservati - Leonardo Guasqui**  
 **Versione documento:** Definitiva per GitHub  
-**Versione software:** 1.3.0  
+**Versione software:** 2.8.0  
 **Data ultima revisione:** 2025
