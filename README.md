@@ -112,7 +112,7 @@ I comandi in questa sezione consentono di gestire il testo all'interno del diseg
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:ATC` | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea il testo (esistente o nuovo) a una curva selezionata. Questo comando è particolarmente utile quando si deve allineare testo lungo un bordo curvo del pattern. |
+| `c:ATC` | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea il testo (esistente o nuovo) a una curva selezionata. Questo comando è particolarmente utile quando si deve allineare testo lungo un bordo curvo del modello, di una cucitura o una sagom. |
 | `c:ZR` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Azzera la rotazione di testo, blocchi o MLeader. |
 | `c:EDT` | ![EDT.bmp](INSTALLAZIONE/menu/LEONARDO/EDT.bmp) | Ruota il testo in base a un angolo definito da due punti. |
 
@@ -143,8 +143,8 @@ Questa serie di comandi consente di inserire rapidamente testi standard utilizza
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:chg` | ![chg.bmp](INSTALLAZIONE/menu/LEONARDO/chg.bmp) | Sostituisce una stringa di testo esistente con una nuova all'interno degli oggetti TEXT. |
-| `c:TCASE` | ![TCASE.bmp](INSTALLAZIONE/menu/LEONARDO/TCASE.bmp) | Converte il testo selezionato in maiuscolo o minuscolo. |
+| `c:chg` | ![chg.bmp](INSTALLAZIONE/menu/LEONARDO/chg.bmp) | Sostituisce una stringa di testo esistente con una nuova all'interno degli oggetti testo su una selezione multipla. |
+| `c:TCASE` | ![TCASE.bmp](INSTALLAZIONE/menu/LEONARDO/TCASE.bmp) | Converte il testo selezionato in MAIUSCOLO o minuscolo o Titolo. |
 
 ---
 
@@ -156,8 +156,8 @@ Questa sezione raccoglie i comandi per l'inserimento rapido di blocchi standard 
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:VR` | ![VR.bmp](INSTALLAZIONE/menu/LEONARDO/VR.bmp) | Inserisce un blocco di indicazione "verticale" con scala 1.5. |
-| `c:OR` | ![OR.bmp](INSTALLAZIONE/menu/LEONARDO/OR.bmp) | Inserisce un blocco di indicazione "orizzontale" con scala 1.5. |
+| `c:VR` | ![VR.bmp](INSTALLAZIONE/menu/LEONARDO/VR.bmp) | Inserisce un blocco di indicazione "verticale" per indicare la direzione di resistenza materiale. |
+| `c:OR` | ![OR.bmp](INSTALLAZIONE/menu/LEONARDO/OR.bmp) | Inserisce un blocco di indicazione "orizzontale". |
 | `c:WAR` | ![WAR.bmp](INSTALLAZIONE/menu/LEONARDO/WAR.bmp) | Inserisce un blocco di "ATTENZIONE". |
 | `c:EQ` | ![EQ.bmp](INSTALLAZIONE/menu/LEONARDO/EQ.bmp) | Inserisce un blocco per "EQUALIZZARE". |
 | `c:TABT` | ![TABT.bmp](INSTALLAZIONE/menu/LEONARDO/TABT.bmp) | Inserisce un blocco per la "tabella_testi". |
@@ -176,7 +176,7 @@ Questa sezione raccoglie i comandi per l'inserimento rapido di blocchi standard 
 |---------|-------|-------------|
 | `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce un blocco per il numero dell'articolo. |
 | `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce un blocco per indicare lo spessore del materiale, con prefisso "SP.". |
-| `c:LEO_FUST` | ![LEO_FUST.bmp](INSTALLAZIONE/menu/LEONARDO/LEO_FUST.bmp) | Inserisce il blocco "Leo_Fust" (foro fustella) sul layer "0" con colore 6. |
+| `c:LEO_FUST` | ![LEO_FUST.bmp](INSTALLAZIONE/menu/LEONARDO/LEO_FUST.bmp) | Inserisce indicazione dimensione foro. |
 
 ---
 
@@ -186,15 +186,15 @@ I comandi in questa sezione facilitano la creazione di forme geometriche di base
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:centro` | ![centro.bmp](INSTALLAZIONE/menu/LEONARDO/centro.bmp) | Disegna linee forzando un angolo di 90° dopo il primo segmento. |
-| `c:LEORETTANGOLO` | ![RECT.bmp](INSTALLAZIONE/menu/LEONARDO/RECT.bmp) | Disegna un rettangolo definendo il centro, la larghezza e l'altezza. |
+| `c:centro` | ![centro.bmp](INSTALLAZIONE/menu/LEONARDO/centro.bmp) | Disegna linee perfettamente verticale  |
+| `c:LEORETTANGOLO` | ![RECT.bmp](INSTALLAZIONE/menu/LEONARDO/RECT.bmp) | Disegna un rettangolo definendo il punto di inserimento (centrale), la larghezza e l'altezza. |
 | `c:LeoA3` | ![tavola-vuota.BMP](INSTALLAZIONE/menu/LEONARDO/tavola-vuota.BMP) | Disegna un rettangolo in formato A3 (297 x 420). |
 | `c:LeoA4` | ![TAVOLA_STAMPA_A4.BMP](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.bmp) | Disegna un rettangolo in formato A4 (210 x 297). |
 | `c:LeoUM` | ![TAVOLA_STAMPA_VUOTA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp) | Disegna un rettangolo standard (650 x 950). |
 | `c:LeoUM2` | ![leoum2.bmp](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp) | Disegna un rettangolo standard (1300 x 950). |
 | `c:LeoUM4` | ![leoum4.bmp](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp) | Disegna un rettangolo standard (1300 x 1800). |
 | `c:LeoRACRETT` | ![rettangoloraccordato.bmp](INSTALLAZIONE/menu/LEONARDO/rettangoloraccordato.bmp) | Disegna un rettangolo con angoli raccordati. |
-| `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla. |
+| `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla di lunghezza perfetta. |
 | `c:TRAPI` | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna un trapezio definendo le basi e l'altezza. |
 
 ---
@@ -212,7 +212,7 @@ Questa sezione è dedicata all'inserimento e alla modifica dei dati principali a
 | `c:MAT` | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre una finestra di dialogo per inserire il materiale e calcolare l'AREA NETTA. |
 | `c:NOM` | ![nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/nome_pezzo.bmp) | Apre una finestra di dialogo per comporre il nome del pezzo. |
 | `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocchi "NUM" e "RIF" con il numero dell'articolo. |
-| `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce un blocco per lo spessore del materiale. |
+| `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce lo spessore del materiale. |
 
 ### Modifica Dati
 
@@ -292,7 +292,7 @@ Questa sezione raccoglie i comandi per la gestione, l'unione, la conversione e l
 |---------|-------|-------------|
 | `c:leo-poliauto` | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Esegue una selezione concatenata con unione automatica delle polilinee. |
 | `c:JoinAll` | ![JoinAll.bmp](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp) | Unisce linee, archi e polilinee. |
-| `c:PC` | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude le polilinee leggere (LWPOLYLINE) aperte. |
+| `c:PC` | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude le polilaperte. |
 | `c:PJ` | ![PJ.bmp](INSTALLAZIONE/menu/LEONARDO/PJ.bmp) | Unisce linee, archi e polilinee. |
 | `c:Y` | ![Y.bmp](INSTALLAZIONE/menu/LEONARDO/Y.bmp) | Filtra e congiunge linee e archi in polilinee leggere. |
 
