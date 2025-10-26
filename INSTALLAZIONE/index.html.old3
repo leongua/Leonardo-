@@ -205,43 +205,43 @@
         }
 
         .why-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(76, 175, 80, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid #4CAF50;
             transition: all 0.3s;
         }
 
         .why-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(76, 175, 80, 0.5);
+            transform: translateY(-10px);
+            background: rgba(76, 175, 80, 0.2);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
         }
 
         .why-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .why-title {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             color: #4CAF50;
         }
 
+        .why-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
         .why-description {
-            font-size: 1rem;
-            opacity: 0.9;
+            color: #aaa;
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .features {
             padding: 6rem 2rem;
-            background: #0f0f0f;
         }
 
-        .feature-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
@@ -250,83 +250,126 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(26, 26, 26, 0.9);
+            padding: 2.5rem;
+            border-radius: 20px;
             transition: all 0.3s;
+            border: 1px solid #444;
+            backdrop-filter: blur(10px);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(76, 175, 80, 0.3);
+            transform: translateY(-10px);
+            border-color: #666;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
         }
 
         .feature-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #4CAF50;
+            color: #fff;
         }
 
         .feature-description {
-            font-size: 1rem;
-            opacity: 0.85;
+            color: #aaa;
             line-height: 1.6;
         }
 
         .integrazioni {
             padding: 6rem 2rem;
-            background: #0a0a0a;
+            background-image: url('1759432038064.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .integrazioni::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .integrazioni .container {
+            position: relative;
+            z-index: 10;
         }
 
         .integrazioni-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .integrazioni-item {
             text-align: center;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(26, 26, 26, 0.9);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .integrazioni-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
         }
 
         .integrazioni-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
         .integrazioni-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #4CAF50;
+            color: #fff;
             font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .integrazioni-desc {
-            font-size: 0.95rem;
-            opacity: 0.8;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .roadmap {
+            padding: 6rem 2rem;
+        }
+
+        .roadmap-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .roadmap-item {
+            background: rgba(26, 26, 26, 0.9);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #4CAF50;
+            backdrop-filter: blur(10px);
+        }
+
+        .roadmap-version {
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-description {
+            color: #aaa;
+            line-height: 1.6;
         }
 
         .faq {
             padding: 6rem 2rem;
-            background: #0f0f0f;
+            background: #1a1a1a;
         }
 
         .faq-container {
@@ -335,31 +378,29 @@
         }
 
         .faq-item {
-            margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
+            background: rgba(26, 26, 26, 0.9);
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid #333;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .faq-question {
-            padding: 1.5rem;
+            padding: 2rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            font-size: 1.1rem;
             transition: all 0.3s;
+            font-weight: 600;
         }
 
         .faq-question:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(76, 175, 80, 0.1);
         }
 
         .faq-arrow {
             transition: transform 0.3s;
-            font-size: 0.8rem;
         }
 
         .faq-item.open .faq-arrow {
@@ -367,17 +408,16 @@
         }
 
         .faq-answer {
+            padding: 0 2rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 1.5rem;
-            opacity: 0.9;
-            line-height: 1.6;
+            transition: all 0.3s;
+            color: #aaa;
         }
 
         .faq-item.open .faq-answer {
+            padding: 0 2rem 2rem 2rem;
             max-height: 500px;
-            padding: 0 1.5rem 1.5rem;
         }
 
         .download-section {
@@ -385,43 +425,42 @@
         }
 
         .download-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             padding: 3rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #444;
         }
 
         .download-title {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #4CAF50;
+            color: #fff;
         }
 
         .download-description {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.6;
+            opacity: 0.95;
+            color: #ccc;
         }
 
         .download-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .download-feature-item {
-            font-size: 1.1rem;
-            padding: 0.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+            color: #aaa;
+            margin: 0.5rem 0;
         }
 
         .contact {
             padding: 6rem 2rem;
+            background: #1a1a1a;
         }
 
         .contact-content {
@@ -432,468 +471,165 @@
 
         .contact-description {
             font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
+            margin-bottom: 2rem;
+            color: #aaa;
         }
 
         .contact-info {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 500px;
-            margin: 0 auto;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
             font-size: 1.1rem;
+            color: #ccc;
         }
 
         .contact-icon {
             font-size: 2rem;
+            color: #4CAF50;
         }
 
         footer {
-            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
             padding: 2rem;
-            background: #0a0a0a;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #666;
+            position: relative;
+            z-index: 10;
         }
 
-        /* ========================================
-           MEDIA QUERIES PER RESPONSIVE DESIGN
-        ======================================== */
-
-        /* Tablet (max 768px) */
         @media (max-width: 768px) {
-            .hero {
-                padding: 2rem 1rem;
-                min-height: auto;
-            }
-
-            .container {
-                padding: 1.5rem;
-            }
-
             .logo {
-                width: 250px;
-                margin-bottom: 1.5rem;
+                width: 220px;
             }
-
+            
             .tagline {
-                font-size: 2.2rem;
-                margin-bottom: 0.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.3rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-description {
-                font-size: 1.1rem;
-                margin-bottom: 1.2rem;
-            }
-
-            .hero-version {
-                font-size: 0.95rem;
-                margin-bottom: 2rem;
-            }
-
-            .cta-buttons {
-                gap: 1rem;
-                margin-top: 2rem;
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .why-leonardo,
-            .features,
-            .integrazioni,
-            .faq,
-            .download-section,
-            .contact {
-                padding: 4rem 1.5rem;
-            }
-
-            .why-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .why-card {
-                padding: 1.5rem;
-            }
-
-            .why-icon {
                 font-size: 2.5rem;
             }
 
-            .why-title {
-                font-size: 1.3rem;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .feature-icon {
-                font-size: 2rem;
-            }
-
-            .feature-title {
-                font-size: 1.25rem;
-            }
-
-            .integrazioni-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .integrazioni-item {
-                padding: 1.5rem;
-            }
-
-            .integrazioni-icon {
-                font-size: 2.5rem;
-            }
-
-            .integrazioni-title {
-                font-size: 1.1rem;
-            }
-
-            .faq-question {
-                padding: 1.2rem;
-                font-size: 1rem;
-            }
-
-            .download-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .download-title {
-                font-size: 2rem;
-            }
-
-            .download-description {
-                font-size: 1.1rem;
-            }
-
-            .download-features {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-            }
-
-            .contact-description {
-                font-size: 1.1rem;
-            }
-
-            .contact-item {
-                font-size: 1rem;
-            }
-
-            /* Rimuove fixed background su tablet per performance */
-            .bg-section,
-            .why-leonardo {
-                background-attachment: scroll;
-            }
-        }
-
-        /* Mobile (max 480px) */
-        @media (max-width: 480px) {
-            .hero {
-                padding: 1.5rem 1rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            .logo {
-                width: 200px;
-                margin-bottom: 1rem;
-            }
-
-            .tagline {
-                font-size: 1.8rem;
-                margin-bottom: 0.6rem;
-            }
-
             .hero-subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero-description {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero-version {
-                font-size: 0.85rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .cta-buttons {
-                gap: 0.8rem;
-                margin-top: 1.5rem;
-            }
-
-            .btn {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .btn-small {
-                padding: 0.75rem 1.3rem;
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-                margin-bottom: 2rem;
-            }
-
-            .why-leonardo,
-            .features,
-            .integrazioni,
-            .faq,
-            .download-section,
-            .contact {
-                padding: 3rem 1rem;
-            }
-
-            .why-card,
-            .feature-card {
-                padding: 1.2rem;
-            }
-
-            .why-icon {
-                font-size: 2rem;
-                margin-bottom: 0.8rem;
-            }
-
-            .why-title {
                 font-size: 1.2rem;
-                margin-bottom: 0.8rem;
             }
 
-            .why-description,
-            .feature-description {
-                font-size: 0.9rem;
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .feature-icon {
-                font-size: 1.8rem;
-            }
-
-            .feature-title {
-                font-size: 1.15rem;
-            }
-
-            .integrazioni-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .integrazioni-item {
-                padding: 1.2rem;
-            }
-
-            .integrazioni-icon {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .integrazioni-title {
-                font-size: 1rem;
-            }
-
-            .integrazioni-desc {
-                font-size: 0.85rem;
-            }
-
-            .faq-question {
-                padding: 1rem;
-                font-size: 0.95rem;
-            }
-
-            .faq-answer {
-                font-size: 0.9rem;
-            }
-
-            .download-card {
-                padding: 1.5rem 1rem;
-            }
-
             .download-title {
-                font-size: 1.6rem;
-                margin-bottom: 1rem;
+                font-size: 2rem;
             }
 
-            .download-description {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .download-feature-item {
-                font-size: 0.95rem;
-            }
-
-            .contact-description {
-                font-size: 1rem;
-            }
-
-            .contact-item {
-                font-size: 0.95rem;
+            .contact-info {
                 flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .contact-icon {
-                font-size: 1.5rem;
-            }
-
-            footer {
-                padding: 1.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Touch-friendly improvements for mobile */
-        @media (hover: none) and (pointer: coarse) {
-            .btn {
-                min-height: 44px; /* Miglior target per touch */
-            }
-
-            .faq-question {
-                min-height: 44px;
-            }
-
-            /* Rimuove hover effects su touch devices */
-            .btn-primary:hover,
-            .btn-secondary:hover,
-            .why-card:hover,
-            .feature-card:hover,
-            .integrazioni-item:hover {
-                transform: none;
+                gap: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HERO -->
-    <section class="hero bg-section">
-        <div class="hero-content">
-            <img src="log.jpg" alt="Leonardo Logo" class="logo">
-            <h1 class="tagline">CAD per Pelletteria</h1>
-            <p class="hero-subtitle">Il Più Completo Sistema di Pattern Design</p>
-            <p class="hero-description">
-                Software CAD professionale specifico per pelletteria, calzature e accessori moda
-            </p>
-            <p class="hero-version">Versione 2.7.1 - 161 Comandi Specializzati</p>
-            <div class="cta-buttons">
-                <a href="#download" class="btn btn-primary">Inizia Ora</a>
-                <a href="#contact" class="btn btn-secondary">Richiedi Demo</a>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="log.jpg" alt="Leonardo Logo" class="logo">
+                <p class="tagline">Leonardo</p>
+                <p class="hero-subtitle">Il CAD che i modellisti scelgono</p>
+                <p class="hero-description">
+                    Pattern Design Software CAD per il settore Pelletteria
+                </p>
+                <p class="hero-version">Versione 2.8 - Oltre 180 comandi specializzati</p>
+                <div class="cta-buttons">
+                    <a href="#why-leonardo" class="btn btn-secondary">Scopri Perché Sceglierci</a>
+                    <a href="#features" class="btn btn-secondary">Funzionalità</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- PERCHÉ LEONARDO -->
-    <section class="why-leonardo">
+    <section id="why-leonardo" class="why-leonardo">
         <div class="container">
-            <h2 class="section-title">Perché Scegliere Leonardo?</h2>
+            <h2 class="section-title">Perché Scegliere Leonardo</h2>
             <div class="why-grid">
                 <div class="why-card">
-                    <div class="why-icon">🎯</div>
-                    <h3 class="why-title">Specifico per Pelletteria</h3>
-                    <p class="why-description">
-                        161 comandi progettati specificamente per il settore pellettiero. Ogni funzione è stata sviluppata ascoltando le esigenze reali dei modellisti.
-                    </p>
-                </div>
-                <div class="why-card">
                     <div class="why-icon">⚡</div>
-                    <h3 class="why-title">Workflow Ottimizzato</h3>
+                    <h3 class="why-title">Apprendimento Rapido</h3>
                     <p class="why-description">
-                        Accelera la produzione con gestione automatizzata di tacche, simmetrie, nesting e preparazione stampa. Risparmia ore di lavoro manuale.
+                        Interfaccia intuitiva progettata per modellisti. Lavora come pensi, non come il software vuole.
                     </p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon">🔧</div>
-                    <h3 class="why-title">Integrazione Completa</h3>
+                    <div class="why-icon">🎯</div>
+                    <h3 class="why-title">Specializzato 100%</h3>
                     <p class="why-description">
-                        Compatibile con ZWCAD, AutoCAD, Modaris e tutti i principali sistemi di taglio. Importa ed esporta in formato AAMA standard.
+                        Creato esclusivamente per pelletteria da un modellista. Nessun compromesso, tutte le funzioni che ti servono.
                     </p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon">📚</div>
-                    <h3 class="why-title">Documentazione Completa</h3>
+                    <div class="why-icon">📈</div>
+                    <h3 class="why-title">180+ Comandi Specializzati</h3>
                     <p class="why-description">
-                        Documentazione dettagliata su GitHub con guide passo-passo, video tutorial e supporto della community internazionale.
+                        Dalla elaborazione AAMA al nesting automatico alla gestione duplicati fustelle. Tutte le soluzioni in un unico software.
                     </p>
                 </div>
                 <div class="why-card">
                     <div class="why-icon">💰</div>
-                    <h3 class="why-title">Investimento Sostenibile</h3>
+                    <h3 class="why-title">ROI Garantito</h3>
                     <p class="why-description">
-                        Licenze perpetue disponibili, nessun costo nascosto. ROI verificabile in 3-6 mesi grazie all'aumento di produttività.
+                        Modellisti riportano 40% riduzione tempi di prototipazione e 30% meno sprechi di materiali.
                     </p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon">🚀</div>
+                    <div class="why-icon">🛠️</div>
+                    <h3 class="why-title">Supporto Attivo</h3>
+                    <p class="why-description">
+                        Team dedicato con risposta entro 24h. Community di professionisti sempre disponibili.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🔄</div>
                     <h3 class="why-title">Aggiornamenti Continui</h3>
                     <p class="why-description">
-                        Software in continua evoluzione con nuove funzioni basate sui feedback degli utenti. Aggiornamenti regolari inclusi.
+                        Nuove versioni ogni mese con feedback diretto degli utenti. Il tuo software evolve con te.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FEATURES -->
-    <section class="features">
+    <!-- FUNZIONALITÀ -->
+    <section id="features" class="features bg-section">
         <div class="container">
-            <h2 class="section-title">Funzionalità Principali</h2>
-            <div class="feature-grid">
+            <h2 class="section-title">Funzionalità Professionali</h2>
+            <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">✂️</div>
-                    <h3 class="feature-title">Gestione Tacche</h3>
+                    <h3 class="feature-title">Elaborazione Pezzi AAMA</h3>
                     <p class="feature-description">
-                        Sistema completo per creazione, modifica e gestione tacche con supporto standard industriali (punto, tacca, foro) e personalizzazioni.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3 class="feature-title">Simmetria e Gradiazione</h3>
-                    <p class="feature-description">
-                        Strumenti avanzati per simmetrie automatiche, gradiazioni intelligenti e gestione taglie con preview in tempo reale.
+                        28 comandi specializzati per elaborazione pezzi standard AAMA, con gestione automatica di blocchi, rifili e conversioni.
                     </p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📐</div>
-                    <h3 class="feature-title">Strumenti CAD Avanzati</h3>
+                    <h3 class="feature-title">Disegno Geometrico Avanzato</h3>
                     <p class="feature-description">
-                        Suite completa di strumenti di disegno: linee, curve, archi, offset, raccordi, trim e molto altro con precisione millimetrica.
+                        Strumenti professionali per disegno geometrico, polilinee, offset e gestione precisa di forme complesse.
                     </p>
                 </div>
                 <div class="feature-card">
@@ -921,7 +657,7 @@
                     <div class="feature-icon">⚙️</div>
                     <h3 class="feature-title">Gestore fustelle</h3>
                     <p class="feature-description">
-                        Ricerca intelligente di fustelle già prodotte per altri articoli, non produrre più una serie infinita di rettangoli.
+                        Ricerca intelligente di fustelle già prodotte per altri articoli,  non produrre più una serie infinita di rettangoli.
                     </p>
                 </div>
             </div>
@@ -956,6 +692,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- FAQ -->
     <section class="faq">
