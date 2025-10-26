@@ -59,7 +59,7 @@ Il sistema di licenza è progettato per essere sicuro e flessibile. Ogni install
 
 ## 2. ELABORAZIONE PEZzi AAMA
 
-I comandi in questa sezione sono centrali per il processo di preparazione dei pezzi per il nesting e la produzione. AAMA è un acronimo che rappresenta la standardizzazione e l'ottimizzazione del disegno del pattern. Il termine AAMA deriva probabilmente da un protocollo o standard interno al settore calzaturiero o pellettiero, e questi comandi sono progettati per convertire le sagome grezze in blocchi strutturati e pronti per la fase di nesting.
+I comandi in questa sezione sono centrali per il processo di preparazione dei pezzi per il nesting e la produzione.Questi comandi sono progettati per convertire le sagome grezze in pezzi pronti per le macchine da taglio o plotter.
 
 ### Processori AAMA Principali
 
@@ -67,7 +67,7 @@ I comandi in questa sezione sono centrali per il processo di preparazione dei pe
 |---------|-------|-------------|
 | `c:aama` | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Processa le sagome AAMA per prepararle al nesting, creando blocchi ottimizzati. Questo comando richiede la selezione di polilinee chiuse e ne estrae i dati (come nome, materiale, quantità, tipologia) dai blocchi DATIM associati. Successivamente, crea un singolo blocco per ogni sagoma, posizionandola in modo da ottimizzare lo spazio futuro. |
 | `c:aamar` | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa le sagome di "RIFILO" applicando un materiale standard. Questo comando è specifico per i pezzi di rifilo. Estrae la geometria e applica automaticamente un materiale standard precedentemente definito. |
-| `c:Modaris-AAMA` | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora i blocchi Modaris v3.0, aggiungendo informazioni sul centroide e altri dati. Questo comando è pensato per integrare i dati provenienti da sistemi CAD Modaris, estraendone le informazioni e preparandole per il flusso AAMA. |
+| `c:Modaris-AAMA` | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora i blocchi Modaris v3.0 e li converte in elaborabili. Questo comando è pensato per integrare i dati provenienti da sistemi CAD Modaris, estraendone le informazioni e preparandole per il flusso AAMA. |
 
 ### Comandi RIFILO
 
@@ -209,18 +209,18 @@ Questa sezione è dedicata all'inserimento e alla modifica dei dati principali a
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:MAT` | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre una finestra di dialogo per inserire il materiale e calcolare l'AREA NETTA. |
+| `c:MAT` | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre una finestra di dialogo per inserire il materiale. |
 | `c:NOM` | ![nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/nome_pezzo.bmp) | Apre una finestra di dialogo per comporre il nome del pezzo. |
-| `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce blocchi "NUM" e "RIF" con il numero dell'articolo. |
+| `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce il numero dell'articolo. |
 | `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce lo spessore del materiale. |
 
 ### Modifica Dati
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:ED-MAT` | ![ed_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_materiale.bmp) | Modifica il materiale, la quantità e la tipologia di un blocco DATIM tramite una finestra di dialogo. |
+| `c:ED-MAT` | ![ed_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_materiale.bmp) | Modifica il materiale, la quantità e la tipologia ( valido per x articoli) di un materiale tramite una finestra di dialogo. |
 | `c:ED-NOM` | ![ed_nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/ed_nome_pezzo.bmp) | Modifica il nome del pezzo tramite una finestra di dialogo. |
-| `c:ED-MATERIALE` | ![ed_numero_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_numero_materiale.bmp) | Modifica rapidamente la quantità e la tipologia di un blocco DATIM. |
+| `c:ED-MATERIALE` | ![ed_numero_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_numero_materiale.bmp) | Modifica rapidamente la quantità e la tipologia di un materiale. |
 | `c:ED-INFUST` | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-infust.bmp) | Aggiunge il prefisso "Infustitura" al nome del pezzo. |
 | `c:ED-FOD` | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-fod.bmp) | Aggiunge il prefisso "Fodera" al nome del pezzo. |
 | `c:ED-RIF` | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-rif.bmp) | Aggiunge il prefisso "Rifilo" al nome del pezzo. |
@@ -248,18 +248,18 @@ Questa sezione contiene comandi per operazioni di modifica complesse, come la se
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
 | `c:CS` | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.bmp) | Esegue una "Chain Selection" per selezionare automaticamente gli oggetti connessi. |
-| `c:CookieCutter2` | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Esegue un "Cookie Cutter" per un taglio avanzato con esplosione dei blocchi. |
+| `c:CookieCutter2` | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | selezionata una polilinea taglia e elimina tutto l interno o tutto l esterno |
 | `c:RACCORDA_0` | ![RAGGIO_0.BMP](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Raccorda due entità con un raggio di 0. |
 | `c:SPEZZA_PUNTO` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Interrompe una linea, polilinea o arco nel punto selezionato. |
-| `c:splitcir` | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe un cerchio in due punti e disegna un arco. |
-| `c:TROVA_GAP` | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca i gap tra le entità e disegna un cerchio sul layer "GAP". |
-| `c:QM` | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Esegue un mirror rapido degli oggetti. |
+| `c:splitcir` | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe un cerchio e lo trasforma in polilinea  |
+| `c:TROVA_GAP` | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca i gap ( misure molto piccole fra le quali due linee non si toccano ma dovrebbero farlo) tra le entità selezionate e disegna un cerchio sul layer "GAP" per una facile individuazione. |
+| `c:QM` | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Esegue uno specchia rapido degli oggetti. |
 
 ---
 
 ## 9. UTILITÀ E CALCOLO
 
-I comandi in questa sezione offrono funzionalità di utilità generale e calcolo, come la gestione dei materiali e il calcolo dei consumi. Questi strumenti sono essenziali per la pianificazione della produzione e la gestione dei costi.
+I comandi in questa sezione offrono funzionalità di utilità generale e calcolo, come la gestione del archivio materiali e il calcolo dei consumi. Questi strumenti sono essenziali per la pianificazione della produzione e la gestione dei costi.
 
 ![gnames.png](INSTALLAZIONE/gnames.png)![gmats.png](INSTALLAZIONE/gmats.png)
 
@@ -376,9 +376,9 @@ Questa sezione è interamente dedicata alla gestione delle tacche, inclusi inser
 | `c:tacche_in_tagliate` | ![tacche_in_tagliate.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_tagliate.bmp) | Converte tacche standard in tacche tagliate (tacca_t) |
 | `c:tagliate_in_tacche` | ![tagliate_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/tagliate_in_tacche.bmp) | Converte tacche tagliate in tacche standard |
 | `c:tacche_in_punti` | ![tacche_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_punti.bmp) | Converte tacche/PitRTak in oggetti POINT |
-| `c:punti_in_tacche` | ![punti_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/punti_in_tacche.bmp) | Converte oggetti POINT in tacche standard |
-| `c:mozart_in_tacche` | ![mozart_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/mozart_in_tacche.bmp) | Converte blocchi PitTacCT (Mozart) in tacche standard |
-| `c:tacche_in_mozart` | ![tacche_in_mozart.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_mozart.bmp) | Converte tacche standard in blocchi PitTacCT (Mozart) |
+| `c:punti_in_tacche` | ![punti_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/punti_in_tacche.bmp) | Converte oggetti Punto in tacche standard |
+| `c:mozart_in_tacche` | ![mozart_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/mozart_in_tacche.bmp) | Converte blocchi tacca Mozart in tacche standard |
+| `c:tacche_in_mozart` | ![tacche_in_mozart.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_mozart.bmp) | Converte tacche standard in tacche Mozart |
 
 ---
 
@@ -392,16 +392,14 @@ I comandi in questa sezione semplificano lo spostamento degli oggetti su layer s
 
 | Comando | Icona | Descrizione | Layer | Colore |
 |---------|-------|-------------|-------|--------|
-| `c:ENDCUT` | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | Sposta su layer ENDCUT (crea layer se necessario) | ENDCUT | 4 (Ciano) |
-| `c:OUTCUT` | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | Sposta su layer OUTCUT (taglio esterno/rifilo) | OUTCUT | 1 (Rosso) |
+| `c:ENDCUT` | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | deginisce una linea di taglio rifilo | ENDCUT | 4 (Ciano) |
+| `c:OUTCUT` | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | definisce una linea di taglio esterno | OUTCUT | 1 (Rosso) |
 | `c:INTCUT` | ![INTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/INTCUT.bmp) | Sposta su layer INTCUT (taglio interno) | INTCUT | 5 (Blu) |
-| `c:PENNA` | ![PENNA.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Ripristina oggetti su layer "0" con colore BYLAYER | 0 | BYLAYER |
+| `c:PENNA` | ![PENNA.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Ripristina oggetti su layer "0", layer di disegno | 0 | BYLAYER |
 
-**Nota:** Tutti i comandi impostano automaticamente il colore su BYLAYER dopo lo spostamento.
 
 ### Gestione Colori Rapida
 
-**File:** `CAMBIA_COLORE.LSP`
 
 | Comando | Icona | Descrizione | Colore ACI |
 |---------|-------|-------------|------------|
@@ -421,7 +419,7 @@ I comandi in questa sezione applicano offset con tipi di linea specifici, partic
 
 ### Offset con Tipo Linea
 
-**File:** `offset_trat.lsp`
+
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
@@ -436,7 +434,7 @@ I comandi in questa sezione applicano offset con tipi di linea specifici, partic
 
 ### Gestione Tipo Linea
 
-**File:** `TIPOLINEA.lsp`
+
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
