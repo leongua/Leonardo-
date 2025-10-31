@@ -303,7 +303,7 @@ I comandi in questa sezione offrono funzionalità di utilità generale e calcolo
 | `C:NOGG` | ![nogg.bmp](INSTALLAZIONE/menu/LEONARDO/nogg.bmp) | Versione alternativa di `NOG` che calcola l'area geometrica *reale* della polilinea e applica un offset geometrico. |
 | `C:seleziona-permat` | ![seleziona-permat.bmp](INSTALLAZIONE/menu/LEONARDO/seleziona-permat.bmp) | Seleziona (evidenzia) tutte le sagome associate a un materiale specifico. |
 | `C:perp2ent` | ![perp2ent.bmp](INSTALLAZIONE/menu/LEONARDO/perp2ent.bmp) | Disegna linee perpendicolari da un punto selezionato a un'entità. |
-| `C:inizializza2` | ![inizializza.bmp](INSTALLAZIONE/menu/LEONARDO/inizializza.bmp) | Carica le librerie `.dll` esterne (cercafust.dll, quadrantearchi.dll, fasciafiancofondo.dll). |
+| `C:inizializza` | ![inizializza.bmp](INSTALLAZIONE/menu/LEONARDO/inizializza.bmp) | Carica le librerie `.dll` esterne (cercafust.dll, quadrantearchi.dll, fasciafiancofondo.dll). |
 
 ![sostmat.png](INSTALLAZIONE/sostmat.png)![mat1.png](INSTALLAZIONE/mat1.png)
 
