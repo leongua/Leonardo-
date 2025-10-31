@@ -91,6 +91,7 @@ I comandi di nesting sono essenziali per posizionare i pezzi in modo efficiente 
 | `c:nesting1` | ![nesting1.bmp](INSTALLAZIONE/menu/LEONARDO/nesting1.bmp) | Esegue un nesting semplificato su una singola linea orizzontale. |
 | `c:nestingarea` | ![nestingarea.bmp](INSTALLAZIONE/menu/LEONARDO/nestingarea.bmp) | Definisce un'area di lavoro temporanea per il nesting tramite un rettangolo. |
 | `c:nesting3` | ![nesting.bmp](INSTALLAZIONE/menu/LEONARDO/nesting.bmp) | Esegue un nesting avanzato, gestendo l'overflow e creando nuove tavole se necessario. Questo è il comando principale per il nesting automatico. |
+| `c:nesting` | | Esegue il nesting (posizionamento automatico) dei pezzi selezionati. |
 
 ### Altri Comandi di Elaborazione
 
@@ -101,6 +102,17 @@ I comandi di nesting sono essenziali per posizionare i pezzi in modo efficiente 
 | `c:set_geber_tolerance` | ![set_geber_tolerance.bmp](INSTALLAZIONE/menu/LEONARDO/set_geber_tolerance.bmp) | Imposta le tolleranze globali per la conversione delle tacche. |
 | `c:ofi` | ![ofi.bmp](INSTALLAZIONE/menu/LEONARDO/ofi.bmp) | Esegue un offset "RINGRANO" (sposta l'originale su layer "0" e l'offset su "OUTCUT"). |
 | `c:blocchi_in_punti` | ![blocchi_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/blocchi_in_punti.bmp) | Converte i blocchi "PitRTak" in oggetti punto. |
+
+### Utilità AAMA
+
+| Comando | Descrizione |
+|---|---|
+| `C:AAMA_ESTRAI` | Esporta tutti gli oggetti sul layer "1" in un file DXF e poi li cancella dal disegno corrente. |
+| `C:drill1` | Sposta un PUNTO selezionato sul layer 201 (Giallo). |
+| `C:drill2` | Sposta un PUNTO selezionato sul layer 202 (Verde). |
+| `C:drillp` | Sposta un PUNTO selezionato sul layer 100 (Ciano). |
+| `C:marcatura` | Sposta un oggetto selezionato sul layer 91 (Ciano). |
+| `C:proiezione` | Sposta un oggetto selezionato sul layer 90 (Fucsia). |
 
 ---
 
@@ -196,6 +208,14 @@ I comandi in questa sezione facilitano la creazione di forme geometriche di base
 | `c:LeoRACRETT` | ![rettangoloraccordato.bmp](INSTALLAZIONE/menu/LEONARDO/rettangoloraccordato.bmp) | Disegna un rettangolo con angoli raccordati. |
 | `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla di lunghezza perfetta. |
 | `c:TRAPI` | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna un trapezio definendo le basi e l'altezza. |
+| `C:TRAPL` | | Disegna un trapezio isoscele data la base inferiore, la base superiore e la lunghezza del lato obliquo. |
+| `C:sar` | | Disegna una freccia (Leader) e permette di riposizionarla dinamicamente. |
+| `C:DUERETTANGOLI` | | Disegna due rettangoli collegati calcolando la distanza verticale in base alla *lunghezza della linea obliqua* inserita. |
+| `C:DUERETTANGOLIRAC` | | Come `DUERETTANGOLI`, ma aggiunge raccordi (fillet) personalizzabili ai 4 angoli di connessione. |
+| `C:FASCIAFIANCOMAX` | | Simile a `DUERETTANGOLI`, ma applica raccordi *massimi* (tangenti) solo agli angoli superiori. |
+| `C:FASCIAFIANCOUI` | | È la versione con interfaccia grafica (DCL) di `FASCIAFIANCOMAX`. |
+| `C:DISEGNAFASCIAFIANCO` | | Disegna due rettangoli collegati calcolando la geometria basandosi sulla *lunghezza dell'arco* di connessione. |
+| `C:FASCIAFIANCOextUI` | | È la versione con interfaccia grafica (DCL) di `DISEGNAFASCIAFIANCO`. |
 
 ---
 
@@ -254,6 +274,11 @@ Questa sezione contiene comandi per operazioni di modifica complesse, come la se
 | `c:splitcir` | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe un cerchio e lo trasforma in polilinea  |
 | `c:TROVA_GAP` | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca i gap ( misure molto piccole fra le quali due linee non si toccano ma dovrebbero farlo) tra le entità selezionate e disegna un cerchio sul layer "GAP" per una facile individuazione. |
 | `c:QM` | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Esegue uno specchia rapido degli oggetti. |
+| `C:BLOCCO_RAPIDO` | | Crea rapidamente un blocco con un nome casuale dagli oggetti selezionati e lo inserisce. |
+| `C:cbp` | | Cambia il Punto Base di una definizione di blocco senza modificare la posizione degli inserimenti esistenti. |
+| `C:cbpr` | | Cambia il Punto Base di un blocco e Riloca tutti gli inserimenti per mantenere la loro posizione visiva. |
+| `C:pell` | | Alias per `el2pl` (converte Ellissi in Polilinee). |
+| `C:test-multipli` | | Alias per `MA-test`, testa gli attributi dei blocchi Modaris. |
 
 ---
 
@@ -275,6 +300,10 @@ I comandi in questa sezione offrono funzionalità di utilità generale e calcolo
 | `c:sostmat` | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituisce il materiale in batch, mantenendo quantità e tipologia. |
 | `c:mat1` | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zooma sui pezzi in base al materiale selezionato. |
 | `c:mat1-get` | | Seleziona tutti i blocchi con un materiale specifico. |
+| `C:NOGG` | | Versione alternativa di `NOG` che calcola l'area geometrica *reale* della polilinea e applica un offset geometrico. |
+| `C:seleziona-permat` | | Seleziona (evidenzia) tutte le sagome associate a un materiale specifico. |
+| `C:perp2ent` | | Disegna linee perpendicolari da un punto selezionato a un'entità. |
+| `C:inizializza2` | | Carica le librerie `.dll` esterne (cercafust.dll, quadrantearchi.dll, fasciafiancofondo.dll). |
 
 ![sostmat.png](INSTALLAZIONE/sostmat.png)![mat1.png](INSTALLAZIONE/mat1.png)
 
@@ -295,6 +324,7 @@ Questa sezione raccoglie i comandi per la gestione, l'unione, la conversione e l
 | `c:PC` | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude le polilaperte. |
 | `c:PJ` | ![PJ.bmp](INSTALLAZIONE/menu/LEONARDO/PJ.bmp) | Unisce linee, archi e polilinee. |
 | `c:Y` | ![Y.bmp](INSTALLAZIONE/menu/LEONARDO/Y.bmp) | Filtra e congiunge linee e archi in polilinee leggere. |
+| `C:pljoinfuzz` | | Congiunge (Join) polilinee, linee e archi che sono vicini (entro una tolleranza), anche se non si toccano. |
 
 ### Conversione
 
@@ -365,6 +395,11 @@ Questa sezione è interamente dedicata alla gestione delle tacche, inclusi inser
 | `c:TACCA_RIBALTA` | ribalta tacca.lsp | ![RIBALTA.BMP](INSTALLAZIONE/menu/LEONARDO/RIBALTA.BMP) | Ribalta direzione tacche selezionate |
 | `c:riposiziona_tacche` | riposiziona_tacche.lsp | ![riposiziona.BMP](INSTALLAZIONE/menu/LEONARDO/riposiziona.BMP) | Riposiziona tacche su nuova polilinea |
 | `c:METTI_V` | METTI_V.lsp | ![METTI_V.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V.bmp) | Inserisce rientranza a 'V' su polilinea |
+| `C:Dima_tacche_atom` | dima_tacche_atom.lsp | | Crea una dima (offset) e converte i blocchi "tacca" in intagli a V sulla polilinea esterna. |
+| `C:TACCA` | TACCA.lsp | | Comando principale per inserire tacche (a distanze multiple o copiando posizioni). |
+| `C:INSERISCI_BLOCCHI` | inserisci_blocchi_distanza.lsp | | Inserisce un blocco più volte lungo una polilinea a una distanza specifica, orientandolo automaticamente. |
+| `C:METTI_V_AUTO` | METTI_V_AUTO.lsp | | Trova automaticamente tutti i blocchi "tacca" vicini a una polilinea e li sostituisce con intagli a V. |
+| `C:ribalta_tacche` | ribalta_tacche.lsp | | Ruota (ribalta) i blocchi "tacca" selezionati di 180 gradi. |
 
 ### Conversione Tacche
 
@@ -570,21 +605,21 @@ Per visualizzare tutte le scorciatoie, digitare **ALIASEDIT** nella riga di coma
 ### Totale Comandi per Categoria
 
 - **Gestione Licenza:** 3 comandi
-- **Elaborazione Pezzi AAMA:** 28 comandi
+- **Elaborazione Pezzi AAMA:** 35 comandi
 - **Gestione Testo:** 21 comandi
 - **Inserimento Blocchi:** 11 comandi
-- **Disegno Geometrico:** 10 comandi
+- **Disegno Geometrico:** 18 comandi
 - **Gestione Dati Pezzi:** 12 comandi
 - **Estrazione Modaris:** 4 comandi
-- **Modifica Avanzata:** 8 comandi
-- **Utilità e Calcolo:** 10 comandi
-- **Gestione Polilinee:** 13 comandi
+- **Modifica Avanzata:** 13 comandi
+- **Utilità e Calcolo:** 14 comandi
+- **Gestione Polilinee:** 14 comandi
 - **Preparazione Stampa:** 7 comandi
-- **Gestione Tacche:** 18 comandi
+- **Gestione Tacche:** 23 comandi
 - **Gestione Layer e Colori:** 9 comandi
 - **Gestione Offset:** 10 comandi
 
-**TOTALE COMANDI DOCUMENTATI:** 164 comandi
+**TOTALE COMANDI DOCUMENTATI:** 194 comandi
 
 ---
 
