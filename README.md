@@ -1,6 +1,6 @@
 # Leonardo Pattern Design Software - Documentazione Dettagliata
 
-**VERSIONE 2.7.1**
+**VERSIONE 3.1.0**
 
 **CONCESSA A USO DIMOSTRATIVO**
 
