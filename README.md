@@ -209,7 +209,7 @@ I comandi in questa sezione facilitano la creazione di forme geometriche di base
 | `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla di lunghezza perfetta. |
 | `c:TRAPI` | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna un trapezio definendo le basi e l'altezza. |
 | `C:TRAPL` | ![TRAPL.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPL.bmp) | Disegna un trapezio isoscele data la base inferiore, la base superiore e la lunghezza del lato obliquo. |
-| `C:sar` | ![SAR.bmp](INSTALLAZIONE/menu/LEONARDO/SAR.bmp) | Disegna una freccia (Leader) e permette di riposizionarla dinamicamente. |
+| `C:sar` | ![sar.bmp](INSTALLAZIONE/menu/LEONARDO/sar.bmp) | Disegna una freccia (Leader) e permette di riposizionarla dinamicamente. |
 | `C:DUERETTANGOLI` | | Disegna due rettangoli collegati calcolando la distanza verticale in base alla *lunghezza della linea obliqua* inserita. |
 | `C:DUERETTANGOLIRAC` | | Come `DUERETTANGOLI`, ma aggiunge raccordi (fillet) personalizzabili ai 4 angoli di connessione. |
 | `C:FASCIAFIANCOMAX` | | Simile a `DUERETTANGOLI`, ma applica raccordi *massimi* (tangenti) solo agli angoli superiori. |
