@@ -45,7 +45,17 @@ Tuttavia, il software può essere installato e utilizzato anche su **AutoCAD**. 
 
 La gestione della licenza è un aspetto fondamentale del software. Senza una licenza valida, il software non funzionerà correttamente. Questa sezione descrive i comandi necessari per attivare, verificare e gestire lo stato della licenza.
 
-Il sistema di licenza è progettato per essere sicuro e flessibile. Ogni installazione del software genera un ID univoco basato sulle caratteristiche hardware del computer. Questo ID viene utilizzato dallo sviluppatore per generare un codice di attivazione specifico per quella macchina.
+### Dettagli Tecnici del Sistema di Licenza
+
+Il sistema di licenza implementa un algoritmo di cifratura avanzato:
+
+- **ID Sistema**: Generato tramite hash delle variabili d'ambiente (`PROCESSOR_IDENTIFIER`, `COMPUTERNAME`, `USERPROFILE`)
+- **Codice Licenza**: Stringa di 10 caratteri utilizzando il charset "gsqlrd491c"
+- **Algoritmo**:
+  - Matrice di trasformazione creata dall'ID macchina
+  - Token base (`gsqlrd491c`) trasformato due volte con matrici diverse
+  - Cifratura finale salvata con shift +7 in `C:/Leonardo/license.dat`
+- **Validazione**: Il codice inserito deve corrispondere esattamente al codice calcolato per l'ID macchina
 
 ![licenza.png](INSTALLAZIONE/licenza.png)
 
@@ -57,7 +67,7 @@ Il sistema di licenza è progettato per essere sicuro e flessibile. Ogni install
 
 ---
 
-## 2. ELABORAZIONE PEZzi AAMA
+## 2. ELABORAZIONE PEZZI AAMA
 
 I comandi in questa sezione sono centrali per il processo di preparazione dei pezzi per il nesting e la produzione.Questi comandi sono progettati per convertire le sagome grezze in pezzi pronti per le macchine da taglio o plotter.
 
@@ -65,7 +75,7 @@ I comandi in questa sezione sono centrali per il processo di preparazione dei pe
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:aama` | ![AAMA.BMP](INSTALLAZIONE/menu/LEONARDO/AAMA.BMP) | Processa le sagome AAMA per prepararle al nesting, creando blocchi ottimizzati. Questo comando richiede la selezione di polilinee chiuse e ne estrae i dati (come nome, materiale, quantità, tipologia) dai blocchi DATIM associati. Successivamente, crea un singolo blocco per ogni sagoma, posizionandola in modo da ottimizzare lo spazio futuro. |
+| `c:aama` | ![AAMA.BMP](INSTALLAZIONE/menu/LEONARDO/AAMA.BMP) | **Processore principale AAMA**. Workflow tecnico:<br>1. Seleziona polilinee sui layer `ENDCUT`, `OUTCUT`, `TAVOLA_DI_STAMPA_TAGLIO`, `TAVOLA_DI_STAMPA`, `PIT_DIS_TA_CONT`, `PIT_DIS_AREA`<br>2. Estrae dati dai blocchi PITDATIT/DATIT (attributo `TESTO1` = nome pezzo)<br>3. Estrae materiale da PITDATIM/DATIM (attributi `MATERIALE`, `NPEZZI`, `TIPOLOGIA`)<br>4. Rimuove prefissi materiale (I-, A-, D-, F-)<br>5. Gestisce layer speciali: 201 (drill1/giallo), 202 (drill2/verde), 100 (drillp/ciano), 90 (proiezione/fucsia), 91 (marcatura/ciano)<br>6. Crea testo formato: `@NOME;MATERIALE[QTA]TIPOLOGIA`<br>7. Genera blocco con nome random e lo sposta su layer 1<br>8. Esporta in DXF includendo tutti i layer (1, 11, 201, 202, 100, 90, 91) |
 | `c:aamar` | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa le sagome di "RIFILO" applicando un materiale standard. Questo comando è specifico per i pezzi di rifilo. Estrae la geometria e applica automaticamente un materiale standard precedentemente definito. |
 | `c:Modaris-AAMA` | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora i blocchi Modaris v3.0 e li converte in elaborabili. Questo comando è pensato per integrare i dati provenienti da sistemi CAD Modaris, estraendone le informazioni e preparandole per il flusso AAMA. |
 
@@ -124,7 +134,7 @@ I comandi in questa sezione consentono di gestire il testo all'interno del diseg
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:ATC` | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | Allinea il testo (esistente o nuovo) a una curva selezionata. Questo comando è particolarmente utile quando si deve allineare testo lungo un bordo curvo del modello, di una cucitura o una sagom. |
+| `c:ATC` | ![ATC.bmp](INSTALLAZIONE/menu/LEONARDO/ATC.bmp) | **Align Text to Curve v1.2** . Allinea dinamicamente testo a curve con controlli avanzati:<br>• Compatibile con: Line, LWPolyline, 2D Polyline, 3D Polyline, Arc, Circle, Ellipse, Spline (anche nested)<br>• **Controlli dinamici**: [+/-] offset incrementale, [O] offset esatto, [</>] rotazione ±45°, [R] rotazione esatta, [Y] toggle readability (anti-capovolgimento), [B] toggle background mask (solo MText)<br>• **Parametri**: offset come fattore altezza testo, rotazione relativa alla curva, justification configurabile<br>• **Settings**: Dialog DCL per configurare tipo oggetto (Text/MText), justification, offset factor, rotation, readability, background mask, multiple text mode<br>• Salva configurazioni ` |
 | `c:ZR` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Azzera la rotazione di testo, blocchi o MLeader. |
 | `c:EDT` | ![EDT.bmp](INSTALLAZIONE/menu/LEONARDO/EDT.bmp) | Ruota il testo in base a un angolo definito da due punti. |
 
@@ -230,7 +240,7 @@ Questa sezione è dedicata all'inserimento e alla modifica dei dati principali a
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
 | `c:MAT` | ![MATERIALE.BMP](INSTALLAZIONE/menu/LEONARDO/MATERIALE.BMP) | Apre una finestra di dialogo per inserire il materiale. |
-| `c:NOM` | ![NOME_PEZZO.BMP](INSTALLAZIONE/menu/LEONARDO/NOME_PEZZO.BMP) | Apre una finestra di dialogo per comporre il nome del pezzo. |
+| `c:NOM` | ![NOME_PEZZO.BMP](INSTALLAZIONE/menu/LEONARDO/NOME_PEZZO.BMP) | **Dialog composizione nome pezzo** (file: `Nome_pezzo.lsp` + `Nome_pezzo.DCL`):<br>• **3 liste popup**: Nome1.txt (es. RINF., NETTO, SBOZZO, FORMA, DIMA, FUSTELLA), Nome2.txt (es. QUADRANTE, FIANCO, FONDO, TASCA, PATTINA), Nome3.txt (es. DAVANTI, DIETRO, INTERNO, ESTERNO)<br>• **Opzione input manuale**: Checkbox per bypassare le liste e digitare nome completo<br>• **Output**: Inserisce blocco `DATIT` con attributi (TIPOLOGIA="", TESTO1=nome_composto, IDFISSO=1, CODICE="0000", NU1-7=0)<br>• **File dati**: `C:/LEONARDO/Common/Nome1.txt`, `Nome2.txt`, `Nome3.txt` (caricati dinamicamente, fallback su valori default) |
 | `c:NUM` | ![NUM_ART.bmp](INSTALLAZIONE/menu/LEONARDO/NUM_ART.bmp) | Inserisce il numero dell'articolo. |
 | `c:SPESSORE` | ![SPESSORE.BMP](INSTALLAZIONE/menu/LEONARDO/SPESSORE.BMP) | Inserisce lo spessore del materiale. |
 
@@ -267,8 +277,8 @@ Questa sezione contiene comandi per operazioni di modifica complesse, come la se
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:CS` | ![cs.BMP](INSTALLAZIONE/menu/LEONARDO/cs.BMP) | Esegue una "Chain Selection" per selezionare automaticamente gli oggetti connessi. |
-| `c:CookieCutter2` | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | selezionata una polilinea taglia e elimina tutto l interno o tutto l esterno |
+| `c:CS` | ![cs.BMP](INSTALLAZIONE/menu/LEONARDO/cs.BMP) | **Chain Selection v1.1** . Selezione concatenata intelligente:<br>• Seleziona automaticamente tutti gli oggetti connessi per endpoint (tolleranza 1e-8)<br>• Compatibile con: Line, Arc, LWPolyline aperta, Spline aperta, 2D Polyline aperta, Elliptical Arc<br>• Esclude automaticamente layer congelati, bloccati o spenti<br>• |
+| `c:CookieCutter2` | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | **Cookie Cutter v1.2** (by Joe Burke). Trim avanzato con esplosione automatica:<br>• Trim object: Circle, Polyline chiusa, Ellipse chiusa, Spline chiusa<br>• **Workflow**: 1) Verifica self-intersection (tramite AddRegion test), 2) Offset interno/esterno per determinare lato trim, 3) Esplode automaticamente blocchi/hatches/regioni intersecanti, 4) Opzione "Erase all inside/outside" per eliminazione completa<br>• **Gestione hatch solidi**: prompt per convertire in ANSI31 pattern con scala auto-calcolata<br>• **Trim ricorsivo**: taglia anche oggetti generati dal trim precedente<br>• Nasconde xref, ignora oggetti annotation (text, dimensions, leaders, tables) |
 | `c:RACCORDA_0` | ![RAGGIO_0.BMP](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Raccorda due entità con un raggio di 0. |
 | `c:SPEZZA_PUNTO` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Interrompe una linea, polilinea o arco nel punto selezionato. |
 | `c:splitcir` | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe un cerchio e lo trasforma in polilinea  |
@@ -294,7 +304,7 @@ I comandi in questa sezione offrono funzionalità di utilità generale e calcolo
 | `c:font_test` | ![font_test.bmp](INSTALLAZIONE/menu/LEONARDO/font_test.bmp) | Crea righe di testo per testare i font .shx da una directory. |
 | `c:gestmat` | ![gestmat.bmp](INSTALLAZIONE/menu/LEONARDO/gestmat.bmp) | Gestisce le liste dei materiali tramite un'interfaccia a finestra di dialogo. |
 | `c:gnames` | ![gnames.bmp](INSTALLAZIONE/menu/LEONARDO/gnames.bmp) | Gestisce le liste dei nomi dei pezzi (Nome1/2/3.txt) tramite una finestra di dialogo. |
-| `c:NOG` | ![NOG.bmp](INSTALLAZIONE/menu/LEONARDO/NOG.bmp) | Calcola i consumi di materiale e genera un report in formato CSV/Excel. |
+| `c:NOG` | ![NOG.bmp](INSTALLAZIONE/menu/LEONARDO/NOG.bmp) | **Calcolo Consumi Materiali v7**. Sistema avanzato di calcolo con configurazione per categoria:<br>• **File configurazione**: `nog_config.txt` (formato: `Categoria;Offset;ScartoSagoma%;ScartoTotale%;ScartoGlobale%`)<br>• **Categorie standard**: A-Pelle, I-Infustiture, D-Tele, F-Fodere, G-Accessori, Altri<br>• **Metodo calcolo**: Bounding Box (rettangolo di delimitazione) invece di area reale polilinea<br>• **Parametri per categoria**: Offset (mm), Scarto Sagoma %, Scarto Totale %, Scarto Globale %<br>• **Formula**: `ConsumoFinale = (Area + 2×Offset)² × Quantità × (1+ScartoSagoma%) × (1+ScartoTotale%) / Tipologia × NumPezzi × (1+ScartoGlobale%)`<br>• **Output CSV**: Formato italiano (virgola decimale), colonne: Categoria, Materiale, Componente, Unità, Qtà, Area Orig, Area Offset, Offset, Scarto Sagoma, Scarto Totale, Scarto Globale, Tipologia, Larghezza/Altezza (orig e offset), Consumi vari, Consumo Totale<br>• Gestisce attributi TIPOLOGIA per divisione consumi (es. 2 pezzi da stesso taglio) |
 | `c:NOG-CONFIG` | | Modifica la configurazione generale per il calcolo dei consumi (per categorie di materiale). |
 | `c:NOG-ADDMAT` | | Aggiunge o aggiorna i parametri di un materiale specifico (per nome completo). |
 | `c:sostmat` | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituisce il materiale in batch, mantenendo quantità e tipologia. |
@@ -337,11 +347,11 @@ Questa sezione raccoglie i comandi per la gestione, l'unione, la conversione e l
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:PLDREV_SETCOLOR` | ![PLDREV_SETCOLOR.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETCOLOR.bmp) | Imposta il colore delle frecce che indicano la direzione della polilinea. |
-| `c:PLDREV_SETPOS` | ![PLDREV_SETPOS.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETPOS.bmp) | Imposta la posizione delle frecce (interne o esterne alla polilinea). |
-| `c:PLD` | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Visualizza la direzione della polilinea con frecce e permette di invertirla. |
-| `c:PLDREV_SHOW_DIRECTION` | ![PLDREV_SHOW_DIRECTION.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SHOW_DIRECTION.bmp) | Mostra la direzione di rotazione e il punto di inizio della polilinea. |
-| `c:RvrsLine` | ![INVERTI_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Inverte la direzione di linee, polilinee o LWPolyline. |
+| `c:PLDREV_SETCOLOR` | ![PLDREV_SETCOLOR.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETCOLOR.bmp) | Imposta colore frecce direzione (1-7: Rosso, Giallo, Verde, Ciano, Blu, Magenta, Bianco). Default: 4 (Ciano) |
+| `c:PLDREV_SETPOS` | ![PLDREV_SETPOS.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETPOS.bmp) | Imposta posizione frecce: [Interne/Esterne]. Default: Esterne |
+| `c:PLD` | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | **Visualizzazione e inversione direzione polilinea**:<br>• **Marcatore inizio**: X + Quadrato sul punto di partenza (param 0)<br>• **Frecce direzione**: Visualizzate lungo la polilinea con offset proporzionale a VIEWSIZE/12<br>• **Algoritmo rotazione**: Calcola area signed (Shoelace formula). Se area < 0 → rotazione oraria (+1), altrimenti antioraria (-1)<br>• **Inversione LWPOLYLINE**: Riordina vertici (coordinate), inverte bulge (cambia segno e ordine)<br>• **Gestione archi**: Ogni arco (bulge≠0) viene tracciato con suddivisione angolare (2.5° per segmento)<br>• Prompt: [S/N] per confermare inversione |
+| `c:PLDREV_SHOW_DIRECTION` | ![PLDREV_SHOW_DIRECTION.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SHOW_DIRECTION.bmp) | Alias di `c:PLD` - Mostra direzione e punto inizio con frecce dinamiche |
+| `c:RvrsLine` | ![INVERTI_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Inverte la direzione di linee, polilinee o LWPolyline (stessa logica di PLD ma senza visualizzazione) |
 
 ---
 
@@ -380,7 +390,7 @@ Questa sezione è interamente dedicata alla gestione delle tacche, inclusi inser
 
 | Comando | File | Icona | Descrizione |
 |---------|------|-------|-------------|
-| `c:INSERISCI_TACCA` | inserisci_tacca.lsp | ![TakP.bmp](INSTALLAZIONE/menu/LEONARDO/TakP.bmp) | Inserisce blocco tacca sulla polilinea |
+| `c:INSERISCI_TACCA` | inserisci_tacca.lsp | ![TakP.bmp](INSTALLAZIONE/menu/LEONARDO/TakP.bmp) | Inserisce blocco tacca sulla polilinea con orientamento automatico:<br>• Prompt scelta [I]nterna o [E]sterna (default Interna)<br>• **Algoritmo orientamento**: Calcola `vlax-curve-getfirstderiv` (tangente) al punto closest sulla curva, poi applica rotazione di 180° (π) per tacche interne, 0° per esterne<br>• Loop continuo fino a ESC<br>• Blocco utilizzato: `"tacca"` con scala 1 |
 | `c:tacca_da_misura` | tacca_da_misura.lsp | ![TACCA_DISTANZA.BMP](INSTALLAZIONE/menu/LEONARDO/TACCA_DISTANZA.BMP) | Inserisce tacca a distanza specifica da punto partenza |
 | `c:tacca_dapoli` | tacca_dapoli.lsp | ![TACCA_dapoli.BMP](INSTALLAZIONE/menu/LEONARDO/TACCA_dapoli.BMP) | Copia distanza tra due punti su polilinea sorgente e inserisce tacca su destinazione |
 | `c:COPIA_TACCHE` | copia_tacche.lsp | ![COPIA_TACCHE.BMP](INSTALLAZIONE/menu/LEONARDO/COPIA_TACCHE.BMP) | Copia tacche da polilinea sorgente a destinazione |
@@ -407,13 +417,13 @@ Questa sezione è interamente dedicata alla gestione delle tacche, inclusi inser
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:sostituisci_tacche` | ![SOS_TACCHE.bmp](INSTALLAZIONE/menu/LEONARDO/SOS_TACCHE.bmp) | Menu scelta rapida per conversione tra tipi tacche/punti |
-| `c:tacche_in_tagliate` | ![tacche_in_tagliate.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_tagliate.bmp) | Converte tacche standard in tacche tagliate (tacca_t) |
-| `c:tagliate_in_tacche` | ![tagliate_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/tagliate_in_tacche.bmp) | Converte tacche tagliate in tacche standard |
-| `c:tacche_in_punti` | ![tacche_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_punti.bmp) | Converte tacche/PitRTak in oggetti POINT |
-| `c:punti_in_tacche` | ![punti_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/punti_in_tacche.bmp) | Converte oggetti Punto in tacche standard |
-| `c:mozart_in_tacche` | ![mozart_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/mozart_in_tacche.bmp) | Converte blocchi tacca Mozart in tacche standard |
-| `c:tacche_in_mozart` | ![tacche_in_mozart.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_mozart.bmp) | Converte tacche standard in tacche Mozart |
+| `c:sostituisci_tacche` | ![SOS_TACCHE.bmp](INSTALLAZIONE/menu/LEONARDO/SOS_TACCHE.bmp) | **Menu principale conversioni**. Prompt: `[T]acche=>tagliate, t[A]gliate=>tacche, p[U]nti=>tacche, tacche=>[P]unti, [M]ozart=>standard, standard=>moza[R]t`<br>• Algoritmo comune: 1) Seleziona blocchi sorgente (filter su nome blocco), 2) Seleziona polilinea target, 3) Per ogni blocco: trova punto closest su polilinea, calcola first derivative per orientamento, inserisce nuovo blocco con rotazione calcolata, elimina vecchio blocco |
+| `c:tacche_in_tagliate` | ![tacche_in_tagliate.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_tagliate.bmp) | Converte `"tacca"` → `"tacca_t"` (rotazione +180°) |
+| `c:tagliate_in_tacche` | ![tagliate_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/tagliate_in_tacche.bmp) | Converte `"tacca_t"` → `"tacca"` (rotazione +180°) |
+| `c:tacche_in_punti` | ![tacche_in_punti.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_punti.bmp) | Converte `"tacca"` → oggetto POINT (elimina blocco) |
+| `c:punti_in_tacche` | ![punti_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/punti_in_tacche.bmp) | Converte POINT → `"tacca"` (rotazione +180°, elimina punto) |
+| `c:mozart_in_tacche` | ![mozart_in_tacche.bmp](INSTALLAZIONE/menu/LEONARDO/mozart_in_tacche.bmp) | Converte `"PitTacCT"` (Mozart) → `"tacca"` (rotazione +180°) |
+| `c:tacche_in_mozart` | ![tacche_in_mozart.bmp](INSTALLAZIONE/menu/LEONARDO/tacche_in_mozart.bmp) | Converte `"tacca"` → `"PitTacCT"` (Mozart, rotazione +90°) |
 
 ---
 
@@ -425,12 +435,16 @@ I comandi in questa sezione semplificano lo spostamento degli oggetti su layer s
 
 **File:** `DEFLINEA.LSP`
 
+Tutti i comandi operano su **oggetti pre-selezionati** (utilizzo di `ssgetfirst` per ottenere la selezione corrente).
+
 | Comando | Icona | Descrizione | Layer | Colore |
 |---------|-------|-------------|-------|--------|
-| `c:ENDCUT` | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | deginisce una linea di taglio rifilo | ENDCUT | 4 (Ciano) |
-| `c:OUTCUT` | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | definisce una linea di taglio esterno | OUTCUT | 1 (Rosso) |
-| `c:INTCUT` | ![INTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/INTCUT.bmp) | Sposta su layer INTCUT (taglio interno) | INTCUT | 5 (Blu) |
-| `c:PENNA` | ![PENNA.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Ripristina oggetti su layer "0", layer di disegno | 0 | BYLAYER |
+| `c:ENDCUT` | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | Sposta oggetti pre-selezionati su layer taglio rifilo. **Tecnica**: Usa `_chprop` per cambiare Layer → ENDCUT e Color → BYLAYER | ENDCUT | 4 (Ciano) |
+| `c:OUTCUT` | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | Sposta oggetti pre-selezionati su layer taglio esterno/perimetro | OUTCUT | 1 (Rosso) |
+| `c:INTCUT` | ![INTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/INTCUT.bmp) | Sposta oggetti pre-selezionati su layer taglio interno (fori, finestre) | INTCUT | 5 (Blu) |
+| `c:PENNA` | ![PENNA.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Ripristina oggetti pre-selezionati su layer "0" (disegno/costruzione) con colore BYLAYER | 0 | BYLAYER |
+
+**Inizializzazione automatica**: I layer ENDCUT, OUTCUT, INTCUT, TAVOLA_DI_STAMPA, TAVOLA_DI_STAMPA_TAGLIO vengono creati automaticamente all'avvio se non esistono, con i colori standard assegnati.
 
 
 ### Gestione Colori Rapida
@@ -647,7 +661,77 @@ Leonardo Pattern Design Software è un sistema completo per il design di pattern
 
 ---
 
-**Tutti i diritti riservati - Leonardo Guasqui**  
-**Versione documento:** Definitiva per GitHub  
-**Versione software:** 3.1.0  
+## NOTE TECNICHE IMPLEMENTATIVE
+
+### Architettura File
+
+**Struttura cartelle wolfang/core/**:
+- `blocchi e testo/` - Gestione testo, blocchi, diciture
+- `disegna/` - Forme geometriche, rettangoli, trapezi, passanti
+- `inserimenti materiale e diciture/` - Dialog DCL per materiale e nome pezzo
+- `modifica/` - Chain selection, cookie cutter, gap detection, quick mirror
+- `plugin/` - AAMA, consumi (NOG), gestione materiali, conversioni
+- `polilinea/` - Join, close, direzione, conversione ellipse/spline
+- `stampa/` - Nesting, sbozzo, tavole di stampa, dime
+- `tacche/` - Inserimento, copia, conversione, riposizionamento tacche
+- `tipolinea/` - Gestione layer (ENDCUT/OUTCUT/INTCUT), offset con tipo linea
+
+### Convenzioni Codifica
+
+**Nomi blocchi standard**:
+- `DATIT` / `PITDATIT` - Blocco nome pezzo (attributo TESTO1)
+- `DATIM` / `PITDATIM` - Blocco materiale (attributi MATERIALE, NPEZZI, TIPOLOGIA)
+- `tacca` - Tacca standard interna
+- `tacca_t` - Tacca tagliata
+- `PitTacCT` - Tacca formato Mozart
+- `PitRTak` - Tacca formato generico
+
+**Layer standard**:
+- Layer `0` - Disegno/costruzione
+- Layer `1` - Output processato AAMA
+- Layer `11` - Tagli interni processati
+- Layer `201`, `202`, `100` - Punti drill (giallo, verde, ciano)
+- Layer `90`, `91` - Proiezione (fucsia), Marcatura (ciano)
+- Layer `ENDCUT` (4-ciano), `OUTCUT` (1-rosso), `INTCUT` (5-blu)
+- Layer `TAVOLA_DI_STAMPA`, `TAVOLA_DI_STAMPA_TAGLIO`
+
+**Prefissi materiali**:
+- `A-` Pelle (rimosso da AAMA)
+- `I-` Infustiture (rimosso da AAMA)
+- `D-` Tele (rimosso da AAMA)
+- `F-` Fodere (rimosso da AAMA)
+- `G-` Accessori
+
+### Algoritmi Chiave
+
+**Orientamento tacche**: Usa `vlax-curve-getfirstderiv` per calcolare tangente alla curva, poi applica rotazione base (0° o 180°)
+
+**Direzione polilinea**: Shoelace formula per calcolare area signed, segno determina rotazione (CW/CCW)
+
+**Bounding box consumi**: Usa rettangolo di delimitazione invece di area reale per calcolo più conservativo
+
+**Chain selection**: Tolleranza 1e-8 per confronto punti floating point
+
+**Cookie cutter offset**: Distanza offset = (diagonal bounding box) / 1500, con divisione ulteriore /12 se unità decimali
+
+### Dipendenze Esterne
+
+**Librerie .dll** (opzionali):
+- `cercafust.dll` - Ricerca fustelle
+- `quadrantearchi.dll` - Gestione quadranti archi
+- `fasciafiancofondo.dll` - Calcolo geometria fascia fianco
+
+**File configurazione**:
+- `C:/Leonardo/license.dat` - Licenza (cifrata)
+- `C:/LEONARDO/Common/Pelle.txt` - Lista materiali pelle
+- `C:/LEONARDO/Common/Nome1.txt`, `Nome2.txt`, `Nome3.txt` - Nomi pezzi
+- `{DWGPREFIX}/nog_config.txt` - Configurazione consumi
+- `{Support}/LMAC_ATC_V1-2.cfg` - Configurazione Align Text to Curve
+
+
+---
+
+**Tutti i diritti riservati - Leonardo Guasqui**
+**Versione documento:** Definitiva per GitHub (con dettagli tecnici implementativi)
+**Versione software:** 3.1.0
 **Data ultima revisione:** 2025
