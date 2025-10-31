@@ -145,7 +145,7 @@ Questa serie di comandi consente di inserire rapidamente testi standard utilizza
 | `c:BOM` | ![BOM.bmp](INSTALLAZIONE/menu/LEONARDO/BOM.bmp) | Inserisce il testo predefinito "BOMBATURA". |
 | `c:RIN` | ![RIN.bmp](INSTALLAZIONE/menu/LEONARDO/RIN.bmp) | Inserisce il testo predefinito "RINFORZO". |
 | `c:BOR` | ![BOR.bmp](INSTALLAZIONE/menu/LEONARDO/BOR.bmp) | Inserisce il testo predefinito "BORDATURA". |
-| `c:VAL` | ![VAL.bmp](INSTALLAZIONE/menu/LEONARLO/VAL.bmp) | Inserisce il testo predefinito "VALIGIAIA". |
+| `c:VAL` | ![VAL.bmp](INSTALLAZIONE/menu/LEONARDO/VAL.bmp) | Inserisce il testo predefinito "VALIGIAIA". |
 | `c:C5` | ![C5.bmp](INSTALLAZIONE/menu/LEONARDO/C5.bmp) | Inserisce il testo predefinito "CUC.ROV. 5MM". |
 | `c:C5P` | ![C5P.bmp](INSTALLAZIONE/menu/LEONARDO/C5P.bmp) | Inserisce il testo predefinito "CUC.ROV. 5MM CON PIPING". |
 | `c:C7` | ![C7.bmp](INSTALLAZIONE/menu/LEONARDO/C7.bmp) | Inserisce il testo predefinito "CUC.ROV. 7MM". |
@@ -209,7 +209,7 @@ I comandi in questa sezione facilitano la creazione di forme geometriche di base
 | `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla di lunghezza perfetta. |
 | `c:TRAPI` | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna un trapezio definendo le basi e l'altezza. |
 | `C:TRAPL` | ![TRAPL.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPL.bmp) | Disegna un trapezio isoscele data la base inferiore, la base superiore e la lunghezza del lato obliquo. |
-| `C:sar` | | Disegna una freccia (Leader) e permette di riposizionarla dinamicamente. |
+| `C:sar` | ![SAR.bmp](INSTALLAZIONE/menu/LEONARDO/SAR.bmp) | Disegna una freccia (Leader) e permette di riposizionarla dinamicamente. |
 | `C:DUERETTANGOLI` | | Disegna due rettangoli collegati calcolando la distanza verticale in base alla *lunghezza della linea obliqua* inserita. |
 | `C:DUERETTANGOLIRAC` | | Come `DUERETTANGOLI`, ma aggiunge raccordi (fillet) personalizzabili ai 4 angoli di connessione. |
 | `C:FASCIAFIANCOMAX` | | Simile a `DUERETTANGOLI`, ma applica raccordi *massimi* (tangenti) solo agli angoli superiori. |
