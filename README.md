@@ -65,7 +65,7 @@ I comandi in questa sezione sono centrali per il processo di preparazione dei pe
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:aama` | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | Processa le sagome AAMA per prepararle al nesting, creando blocchi ottimizzati. Questo comando richiede la selezione di polilinee chiuse e ne estrae i dati (come nome, materiale, quantità, tipologia) dai blocchi DATIM associati. Successivamente, crea un singolo blocco per ogni sagoma, posizionandola in modo da ottimizzare lo spazio futuro. |
+| `c:aama` | ![AAMA.BMP](INSTALLAZIONE/menu/LEONARDO/AAMA.BMP) | Processa le sagome AAMA per prepararle al nesting, creando blocchi ottimizzati. Questo comando richiede la selezione di polilinee chiuse e ne estrae i dati (come nome, materiale, quantità, tipologia) dai blocchi DATIM associati. Successivamente, crea un singolo blocco per ogni sagoma, posizionandola in modo da ottimizzare lo spazio futuro. |
 | `c:aamar` | ![aamar.bmp](INSTALLAZIONE/menu/LEONARDO/aamar.bmp) | Processa le sagome di "RIFILO" applicando un materiale standard. Questo comando è specifico per i pezzi di rifilo. Estrae la geometria e applica automaticamente un materiale standard precedentemente definito. |
 | `c:Modaris-AAMA` | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | Elabora i blocchi Modaris v3.0 e li converte in elaborabili. Questo comando è pensato per integrare i dati provenienti da sistemi CAD Modaris, estraendone le informazioni e preparandole per il flusso AAMA. |
 
@@ -173,7 +173,7 @@ Questa sezione raccoglie i comandi per l'inserimento rapido di blocchi standard 
 | `c:WAR` | ![WAR.bmp](INSTALLAZIONE/menu/LEONARDO/WAR.bmp) | Inserisce un blocco di "ATTENZIONE". |
 | `c:EQ` | ![EQ.bmp](INSTALLAZIONE/menu/LEONARDO/EQ.bmp) | Inserisce un blocco per "EQUALIZZARE". |
 | `c:TABT` | ![TABT.bmp](INSTALLAZIONE/menu/LEONARDO/TABT.bmp) | Inserisce un blocco per la "tabella_testi". |
-| `c:PEL` | ![pelle.bmp](INSTALLAZIONE/menu/LEONARDO/pelle.bmp) | Inserisce un blocco per indicare "PELLE". |
+| `c:PEL` | ![PELLE.BMP](INSTALLAZIONE/menu/LEONARDO/PELLE.BMP) | Inserisce un blocco per indicare "PELLE". |
 | `c:FOD` | ![FOD.BMP](INSTALLAZIONE/menu/LEONARDO/FOD.BMP) | Inserisce un blocco per indicare "fodera". |
 
 ### Blocchi di Numerazione
@@ -186,9 +186,9 @@ Questa sezione raccoglie i comandi per l'inserimento rapido di blocchi standard 
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce un blocco per il numero dell'articolo. |
-| `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce un blocco per indicare lo spessore del materiale, con prefisso "SP.". |
-| `c:LEO_FUST` | ![LEO_FUST.bmp](INSTALLAZIONE/menu/LEONARDO/LEO_FUST.bmp) | Inserisce indicazione dimensione foro. |
+| `c:NUM` | ![NUM_ART.bmp](INSTALLAZIONE/menu/LEONARDO/NUM_ART.bmp) | Inserisce un blocco per il numero dell'articolo. |
+| `c:SPESSORE` | ![SPESSORE.BMP](INSTALLAZIONE/menu/LEONARDO/SPESSORE.BMP) | Inserisce un blocco per indicare lo spessore del materiale, con prefisso "SP.". |
+| `c:LEO_FUST` | ![leo_fust.bmp](INSTALLAZIONE/menu/LEONARDO/leo_fust.bmp) | Inserisce indicazione dimensione foro. |
 
 ---
 
@@ -229,10 +229,10 @@ Questa sezione è dedicata all'inserimento e alla modifica dei dati principali a
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:MAT` | ![materiale.bmp](INSTALLAZIONE/menu/LEONARDO/materiale.bmp) | Apre una finestra di dialogo per inserire il materiale. |
-| `c:NOM` | ![nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/nome_pezzo.bmp) | Apre una finestra di dialogo per comporre il nome del pezzo. |
-| `c:NUM` | ![num_art.bmp](INSTALLAZIONE/menu/LEONARDO/num_art.bmp) | Inserisce il numero dell'articolo. |
-| `c:SPESSORE` | ![spessore.bmp](INSTALLAZIONE/menu/LEONARDO/spessore.bmp) | Inserisce lo spessore del materiale. |
+| `c:MAT` | ![MATERIALE.BMP](INSTALLAZIONE/menu/LEONARDO/MATERIALE.BMP) | Apre una finestra di dialogo per inserire il materiale. |
+| `c:NOM` | ![NOME_PEZZO.BMP](INSTALLAZIONE/menu/LEONARDO/NOME_PEZZO.BMP) | Apre una finestra di dialogo per comporre il nome del pezzo. |
+| `c:NUM` | ![NUM_ART.bmp](INSTALLAZIONE/menu/LEONARDO/NUM_ART.bmp) | Inserisce il numero dell'articolo. |
+| `c:SPESSORE` | ![SPESSORE.BMP](INSTALLAZIONE/menu/LEONARDO/SPESSORE.BMP) | Inserisce lo spessore del materiale. |
 
 ### Modifica Dati
 
@@ -241,10 +241,10 @@ Questa sezione è dedicata all'inserimento e alla modifica dei dati principali a
 | `c:ED-MAT` | ![ed_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_materiale.bmp) | Modifica il materiale, la quantità e la tipologia ( valido per x articoli) di un materiale tramite una finestra di dialogo. |
 | `c:ED-NOM` | ![ed_nome_pezzo.bmp](INSTALLAZIONE/menu/LEONARDO/ed_nome_pezzo.bmp) | Modifica il nome del pezzo tramite una finestra di dialogo. |
 | `c:ED-MATERIALE` | ![ed_numero_materiale.bmp](INSTALLAZIONE/menu/LEONARDO/ed_numero_materiale.bmp) | Modifica rapidamente la quantità e la tipologia di un materiale. |
-| `c:ED-INFUST` | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-infust.bmp) | Aggiunge il prefisso "Infustitura" al nome del pezzo. |
-| `c:ED-FOD` | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-fod.bmp) | Aggiunge il prefisso "Fodera" al nome del pezzo. |
-| `c:ED-RIF` | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-rif.bmp) | Aggiunge il prefisso "Rifilo" al nome del pezzo. |
-| `c:ED-SBOZ` | ![ed-sboz.bmp](INSTALLAZIONE/menu/LEONARDO/ed-sboz.bmp) | Aggiunge il prefisso "Taglio" al nome del pezzo. |
+| `c:ED-INFUST` | ![ed-INFUST.bmp](INSTALLAZIONE/menu/LEONARDO/ed-INFUST.bmp) | Aggiunge il prefisso "Infustitura" al nome del pezzo. |
+| `c:ED-FOD` | ![ed-FOD.bmp](INSTALLAZIONE/menu/LEONARDO/ed-FOD.bmp) | Aggiunge il prefisso "Fodera" al nome del pezzo. |
+| `c:ED-RIF` | ![ed-RIF.bmp](INSTALLAZIONE/menu/LEONARDO/ed-RIF.bmp) | Aggiunge il prefisso "Rifilo" al nome del pezzo. |
+| `c:ED-SBOZ` | ![ed-SBOZ.bmp](INSTALLAZIONE/menu/LEONARDO/ed-SBOZ.bmp) | Aggiunge il prefisso "Taglio" al nome del pezzo. |
 
 ---
 
@@ -255,7 +255,7 @@ I comandi in questa sezione sono specifici per l'elaborazione e l'estrazione di 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
 | `c:CONP` | ![CONP.bmp](INSTALLAZIONE/menu/LEONARDO/CONP.bmp) | Calcola il centroide delle polilinee sul layer "0" e inserisce un punto. |
-| `c:CONP_C` | ![CONP_C.bmp](INSTALLAZIONE/menu/LEONARDO/CONP_C.bmp) | Converte i cerchi sul layer "0" in punti al loro centro. |
+| `c:CONP_C` | ![conp_c.bmp](INSTALLAZIONE/menu/LEONARDO/conp_c.bmp) | Converte i cerchi sul layer "0" in punti al loro centro. |
 | `c:estrai-multipli` | ![estrai-multipli.bmp](INSTALLAZIONE/menu/LEONARDO/estrai-multipli.bmp) | Esegue l'estrazione in batch, inserendo DATIT/DATIM, esplodendo e pulendo gli attributi. |
 | `c:estrai-singolo` | ![estrai-singolo.bmp](INSTALLAZIONE/menu/LEONARDO/estrai-singolo.bmp) | Esegue l'estrazione di un singolo blocco con pulizia completa. |
 
@@ -267,7 +267,7 @@ Questa sezione contiene comandi per operazioni di modifica complesse, come la se
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:CS` | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.bmp) | Esegue una "Chain Selection" per selezionare automaticamente gli oggetti connessi. |
+| `c:CS` | ![cs.BMP](INSTALLAZIONE/menu/LEONARDO/cs.BMP) | Esegue una "Chain Selection" per selezionare automaticamente gli oggetti connessi. |
 | `c:CookieCutter2` | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | selezionata una polilinea taglia e elimina tutto l interno o tutto l esterno |
 | `c:RACCORDA_0` | ![RAGGIO_0.BMP](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Raccorda due entità con un raggio di 0. |
 | `c:SPEZZA_PUNTO` | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Interrompe una linea, polilinea o arco nel punto selezionato. |
@@ -298,7 +298,7 @@ I comandi in questa sezione offrono funzionalità di utilità generale e calcolo
 | `c:NOG-CONFIG` | | Modifica la configurazione generale per il calcolo dei consumi (per categorie di materiale). |
 | `c:NOG-ADDMAT` | | Aggiunge o aggiorna i parametri di un materiale specifico (per nome completo). |
 | `c:sostmat` | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituisce il materiale in batch, mantenendo quantità e tipologia. |
-| `c:mat1` | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zooma sui pezzi in base al materiale selezionato. |
+| `c:mat1` | ![mat1.bmp](INSTALLAZIONE/menu/LEONARDO/mat1.bmp) | Visualizza e zooma sui pezzi in base al materiale selezionato. |
 | `c:mat1-get` | | Seleziona tutti i blocchi con un materiale specifico. |
 | `C:NOGG` | ![nogg.bmp](INSTALLAZIONE/menu/LEONARDO/nogg.bmp) | Versione alternativa di `NOG` che calcola l'area geometrica *reale* della polilinea e applica un offset geometrico. |
 | `C:seleziona-permat` | ![seleziona-permat.bmp](INSTALLAZIONE/menu/LEONARDO/seleziona-permat.bmp) | Seleziona (evidenzia) tutte le sagome associate a un materiale specifico. |
@@ -355,7 +355,7 @@ I comandi in questa sezione sono dedicati alla preparazione dei disegni per la s
 |---------|-------|-------------|
 | `c:SBOZZO` | ![SBOZZO.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO.bmp) | Crea uno sbozzo: cancella le tacche, applica un offset alla polilinea e sposta su OUTCUT. |
 | `c:CopyArray` | ![sbozzomultiplo.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzomultiplo.bmp) | Crea un array rettangolare con sbozzo e un bounding box complessivo. |
-| `c:SBOZZO_BOUND` | ![SBOZZO_BOUND.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO_BOUND.bmp) | Disegna un bounding box rettangolare per le polilinee. |
+| `c:SBOZZO_BOUND` | ![sbozzo_bound.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzo_bound.bmp) | Disegna un bounding box rettangolare per le polilinee. |
 | `c:SBOZZO_RETT` | ![SBOZZO_RETT.BMP](INSTALLAZIONE/menu/LEONARDO/SBOZZO_RETT.BMP) | Crea un bounding box, applica un offset e avvia il processo di NESTING3. |
 
 ### Tavole di Stampa
@@ -458,7 +458,7 @@ I comandi in questa sezione applicano offset con tipi di linea specifici, partic
 
 | Comando | Icona | Descrizione |
 |---------|-------|-------------|
-| `c:oft_2` | ![OF2T.BMP](INSTALLAZIONE/menu/LEONARDO/OF2T.BMP) | Offset 2 unità con tipo linea CUCITURA (scala 0.3) |
+| `c:oft_2` | ![Of2T.BMP](INSTALLAZIONE/menu/LEONARDO/Of2T.BMP) | Offset 2 unità con tipo linea CUCITURA (scala 0.3) |
 | `c:oft_3` | ![OF3T.BMP](INSTALLAZIONE/menu/LEONARDO/OF3T.BMP) | Offset 3 unità con tipo linea CUCITURA |
 | `c:oft_4` | ![OF4T.BMP](INSTALLAZIONE/menu/LEONARDO/OF4T.BMP) | Offset 4 unità con tipo linea CUCITURA |
 | `c:oft_5` | ![OF5T.BMP](INSTALLAZIONE/menu/LEONARDO/OF5T.BMP) | Offset 5 unità con tipo linea CUCITURA |
