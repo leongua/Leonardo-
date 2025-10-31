@@ -105,14 +105,14 @@ I comandi di nesting sono essenziali per posizionare i pezzi in modo efficiente 
 
 ### Utilità AAMA
 
-| Comando | Descrizione |
-|---|---|
-| `C:AAMA_ESTRAI` | Esporta tutti gli oggetti sul layer "1" in un file DXF e poi li cancella dal disegno corrente. |
-| `C:drill1` | Sposta un PUNTO selezionato sul layer 201 (Giallo). |
-| `C:drill2` | Sposta un PUNTO selezionato sul layer 202 (Verde). |
-| `C:drillp` | Sposta un PUNTO selezionato sul layer 100 (Ciano). |
-| `C:marcatura` | Sposta un oggetto selezionato sul layer 91 (Ciano). |
-| `C:proiezione` | Sposta un oggetto selezionato sul layer 90 (Fucsia). |
+| Comando | Icona | Descrizione |
+|---|---|---|
+| `C:AAMA_ESTRAI` | ![aama_estrai.bmp](INSTALLAZIONE/menu/LEONARDO/aama_estrai.bmp) | Esporta tutti gli oggetti sul layer "1" in un file DXF e poi li cancella dal disegno corrente. |
+| `C:drill1` | ![drill1.bmp](INSTALLAZIONE/menu/LEONARDO/drill1.bmp) | Sposta un PUNTO selezionato sul layer 201 (Giallo). |
+| `C:drill2` | ![drill2.bmp](INSTALLAZIONE/menu/LEONARDO/drill2.bmp) | Sposta un PUNTO selezionato sul layer 202 (Verde). |
+| `C:drillp` | ![drillp.bmp](INSTALLAZIONE/menu/LEONARDO/drillp.bmp) | Sposta un PUNTO selezionato sul layer 100 (Ciano). |
+| `C:marcatura` | ![MARCATURA.bmp](INSTALLAZIONE/menu/LEONARDO/MARCATURA.bmp) | Sposta un oggetto selezionato sul layer 91 (Ciano). |
+| `C:proiezione` | ![PROIEZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/PROIEZIONE.bmp) | Sposta un oggetto selezionato sul layer 90 (Fucsia). |
 
 ---
 
@@ -208,14 +208,14 @@ I comandi in questa sezione facilitano la creazione di forme geometriche di base
 | `c:LeoRACRETT` | ![rettangoloraccordato.bmp](INSTALLAZIONE/menu/LEONARDO/rettangoloraccordato.bmp) | Disegna un rettangolo con angoli raccordati. |
 | `c:Passante` | ![Pass.bmp](INSTALLAZIONE/menu/LEONARDO/Pass.bmp) | Calcola e disegna un passante per tracolla di lunghezza perfetta. |
 | `c:TRAPI` | ![TRAPI.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPI.bmp) | Disegna un trapezio definendo le basi e l'altezza. |
-| `C:TRAPL` | | Disegna un trapezio isoscele data la base inferiore, la base superiore e la lunghezza del lato obliquo. |
+| `C:TRAPL` | ![TRAPL.bmp](INSTALLAZIONE/menu/LEONARDO/TRAPL.bmp) | Disegna un trapezio isoscele data la base inferiore, la base superiore e la lunghezza del lato obliquo. |
 | `C:sar` | | Disegna una freccia (Leader) e permette di riposizionarla dinamicamente. |
 | `C:DUERETTANGOLI` | | Disegna due rettangoli collegati calcolando la distanza verticale in base alla *lunghezza della linea obliqua* inserita. |
 | `C:DUERETTANGOLIRAC` | | Come `DUERETTANGOLI`, ma aggiunge raccordi (fillet) personalizzabili ai 4 angoli di connessione. |
 | `C:FASCIAFIANCOMAX` | | Simile a `DUERETTANGOLI`, ma applica raccordi *massimi* (tangenti) solo agli angoli superiori. |
-| `C:FASCIAFIANCOUI` | | È la versione con interfaccia grafica (DCL) di `FASCIAFIANCOMAX`. |
-| `C:DISEGNAFASCIAFIANCO` | | Disegna due rettangoli collegati calcolando la geometria basandosi sulla *lunghezza dell'arco* di connessione. |
-| `C:FASCIAFIANCOextUI` | | È la versione con interfaccia grafica (DCL) di `DISEGNAFASCIAFIANCO`. |
+| `C:FASCIAFIANCOUI` | ![fasciafiancoui.bmp](INSTALLAZIONE/menu/LEONARDO/fasciafiancoui.bmp) | È la versione con interfaccia grafica (DCL) di `FASCIAFIANCOMAX`. |
+| `C:DISEGNAFASCIAFIANCO` | ![disegnafasciafianco.bmp](INSTALLAZIONE/menu/LEONARDO/disegnafasciafianco.bmp) | Disegna due rettangoli collegati calcolando la geometria basandosi sulla *lunghezza dell'arco* di connessione. |
+| `C:FASCIAFIANCOextUI` | ![fasciafiancoextui.bmp](INSTALLAZIONE/menu/LEONARDO/fasciafiancoextui.bmp) | È la versione con interfaccia grafica (DCL) di `DISEGNAFASCIAFIANCO`. |
 
 ---
 
@@ -274,9 +274,9 @@ Questa sezione contiene comandi per operazioni di modifica complesse, come la se
 | `c:splitcir` | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Interrompe un cerchio e lo trasforma in polilinea  |
 | `c:TROVA_GAP` | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Cerca i gap ( misure molto piccole fra le quali due linee non si toccano ma dovrebbero farlo) tra le entità selezionate e disegna un cerchio sul layer "GAP" per una facile individuazione. |
 | `c:QM` | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Esegue uno specchia rapido degli oggetti. |
-| `C:BLOCCO_RAPIDO` | | Crea rapidamente un blocco con un nome casuale dagli oggetti selezionati e lo inserisce. |
-| `C:cbp` | | Cambia il Punto Base di una definizione di blocco senza modificare la posizione degli inserimenti esistenti. |
-| `C:cbpr` | | Cambia il Punto Base di un blocco e Riloca tutti gli inserimenti per mantenere la loro posizione visiva. |
+| `C:BLOCCO_RAPIDO` | ![blocco_rapido.bmp](INSTALLAZIONE/menu/LEONARDO/blocco_rapido.bmp) | Crea rapidamente un blocco con un nome casuale dagli oggetti selezionati e lo inserisce. |
+| `C:cbp` | ![cbp.bmp](INSTALLAZIONE/menu/LEONARDO/cbp.bmp) | Cambia il Punto Base di una definizione di blocco senza modificare la posizione degli inserimenti esistenti. |
+| `C:cbpr` | ![cbpr.bmp](INSTALLAZIONE/menu/LEONARDO/cbpr.bmp) | Cambia il Punto Base di un blocco e Riloca tutti gli inserimenti per mantenere la loro posizione visiva. |
 | `C:pell` | | Alias per `el2pl` (converte Ellissi in Polilinee). |
 | `C:test-multipli` | | Alias per `MA-test`, testa gli attributi dei blocchi Modaris. |
 
@@ -300,10 +300,10 @@ I comandi in questa sezione offrono funzionalità di utilità generale e calcolo
 | `c:sostmat` | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Sostituisce il materiale in batch, mantenendo quantità e tipologia. |
 | `c:mat1` | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Visualizza e zooma sui pezzi in base al materiale selezionato. |
 | `c:mat1-get` | | Seleziona tutti i blocchi con un materiale specifico. |
-| `C:NOGG` | | Versione alternativa di `NOG` che calcola l'area geometrica *reale* della polilinea e applica un offset geometrico. |
-| `C:seleziona-permat` | | Seleziona (evidenzia) tutte le sagome associate a un materiale specifico. |
-| `C:perp2ent` | | Disegna linee perpendicolari da un punto selezionato a un'entità. |
-| `C:inizializza2` | | Carica le librerie `.dll` esterne (cercafust.dll, quadrantearchi.dll, fasciafiancofondo.dll). |
+| `C:NOGG` | ![nogg.bmp](INSTALLAZIONE/menu/LEONARDO/nogg.bmp) | Versione alternativa di `NOG` che calcola l'area geometrica *reale* della polilinea e applica un offset geometrico. |
+| `C:seleziona-permat` | ![seleziona-permat.bmp](INSTALLAZIONE/menu/LEONARDO/seleziona-permat.bmp) | Seleziona (evidenzia) tutte le sagome associate a un materiale specifico. |
+| `C:perp2ent` | ![perp2ent.bmp](INSTALLAZIONE/menu/LEONARDO/perp2ent.bmp) | Disegna linee perpendicolari da un punto selezionato a un'entità. |
+| `C:inizializza2` | ![inizializza.bmp](INSTALLAZIONE/menu/LEONARDO/inizializza.bmp) | Carica le librerie `.dll` esterne (cercafust.dll, quadrantearchi.dll, fasciafiancofondo.dll). |
 
 ![sostmat.png](INSTALLAZIONE/sostmat.png)![mat1.png](INSTALLAZIONE/mat1.png)
 
@@ -324,7 +324,7 @@ Questa sezione raccoglie i comandi per la gestione, l'unione, la conversione e l
 | `c:PC` | ![CHIUDI_TAGLIO.BMP](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Chiude le polilaperte. |
 | `c:PJ` | ![PJ.bmp](INSTALLAZIONE/menu/LEONARDO/PJ.bmp) | Unisce linee, archi e polilinee. |
 | `c:Y` | ![Y.bmp](INSTALLAZIONE/menu/LEONARDO/Y.bmp) | Filtra e congiunge linee e archi in polilinee leggere. |
-| `C:pljoinfuzz` | | Congiunge (Join) polilinee, linee e archi che sono vicini (entro una tolleranza), anche se non si toccano. |
+| `C:pljoinfuzz` | ![JOINFUZZ.BMP](INSTALLAZIONE/menu/LEONARDO/JOINFUZZ.BMP) | Congiunge (Join) polilinee, linee e archi che sono vicini (entro una tolleranza), anche se non si toccano. |
 
 ### Conversione
 
@@ -397,9 +397,9 @@ Questa sezione è interamente dedicata alla gestione delle tacche, inclusi inser
 | `c:METTI_V` | METTI_V.lsp | ![METTI_V.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V.bmp) | Inserisce rientranza a 'V' su polilinea |
 | `C:Dima_tacche_atom` | dima_tacche_atom.lsp | | Crea una dima (offset) e converte i blocchi "tacca" in intagli a V sulla polilinea esterna. |
 | `C:TACCA` | TACCA.lsp | | Comando principale per inserire tacche (a distanze multiple o copiando posizioni). |
-| `C:INSERISCI_BLOCCHI` | inserisci_blocchi_distanza.lsp | | Inserisce un blocco più volte lungo una polilinea a una distanza specifica, orientandolo automaticamente. |
-| `C:METTI_V_AUTO` | METTI_V_AUTO.lsp | | Trova automaticamente tutti i blocchi "tacca" vicini a una polilinea e li sostituisce con intagli a V. |
-| `C:ribalta_tacche` | ribalta_tacche.lsp | | Ruota (ribalta) i blocchi "tacca" selezionati di 180 gradi. |
+| `C:INSERISCI_BLOCCHI` | inserisci_blocchi_distanza.lsp | ![inserisci_blocchi.bmp](INSTALLAZIONE/menu/LEONARDO/inserisci_blocchi.bmp) | Inserisce un blocco più volte lungo una polilinea a una distanza specifica, orientandolo automaticamente. |
+| `C:METTI_V_AUTO` | METTI_V_AUTO.lsp | ![METTI_V_AUTO.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V_AUTO.bmp) | Trova automaticamente tutti i blocchi "tacca" vicini a una polilinea e li sostituisce con intagli a V. |
+| `C:ribalta_tacche` | ribalta_tacche.lsp | ![RIBALTA.BMP](INSTALLAZIONE/menu/LEONARDO/RIBALTA.BMP) | Ruota (ribalta) i blocchi "tacca" selezionati di 180 gradi. |
 
 ### Conversione Tacche
 
