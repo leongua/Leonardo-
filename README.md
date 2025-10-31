@@ -638,7 +638,7 @@ Il menu include riferimenti a comandi specifici ZWCAD:
 
 ## CONCLUSIONI
 
-Leonardo Pattern Design Software è un sistema completo per il design di pattern nel settore calzaturiero e pellettiero, con oltre 160 comandi specializzati, interfacce intuitive e piena compatibilità con i principali software CAD.
+Leonardo Pattern Design Software è un sistema completo per il design di pattern nel settore calzaturiero e pellettiero, con oltre 194 comandi specializzati, interfacce intuitive e piena compatibilità con i principali software CAD.
 
 ### Supporto Tecnico
 
@@ -649,5 +649,5 @@ Leonardo Pattern Design Software è un sistema completo per il design di pattern
 
 **Tutti i diritti riservati - Leonardo Guasqui**  
 **Versione documento:** Definitiva per GitHub  
-**Versione software:** 2.8.0  
+**Versione software:** 3.1.0  
 **Data ultima revisione:** 2025
