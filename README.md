@@ -48,14 +48,7 @@ La gestione della licenza è un aspetto fondamentale del software. Senza una lic
 ### Dettagli Tecnici del Sistema di Licenza
 
 Il sistema di licenza implementa un algoritmo di cifratura avanzato:
-
-- **ID Sistema**: Generato tramite hash delle variabili d'ambiente (`PROCESSOR_IDENTIFIER`, `COMPUTERNAME`, `USERPROFILE`)
-- **Codice Licenza**: Stringa di 10 caratteri utilizzando il charset "gsqlrd491c"
-- **Algoritmo**:
-  - Matrice di trasformazione creata dall'ID macchina
-  - Token base (`gsqlrd491c`) trasformato due volte con matrici diverse
-  - Cifratura finale salvata con shift +7 in `C:/Leonardo/license.dat`
-- **Validazione**: Il codice inserito deve corrispondere esattamente al codice calcolato per l'ID macchina
+Il codice inserito deve corrispondere esattamente al codice calcolato per l'ID macchina
 
 ![licenza.png](INSTALLAZIONE/licenza.png)
 
