@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+   Scheda Pezzi - BB7942 GENERALE
+  </title>
+  <style>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; padding: 20px; }
+    .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+    h1 { color: #1a3a52; border-bottom: 4px solid #0066cc; padding-bottom: 15px; margin-bottom: 30px; font-size: 28px; text-align: center; }
+    #pezzi-container { display: flex; flex-direction: column; gap: 25px; }
+    .pezzo { padding: 20px; border: 2px solid #e0e0e0; border-radius: 8px; background: linear-gradient(to bottom, #ffffff, #f9fafb); page-break-inside: avoid; transition: all 0.3s ease; cursor: grab; position: relative; }
+    .pezzo:hover { box-shadow: 0 8px 25px rgba(0,102,204,0.15); border-color: #0066cc; transform: translateY(-2px); }
+    .pezzo.dragging { opacity: 0.7; box-shadow: 0 15px 35px rgba(0,102,204,0.3); transform: scale(1.02); }
+    .pezzo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .pezzo h2 { color: #0066cc; font-size: 20px; flex-grow: 1; margin: 0; user-select: none; }
+    .pezzo-controls { display: flex; gap: 8px; }
+    .btn-move { padding: 6px 10px; font-size: 12px; border: none; border-radius: 4px; cursor: pointer; color: white; transition: all 0.2s; font-weight: 600; }
+    .btn-move:hover { transform: scale(1.1); }
+    .btn-up { background: #0066cc; }
+    .btn-down { background: #0066cc; }
+    .btn-up:hover { background: #0052a3; }
+    .btn-down:hover { background: #0052a3; }
+    .btn-up:disabled, .btn-down:disabled { opacity: 0.5; cursor: not-allowed; }
+    .immagine-container { display: flex; justify-content: center; margin: 20px 0; }
+    .immagine { width: 420px; height: 210px; background: linear-gradient(135deg, #e0e0e0, #f0f0f0); border: 2px solid #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; overflow: hidden; cursor: zoom-in; position: relative; box-shadow: inset 0 2px 8px rgba(0,0,0,0.1); }
+    .immagine:hover { border-color: #0066cc; box-shadow: inset 0 2px 8px rgba(0,0,0,0.1), 0 0 15px rgba(0,102,204,0.3); }
+    .immagine img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+    .immagine img:hover { transform: scale(1.08); }
+    .zoom-hint { font-size: 11px; color: #0066cc; margin-top: 8px; text-align: center; font-weight: 600; }
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); animation: fadeIn 0.3s; padding: 20px; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal.active { display: flex; align-items: center; justify-content: center; }
+    .modal-content { position: relative; background: white; border-radius: 12px; max-width: 95%; max-height: 95%; overflow: auto; padding: 20px; max-width: 90vw; max-height: 90vh; }
+    .modal-content img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .close-modal { position: absolute; top: 10px; right: 15px; font-size: 32px; font-weight: bold; color: #0066cc; cursor: pointer; background: white; border: none; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    .close-modal:hover { color: #0052a3; background: #f0f0f0; }
+    .zoom-info { text-align: center; color: #666; font-size: 12px; margin-top: 10px; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th { background: linear-gradient(to right, #0066cc, #0052a3); color: white; padding: 12px; text-align: left; font-weight: 600; border-radius: 4px 4px 0 0; }
+    td { padding: 10px; border-bottom: 1px solid #eee; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover { background: #f9f9f9; }
+    input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box; font-size: 14px; transition: all 0.2s; }
+    input:focus { border-color: #0066cc; outline: none; background: #f0f7ff; box-shadow: 0 0 5px rgba(0,102,204,0.3); }
+    .pulsanti { margin-top: 30px; text-align: center; padding-top: 20px; border-top: 2px solid #e0e0e0; }
+    button { padding: 12px 24px; margin: 8px; cursor: pointer; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; transition: all 0.3s; }
+    .btn-stampa { background: linear-gradient(to right, #0066cc, #0052a3); color: white; }
+    .btn-scarica { background: linear-gradient(to right, #28a745, #1e7e34); color: white; }
+    .btn-stampa:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,102,204,0.4); }
+    .btn-scarica:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(40,167,69,0.4); }
+    .drag-hint { text-align: center; color: #999; font-size: 11px; margin-bottom: 5px; }
+    @media print { 
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; border-radius: 0; } 
+      .pulsanti, .pezzo-controls, .zoom-hint, .zoom-info, .drag-hint { display: none; } 
+      .immagine { width: 350px; height: 175px; } 
+      .pezzo { page-break-inside: avoid; }
+    }
+  </style>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <style id="custom-styles">
+   .commento-container { margin-top: 15px; background: #fdfdfd; border: 1px solid #eee; padding: 10px; border-radius: 8px; }
+        .commento-label { font-size: 11px; font-weight: bold; color: #0066cc; margin-bottom: 5px; display: block; }
+        .editor-wrapper { background: white; min-height: 150px; margin-bottom: 10px; }
+        
+        .btn-delete { 
+            background: #ff4d4d; color: white; border: none; border-radius: 50%; 
+            width: 24px; height: 24px; cursor: pointer; font-weight: bold; 
+            margin-left: 10px; transition: transform 0.2s;
+        }
+        .btn-delete:hover { background: #cc0000; transform: scale(1.2); }
+
+        .save-area { 
+            text-align: center; padding: 40px; border-top: 2px solid #0066cc; 
+            margin-top: 50px; background: #f8f9fa; border-radius: 0 0 12px 12px;
+        }
+        .btn-save-final { 
+            color: white; padding: 15px 25px; margin: 5px; cursor: pointer; 
+            border: none; border-radius: 8px; font-size: 14px; font-weight: 700; 
+            transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .firma-container { margin-top: 20px; display: flex; justify-content: space-between; padding: 20px; border: 1px dashed #ccc; }
+        
+        @media print { 
+            .no-print, .ql-toolbar, .pezzo-controls, button { display: none !important; }
+            .ql-container.ql-snow { border: none !important; }
+            .pezzo { break-inside: avoid; border: 1px solid #ccc !important; margin-bottom: 30px !important; }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <h1>
+    Scheda Materiali - BB7942 GENERALE
+   </h1>
+   
+   <div id="pezzi-container">
+    <div class="pezzo" draggable="true" id="pezzo-0">
+     <div class="pezzo-header">
+      <h2>
+       ATT MANIGLIA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="ATT MANIGLIA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\ATT MANIGLIA_1.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-TALIN 07">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>Scarnire in giro e attaccare prima di mettere il dietro sulla ciappa       LATO NON BOMBATO </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-1">
+     <div class="pezzo-header">
+      <h2>
+       RINF. TRACOLLA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="RINF. TRACOLLA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\RINF. TRACOLLA_2.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-ANTISTRAPPO BIADESIVO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      DA POSIZIONARE PRIMA DELLA PELLE DIETRO </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-2">
+     <div class="pezzo-header">
+      <h2>
+       ATT MANIGLIA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="ATT MANIGLIA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\ATT MANIGLIA_3.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,3">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,7">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>DA MONTARE IN <strong>DIMA</strong>, ATTENZIONE A NON DIMENTICARE IL TEXON <strong><u>LATO NON BOMBATO</u></strong>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-3">
+     <div class="pezzo-header">
+      <h2>
+       PASSANTE
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="PASSANTE" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\PASSANTE_4.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SPECIAL 0.6">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>SOPPANNARE A PANINO, PASSANTE CUCITO <strong><u>OK LATTICE</u></strong>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-4">
+     <div class="pezzo-header">
+      <h2>
+       TRACOLLA LUNGA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="TRACOLLA LUNGA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\TRACOLLA LUNGA_5.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SALPA STAMI 7">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-5">
+     <div class="pezzo-header">
+      <h2>
+       TRACOLLA CORTA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="TRACOLLA CORTA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\TRACOLLA CORTA_6.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SALPA STAMI 7">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-6">
+     <div class="pezzo-header">
+      <h2>
+       ATTESTATURA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="ATTESTATURA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\ATTESTATURA_7.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SALPA SU SPIN 0.4">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><ol><li>SOPPANNARE LATO ANTISTRAPPO</li><li>SCARNIRE IN GIRO A NETTO</li></ol></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-7">
+     <div class="pezzo-header">
+      <h2>
+       QUAD. DIETRO .INTERNO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="QUAD. DIETRO .INTERNO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\QUAD. DIETRO .INTERNO_8.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MICRO TERMO 0.5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="F-MYCRO NUBUCK 5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>SOPPANNARE IN PIENO A SPRUZZO
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-8">
+     <div class="pezzo-header">
+      <h2>
+       FONDO .INTERNO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="FONDO .INTERNO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\FONDO .INTERNO_9.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MOHELE TERMO ADES. 07">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="F-MYCRO NUBUCK 5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>SCARNIRE A NETTO LE DUE CUCITURE SUI LATI CORTI
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-9">
+     <div class="pezzo-header">
+      <h2>
+       QUAD. DAVANTI .INTERNO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="QUAD. DAVANTI .INTERNO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\QUAD. DAVANTI .INTERNO_10.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MICRO TERMO 0.5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="F-MYCRO NUBUCK 5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><ol><li>SOPPANNARE</li><li>SCARNIRE CUCITURE ROV A NETTO
+      </li></ol></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-10">
+     <div class="pezzo-header">
+      <h2>
+       Q DAVANTI
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="Q DAVANTI" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\Q DAVANTI_11.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-VELOUR STRETCH 0.5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-11">
+     <div class="pezzo-header">
+      <h2>
+       QUAD. DIETRO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="QUAD. DIETRO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\QUAD. DIETRO_12.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-VELOUR STRETCH 0.5">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><ol><li>SOPPANNARE</li><li>SCARNIRE CUCITURE ROV A NETTO</li></ol><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-12">
+     <div class="pezzo-header">
+      <h2>
+       BUCCINO TRACOLLA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="BUCCINO TRACOLLA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\BUCCINO TRACOLLA_13.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,3">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>CON ANTISTRAPPO BIADESIVO PER TRACOLLA LUNGA E MOSCHETTONE CORTA SOLO PELLE PER TRACOLLA CORTA CENTRALE 
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-13">
+     <div class="pezzo-header">
+      <h2>
+       RIPIENO TRACOLLA CORTA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="RIPIENO TRACOLLA CORTA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\RIPIENO TRACOLLA CORTA_14.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MOHELE 12">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><h2>
+      SCARNIRE CIMA E FONDO </h2></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-14">
+     <div class="pezzo-header">
+      <h2>
+       RIPIENO TRACOLLA LUNGA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="RIPIENO TRACOLLA LUNGA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\RIPIENO TRACOLLA LUNGA_15.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MOHELE 12">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><h2><strong>
+     </strong>SCARNIRE CIMA</h2><p><br></p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-15">
+     <div class="pezzo-header">
+      <h2>
+       TRACOLLA LUNGA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="TRACOLLA LUNGA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\TRACOLLA LUNGA_16.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SPECIAL 0.6">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,7">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-16">
+     <div class="pezzo-header">
+      <h2>
+       TRACOLLA CORTA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="TRACOLLA CORTA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\TRACOLLA CORTA_17.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,6">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-17">
+     <div class="pezzo-header">
+      <h2>
+       ATT MANIGLIA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="ATT MANIGLIA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\ATT MANIGLIA_18.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SALPA SU SPIN 0.4">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-18">
+     <div class="pezzo-header">
+      <h2>
+       RIPIENO ATT MANIGLIA
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="RIPIENO ATT MANIGLIA" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\RIPIENO ATT MANIGLIA_19.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="2">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MOHELE 12">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><p>
+      SCARNIRE CIMA</p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-19">
+     <div class="pezzo-header">
+      <h2>
+       TASCA DIETRO .INTERNO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="TASCA DIETRO .INTERNO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\TASCA DIETRO .INTERNO_20.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-MOHELE TERMO ADES 05">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><ul><li>PIAZZARE PRECISO ALLE TACCHE </li><li>FUSTELLARE TENENDO IL MOHELE COME RIFERIMENTO ( PROVARE A PIEGARE PER CONTROLLO)</li><li>TIMBRO A NETTO
+      </li></ul></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-20">
+     <div class="pezzo-header">
+      <h2>
+       TASCA DIETRO .INTERNO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="TASCA DIETRO .INTERNO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\TASCA DIETRO .INTERNO_21.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,7">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><ul><li>PIAZZARE PRECISO ALLE TACCHE </li><li>FUSTELLARE TENENDO IL MOHELE COME RIFERIMENTO ( PROVARE A PIEGARE PER CONTROLLO)</li><li>TIMBRO A NETTO</li><li>      </li></ul><p>
+      </p></div>
+     </div>
+    </div>
+    <div class="pezzo" draggable="true" id="pezzo-21">
+     <div class="pezzo-header">
+      <h2>
+       FONDO
+      </h2>
+      
+     </div>
+     <div class="immagine-container">
+      <div class="immagine" onclick="zoomImage(this)" style="cursor: zoom-in;">
+       <img alt="FONDO" onerror="this.parentElement.innerHTML='Immagine non trovata'" src="SCHEDA_TEMP_\FONDO_22.png">
+      </div>
+     </div>
+     
+     <table>
+      <tbody><tr>
+       <th>
+        Qta Pezzi
+       </th>
+       <th>
+        Materiale
+       </th>
+       <th>
+        Spessore (mm)
+       </th>
+       <th>
+        VALIDO PER ART.
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-SPECIAL 0.8">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="(non specificato)">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="I-KID">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,8">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="A-.VITELLO">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="0,7">
+       </td>
+       <td>
+        <input onchange="this.value=this.value" type="text" value="1">
+       </td>
+      </tr>
+     </tbody></table>
+     <div class="commento-container">
+      <label class="commento-label">
+       📝 NOTE TECNICHE E FOTO ALLEGATE:
+      </label>
+      <div style="padding: 10px; border: 1px solid rgb(238, 238, 238);"><ul><li>SOPPANNARE PRIMA SPECIAL CONTRO LA PELLE POI IL KID </li></ul></div>
+     </div>
+    </div>
+   </div>
+   
+  </div>
+  <div class="modal" id="zoomModal">
+   <div class="modal-content">
+    
+    <img alt="" id="zoomImage" src="file:///G:/Il%20mio%20Drive/MODELLERIA%202A/DOCUMENTAZIONE%20OPERATIV/BB7942/SCHEDA_TEMP_/ATT%20MANIGLIA_1.png">
+    <div class="zoom-info">
+     Usa la rotella del mouse o i gesti per zoomare | Clicca X per chiudere
+    </div>
+   </div>
+  </div>
+  <script>
+   let draggedElement = null;
+
+    // Zoom immagine
+    function zoomImage(el) {
+      const img = el.querySelector('img');
+      if (img && img.complete) {
+        const modal = document.getElementById('zoomModal');
+        const zoomImg = document.getElementById('zoomImage');
+        zoomImg.src = img.src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeZoom() {
+      document.getElementById('zoomModal').classList.remove('active');
+    }
+
+    document.getElementById('zoomModal').addEventListener('click', function(e) {
+      if (e.target === this) closeZoom();
+    });
+
+    // Drag and drop
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.classList.contains('pezzo')) {
+        draggedElement = e.target;
+        e.target.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+      }
+    });
+
+    document.addEventListener('dragend', function(e) {
+      if (e.target.classList.contains('pezzo')) {
+        e.target.classList.remove('dragging');
+        draggedElement = null;
+      }
+    });
+
+    document.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      const target = e.target.closest('.pezzo');
+      if (target && draggedElement && target !== draggedElement) {
+        const rect = target.getBoundingClientRect();
+        if (e.clientY < rect.top + rect.height / 2) {
+          target.parentNode.insertBefore(draggedElement, target);
+        } else {
+          target.parentNode.insertBefore(draggedElement, target.nextSibling);
+        }
+      }
+    });
+
+    // Bottoni su/giù
+    function moveUp(btn) {
+      const pezzo = btn.closest('.pezzo');
+      const prev = pezzo.previousElementSibling;
+      if (prev) prev.parentNode.insertBefore(pezzo, prev);
+      updateButtonStates();
+    }
+
+    function moveDown(btn) {
+      const pezzo = btn.closest('.pezzo');
+      const next = pezzo.nextElementSibling;
+      if (next) pezzo.parentNode.insertBefore(next, pezzo);
+      updateButtonStates();
+    }
+
+    function updateButtonStates() {
+      const pezzi = document.querySelectorAll('.pezzo');
+      pezzi.forEach((pezzo, idx) => {
+        const btnUp = pezzo.querySelector('.btn-up');
+        const btnDown = pezzo.querySelector('.btn-down');
+        btnUp.disabled = (idx === 0);
+        btnDown.disabled = (idx === pezzi.length - 1);
+      });
+    }
+
+    // Chiudi modal con ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeZoom();
+    });
+
+    // Inizializza
+    window.addEventListener('load', updateButtonStates);
+  </script>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js">
+  </script>
+  <script>
+   const editors = {};
+        
+        // Inizializza Editor
+        document.querySelectorAll('.editor-wrapper').forEach(div => {
+            const id = div.id;
+            const savedContent = div.getAttribute('data-content') || div.innerHTML;
+            div.innerHTML = ''; 
+            
+            editors[id] = new Quill('#' + id, {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ 'header': [1, 2, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'color': [] }, { 'background': [] }],
+                        ['link', 'image'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['clean']
+                    ]
+                }
+            });
+            if (savedContent) editors[id].root.innerHTML = savedContent;
+        });
+
+        function deletePezzo(btn) {
+            if(confirm("Vuoi rimuovere questo pezzo dalla scheda?")) btn.closest('.pezzo').remove();
+        }
+
+        function saveFile(isEditable) {
+            // Sincronizza Input
+            document.querySelectorAll('input').forEach(i => i.setAttribute('value', i.value));
+            
+            const clone = document.documentElement.cloneNode(true);
+            
+            // Gestione Editor nel Clone
+            clone.querySelectorAll('.editor-wrapper').forEach(div => {
+                const id = div.id;
+                const content = editors[id].root.innerHTML;
+                if (isEditable) {
+                    div.setAttribute('data-content', content);
+                    div.innerHTML = ''; 
+                    div.className = 'editor-wrapper';
+                } else {
+                    const display = document.createElement('div');
+                    display.innerHTML = content;
+                    display.style.padding = '10px';
+                    display.style.border = '1px solid #eee';
+                    div.replaceWith(display);
+                }
+            });
+
+            if (!isEditable) {
+                clone.querySelectorAll('.no-print, .pezzo-controls, button, .ql-toolbar, .drag-hint, .zoom-hint').forEach(el => el.remove());
+            } else {
+                clone.querySelectorAll('.ql-toolbar').forEach(el => el.remove());
+            }
+
+            const dataStr = new Date().toISOString().slice(0,10);
+            const blob = new Blob(["<!DOCTYPE html>\n" + clone.outerHTML], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `SCHEDA_BB7942_${isEditable ? 'EDIT' : 'FINAL'}_${dataStr}.html`;
+            a.click();
+        }
+        
+        // Imposta data automatica
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('it-IT');
+  </script>
+ 
+
+</body></html>
