@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Scheda Pezzi - BB7942 GENERALE</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      background: #f0f2f5; 
+      min-height: 100vh; 
+      padding: 10px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    .container { 
+      max-width: 100%; 
+      margin: 0 auto; 
+      background: white; 
+      padding: 15px; 
+      border-radius: 12px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    }
+    
+    h1 { 
+      color: #1a3a52; 
+      border-bottom: 3px solid #0066cc; 
+      padding-bottom: 10px; 
+      margin-bottom: 20px; 
+      font-size: 18px; 
+      text-align: center;
+      word-wrap: break-word;
+    }
+    
+    #pezzi-container { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 15px; 
+    }
+    
+    .pezzo { 
+      padding: 12px; 
+      border: 2px solid #e0e0e0; 
+      border-radius: 10px; 
+      background: #fafafa;
+      page-break-inside: avoid;
+    }
+    
+    .pezzo h2 { 
+      color: #0066cc; 
+      font-size: 16px; 
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .immagine-container { 
+      display: flex; 
+      justify-content: center; 
+      margin: 10px 0; 
+    }
+    
+    .immagine { 
+      width: 100%; 
+      max-width: 350px;
+      height: auto;
+      min-height: 120px;
+      background: #f5f5f5; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    
+    .immagine img { 
+      max-width: 100%; 
+      max-height: 200px; 
+      object-fit: contain;
+    }
+    
+    /* TABELLA RESPONSIVE - CARD LAYOUT SU MOBILE */
+    .materiali-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    
+    .materiale-item {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    
+    .materiale-item .field {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .materiale-item .label {
+      font-size: 10px;
+      color: #666;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .materiale-item .value {
+      font-size: 13px;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .materiale-item .field.full-width {
+      grid-column: 1 / -1;
+    }
+    
+    .commento-container { 
+      margin-top: 10px; 
+      background: #fff9e6; 
+      border: 1px solid #ffd54f; 
+      padding: 10px; 
+      border-radius: 8px; 
+    }
+    
+    .commento-label { 
+      font-size: 11px; 
+      font-weight: bold; 
+      color: #f57c00; 
+      margin-bottom: 6px; 
+      display: block; 
+    }
+    
+    .commento-content {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.5;
+    }
+    
+    .commento-content p { margin: 0; }
+    .commento-content ul, .commento-content ol { 
+      margin: 5px 0 5px 20px; 
+      padding: 0;
+    }
+    .commento-content li { margin: 3px 0; }
+    .commento-content strong { color: #c62828; }
+    .commento-content u { text-decoration: underline; }
+    
+    /* MODAL ZOOM */
+    .modal { 
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0; 
+      top: 0; 
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0,0,0,0.9);
+      padding: 10px;
+    }
+    
+    .modal.active { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    
+    .modal-content { 
+      position: relative; 
+      max-width: 100%; 
+      max-height: 90vh;
+    }
+    
+    .modal-content img { 
+      max-width: 100%; 
+      max-height: 85vh; 
+      object-fit: contain;
+    }
+    
+    .close-modal { 
+      position: fixed; 
+      top: 15px; 
+      right: 15px; 
+      font-size: 36px; 
+      color: white; 
+      cursor: pointer; 
+      background: rgba(0,0,0,0.5);
+      border: none; 
+      width: 50px; 
+      height: 50px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      border-radius: 50%;
+      z-index: 1001;
+    }
+    
+    /* INDICE NAVIGAZIONE */
+    .nav-index {
+      background: #0066cc;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    
+    .nav-index summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .nav-index ul {
+      margin: 10px 0 0 0;
+      padding: 0;
+      list-style: none;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .nav-index li {
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .nav-index a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    
+    /* PULSANTI AZIONI */
+    .actions {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    
+    .btn-action {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .btn-top { background: #0066cc; }
+    .btn-print { background: #28a745; }
+    
+    /* DESKTOP */
+    @media (min-width: 768px) {
+      body { padding: 20px; }
+      .container { max-width: 900px; padding: 30px; }
+      h1 { font-size: 24px; }
+      .pezzo { padding: 20px; }
+      .pezzo h2 { font-size: 20px; }
+      .immagine { max-width: 450px; min-height: 180px; }
+      .immagine img { max-height: 250px; }
+      
+      .materiale-item {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .materiale-item .field.full-width {
+        grid-column: auto;
+      }
+    }
+    
+    /* STAMPA */
+    @media print {
+      body { background: white; padding: 0; font-size: 11px; }
+      .container { box-shadow: none; padding: 10px; }
+      .pezzo { page-break-inside: avoid; border: 1px solid #ccc; margin-bottom: 15px; }
+      .nav-index, .actions, .close-modal { display: none !important; }
+      .immagine { max-width: 300px; }
+      .modal { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Scheda Materiali - BB7942 GENERALE</h1>
+  
+  <details class="nav-index">
+    <summary>📋 Indice Pezzi (22)</summary>
+    <ul>
+      <li><a href="#p0">1. ATT MANIGLIA</a></li>
+      <li><a href="#p1">2. RINF. TRACOLLA</a></li>
+      <li><a href="#p2">3. ATT MANIGLIA (pelle)</a></li>
+      <li><a href="#p3">4. PASSANTE</a></li>
+      <li><a href="#p4">5. TRACOLLA LUNGA</a></li>
+      <li><a href="#p5">6. TRACOLLA CORTA</a></li>
+      <li><a href="#p6">7. ATTESTATURA</a></li>
+      <li><a href="#p7">8. QUAD. DIETRO .INTERNO</a></li>
+      <li><a href="#p8">9. FONDO .INTERNO</a></li>
+      <li><a href="#p9">10. QUAD. DAVANTI .INTERNO</a></li>
+      <li><a href="#p10">11. Q DAVANTI</a></li>
+      <li><a href="#p11">12. QUAD. DIETRO</a></li>
+      <li><a href="#p12">13. BUCCINO TRACOLLA</a></li>
+      <li><a href="#p13">14. RIPIENO TRACOLLA CORTA</a></li>
+      <li><a href="#p14">15. RIPIENO TRACOLLA LUNGA</a></li>
+      <li><a href="#p15">16. TRACOLLA LUNGA (pelle)</a></li>
+      <li><a href="#p16">17. TRACOLLA CORTA (pelle)</a></li>
+      <li><a href="#p17">18. ATT MANIGLIA (salpa)</a></li>
+      <li><a href="#p18">19. RIPIENO ATT MANIGLIA</a></li>
+      <li><a href="#p19">20. TASCA DIETRO .INTERNO (mohele)</a></li>
+      <li><a href="#p20">21. TASCA DIETRO .INTERNO (pelle)</a></li>
+      <li><a href="#p21">22. FONDO</a></li>
+    </ul>
+  </details>
+  
+  <div id="pezzi-container">
+  
+    <!-- PEZZO 1 -->
+    <div class="pezzo" id="p0">
+      <h2>1. ATT MANIGLIA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/ATT MANIGLIA_1.png" alt="ATT MANIGLIA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-TALIN 07</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>Scarnire in giro e attaccare prima di mettere il dietro sulla ciappa <strong>LATO NON BOMBATO</strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 2 -->
+    <div class="pezzo" id="p1">
+      <h2>2. RINF. TRACOLLA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/RINF. TRACOLLA_2.png" alt="RINF. TRACOLLA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-ANTISTRAPPO BIADESIVO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>DA POSIZIONARE PRIMA DELLA PELLE DIETRO</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 3 -->
+    <div class="pezzo" id="p2">
+      <h2>3. ATT MANIGLIA (pelle)</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/ATT MANIGLIA_3.png" alt="ATT MANIGLIA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,3</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,7</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>DA MONTARE IN <strong>DIMA</strong>, ATTENZIONE A NON DIMENTICARE IL TEXON <strong><u>LATO NON BOMBATO</u></strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 4 -->
+    <div class="pezzo" id="p3">
+      <h2>4. PASSANTE</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/PASSANTE_4.png" alt="PASSANTE" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 2</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SPECIAL 0.6</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 2</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>SOPPANNARE A PANINO, PASSANTE CUCITO <strong><u>OK LATTICE</u></strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 5 -->
+    <div class="pezzo" id="p4">
+      <h2>5. TRACOLLA LUNGA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/TRACOLLA LUNGA_5.png" alt="TRACOLLA LUNGA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SALPA STAMI 7</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 6 -->
+    <div class="pezzo" id="p5">
+      <h2>6. TRACOLLA CORTA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/TRACOLLA CORTA_6.png" alt="TRACOLLA CORTA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SALPA STAMI 7</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 7 -->
+    <div class="pezzo" id="p6">
+      <h2>7. ATTESTATURA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/ATTESTATURA_7.png" alt="ATTESTATURA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,5</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SALPA SU SPIN 0.4</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <ol>
+            <li>SOPPANNARE LATO ANTISTRAPPO</li>
+            <li>SCARNIRE IN GIRO A NETTO</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 8 -->
+    <div class="pezzo" id="p7">
+      <h2>8. QUAD. DIETRO .INTERNO</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/QUAD. DIETRO .INTERNO_8.png" alt="QUAD. DIETRO .INTERNO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MICRO TERMO 0.5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">F-MYCRO NUBUCK 5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>SOPPANNARE IN PIENO A SPRUZZO</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 9 -->
+    <div class="pezzo" id="p8">
+      <h2>9. FONDO .INTERNO</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/FONDO .INTERNO_9.png" alt="FONDO .INTERNO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MOHELE TERMO ADES. 07</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">F-MYCRO NUBUCK 5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>SCARNIRE A NETTO LE DUE CUCITURE SUI LATI CORTI</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 10 -->
+    <div class="pezzo" id="p9">
+      <h2>10. QUAD. DAVANTI .INTERNO</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/QUAD. DAVANTI .INTERNO_10.png" alt="QUAD. DAVANTI .INTERNO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MICRO TERMO 0.5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">F-MYCRO NUBUCK 5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <ol>
+            <li>SOPPANNARE</li>
+            <li>SCARNIRE CUCITURE ROV A NETTO</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 11 -->
+    <div class="pezzo" id="p10">
+      <h2>11. Q DAVANTI</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/Q DAVANTI_11.png" alt="Q DAVANTI" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-VELOUR STRETCH 0.5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 12 -->
+    <div class="pezzo" id="p11">
+      <h2>12. QUAD. DIETRO</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/QUAD. DIETRO_12.png" alt="QUAD. DIETRO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-VELOUR STRETCH 0.5</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <ol>
+            <li>SOPPANNARE</li>
+            <li>SCARNIRE CUCITURE ROV A NETTO</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 13 -->
+    <div class="pezzo" id="p12">
+      <h2>13. BUCCINO TRACOLLA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/BUCCINO TRACOLLA_13.png" alt="BUCCINO TRACOLLA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,3</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>CON ANTISTRAPPO BIADESIVO PER TRACOLLA LUNGA E MOSCHETTONE CORTA SOLO PELLE PER TRACOLLA CORTA CENTRALE</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 14 -->
+    <div class="pezzo" id="p13">
+      <h2>14. RIPIENO TRACOLLA CORTA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/RIPIENO TRACOLLA CORTA_14.png" alt="RIPIENO TRACOLLA CORTA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MOHELE 12</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p><strong>SCARNIRE CIMA E FONDO</strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 15 -->
+    <div class="pezzo" id="p14">
+      <h2>15. RIPIENO TRACOLLA LUNGA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/RIPIENO TRACOLLA LUNGA_15.png" alt="RIPIENO TRACOLLA LUNGA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MOHELE 12</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p><strong>SCARNIRE CIMA</strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 16 -->
+    <div class="pezzo" id="p15">
+      <h2>16. TRACOLLA LUNGA (pelle)</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/TRACOLLA LUNGA_16.png" alt="TRACOLLA LUNGA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SPECIAL 0.6</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,7</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 17 -->
+    <div class="pezzo" id="p16">
+      <h2>17. TRACOLLA CORTA (pelle)</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/TRACOLLA CORTA_17.png" alt="TRACOLLA CORTA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,6</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 18 -->
+    <div class="pezzo" id="p17">
+      <h2>18. ATT MANIGLIA (salpa)</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/ATT MANIGLIA_18.png" alt="ATT MANIGLIA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SALPA SU SPIN 0.4</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 19 -->
+    <div class="pezzo" id="p18">
+      <h2>19. RIPIENO ATT MANIGLIA</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/RIPIENO ATT MANIGLIA_19.png" alt="RIPIENO ATT MANIGLIA" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">2</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MOHELE 12</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <p>SCARNIRE CIMA</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 20 -->
+    <div class="pezzo" id="p19">
+      <h2>20. TASCA DIETRO .INTERNO (mohele)</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/TASCA DIETRO .INTERNO_20.png" alt="TASCA DIETRO .INTERNO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-MOHELE TERMO ADES 05</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <ul>
+            <li>PIAZZARE PRECISO ALLE TACCHE</li>
+            <li>FUSTELLARE TENENDO IL MOHELE COME RIFERIMENTO (PROVARE A PIEGARE PER CONTROLLO)</li>
+            <li>TIMBRO A NETTO</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 21 -->
+    <div class="pezzo" id="p20">
+      <h2>21. TASCA DIETRO .INTERNO (pelle)</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/TASCA DIETRO .INTERNO_21.png" alt="TASCA DIETRO .INTERNO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,7</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <ul>
+            <li>PIAZZARE PRECISO ALLE TACCHE</li>
+            <li>FUSTELLARE TENENDO IL MOHELE COME RIFERIMENTO (PROVARE A PIEGARE PER CONTROLLO)</li>
+            <li>TIMBRO A NETTO</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PEZZO 22 -->
+    <div class="pezzo" id="p21">
+      <h2>22. FONDO</h2>
+      <div class="immagine-container">
+        <div class="immagine" onclick="zoomImage(this)">
+          <img src="SCHEDA_TEMP_/FONDO_22.png" alt="FONDO" onerror="this.parentElement.innerHTML='[Immagine]'">
+        </div>
+      </div>
+      <div class="materiali-list">
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-SPECIAL 0.8</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">-</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">I-KID</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,8</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+        <div class="materiale-item">
+          <div class="field"><span class="label">Qta</span><span class="value">1</span></div>
+          <div class="field"><span class="label">Materiale</span><span class="value">A-.VITELLO</span></div>
+          <div class="field"><span class="label">Spessore</span><span class="value">0,7</span></div>
+          <div class="field"><span class="label">Valido per</span><span class="value">Art. 1</span></div>
+        </div>
+      </div>
+      <div class="commento-container">
+        <span class="commento-label">📝 NOTE:</span>
+        <div class="commento-content">
+          <ul>
+            <li>SOPPANNARE PRIMA SPECIAL CONTRO LA PELLE POI IL KID</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- MODAL ZOOM -->
+<div class="modal" id="zoomModal">
+  <button class="close-modal" onclick="closeZoom()">×</button>
+  <div class="modal-content">
+    <img id="zoomImage" src="" alt="">
+  </div>
+</div>
+
+<!-- PULSANTI FISSI -->
+<div class="actions">
+  <button class="btn-action btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="btn-action btn-print" onclick="window.print()">🖨</button>
+</div>
+
+<script>
+function zoomImage(el) {
+  const img = el.querySelector('img');
+  if (img && img.src) {
+    document.getElementById('zoomImage').src = img.src;
+    document.getElementById('zoomModal').classList.add('active');
+  }
+}
+
+function closeZoom() {
+  document.getElementById('zoomModal').classList.remove('active');
+}
+
+document.getElementById('zoomModal').addEventListener('click', function(e) {
+  if (e.target === this) closeZoom();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeZoom();
+});
+</script>
+
+</body>
+</html>
