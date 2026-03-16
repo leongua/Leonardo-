@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Leonardo Guasqui — Software su misura, AI, CAD automation, IoT. Sviluppatore freelance in Toscana.">
+<title>Leonardo Guasqui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --bg-1: #0d0d0d;
+  --bg-2: #111;
+  --border: rgba(255,255,255,0.06);
+  --border-dim: rgba(255,255,255,0.03);
+  --accent: #c4aa7c;
+  --accent-dim: rgba(196,170,124,0.1);
+  --text: #e4ddd4;
+  --text-2: #888;
+  --text-3: #444;
+  --text-4: #252525;
+  --mono: 'DM Mono', monospace;
+  --sans: 'Syne', sans-serif;
+  --r: 8px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+/* ── PRELOADER ── */
+#preloader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.pre-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em;
+  color: var(--text-3); text-transform: uppercase;
+  animation: preP 1.6s ease-in-out infinite;
+}
+.pre-bar { width: 100px; height: 1px; background: var(--bg-2); position: relative; overflow: hidden; }
+.pre-bar::after {
+  content: ''; position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--accent); width: 0;
+  animation: preB 1.2s var(--ease) 0.4s forwards;
+}
+@keyframes preB { to { width: 100%; } }
+@keyframes preP { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+/* ── NOISE ── */
+.noise {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* ── CURSOR ── */
+.cur-dot {
+  position: fixed; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%); transition: opacity 0.2s; will-change: left,top;
+}
+.cur-ring {
+  position: fixed; width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid rgba(196,170,124,0.22); pointer-events: none; z-index: 9997;
+  transform: translate(-50%,-50%); transition: transform 0.25s var(--ease), border-color 0.2s;
+  will-change: left,top;
+}
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 98;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4rem;
+  opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: var(--sans); font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700;
+  color: var(--text-3); text-decoration: none; cursor: pointer;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+
+/* ── NAV ── */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.3rem 3rem;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s, background 0.35s, backdrop-filter 0.35s;
+}
+nav.scrolled {
+  border-color: var(--border);
+  background: rgba(8,8,8,0.82);
+  backdrop-filter: blur(24px);
+}
+.nav-logo { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  font-family: var(--mono); font-size: 10px; color: var(--text-3);
+  text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s; cursor: pointer; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: -3px;
+  width: 0; height: 1px; background: var(--accent); transition: width 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--accent); }
+
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-2); transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 9rem 3rem 5rem; position: relative; overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, black 30%, transparent 100%);
+}
+.hero-orb {
+  position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.09;
+}
+.hero-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #c4aa7c, transparent 70%);
+  top: -150px; right: -120px;
+  animation: orbFloat 10s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #7c5cbf, transparent 70%);
+  bottom: -50px; left: -80px;
+  animation: orbFloat 14s ease-in-out infinite reverse;
+}
+@keyframes orbFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(25px,-25px)} }
+
+.hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
+
+.avail-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; color: var(--text-2);
+  border: 1px solid var(--border); padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 2.5rem; letter-spacing: 0.06em;
+  backdrop-filter: blur(8px);
+}
+.avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: blink 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero h1 {
+  font-size: clamp(3rem, 6.5vw, 5.8rem);
+  font-weight: 800; line-height: 1.04; letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+}
+.hero h1 .line { overflow: hidden; display: block; }
+.hero h1 .line-inner {
+  display: block; transform: translateY(108%);
+  transition: transform 0.9s var(--ease);
+}
+.hero h1 .line-inner.up { transform: translateY(0); }
+.accent { color: var(--accent); }
+
+.hero-sub {
+  font-family: var(--mono); font-size: 13px; color: var(--text-3);
+  line-height: 1.85; max-width: 480px; margin-bottom: 3rem;
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.7s ease 0.75s, transform 0.7s ease 0.75s;
+}
+.hero-sub.up { opacity: 1; transform: translateY(0); }
+
+.hero-ctas {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.7s ease 0.95s, transform 0.7s ease 0.95s;
+}
+.hero-ctas.up { opacity: 1; transform: translateY(0); }
+
+.btn-primary {
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  padding: 13px 30px; background: var(--accent); color: #080808;
+  border: none; border-radius: var(--r); cursor: pointer; letter-spacing: 0.04em;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: #d4ba8c; box-shadow: 0 0 28px rgba(196,170,124,0.28); transform: translateY(-2px); }
+.btn-secondary {
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  padding: 13px 30px; background: transparent; color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--r); cursor: pointer; letter-spacing: 0.04em;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.btn-secondary:hover { border-color: var(--text-2); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  overflow: hidden; padding: 1.1rem 0; background: var(--bg-1);
+}
+.marquee-track {
+  display: flex; gap: 3rem;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap; width: max-content;
+}
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+.m-item {
+  font-family: var(--mono); font-size: 10px; color: var(--text-4);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 3rem;
+}
+.m-item::after { content: '·'; color: var(--accent); font-size: 14px; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── STATS ── */
+.stats-section {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat-item {
+  background: var(--bg); padding: 2.5rem 3rem;
+  transition: background 0.3s; position: relative; overflow: hidden;
+}
+.stat-item::before {
+  content: ''; position: absolute; left: 0; top: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.stat-item:hover { background: var(--bg-1); }
+.stat-item:hover::before { opacity: 0.6; }
+.stat-num {
+  font-size: 2.8rem; font-weight: 800; letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text) 30%, var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-family: var(--mono); font-size: 10px; color: var(--text-4); margin-top: 6px; letter-spacing: 0.08em; }
+
+/* ── SECTION COMMON ── */
+.sec-wrap { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
+.sec-head {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 3.5rem; padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.sec-num { font-family: var(--mono); font-size: 11px; color: var(--text-4); letter-spacing: 0.12em; }
+.sec-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
+}
+.svc {
+  background: var(--bg); padding: 2.2rem;
+  transition: background 0.3s; position: relative;
+}
+.svc::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity 0.35s;
+}
+.svc:hover { background: var(--bg-1); }
+.svc:hover::before { opacity: 1; }
+.svc-letter { font-family: var(--mono); font-size: 10px; color: var(--text-4); margin-bottom: 1rem; letter-spacing: 0.1em; }
+.svc-icon {
+  width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;
+  transition: border-color 0.3s;
+}
+.svc:hover .svc-icon { border-color: rgba(196,170,124,0.3); }
+.svc-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.svc-name { font-size: 14px; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.3; }
+.svc-desc { font-family: var(--mono); font-size: 11px; color: var(--text-3); line-height: 1.75; }
+
+/* ── PROJECTS ── */
+.proj-wrap { background: var(--bg-1); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.proj-inner { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
+.proj-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
+}
+.pc {
+  background: var(--bg-1); padding: 2rem;
+  display: flex; flex-direction: column; gap: 0.9rem;
+  transition: background 0.3s; position: relative;
+}
+.pc:hover { background: var(--bg-2); }
+.pc-num { font-family: var(--mono); font-size: 10px; color: var(--text-4); letter-spacing: 0.08em; }
+.pt {
+  display: inline-block; font-family: var(--mono); font-size: 9px;
+  padding: 3px 9px; border-radius: 3px; letter-spacing: 0.08em; text-transform: uppercase; width: fit-content;
+}
+.t-cad { background: #0e0900; color: #c4aa7c; border: 1px solid #1e1400; }
+.t-sw  { background: #000d16; color: #6ab0d0; border: 1px solid #001f30; }
+.t-ai  { background: #0d0015; color: #aa80e0; border: 1px solid #250040; }
+.t-hw  { background: #001509; color: #50b870; border: 1px solid #002a10; }
+.t-art { background: #16000d; color: #e080a0; border: 1px solid #35001c; }
+.pc-title { font-size: 1rem; font-weight: 700; line-height: 1.35; }
+.pc-desc { font-family: var(--mono); font-size: 11px; color: var(--text-3); line-height: 1.75; flex: 1; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill {
+  font-family: var(--mono); font-size: 9px; padding: 2px 8px;
+  border: 1px solid var(--border); border-radius: 12px; color: var(--text-4);
+  transition: border-color 0.2s, color 0.2s;
+}
+.pc:hover .pill { border-color: rgba(255,255,255,0.09); color: var(--text-3); }
+
+/* ── TIMELINE ── */
+.tl-wrap { background: #06060e; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.tl-inner { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(124,92,191,0.35) 25%, rgba(196,170,124,0.35) 75%, transparent);
+}
+.tl-item { position: relative; padding-bottom: 3rem; padding-left: 2rem; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -2.75rem; top: 4px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #1a1a2a; border: 1px solid #333;
+}
+.tl-dot.purple { background: #7c5cbf; border-color: #7c5cbf; box-shadow: 0 0 14px rgba(124,92,191,0.45); }
+.tl-dot.gold   { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 14px rgba(196,170,124,0.45); }
+.tl-dot.green  { background: #4ade80; border-color: #4ade80; box-shadow: 0 0 14px rgba(74,222,128,0.45); }
+.tl-year { font-family: var(--mono); font-size: 10px; color: var(--text-4); letter-spacing: 0.1em; margin-bottom: 6px; }
+.tl-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.tl-desc { font-family: var(--mono); font-size: 11px; color: var(--text-3); line-height: 1.75; }
+.tl-badge { display: inline-block; font-family: var(--mono); font-size: 9px; padding: 2px 8px; border-radius: 3px; margin-top: 8px; letter-spacing: 0.06em; }
+.b-origin { background: #0d0015; color: #7c5cbf; border: 1px solid #250040; }
+.b-pro    { background: #0e0900; color: #c4aa7c; border: 1px solid #1e1400; }
+.b-now    { background: #001509; color: #4ade80; border: 1px solid #002a10; }
+
+/* ── TARGET ── */
+.target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.tc {
+  border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem;
+  position: relative; overflow: hidden; transition: border-color 0.35s, background 0.35s;
+}
+.tc::before {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  background: radial-gradient(ellipse at 30% 0%, var(--accent-dim), transparent 70%);
+  transition: opacity 0.5s;
+}
+.tc.featured { border-color: rgba(196,170,124,0.2); }
+.tc.featured::before { opacity: 0.7; }
+.tc:hover::before { opacity: 1; }
+.tc-badge {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 7px;
+}
+.tc-badge::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.tc h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.9rem; }
+.tc p { font-family: var(--mono); font-size: 11px; color: var(--text-3); line-height: 1.75; margin-bottom: 1.5rem; }
+.tc-list { display: flex; flex-direction: column; gap: 7px; }
+.tc-item { font-family: var(--mono); font-size: 10px; color: var(--text-2); padding-left: 14px; position: relative; line-height: 1.5; }
+.tc-item::before { content: '–'; position: absolute; left: 0; color: var(--text-3); }
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: var(--accent); padding: 5rem 3rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-strip::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.12), transparent 70%);
+}
+.cta-strip h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; color: #080808; letter-spacing: -0.03em; margin-bottom: 0.6rem; position: relative; }
+.cta-strip p { font-family: var(--mono); font-size: 12px; color: rgba(8,8,8,0.5); margin-bottom: 2.5rem; position: relative; }
+.cta-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+.cb { font-family: var(--sans); font-size: 13px; font-weight: 600; padding: 13px 28px; background: #080808; color: var(--accent); border: none; border-radius: var(--r); cursor: pointer; letter-spacing: 0.04em; transition: background 0.2s, transform 0.2s; }
+.cb:hover { background: #181818; transform: translateY(-2px); }
+.cb.out { background: transparent; color: #080808; border: 1.5px solid #080808; }
+.cb.out:hover { background: rgba(0,0,0,0.08); }
+
+/* ── FOOTER ── */
+footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.stagger .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger .reveal:nth-child(2) { transition-delay: 0.07s; }
+.stagger .reveal:nth-child(3) { transition-delay: 0.14s; }
+.stagger .reveal:nth-child(4) { transition-delay: 0.21s; }
+.stagger .reveal:nth-child(5) { transition-delay: 0.28s; }
+.stagger .reveal:nth-child(6) { transition-delay: 0.35s; }
+.stagger .reveal:nth-child(7) { transition-delay: 0.42s; }
+.stagger .reveal:nth-child(8) { transition-delay: 0.49s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .stats-section { grid-template-columns: repeat(2,1fr); }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .proj-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .sec-wrap, .proj-inner, .tl-inner { padding: 4rem 1.5rem; }
+  .services-grid, .proj-grid { grid-template-columns: 1fr; }
+  .target-grid { grid-template-columns: 1fr; }
+  .stats-section { grid-template-columns: repeat(2,1fr); }
+  .stat-item { padding: 1.8rem 1.5rem; }
+  .cta-strip { padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .cur-dot, .cur-ring { display: none; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(2.4rem, 8vw, 3rem); }
+  .sec-title { font-size: 1.3rem; }
+  .stat-num { font-size: 2.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pre-label">Leonardo Guasqui</div>
+  <div class="pre-bar"></div>
+</div>
+
+<!-- NOISE -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- CURSOR -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="go('cosa')">Cosa faccio</a>
+  <a onclick="go('progetti')">Progetti</a>
+  <a onclick="go('storia')">Storia</a>
+  <a onclick="go('perchi')">Per chi</a>
+  <a onclick="go('contatti')">Contatti</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">Leonardo Guasqui</div>
+  <div class="nav-links">
+    <a onclick="go('cosa')">Cosa faccio</a>
+    <a onclick="go('progetti')">Progetti</a>
+    <a onclick="go('storia')">Storia</a>
+    <a onclick="go('perchi')">Per chi</a>
+    <a onclick="go('contatti')">Contatti</a>
+  </div>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="avail-badge">
+      <div class="avail-dot"></div>
+      Disponibile per nuovi progetti
+    </div>
+    <h1>
+      <span class="line"><span class="line-inner">Risolvo problemi</span></span>
+      <span class="line"><span class="line-inner">reali con il <span class="accent">software</span></span></span>
+      <span class="line"><span class="line-inner">giusto.</span></span>
+    </h1>
+    <p class="hero-sub">
+      Sviluppo software su misura per aziende e privati.<br>
+      Automazione, intelligenza artificiale, hardware programmabile, CAD.<br>
+      Ho iniziato a smontare computer a 11 anni. Non ho mai smesso.
+    </p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="go('perchi')">Lavora con me</button>
+      <button class="btn-secondary" onclick="go('progetti')">Vedi i progetti</button>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="mtrack">
+    <div class="m-item">Python</div><div class="m-item">VB.NET</div><div class="m-item">AutoLISP</div>
+    <div class="m-item">Arduino</div><div class="m-item">ESP32</div><div class="m-item">RAG / LLM</div>
+    <div class="m-item">ZWCAD</div><div class="m-item">Raspberry Pi</div><div class="m-item">Klipper</div>
+    <div class="m-item">C / C++</div><div class="m-item">Machine Learning</div><div class="m-item">CAD Automation</div>
+    <div class="m-item">IoT</div><div class="m-item">Excel / CSV</div>
+    <!-- duplicate for seamless loop -->
+    <div class="m-item">Python</div><div class="m-item">VB.NET</div><div class="m-item">AutoLISP</div>
+    <div class="m-item">Arduino</div><div class="m-item">ESP32</div><div class="m-item">RAG / LLM</div>
+    <div class="m-item">ZWCAD</div><div class="m-item">Raspberry Pi</div><div class="m-item">Klipper</div>
+    <div class="m-item">C / C++</div><div class="m-item">Machine Learning</div><div class="m-item">CAD Automation</div>
+    <div class="m-item">IoT</div><div class="m-item">Excel / CSV</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="20" data-suffix="+">0</div>
+    <div class="stat-label">anni di informatica</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.1s">
+    <div class="stat-num" data-target="6" data-suffix="+">0</div>
+    <div class="stat-label">anni professionali</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.2s">
+    <div class="stat-num" data-target="240" data-suffix="+">0</div>
+    <div class="stat-label">automazioni CAD</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:.3s">
+    <div class="stat-num" data-target="100" data-suffix="%">0</div>
+    <div class="stat-label">autodidatta</div>
+  </div>
+</div>
+
+<!-- COSA SO FARE -->
+<div id="cosa">
+  <div class="sec-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Cosa so fare</span>
+    </div>
+    <div class="services-grid stagger">
+      <div class="svc reveal">
+        <div class="svc-letter">A</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div class="svc-name">Software su misura</div>
+        <div class="svc-desc">Applicazioni desktop, tool gestionali, automazioni. Costruisco esattamente quello che serve, senza sprechi.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-letter">B</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+        <div class="svc-name">Intelligenza Artificiale</div>
+        <div class="svc-desc">Classificazione documenti, chatbot su archivi aziendali, automazione dei processi ripetitivi. Tutto in locale se serve.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-letter">C</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
+        <div class="svc-name">CAD &amp; Progettazione</div>
+        <div class="svc-desc">Automazioni per ZWCAD e AutoCAD, patronistica digitale, integrazione con macchine industriali da taglio.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-letter">D</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+        <div class="svc-name">Hardware &amp; IoT</div>
+        <div class="svc-desc">Dispositivi programmabili, sensori, reti wireless, domotica. Conosco l'hardware da dentro, non solo da fuori.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-letter">E</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="svc-name">Web &amp; Presenza online</div>
+        <div class="svc-desc">Siti web, portfolio, landing page. Anche per chi non sa da dove cominciare.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-letter">F</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="svc-name">Automazione &amp; Flussi</div>
+        <div class="svc-desc">Eliminare il lavoro manuale ripetitivo: report automatici, elaborazione dati, notifiche, integrazioni tra sistemi.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGETTI -->
+<div class="proj-wrap" id="progetti">
+  <div class="proj-inner">
+    <div class="sec-head reveal">
+      <span class="sec-num" style="color:#2a2a2a">02</span>
+      <span class="sec-title">Progetti</span>
+    </div>
+    <div class="proj-grid stagger">
+      <div class="pc reveal">
+        <div class="pc-num">001</div>
+        <span class="pt t-cad">CAD</span>
+        <div class="pc-title">Sistema di patronistica digitale</div>
+        <div class="pc-desc">Software completo per la creazione e gestione di pattern per pelletteria. Automatizza operazioni che prima richiedevano ore, integrato nel flusso produttivo aziendale.</div>
+        <div class="pills"><span class="pill">AutoLISP</span><span class="pill">ZWCAD</span><span class="pill">VB.NET</span><span class="pill">Macchine da taglio</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">002</div>
+        <span class="pt t-ai">AI</span>
+        <div class="pc-title">Organizzatore email con AI</div>
+        <div class="pc-desc">Applicazione desktop che legge la posta in arrivo e la smista automaticamente nelle cartelle giuste, imparando dal tipo di contenuto.</div>
+        <div class="pills"><span class="pill">VB.NET</span><span class="pill">AI classificazione</span><span class="pill">Outlook</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">003</div>
+        <span class="pt t-ai">AI</span>
+        <div class="pc-title">Assistente AI su documenti aziendali</div>
+        <div class="pc-desc">Sistema per fare domande in linguaggio naturale su archivi interni — DDT, specifiche tecniche, cataloghi. Tutto gira in locale, nessun dato esce dall'azienda.</div>
+        <div class="pills"><span class="pill">RAG</span><span class="pill">LLM locale</span><span class="pill">Python</span><span class="pill">Privacy totale</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">004</div>
+        <span class="pt t-sw">Software</span>
+        <div class="pc-title">Tool di ricerca geometrica su archivi CAD</div>
+        <div class="pc-desc">Strumento che scansiona archivi di disegni tecnici e trova automaticamente le sagome corrispondenti a un modello dato. Ore di ricerca manuale ridotte a pochi secondi.</div>
+        <div class="pills"><span class="pill">VB.NET</span><span class="pill">Geometria computazionale</span><span class="pill">ZWCAD</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">005</div>
+        <span class="pt t-hw">Hardware</span>
+        <div class="pc-title">Dispositivi IoT e microcontrollori</div>
+        <div class="pc-desc">Progettazione e programmazione di dispositivi ESP32/ESP8266 e Arduino: telemetria, sensori wireless, ripetitori WiFi custom, sistemi di monitoraggio.</div>
+        <div class="pills"><span class="pill">ESP32</span><span class="pill">Arduino</span><span class="pill">C/C++</span><span class="pill">WiFi</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">006</div>
+        <span class="pt t-sw">Automazione</span>
+        <div class="pc-title">Calcolatori e report automatici</div>
+        <div class="pc-desc">Strumenti per calcolare consumi di materiale, generare report di produzione, elaborare dati da file Excel e CSV. Automatico, esportabile, pronto all'uso.</div>
+        <div class="pills"><span class="pill">Python</span><span class="pill">VB.NET</span><span class="pill">Excel</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">007</div>
+        <span class="pt t-art">Arte generativa</span>
+        <div class="pc-title">Plotter art generativa</div>
+        <div class="pc-desc">Generazione algoritmica di composizioni visive per plotter a penna. Superfici tridimensionali rese come linee di contorno dense, pronte per la stampa fisica.</div>
+        <div class="pills"><span class="pill">Python</span><span class="pill">Algoritmi generativi</span><span class="pill">DXF</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">008</div>
+        <span class="pt t-hw">Hardware</span>
+        <div class="pc-title">Stampante 3D con firmware custom</div>
+        <div class="pc-desc">Configurazione avanzata Klipper con calibrazione automatica, macro personalizzate, ottimizzazione velocità. Processo documentato e replicabile.</div>
+        <div class="pills"><span class="pill">Klipper</span><span class="pill">Raspberry Pi</span><span class="pill">3D Print</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORIA -->
+<div class="tl-wrap" id="storia">
+  <div class="tl-inner">
+    <div class="sec-head reveal" style="border-bottom-color:rgba(255,255,255,0.04)">
+      <span class="sec-num" style="color:#2a2a3a">03</span>
+      <span class="sec-title" style="color:#e0d8f0">Come ci sono arrivato</span>
+    </div>
+    <div class="timeline stagger">
+      <div class="tl-item reveal">
+        <div class="tl-dot purple"></div>
+        <div class="tl-year">2004 — 2006 · Prima media</div>
+        <div class="tl-title">Forum di hacking italiani</div>
+        <div class="tl-desc">Primi contatti con il mondo dell'informatica underground: community italiane su ForumFree, leet speak, curiosità per come funzionano davvero i sistemi. Non per fare danni — per capire come tutto era costruito.</div>
+        <span class="tl-badge b-origin">Origine</span>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot purple"></div>
+        <div class="tl-year">2006 — 2009 · Scuola media / Primo superiore</div>
+        <div class="tl-title">Autodidatta su Visual Basic e assembly</div>
+        <div class="tl-desc">Dai forum alle prime righe di codice vero. Visual Basic 6, poi VB.NET, poi curiosità per tutto il resto: reti, protocolli, come si costruisce un programma che fa davvero qualcosa di utile.</div>
+        <span class="tl-badge b-origin">Formazione</span>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot purple"></div>
+        <div class="tl-year">2009 — 2012 · Liceo</div>
+        <div class="tl-title">Elettronica, microcontrollori, primi progetti hardware</div>
+        <div class="tl-desc">Arduino, elettronica analogica, programmazione embedded. La curiosità si trasforma in competenza pratica: costruire cose fisiche che rispondono al codice.</div>
+        <span class="tl-badge b-origin">Formazione</span>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot gold"></div>
+        <div class="tl-year">2017 — oggi · Professionale</div>
+        <div class="tl-title">Sviluppo software industriale per pelletteria di lusso</div>
+        <div class="tl-desc">Responsabile tecnico e sviluppatore presso una manifattura toscana. Costruito da zero un sistema CAD proprietario con 240+ comandi, integrato con macchine da taglio industriali. Poi AI, automazione, IoT.</div>
+        <span class="tl-badge b-pro">Professionale</span>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot green"></div>
+        <div class="tl-year">2024 — oggi</div>
+        <div class="tl-title">Freelance &amp; consulenza</div>
+        <div class="tl-desc">Disponibile per progetti esterni: software su misura, AI aziendale, hardware programmabile, automazione. Vent'anni di curiosità al servizio di chi ha un problema da risolvere.</div>
+        <span class="tl-badge b-now">Disponibile ora</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PER CHI -->
+<div id="perchi">
+  <div class="sec-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Per chi lavoro</span>
+    </div>
+    <div class="target-grid">
+      <div class="tc featured reveal">
+        <div class="tc-badge">Aziende</div>
+        <h3>PMI e aziende manifatturiere</h3>
+        <p>Se hai processi manuali che rubano tempo, dati sparsi, o strumenti che non comunicano tra loro, posso costruire la soluzione che ti manca — senza dover comprare software enterprise costosi.</p>
+        <div class="tc-list">
+          <div class="tc-item">Automazione di processi ripetitivi</div>
+          <div class="tc-item">Gestione ordini, materiali, produzione</div>
+          <div class="tc-item">AI su documenti e archivi interni</div>
+          <div class="tc-item">Integrazione tra sistemi già esistenti</div>
+          <div class="tc-item">Software gestionale su misura</div>
+          <div class="tc-item">Prima consulenza gratuita · NDA disponibile</div>
+        </div>
+      </div>
+      <div class="tc reveal" style="transition-delay:.15s">
+        <div class="tc-badge">Privati e freelance</div>
+        <h3>Chiunque voglia risolvere un problema</h3>
+        <p>Hai un'idea, un problema quotidiano da automatizzare, o vuoi un sito/tool che non esiste ancora? Posso aiutarti anche se non sai da dove iniziare.</p>
+        <div class="tc-list">
+          <div class="tc-item">Siti web e portfolio personali</div>
+          <div class="tc-item">Tool per automatizzare il tuo lavoro</div>
+          <div class="tc-item">Dispositivi hardware custom (IoT, domotica)</div>
+          <div class="tc-item">Script e automazioni per risparmiare tempo</div>
+          <div class="tc-item">Consulenza tecnica e supporto progetti</div>
+          <div class="tc-item">Lavoro da remoto · Preventivi senza impegno</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip" id="contatti">
+  <h2>Hai un problema da risolvere?</h2>
+  <p>Raccontami cosa ti serve. Troveremo insieme la strada più semplice.</p>
+  <div class="cta-row">
+    <button class="cb" onclick="sendPrompt('Voglio contattare Leonardo Guasqui per un progetto software, aiutami a descrivere la mia idea o problema in modo chiaro')">Descrivi il tuo progetto ↗</button>
+    <button class="cb out" onclick="sendPrompt('Quali servizi offre Leonardo Guasqui che potrebbero essere utili per la mia azienda o il mio progetto personale?')">Esplora i servizi ↗</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Leonardo Guasqui — Montespertoli, Toscana</p>
+  <p>© 2026 · Disponibile da remoto e on-site</p>
+</footer>
+
+<script>
+// ── PRELOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('done');
+    setTimeout(heroIn, 80);
+  }, 1400);
+});
+
+// ── HERO ENTRANCE
+function heroIn() {
+  document.querySelectorAll('.hero h1 .line-inner').forEach((el, i) => {
+    setTimeout(() => el.classList.add('up'), i * 110);
+  });
+  setTimeout(() => document.querySelector('.hero-sub').classList.add('up'), 200);
+  setTimeout(() => document.querySelector('.hero-ctas').classList.add('up'), 360);
+}
+
+// ── NAV SCROLL + ACTIVE
+const mainNav = document.getElementById('mainNav');
+const sectionIds = ['cosa','progetti','storia','perchi','contatti'];
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 50);
+  const links = document.querySelectorAll('.nav-links a');
+  let current = '';
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 220) current = id;
+  });
+  links.forEach((a, i) => a.classList.toggle('active', sectionIds[i] === current));
+}, { passive: true });
+
+// ── SMOOTH SCROLL
+function go(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hbg').classList.remove('open');
+}
+
+// ── HAMBURGER
+document.getElementById('hbg').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+// ── CUSTOM CURSOR
+const dot = document.getElementById('curDot');
+const ring = document.getElementById('curRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+});
+(function raf() {
+  rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(raf);
+})();
+document.querySelectorAll('button, a, .svc, .pc, .tc').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.7)'; ring.style.borderColor = 'rgba(196,170,124,0.5)'; });
+  el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'rgba(196,170,124,0.22)'; });
+});
+
+// ── INTERSECTION OBSERVER
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    const counter = entry.target.querySelector('[data-target]');
+    if (counter) animCount(counter);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ── COUNTER
+function animCount(el) {
+  if (el._done) return; el._done = true;
+  const target = +el.dataset.target, suffix = el.dataset.suffix || '', dur = 1300;
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(e * target) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+</script>
+</body>
+</html>
