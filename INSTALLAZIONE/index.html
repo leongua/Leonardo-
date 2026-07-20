@@ -138,8 +138,9 @@ nav.scrolled{
 .btn-ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.03)}
 .btn-ghost:hover{border-color:rgba(148,163,184,.4);background:rgba(255,255,255,.06);transform:translateY(-3px)}
 .hero-visual{position:relative;display:flex;justify-content:center}
-.hero-logo-wrap{position:relative;width:min(380px,80vw);aspect-ratio:1;animation:float 7s ease-in-out infinite}
+.hero-logo-wrap{position:relative;width:min(380px,80vw);aspect-ratio:1;animation:floatLogo 7s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 .hero-logo-wrap::before{
   content:'';position:absolute;inset:-6%;border-radius:50%;
   background:conic-gradient(from 0deg,#22d3ee,#3b82f6,#a855f7,#22d3ee);
@@ -360,7 +361,8 @@ footer p{color:var(--muted);font-size:.88rem}
   .cta-row{justify-content:center}
   .hero-badges{justify-content:center}
   .hero-visual{order:-1}
-  .hero-logo-wrap{width:min(280px,70vw);animation-duration:11s}
+  .hero-logo-wrap{width:min(280px,70vw);animation:floatLogoMobile 18s ease-in-out infinite}
+  @keyframes floatLogoMobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   .chip-1{left:-4%}.chip-2{left:-6%}.chip-3{right:-4%}.chip-4{right:-2%}
   .grid-3,.steps,.stats-grid,.int-grid{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:repeat(2,1fr)}
@@ -385,8 +387,8 @@ footer p{color:var(--muted);font-size:.88rem}
   .scroll-hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
-  .marquee{animation:none}
+  *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
+  .marquee{animation:scrollx 70s linear infinite !important}
   html{scroll-behavior:auto}
 }
 </style>
