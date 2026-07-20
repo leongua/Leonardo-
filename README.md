@@ -56,6 +56,13 @@
 | [`aamar_spacing`](README_UTENTE.md#aamar_spacing-imposta-spaziatura-blocchi) | - | AAMA → Configurazione RIFILO → Imposta Spaziatura | - | Definisce spaziatura blocchi RIFILO |
 | [`aamar_settings`](README_UTENTE.md#aamar_settings-visualizza-impostazioni) | - | AAMA → Configurazione RIFILO → Visualizza Settings | - | Mostra impostazioni correnti RIFILO |
 
+### Configurazione AAMA
+
+| Comando | Icona | Menu | Toolbar | Descrizione |
+|---------|-------|------|---------|-------------|
+| [`aama_spacing`](README_UTENTE.md#aama_spacing-imposta-spaziatura-blocchi-aama) | - | AAMA → AAMA Standard → AAMA Spaziatura | - | Imposta spaziatura blocchi per elaborazione AAMA standard |
+| [`aama-silent`](README_UTENTE.md#aama-silent-elaborazione-aama-in-batch) | - | AAMA → AAMA Standard → AAMA Silent (batch) | - | Elaborazione AAMA in modalità silenziosa, senza prompt (per batch) |
+
 ### Layer Speciali
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
@@ -135,6 +142,7 @@
 |---------|-------|------|---------|-------------|
 | [`chg`](README_UTENTE.md#chg-trova-e-sostituisci-testo) | ![chg.bmp](INSTALLAZIONE/menu/LEONARDO/chg.bmp) | Blocchi → Modifica → Sostituisci Stringa | - | Sostituisce stringa in selezione multipla |
 | [`TCASE`](README_UTENTE.md#tcase-cambia-maiuscoleminuscole) | ![TCASE.bmp](INSTALLAZIONE/menu/LEONARDO/TCASE.bmp) | Blocchi → Modifica → Converti MAIUSCOLO/minuscolo | - | Converte case del testo selezionato |
+| [`CAMBIACOL`](README_UTENTE.md#cambiacol-cambia-colore-oggetti) | ![CAMBIACOL.bmp](INSTALLAZIONE/menu/LEONARDO/CAMBIACOL.bmp) | Blocchi → Modifica → Cambia Colore | - | Cambia il colore degli oggetti selezionati tramite dialog |
 
 ---
 
@@ -182,6 +190,16 @@
 | [`LeoUM`](README_UTENTE.md#leoum-foglio-uso-mano) | ![TAVOLA_STAMPA_VUOTA.bmp](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp) | Stampe → Tavole → Foglio Plotter Singolo | Tavola di Stampa | Foglio uso mano 700×1000mm per plotter |
 | [`LeoUM2`](README_UTENTE.md#leoum2-foglio-uso-mano-doppio) | ![leoum2.bmp](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp) | Stampe → Tavole → 2 Fogli Plotter | Tavola di Stampa | 2 Fogli plotter (1300×950mm) |
 | [`LeoUM4`](README_UTENTE.md#leoum4-foglio-uso-mano-quadruplo) | ![leoum4.bmp](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp) | Stampe → Tavole → 4 Fogli Plotter | Tavola di Stampa | 4 Fogli plotter (1300×1800mm) |
+
+### Forme Auree e Speciali
+
+| Comando | Icona | Menu | Toolbar | Descrizione |
+|---------|-------|------|---------|-------------|
+| [`GOLDRECT`](README_UTENTE.md#goldrect-rettangolo-aureo) | ![goldrect.bmp](INSTALLAZIONE/menu/LEONARDO/goldrect.bmp) | Disegno → Forme Speciali → Rettangolo Aureo | - | Rettangolo con proporzioni auree (sezione aurea, φ=1.618) |
+| [`GOLDSPIRAL`](README_UTENTE.md#goldspiral-spirale-aurea) | ![goldspiral.bmp](INSTALLAZIONE/menu/LEONARDO/goldspiral.bmp) | Disegno → Forme Speciali → Spirale Aurea | - | Spirale aurea/Fibonacci costruita con rettangoli e archi concatenati |
+| [`SPIRALE`](README_UTENTE.md#spirale-spirale-generica) | ![spirale.bmp](INSTALLAZIONE/menu/LEONARDO/spirale.bmp) | Disegno → Forme Speciali → Spirale Generica | - | Spirale generica con parametri personalizzabili (raggio, spire, passo) |
+| [`TASCA`](README_UTENTE.md#tasca-forma-a-tasca-parametrica) | ![tasca.bmp](INSTALLAZIONE/menu/LEONARDO/tasca.bmp) | Disegno → Forme Speciali → Tasca | - | Forma a tasca parametrica (larghezza, altezza, raggio) per pelletteria |
+| [`TOPOPT`](README_UTENTE.md#topopt-ottimizzazione-topologica) | ![topopt.bmp](INSTALLAZIONE/menu/LEONARDO/topopt.bmp) | Disegno → Forme Speciali → Top Ottimizzato | - | Ottimizzazione topologica: rimuove materiale non strutturale da un'area |
 
 ### Trapezi e Forme Speciali
 
@@ -261,6 +279,8 @@
 | [`cbp`](README_UTENTE.md#cbp--cbpr-modifica-punto-base-blocchi) | ![cbp.bmp](INSTALLAZIONE/menu/LEONARDO/cbp.bmp) | Blocchi → Modifica → Cambia Punto Base Blocco | UTILITA SISTEMA | Cambia punto base senza rilocare inserimenti |
 | [`cbpr`](README_UTENTE.md#cbp--cbpr-modifica-punto-base-blocchi) | ![cbpr.bmp](INSTALLAZIONE/menu/LEONARDO/cbpr.bmp) | Blocchi → Modifica → Cambia Punto Base con Riferimento | UTILITA SISTEMA | Cambia punto base e riloca inserimenti |
 | [`perp2ent`](README_UTENTE.md#perp2ent-linea-perpendicolare-a-entità) | ![perp2ent.bmp](INSTALLAZIONE/menu/LEONARDO/perp2ent.bmp) | Disegno → Perp a Ent | Modifica Avanzata | Disegna linee perpendicolari da punto a entità |
+| [`BLEND`](README_UTENTE.md#blend-blend-curve-raccordo-g2) | ![blend.bmp](INSTALLAZIONE/menu/LEONARDO/blend.bmp) | Disegno → Raccordi e Smussi → Blend Curve | - | Raccordo G2 (continuità di curvatura) tra due curve, transizione smooth |
+| [`HEAL`](README_UTENTE.md#heal-ripara-geometrie-difettose) | ![heal.bmp](INSTALLAZIONE/menu/LEONARDO/heal.bmp) | Disegno → Modifica Avanzata → Ripara Polilinee (Heal) | - | Ripara geometrie: chiude gap, unisce vertici duplicati, risolve self-intersection |
 
 ---
 
@@ -284,6 +304,7 @@
 | [`NOG-CONFIG`](README_UTENTE.md#nog-config-configurazione-sfridi-con-gui) | - | Computi → Consumi → Configura NOG | - | Modifica config generale calcolo consumi |
 | [`NOG-ADDMAT`](README_UTENTE.md#nog-addmat-aggiungi-materiale-specifico) | - | Computi → Consumi → Aggiungi Materiale | - | Aggiunge/aggiorna parametri materiale specifico |
 | [`NOGG`](README_UTENTE.md#nogg-calcolo-consumi-con-grafico-deprecato) | ![nogg.bmp](INSTALLAZIONE/menu/LEONARDO/nogg.bmp) | Computi → Schede → Scheda Pezzi e Spessori | CONSUMI NOG | Calcola area geometrica reale + offset |
+| [`NOGV`](README_UTENTE.md#nogv-computo-consumi-priorità-materiali) | - | Computi → Consumi → Computo NOGV | CONSUMI NOG | Computo materiali NOG con priorità su materiali specifici |
 | [`consumi_metro`](README_UTENTE.md#consumi_metro-consumi-in-metri-lineari) | ![consumi_metro.bmp](INSTALLAZIONE/menu/LEONARDO/consumi_metro.bmp) | Computi → Consumi → Consumi Metro | CONSUMI NOG | Calcola consumi in metri |
 | [`consumi_rotolo`](README_UTENTE.md#consumi_rotolo-calcolo-rotoli-necessari) | ![consumi_rotolo.bmp](INSTALLAZIONE/menu/LEONARDO/consumi_rotolo.bmp) | Computi → Consumi → Consumi Rotolo | CONSUMI NOG | Calcola consumi in rotoli |
 
@@ -309,6 +330,8 @@
 | [`JoinAll`](README_UTENTE.md#joinall-unione-batch-selezione) | ![JoinAll.bmp](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp) | Polilinee → Creazione → Join All | - | Unisce linee, archi, polilinee (batch) |
 | [`PC`](README_UTENTE.md#lavorare-con-le-linee) | ![CHIUDI_TAGLIO.bmp](INSTALLAZIONE/menu/LEONARDO/CHIUDI_TAGLIO.BMP) | Polilinee → Creazione → Chiudi Taglio | Polilinea | Chiude polilinee aperte |
 | [`pljoinfuzz`](README_UTENTE.md#pljoinfuzz-unione-con-tolleranza-gap) | ![JOINFUZZ.bmp](INSTALLAZIONE/menu/LEONARDO/JOINFUZZ.BMP) | Polilinee → Creazione → Join Fuzz | Polilinea | Join con tolleranza (anche se non si toccano) |
+| [`chain-config`](README_UTENTE.md#chain-config-configurazione-chain-selection) | ![chainconfig.bmp](INSTALLAZIONE/menu/LEONARDO/chainconfig.bmp) | Polilinee → Creazione → Chain Config | - | Configura parametri della chain selection (pesi, criteri, tolleranze) via DCL |
+| [`chain-status`](README_UTENTE.md#chain-status-stato-chain-selection) | - | Polilinee → Creazione → Chain Status | - | Mostra lo stato corrente della chain selection |
 
 ### Modifica Polilinee
 
@@ -327,11 +350,19 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`PLD`](README_UTENTE.md#lavorare-con-le-linee) | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Polilinee → Direzione → Visualizza Direzione | Polilinea / Modifica Avanzata | Mostra direzione con marcatore + frecce, opzione inversione |
+| [`PLD`](README_UTENTE.md#lavorare-con-le-linee) | ![INIZIO_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Polilinee → Direzione → Imposta Direzione | Polilinea / Modifica Avanzata | Mostra direzione con marcatore + frecce, opzione inversione |
+| [`PLDREV_SHOW_DIRECTION`](README_UTENTE.md#pldrev_show_direction-mostra-direzione-polilinea) | - | Polilinee → Direzione → Mostra Direzione | - | Mostra direzione e punto di inizio polilinea con marcatori (sola visualizzazione) |
 | [`RVRSLINE`](README_UTENTE.md#rvrsline-inverti-direzione-veloce) | ![INVERTI_DIREZIONE.bmp](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Polilinee → Direzione → Inverti Direzione | Polilinea / Modifica Avanzata | Inverte direzione linee/polilinee/LWPolyline |
 | [`nuovoiniziop`](README_UTENTE.md#nuovoiniziop-cambia-punto-inizio-polilinea) | ![nuovoiniziop.bmp](INSTALLAZIONE/menu/LEONARDO/nuovoiniziop.bmp) | Polilinee → Direzione → Nuovo Inizio | Polilinea | Imposta nuovo punto inizio polilinea |
 | [`PLDREV_SETCOLOR`](README_UTENTE.md#pldrev_setcolor-colore-frecce-direzione) | ![PLDREV_SETCOLOR.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETCOLOR.bmp) | Polilinee → Settings → Imposta Colore Frecce | - | Imposta colore frecce direzione (1-7, default Ciano) |
 | [`PLDREV_SETPOS`](README_UTENTE.md#pldrev_setpos-posizione-frecce-direzione) | ![PLDREV_SETPOS.bmp](INSTALLAZIONE/menu/LEONARDO/PLDREV_SETPOS.bmp) | Polilinee → Settings → Imposta Posizione Frecce | - | Imposta posizione frecce (Interne/Esterne) |
+
+### Utilità Avanzate
+
+| Comando | Icona | Menu | Toolbar | Descrizione |
+|---------|-------|------|---------|-------------|
+| [`VLMR`](README_UTENTE.md#vlmr-vl-move-rotate) | ![vlmoverotate.bmp](INSTALLAZIONE/menu/LEONARDO/vlmoverotate.bmp) | Polilinee → Utilità Polilinee → VL Move Rotate | - | Sposta e ruota oggetti interattivamente da tastierino numerico (GRREAD) |
+| [`VLWALK`](README_UTENTE.md#vlwalk-valida-tacche-interattivo) | ![vlwalk.bmp](INSTALLAZIONE/menu/LEONARDO/vlwalk.bmp) | Polilinee → Utilità Polilinee → Valida Tacche Interattivo | - | Cammina lungo la polilinea con tastierino, inserisce tacche nella posizione corrente |
 
 ---
 
@@ -345,6 +376,7 @@
 | [`SBOZZO_RETT`](README_UTENTE.md#comandi-avanzati-per-sbozzi) | ![SBOZZO_RETT.bmp](INSTALLAZIONE/menu/LEONARDO/SBOZZO_RETT.BMP) | Stampe → Sbozzo → Sbozzo Rettangolare | Sbozzo | Bounding box + offset + NESTING3 |
 | [`SBOZZO_BOUND`](README_UTENTE.md#comandi-avanzati-per-sbozzi) | ![sbozzo_bound.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzo_bound.bmp) | Stampe → Sbozzo → Sbozzo Boundary | Sbozzo | Disegna bounding box rettangolare polilinee |
 | [`CopyArray`](README_UTENTE.md#comandi-avanzati-per-sbozzi) | ![sbozzomultiplo.bmp](INSTALLAZIONE/menu/LEONARDO/sbozzomultiplo.bmp) | Stampe → Sbozzo → Sbozzo Multiplo | Sbozzo | Array rettangolare con sbozzo + bbox complessivo |
+| [`CHECK_LINEE_INTERNE`](README_UTENTE.md#check_linee_interne-verifica-linee-interne) | - | Stampe → Sbozzi → Verifica Linee Interne | - | Verifica anomalie sulle linee interne rispetto al contorno esterno del pezzo |
 
 ### Tavole di Stampa
 
@@ -395,6 +427,7 @@
 | [`METTI_V`](README_UTENTE.md#metti_v-inserisci-intaglio-manuale) | ![METTI_V.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V.bmp) | Tacche → Utilità → Inserisci V | Tacche | Inserisce rientranza V su polilinea |
 | [`METTI_V_AUTO`](README_UTENTE.md#creare-intagli-a-v-per-dime) | ![METTI_V_AUTO.bmp](INSTALLAZIONE/menu/LEONARDO/METTI_V_AUTO.bmp) | Tacche → Utilità → Sostituisci con V Auto | Tacche | Trova tacche vicine e sostituisce con V |
 | [`Dima_tacche_atom`](README_UTENTE.md#dima_tacche_atom-dime-con-intagli-automatici) | - | Tacche → Utilità → Dima Tacche | - | Crea dima + converte tacche in intagli V |
+| [`TACCA`](README_UTENTE.md#tacca-menu-rapido-tacche) | ![tacca.bmp](INSTALLAZIONE/menu/LEONARDO/tacca.bmp) | Tacche → Menu Tacche (TACCA) | - | Menu rapido di scelta funzioni tacche (usato anche da sostituisci_tacche) |
 
 ---
 
@@ -538,6 +571,8 @@
 |---------|-------|------|---------|-------------|
 | [`SCHEDA-LAV`](README_UTENTE.md#scheda-lav-scheda-tecnica-lavorazioni) | - | Computi → Schede → Scheda Lavorazioni | - | Genera scheda lavorazioni e spessori per articolo |
 | [`SCHEDA-ACC`](README_UTENTE.md#scheda-acc-scheda-tecnica-accessori) | - | Computi → Schede → Scheda Accessori | - | Genera scheda accessori metallici per articolo |
+| [`SCHEDA-PEZZI-ACC`](README_UTENTE.md#scheda-pezzi-acc-scheda-pezzi-con-accessori) | - | Computi → Schede → Scheda Pezzi Accessori | - | Genera scheda pezzi con immagini e dettaglio accessori (CSV) |
+| [`SCHEDA-PEZZI-LAV`](README_UTENTE.md#scheda-pezzi-lav-scheda-pezzi-con-lavorazioni) | - | Computi → Schede → Scheda Pezzi Lavorazioni | - | Genera scheda pezzi con immagini e dettaglio lavorazioni (CSV) |
 
 ---
 
@@ -558,6 +593,12 @@
 |---------|-------|------|---------|-------------|
 | [`SCHEDA_GENERA_HTML`](README_UTENTE.md#scheda_genera_html-genera-solo-html-da-csv) | - | Computi → Export → Genera HTML | - | Converte CSV in HTML interattivo con anteprime |
 | [`SCHEDA_GENERA_XLSX`](README_UTENTE.md#scheda_genera_xlsx-genera-scheda-excel) | - | Computi → Export → Genera Excel | - | Genera file Excel da scheda (richiede DLL) |
+
+### Report
+
+| Comando | Icona | Menu | Toolbar | Descrizione |
+|---------|-------|------|---------|-------------|
+| [`MISURA-CUCITURA`](README_UTENTE.md#misura-cucitura-report-lunghezze-cuciture) | ![MISURA_CUCITURA.bmp](INSTALLAZIONE/menu/LEONARDO/MISURA_CUCITURA.bmp) | Consumi e Report → Misura Cucitura | - | Calcola lunghezza totale linee tipo "Cucitura" per ogni pezzo, esporta CSV |
 
 ---
 
@@ -591,6 +632,21 @@
 | [`nesting51`](README_UTENTE.md#nesting51-nesting-direzione-alternata) | - | Stampe → Nesting → Nesting Alternato | - | Nesting con direzione alternata (ottimizzazione spazio) |
 | [`nesting52`](README_UTENTE.md#nesting52-nesting-con-sorting-avanzato) | - | Stampe → Nesting → Nesting Sorting | - | Nesting con sorting avanzato per dimensione |
 
+### Algoritmi di Nesting
+
+| Comando | Icona | Menu | Toolbar | Descrizione |
+|---------|-------|------|---------|-------------|
+| [`nesting-bestfit`](README_UTENTE.md#nesting-bestfit-nesting-best-fit) | ![nesting-bestfit.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-bestfit.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Best Fit | - | Cerca la posizione più bassa disponibile per ogni pezzo, massimizza compattazione |
+| [`nesting-bestfit2`](README_UTENTE.md#nesting-bestfit2-nesting-best-fit-v2) | - | Stampe → Nesting Algoritmi Avanzati → Nesting Best Fit 2 | - | Nesting best fit versione 2 ottimizzata |
+| [`nesting-trueshape3`](README_UTENTE.md#nesting-trueshape3-nesting-su-forma-reale) | - | Stampe → Nesting Algoritmi Avanzati → Nesting TrueShape 3 | - | Nesting true shape: incastro sulla forma reale dei pezzi (non bounding box) |
+| [`nesting-centered`](README_UTENTE.md#nesting-centered-nesting-centrato) | ![nesting-centered.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-centered.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Centrato | - | Disposizione simmetrica rispetto al centro tavola |
+| [`nesting-cluster`](README_UTENTE.md#nesting-cluster-nesting-a-cluster) | ![nesting-cluster.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-cluster.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Cluster | - | Raggruppa pezzi per dimensione (piccoli/medi/grandi) |
+| [`nesting-column`](README_UTENTE.md#nesting-column-nesting-a-colonne) | ![nesting-column.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-column.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Colonna | - | Dispone i pezzi in colonne verticali |
+| [`nesting-guillotine`](README_UTENTE.md#nesting-guillotine-nesting-ghigliottina) | ![nesting-guillotine.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-guillotine.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Ghigliottina | - | Tagli ortogonali progressivi (guillotine cut) |
+| [`nesting-hybrid`](README_UTENTE.md#nesting-hybrid-nesting-ibrido) | ![nesting-hybrid.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-hybrid.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Ibrido | - | Combina più strategie di ottimizzazione |
+| [`nesting-spiral`](README_UTENTE.md#nesting-spiral-nesting-a-spirale) | ![nesting-spiral.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-spiral.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Spirale | - | Disposizione a spirale dall'esterno verso il centro |
+| [`nesting-tetris`](README_UTENTE.md#nesting-tetris-nesting-stile-tetris) | ![nesting-tetris.bmp](INSTALLAZIONE/menu/LEONARDO/nesting-tetris.bmp) | Stampe → Nesting Algoritmi Avanzati → Nesting Tetris | - | Incastro pezzi stile tetris tra le sagome già posizionate |
+
 ---
 
 ## 19. DEBUG E DIAGNOSTICA
@@ -619,6 +675,8 @@
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
 | [`MA-config`](README_UTENTE.md#ma-config-configurazione-materiali-aama) | - | AAMA → Configurazione → Config Modaris-AAMA | - | Configurazione parametri conversione Modaris-AAMA |
+| [`MA-test`](README_UTENTE.md#ma-test-test-conversione-modaris) | - | AAMA → Modaris → Modaris Test | - | Esegue test automatici sulla conversione Modaris-AAMA |
+| [`MA-debug`](README_UTENTE.md#ma-debug-debug-conversione-modaris) | - | AAMA → Modaris → Modaris Debug | - | Attiva modalità debug per la conversione Modaris-AAMA |
 
 ---
 
@@ -628,6 +686,13 @@
 |---------|-------|------|---------|-------------|
 | [`ARCOTANG`](README_UTENTE.md#arcotang-arco-tangente-dinamico-interattivo) | - | Disegno → Archi → Arco Tangente | - | Arco tangente interattivo tra due archi esistenti |
 
+### Sviluppo Superfici
+
+| Comando | Icona | Menu | Toolbar | Descrizione |
+|---------|-------|------|---------|-------------|
+| [`UNROLLSWEEP5`](README_UTENTE.md#unrollsweep5-sviluppo-superficie-3d) | - | Disegno → Sviluppo Superfici → Sviluppa (Unroll Sweep 5) | - | Sviluppa superficie rigata 3D (sweep tra due curve) sul piano XY preservando le distanze reali |
+| [`UNROLLSWEEP5SET`](README_UTENTE.md#unrollsweep5set-impostazioni-sviluppo) | - | Disegno → Sviluppo Superfici → Impostazioni Unroll | - | Imposta il metodo di sviluppo (Frame Locale / altro) per UNROLLSWEEP5 |
+
 ---
 
 ## 21. POLILINEE AVANZATE
@@ -635,6 +700,7 @@
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
 | [`leo-poliauto1`](README_UTENTE.md#leo-poliauto1-selezione-concatenata-visuale) | - | Polilinee → Creazione → Creazione Auto v1 | - | Polilinea automatica versione legacy (compatibilità) |
+| [`leo-poliauto2`](README_UTENTE.md#leo-poliauto2-selezione--join--chiusura-automatica) | ![leo-poliauto.bmp](INSTALLAZIONE/menu/LEONARDO/leo-poliauto.bmp) | Polilinee → Creazione → Creazione Automatica (toolbar) | Polilinea | Chain selection + join + chiusura automatica in un unico comando |
 | [`pell`](README_UTENTE.md#pell-converti-ellisse-in-polilinea) | - | Polilinee → Conversione → Polilinea da Ellisse | - | Converte ellisse in polilinea (metodo speciale) |
 | [`setpstart`](README_UTENTE.md#setpstart-imposta-punto-inizio-polilinea) | - | Polilinee → Direzione → Imposta Punto Inizio | - | Imposta nuovo punto inizio polilinea (standalone) |
 
@@ -644,7 +710,11 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`OFFSET_TRATTO`](README_UTENTE.md#offset_tratto-offset-tratto-polilinea-su-un-lato) | - | Offset → Offset Tratto Specifico | - | Offset di un tratto specifico della polilinea |
+| [`OFFSET_TRATTO_SIMPLE`](README_UTENTE.md#offset_tratto_simple-offset-tratto-semplice) | ![offset_tratto_simple.bmp](INSTALLAZIONE/menu/LEONARDO/offset_tratto_simple.bmp) | Offset → Offset Tratto Avanzato → Offset Tratto Semplice | - | Offset di un tratto specifico della polilinea, linee parallele a distanza |
+| [`OFFSET_TRATTO_LINKED`](README_UTENTE.md#offset_tratto_linked-offset-tratto-collegato) | ![offset_tratto_linked.bmp](INSTALLAZIONE/menu/LEONARDO/offset_tratto_linked.bmp) | Offset → Offset Tratto Avanzato → Offset Tratto Collegato | - | Offset tratto con connessioni verticali agli estremi |
+| [`OFFSET_TRATTO_HATCHED`](README_UTENTE.md#offset_tratto_hatched-offset-tratto-tratteggiato) | ![offset_tratto_hatched.bmp](INSTALLAZIONE/menu/LEONARDO/offset_tratto_hatched.bmp) | Offset → Offset Tratto Avanzato → Offset Tratto Tratteggiato | - | Offset tratto con pattern cucitura applicato |
+| [`OFFSET_TRATTO_BREAK`](README_UTENTE.md#offset_tratto_break-offset-tratto-spezzato) | ![offset_tratto_break.bmp](INSTALLAZIONE/menu/LEONARDO/offset_tratto_break.bmp) | Offset → Offset Tratto Avanzato → Offset Tratto Spezzato | - | Offset tratto con interruzioni regolari |
+| [`OFFSET_TRATTO_BREAK_CLEAN`](README_UTENTE.md#offset_tratto_break_clean-offset-tratto-spezzato-pulito) | ![offset_tratto_break_clean.bmp](INSTALLAZIONE/menu/LEONARDO/offset_tratto_break_clean.bmp) | Offset → Offset Tratto Avanzato → Offset Tratto Spezzato Pulito | - | Offset tratto con interruzioni a spazi netti (pulizia automatica) |
 
 ---
 
@@ -688,29 +758,32 @@
 
 | Categoria | N. Comandi | % Totale |
 |-----------|------------|----------|
-| Elaborazione AAMA | 35 | 14.6% |
-| Gestione Tacche | 23 | 9.6% |
-| Gestione Testo | 21 | 8.8% |
-| Disegno Geometrico | 19 | 7.9% |
-| Gestione Polilinee | 17 | 7.1% |
-| Utilità e Calcolo | 14 | 5.8% |
-| Modifica Avanzata | 13 | 5.4% |
-| Lavorazioni e Accessori | 12 | 5.0% |
-| Gestione Dati Pezzi | 12 | 5.0% |
-| Inserimento Blocchi | 11 | 4.6% |
-| Gestione Offset | 11 | 4.6% |
-| Debug e Diagnostica | 10 | 4.2% |
-| Gestione Layer/Colori | 9 | 3.8% |
-| Preparazione Stampa | 7 | 2.9% |
-| Schede e Documentazione | 6 | 2.5% |
-| Comandi Alias | 5 | 2.1% |
-| Nesting Avanzato | 4 | 1.7% |
-| Estrazione Modaris | 4 | 1.7% |
-| Rotazioni Rapide | 4 | 1.7% |
-| Specchiatura Avanzata | 3 | 1.3% |
-| Animazioni e Visualizzazione | 2 | 0.8% |
-| Sperimentali 3D | 1 | 0.4% |
-| **TOTALE** | **240** | **100%** |
+| Elaborazione AAMA | 37 | 12.8% |
+| Gestione Tacche | 24 | 8.3% |
+| Gestione Testo | 22 | 7.6% |
+| Disegno Geometrico | 24 | 8.3% |
+| Gestione Polilinee | 22 | 7.6% |
+| Nesting Avanzato | 14 | 4.9% |
+| Utilità e Calcolo | 15 | 5.2% |
+| Modifica Avanzata | 15 | 5.2% |
+| Lavorazioni e Accessori | 14 | 4.9% |
+| Gestione Dati Pezzi | 12 | 4.2% |
+| Inserimento Blocchi | 11 | 3.8% |
+| Gestione Offset | 11 | 3.8% |
+| Debug e Diagnostica | 12 | 4.2% |
+| Gestione Layer/Colori | 9 | 3.1% |
+| Preparazione Stampa | 8 | 2.8% |
+| Schede e Documentazione | 7 | 2.4% |
+| Offset Avanzato | 5 | 1.7% |
+| Comandi Alias | 5 | 1.7% |
+| Estrazione Modaris | 4 | 1.4% |
+| Rotazioni Rapide | 4 | 1.4% |
+| Polilinee Avanzate | 4 | 1.4% |
+| Disegno Avanzato | 3 | 1.0% |
+| Specchiatura Avanzata | 3 | 1.0% |
+| Animazioni e Visualizzazione | 2 | 0.7% |
+| Sperimentali 3D | 1 | 0.3% |
+| **TOTALE** | **288** | **100%** |
 
 ### Toolbar Disponibili
 
@@ -739,14 +812,20 @@
 **Sviluppatore**: Leonardo Guasqui
 **Email**: leonardo@guasqui.it
 **Sito Web**: www.guasqui.it
-**Versione Software**: 3.1.0
-**Versione Documento**: Appendice Comandi v3.2.0 - Gennaio 2025
+**Versione Software**: 3.2.0
+**Versione Documento**: Appendice Comandi v3.2.0 - Luglio 2026
 
-**Novità versione 3.2.0**:
-- Aggiunti 49 nuovi comandi (da 194 a 240 totali)
+**Novità versione 3.2.0 (Luglio 2026)**:
+- Aggiunti 48 comandi introdotti con la ristrutturazione modulare del menu v1.5.0 (da 240 a 288 totali)
+- Nuova sezione "Forme Auree e Speciali": GOLDRECT, GOLDSPIRAL, SPIRALE, TASCA, TOPOPT
+- Nuova sezione "Algoritmi di Nesting": 10 varianti avanzate (best fit, true shape, centrato, cluster, colonna, ghigliottina, ibrido, spirale, tetris + best fit 2)
+- Nuova sezione "Sviluppo Superfici" (UNROLLSWEEP5/SET) in Disegno Avanzato
+- Nuovi comandi di modifica geometria: BLEND (raccordo G2), HEAL (ripara geometrie), CAMBIACOL
+- Nuovi comandi polilinee: chain-config, chain-status, leo-poliauto2, PLDREV_SHOW_DIRECTION, VLMR, VLWALK
+- Varianti Offset Tratto Avanzato documentate singolarmente (SIMPLE/LINKED/HATCHED/BREAK/BREAK_CLEAN)
+- Nuovi comandi AAMA/Modaris: aama_spacing, aama-silent, MA-test, MA-debug
+- Nuovi comandi schede/report: SCHEDA-PEZZI-ACC, SCHEDA-PEZZI-LAV, MISURA-CUCITURA, NOGV, CHECK_LINEE_INTERNE, TACCA
+- Corretto conteggio statistico: incluse nel riepilogo le categorie Disegno Avanzato, Polilinee Avanzate e Offset Avanzato (in precedenza omesse dalla tabella)
 - Rimosse sezioni licenza (riservate uso interno)
-- Nuove sezioni: Lavorazioni/Accessori, Schede, Rotazioni, Debug, Nesting Avanzato
-- Documentazione completa sistema DATLAV/DATACC per lavorazioni e accessori
-- Comandi debug e diagnostica AAMA/RIFILO
 
 *Tutti i diritti riservati*

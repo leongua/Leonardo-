@@ -10830,6 +10830,380 @@ Sono disponibili corsi di formazione personalizzati per imparare Leonardo. Conta
 
 [↑ Torna all'Indice](#indice-rapido)
 
+## Aggiornamento Guida — Nuovi Comandi (Menu v1.5.0)
+
+Con la ristrutturazione modulare del menu (versione 1.5.0, luglio 2026) sono stati esposti nel menu/toolbar diversi comandi già presenti nel codice ma non ancora documentati. Questa sezione li raccoglie, organizzati per area.
+
+### aama_spacing - Imposta Spaziatura Blocchi AAMA
+
+**Comando**: `aama_spacing`
+**Menu**: AAMA → AAMA Standard → AAMA Spaziatura
+
+**Cosa fa**: Imposta la distanza tra i blocchi generati dall'elaborazione AAMA standard (analogo a `aamar_spacing` ma per AAMA normale, non RIFILO).
+
+**Come si usa**:
+```
+1. aama_spacing
+2. Inserisci nuova spaziatura (mm)
+3. Il valore viene usato dalle successive elaborazioni AAMA
+```
+
+### aama-silent - Elaborazione AAMA in Batch
+
+**Comando**: `aama-silent`
+**Menu**: AAMA → AAMA Standard → AAMA Silent (batch)
+
+**Cosa fa**: Esegue la stessa elaborazione di `aama` ma senza prompt interattivi, pensata per elaborazioni batch/automatizzate su più pezzi in sequenza.
+
+**Quando usarlo**: Quando devi processare molti pezzi con parametri già impostati e vuoi evitare conferme ripetute.
+
+### CAMBIACOL - Cambia Colore Oggetti
+
+**Comando**: `CAMBIACOL`
+**Menu**: Blocchi e Testi → Modifica Testi → Cambia Colore
+**Icona**: CAMBIACOL.bmp
+
+**Cosa fa**: Apre un dialog per cambiare il colore degli oggetti selezionati (selezione per nome colore, non solo indice ACI).
+
+**Come si usa**:
+```
+1. CAMBIACOL
+2. Seleziona oggetti
+3. Scegli il colore dal dialog
+4. Conferma
+```
+
+### GOLDRECT - Rettangolo Aureo
+
+**Comando**: `GOLDRECT`
+**Menu**: Disegno → Forme Speciali → Rettangolo Aureo
+**Icona**: goldrect.bmp
+
+**Cosa fa**: Disegna un rettangolo con proporzioni auree (rapporto φ = 1.618034) a partire da un punto e una dimensione.
+
+### GOLDSPIRAL - Spirale Aurea
+
+**Comando**: `GOLDSPIRAL`
+**Menu**: Disegno → Forme Speciali → Spirale Aurea
+**Icona**: goldspiral.bmp
+
+**Cosa fa**: Costruisce la spirale aurea (Fibonacci) concatenando rettangoli in proporzione φ e archi tangenti, a partire da un punto e una dimensione iniziale.
+
+**Come si usa**:
+```
+1. GOLDSPIRAL
+2. Punto di partenza: [clicca punto]
+3. Dimensione iniziale (mm) <100>: [invio o valore]
+4. La spirale viene disegnata in 8 iterazioni
+```
+
+### SPIRALE - Spirale Generica
+
+**Comando**: `SPIRALE`
+**Menu**: Disegno → Forme Speciali → Spirale Generica
+**Icona**: spirale.bmp
+
+**Cosa fa**: Disegna una spirale generica (logaritmica) con parametri personalizzabili: centro, raggio iniziale, numero di spire, passo.
+
+### TASCA - Forma a Tasca Parametrica
+
+**Comando**: `TASCA`
+**Menu**: Disegno → Forme Speciali → Tasca
+**Icona**: tasca.bmp
+
+**Cosa fa**: Disegna una forma a tasca parametrica (larghezza, altezza, raggio angoli) utile per pattern di pelletteria (es. tasche applicate).
+
+### TOPOPT - Ottimizzazione Topologica
+
+**Comando**: `TOPOPT`
+**Menu**: Disegno → Forme Speciali → Top Ottimizzato
+**Icona**: topopt.bmp
+
+**Cosa fa**: Ottimizzazione topologica semplificata di un'area selezionata: rimuove materiale non strutturale mantenendo la resistenza della forma (pattern di alleggerimento).
+
+### BLEND - Blend Curve (Raccordo G2)
+
+**Comando**: `BLEND`
+**Menu**: Disegno → Raccordi e Smussi → Blend Curve
+**Icona**: blend.bmp
+
+**Cosa fa**: Crea un raccordo G2 (continuità di curvatura, non solo di tangenza) tra due curve selezionate, per una transizione smooth senza spigoli visibili.
+
+**Quando usarlo**: Per raccordi di qualità superiore al fillet standard, dove serve una transizione morbida (es. profili estetici a vista).
+
+### HEAL - Ripara Geometrie Difettose
+
+**Comando**: `HEAL`
+**Menu**: Disegno → Modifica Avanzata → Ripara Polilinee (Heal)
+**Icona**: heal.bmp
+
+**Cosa fa**: Ripara automaticamente geometrie difettose sulla selezione: chiude piccoli gap, unisce vertici duplicati e risolve self-intersection sulle polilinee.
+
+**Quando usarlo**: Prima di AAMA o dell'esportazione, se `TROVA_GAP` segnala discontinuità minori.
+
+### chain-config - Configurazione Chain Selection
+
+**Comando**: `chain-config`
+**Menu**: Polilinee → Creazione → Chain Config
+**Icona**: chainconfig.bmp
+
+**Cosa fa**: Apre un dialog DCL per configurare i parametri della selezione a catena (`cs`, `leo-poliauto`): pesi geometrici, criterio angolare, whitelist layer, criterio direzione, margine di auto-selezione.
+
+### chain-status - Stato Chain Selection
+
+**Comando**: `chain-status`
+**Menu**: Polilinee → Creazione → Chain Status
+
+**Cosa fa**: Mostra a schermo lo stato corrente della configurazione di chain selection (utile per verificare i parametri attivi prima di una selezione a catena).
+
+### PLDREV_SHOW_DIRECTION - Mostra Direzione Polilinea
+
+**Comando**: `PLDREV_SHOW_DIRECTION`
+**Menu**: Polilinee → Direzione → Mostra Direzione
+
+**Cosa fa**: Seleziona una polilinea e ne visualizza il punto di inizio e la direzione con marcatori grafici, in sola visualizzazione (senza modificarla). Comando distinto da `PLD`, che invece imposta/inverte la direzione.
+
+### VLMR - VL Move Rotate
+
+**Comando**: `VLMR` (alias: `VLMoveRotate`)
+**Menu**: Polilinee → Utilità Polilinee → VL Move Rotate
+**Icona**: vlmoverotate.bmp
+
+**Cosa fa**: Sposta e ruota oggetti in modo interattivo da tastierino numerico (lettura diretta GRREAD), utile per posizionamenti fini senza uscire dal comando.
+
+**Come si usa (tastierino)**:
+```
+1. VLMR
+2. Seleziona oggetto/blocco
+3. Usa i tasti numerici per spostare/ruotare (step configurabile)
+4. Invio/click per confermare la posizione
+```
+
+### VLWALK - Valida Tacche Interattivo
+
+**Comando**: `VLWALK`
+**Menu**: Polilinee → Utilità Polilinee → Valida Tacche Interattivo
+**Icona**: vlwalk.bmp
+
+**Cosa fa**: Permette di "camminare" lungo una polilinea guida con il tastierino numerico e inserire tacche nella posizione corrente.
+
+**Comandi tastiera**:
+```
+8 = Avanza          2 = Indietro
+7 = CCW off          9 = CW off
+1 = CCW x2            3 = CW x2
+T = Inserisce tacca nella posizione corrente
+0 = OK               Q = Esci / annulla tutto
+```
+
+### CHECK_LINEE_INTERNE - Verifica Linee Interne
+
+**Comando**: `CHECK_LINEE_INTERNE`
+**Menu**: Stampe → Sbozzi → Verifica Linee Interne
+
+**Cosa fa**: Verifica anomalie tra le linee interne di un pezzo e il suo contorno esterno (es. linee interne fuori dai bordi), segnalando gli oggetti sospetti.
+
+**Quando usarlo**: Come controllo qualità prima di AAMA/export, insieme a `TROVA_GAP` e `HEAL`.
+
+### TACCA - Menu Rapido Tacche
+
+**Comando**: `TACCA`
+**Menu**: Tacche → Menu Tacche (TACCA)
+**Icona**: tacca.bmp
+
+**Cosa fa**: Apre un menu rapido di scelta tra le funzioni di gestione/conversione tacche (usato internamente anche da `sostituisci_tacche`).
+
+### SCHEDA-PEZZI-ACC - Scheda Pezzi con Accessori
+
+**Comando**: `SCHEDA-PEZZI-ACC`
+**Menu**: Computi → Schede → Scheda Pezzi Accessori
+
+**Cosa fa**: Genera una scheda CSV con l'elenco dei pezzi del disegno, relative immagini e dettaglio degli accessori metallici assegnati a ciascun pezzo.
+
+### SCHEDA-PEZZI-LAV - Scheda Pezzi con Lavorazioni
+
+**Comando**: `SCHEDA-PEZZI-LAV`
+**Menu**: Computi → Schede → Scheda Pezzi Lavorazioni
+
+**Cosa fa**: Genera una scheda CSV con l'elenco dei pezzi del disegno, relative immagini e dettaglio delle lavorazioni assegnate a ciascun pezzo.
+
+### MISURA-CUCITURA - Report Lunghezze Cuciture
+
+**Comando**: `MISURA-CUCITURA`
+**Menu**: Consumi e Report → Misura Cucitura
+**Icona**: MISURA_CUCITURA.bmp
+
+**Cosa fa**: Misura la lunghezza totale delle linee con tipolinea "Cucitura" per ogni pezzo del disegno e genera un report CSV con nome pezzo e lunghezza cucitura totale.
+
+**Quando usarlo**: Per calcolare il consumo di filo/materiale di cucitura per articolo.
+
+### NOGV - Computo Consumi Priorità Materiali
+
+**Comando**: `NOGV`
+**Menu**: Consumi e Report → Computo Materiali → Computo NOGV
+
+**Cosa fa**: Variante del computo consumi NOG che applica una priorità a materiali specifici in fase di calcolo, invece del criterio standard.
+
+### MA-test - Test Conversione Modaris
+
+**Comando**: `MA-test`
+**Menu**: AAMA → Modaris → Modaris Test
+
+**Cosa fa**: Esegue una serie di test automatici sulla conversione Modaris-AAMA (verifica attributi sui blocchi selezionati), utile in fase di diagnostica.
+
+### MA-debug - Debug Conversione Modaris
+
+**Comando**: `MA-debug`
+**Menu**: AAMA → Modaris → Modaris Debug
+
+**Cosa fa**: Attiva/disattiva la modalità debug per la conversione Modaris-AAMA, con log dettagliato delle operazioni.
+
+### UNROLLSWEEP5 - Sviluppo Superficie 3D
+
+**Comando**: `UNROLLSWEEP5`
+**Menu**: Disegno → Sviluppo Superfici → Sviluppa (Unroll Sweep 5)
+
+**Cosa fa**: Sviluppa sul piano XY una superficie rigata 3D (fascia), definita da due curve di bordo (LINE/ARC/LWPOLYLINE/POLYLINE/SPLINE) e una linea di sweep che ne definisce la generatrice, preservando le distanze reali. Disponibile in due metodi: Frame Locale (default, esatto per quadrilateri planari) e un metodo alternativo per superfici gauche.
+
+**Quando usarlo**: Per ottenere il cartamodello piano di una fascia o superficie curva 3D (es. fasce fianco, borse strutturate).
+
+### UNROLLSWEEP5SET - Impostazioni Sviluppo
+
+**Comando**: `UNROLLSWEEP5SET`
+**Menu**: Disegno → Sviluppo Superfici → Impostazioni Unroll
+
+**Cosa fa**: Configura il metodo di sviluppo usato da `UNROLLSWEEP5` (es. Frame Locale vs metodo alternativo per superfici non planari).
+
+### leo-poliauto2 - Selezione + Join + Chiusura Automatica
+
+**Comando**: `leo-poliauto2`
+**Menu**: Polilinee → Creazione → Creazione Automatica (pulsante toolbar Polilinea)
+**Icona**: leo-poliauto.bmp
+
+**Cosa fa**: Versione estesa della chain selection: seleziona la catena di entità concatenate, le unisce (join) e chiude automaticamente la polilinea risultante in un solo comando. È il comando collegato al pulsante toolbar "Creazione Automatica" (mentre la voce di menu `leo-poliauto` esegue solo la selezione, senza join/chiusura automatici).
+
+### OFFSET_TRATTO_SIMPLE - Offset Tratto Semplice
+
+**Comando**: `OFFSET_TRATTO_SIMPLE`
+**Menu**: Offset → Offset Tratto Avanzato → Offset Tratto Semplice
+**Icona**: offset_tratto_simple.bmp
+
+**Cosa fa**: Crea l'offset di un tratto specifico di polilinea su un lato scelto, come semplici linee parallele a distanza (senza collegamenti né tratteggio).
+
+### OFFSET_TRATTO_LINKED - Offset Tratto Collegato
+
+**Comando**: `OFFSET_TRATTO_LINKED`
+**Menu**: Offset → Offset Tratto Avanzato → Offset Tratto Collegato
+**Icona**: offset_tratto_linked.bmp
+
+**Cosa fa**: Come `OFFSET_TRATTO_SIMPLE`, ma collega gli estremi dell'offset al tratto originale con linee verticali di raccordo.
+
+### OFFSET_TRATTO_HATCHED - Offset Tratto Tratteggiato
+
+**Comando**: `OFFSET_TRATTO_HATCHED`
+**Menu**: Offset → Offset Tratto Avanzato → Offset Tratto Tratteggiato
+**Icona**: offset_tratto_hatched.bmp
+
+**Cosa fa**: Come `OFFSET_TRATTO_SIMPLE`, ma applica un pattern tipo cucitura tra l'offset e il tratto originale.
+
+### OFFSET_TRATTO_BREAK - Offset Tratto Spezzato
+
+**Comando**: `OFFSET_TRATTO_BREAK`
+**Menu**: Offset → Offset Tratto Avanzato → Offset Tratto Spezzato
+**Icona**: offset_tratto_break.bmp
+
+**Cosa fa**: Crea l'offset del tratto con interruzioni regolari lungo il percorso, invece di una linea continua.
+
+### OFFSET_TRATTO_BREAK_CLEAN - Offset Tratto Spezzato Pulito
+
+**Comando**: `OFFSET_TRATTO_BREAK_CLEAN`
+**Menu**: Offset → Offset Tratto Avanzato → Offset Tratto Spezzato Pulito
+**Icona**: offset_tratto_break_clean.bmp
+
+**Cosa fa**: Variante di `OFFSET_TRATTO_BREAK` con interruzioni a spazi netti e pulizia automatica dei segmenti residui.
+
+### nesting-bestfit - Nesting Best Fit
+
+**Comando**: `nesting-bestfit`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Best Fit
+**Icona**: nesting-bestfit.bmp
+
+**Cosa fa**: Per ogni pezzo, scansiona tutte le posizioni X possibili sulla tavola e sceglie quella con Y minore (posizione più bassa disponibile), massimizzando la compattazione e riducendo lo sfrido rispetto al nesting base.
+
+### nesting-bestfit2 - Nesting Best Fit v2
+
+**Comando**: `nesting-bestfit2`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Best Fit 2
+
+**Cosa fa**: Versione ottimizzata dell'algoritmo best fit, con logica di piazzamento raffinata rispetto a `nesting-bestfit`.
+
+### nesting-trueshape3 - Nesting su Forma Reale
+
+**Comando**: `nesting-trueshape3`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting TrueShape 3
+
+**Cosa fa**: Dispone i pezzi incastrandoli sulla loro forma reale (contorno effettivo), invece che sul semplice bounding box rettangolare, per un nesting più efficiente su forme irregolari.
+
+### nesting-centered - Nesting Centrato
+
+**Comando**: `nesting-centered`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Centrato
+**Icona**: nesting-centered.bmp
+
+**Cosa fa**: Dispone i pezzi in righe centrate simmetricamente rispetto alla tavola, utile per layout con impatto visivo ordinato.
+
+### nesting-cluster - Nesting a Cluster
+
+**Comando**: `nesting-cluster`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Cluster
+**Icona**: nesting-cluster.bmp
+
+**Cosa fa**: Raggruppa i pezzi in cluster per dimensione (piccoli/medi/grandi) prima di posizionarli, per ottimizzare l'uso dello spazio tra pezzi di taglia simile.
+
+### nesting-column - Nesting a Colonne
+
+**Comando**: `nesting-column`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Colonna
+**Icona**: nesting-column.bmp
+
+**Cosa fa**: Dispone i pezzi in colonne verticali, utile per materiali con banda di lavoro stretta e sviluppo in altezza.
+
+### nesting-guillotine - Nesting Ghigliottina
+
+**Comando**: `nesting-guillotine`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Ghigliottina
+**Icona**: nesting-guillotine.bmp
+
+**Cosa fa**: Applica una strategia di piazzamento a tagli ortogonali progressivi (stile "guillotine cut"), suddividendo lo spazio libero in rettangoli via via più piccoli.
+
+### nesting-hybrid - Nesting Ibrido
+
+**Comando**: `nesting-hybrid`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Ibrido
+**Icona**: nesting-hybrid.bmp
+
+**Cosa fa**: Combina più strategie di piazzamento (es. best fit + cluster) per adattarsi meglio a set di pezzi eterogenei.
+
+### nesting-spiral - Nesting a Spirale
+
+**Comando**: `nesting-spiral`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Spirale
+**Icona**: nesting-spiral.bmp
+
+**Cosa fa**: Dispone i pezzi seguendo un percorso a spirale, dall'esterno verso il centro (o viceversa) della tavola.
+
+### nesting-tetris - Nesting Stile Tetris
+
+**Comando**: `nesting-tetris`
+**Menu**: Stampe → Nesting Algoritmi Avanzati → Nesting Tetris
+**Icona**: nesting-tetris.bmp
+
+**Cosa fa**: Cerca di incastrare ogni nuovo pezzo negli spazi liberi lasciati dai pezzi già posizionati, in modo simile al gioco Tetris, per minimizzare gli sprechi.
+
+---
+
+[↑ Torna all'Indice](#indice-rapido)
+
 ## Conclusione
 
 Leonardo Pattern Design è stato creato per semplificare il tuo lavoro quotidiano. Prenditi il tempo di imparare i comandi base, e presto tutto diventerà naturale e veloce.

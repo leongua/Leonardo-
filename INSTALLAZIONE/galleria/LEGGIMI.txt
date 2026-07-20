@@ -1,0 +1,34 @@
+GALLERIA "LEONARDO IN AZIONE" — COME FUNZIONA
+=============================================
+
+Metti in questa cartella le immagini (jpg, png, webp, gif, bmp) che vuoi
+far scorrere nella galleria del sito: verranno caricate automaticamente,
+senza toccare il codice della pagina.
+
+- L'ordine di scorrimento e' alfabetico: se vuoi controllare l'ordine,
+  usa prefissi numerici nei nomi file (es. 01-materiali.png, 02-tacche.png).
+- La velocita' del nastro si adatta da sola al numero di immagini.
+- I file non-immagine (come questo LEGGIMI.txt) vengono ignorati.
+
+COME VENGONO TROVATE LE IMMAGINI
+--------------------------------
+Il sito legge il contenuto della cartella tramite il "directory listing"
+del server web. Funziona gia' con:
+- il server di anteprima locale (python -m http.server)
+- Apache con autoindex attivo
+- nginx con autoindex attivo
+- IIS con "Esplorazione directory" attiva
+
+SE IL TUO HOSTING NON PERMETTE IL LISTING DELLA CARTELLA
+--------------------------------------------------------
+Crea in questa cartella un file di testo chiamato  manifest.json
+con l'elenco dei file da mostrare, in questo formato:
+
+  ["materiali.png", "nome-pezzo.png", "tacche.png"]
+
+Se manifest.json esiste, il sito usa quello e ignora il listing
+(quindi ricordati di aggiornarlo quando aggiungi immagini).
+
+Se ne' il listing ne' il manifest sono disponibili (ad esempio aprendo
+index.html direttamente come file, senza server), il sito mostra una
+lista predefinita di schermate presenti in questa cartella.
