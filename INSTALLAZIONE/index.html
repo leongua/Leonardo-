@@ -387,8 +387,8 @@ footer p{color:var(--muted);font-size:.88rem}
   .scroll-hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
-  .marquee{animation:none}
+  *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
+  .marquee{animation:scrollx 70s linear infinite !important}
   html{scroll-behavior:auto}
 }
 </style>
