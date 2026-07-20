@@ -1,0 +1,1728 @@
+//*****************************************************************************
+//
+//  LEONARDO PATTERN DESIGN SOFTWARE - MENU PRINCIPALE
+//
+//  Software:     Leonardo Pattern Design
+//  Versione:     1.5.0
+//  Sviluppatore: Leonardo Guasqui
+//  Website:      www.guasqui.it
+//  Email:        leonardo@guasqui.it
+//
+//  Copyright (C) 2026 Leonardo Guasqui - Tutti i diritti riservati
+//
+//  Compatibilità: AutoCAD 2000-2025, ZWCAD
+//  File Type:     AutoCAD Menu Source (.MNS)
+//
+//  NOTA: Questo file viene automaticamente ricompilato da AutoCAD/ZWCAD
+//        Editare solo questo file .MNS, non il .MNC o .MNR
+//
+//  CHANGELOG v1.5.0 (ristrutturazione modulare):
+//  - CORRETTO: numero versione unificato (header e menu LEONARDO ora coerenti)
+//  - CORRETTO: voci duplicate rimosse (ID_DueRett doppio in POP10,
+//    ID_SbozzoBound doppio in POP14, ID_Raccordo0 doppio nelle toolbar)
+//  - CORRETTO: comandi troncati nella toolbar TACCHE
+//    (_tacca -> _tacca_dapoli / _tacca_da_misura, nomi verificati sui defun reali)
+//  - CORRETTO: pulsante Metti V senza ^C^C e con parametri hardcoded
+//  - CORRETTO: URL guida in linea troncato
+//  - AGGIUNTO: Fustella P e Fustella 0.8 nel menu (prima solo in toolbar)
+//  - AGGIUNTO: Visualizza per Materiale (mat1) nel menu Materiali
+//  - AGGIUNTO (verifica su report.lsp): TACCA, UNROLLSWEEP5/SET, DIMA_TACCHE_ATOM,
+//    nesting-bestfit2, nesting-trueshape3, CHECK_LINEE_INTERNE, chain-status,
+//    aama-silent, MA-debug, NOGV
+//  - MODULARE: ogni menu POP ora rispecchia 1:1 una o più toolbar tematiche;
+//    stessi raggruppamenti, stesso ordine, stesse etichette
+//  - Helpstrings aggiunti per tutte le nuove voci
+//
+//*****************************************************************************
+
+***MENUGROUP=LEONARDO
+
+//=============================================================================
+//  SEZIONE SNAP AD OGGETTO
+//=============================================================================
+
+***POP0
+**SNAP
+               [Menu a cursore &Snap ad oggetto]
+ID_Tracking    [&Puntamento]_tt 
+ID_From        [&Da]_from 
+ID_MIDTwoPts   [&Punto medio tra 2 punti]_m2p 
+               [--]
+ID_MnPointFi   [->Fil&tri del punto]
+ID_PointFilx     [.X].X 
+ID_PointFily     [.Y].Y 
+ID_PointFilz     [.Z].Z 
+                 [--]
+ID_PointFixy     [.XY].XY 
+ID_PointFixz     [.XZ].XZ 
+ID_PointFiyz     [<-.YZ].YZ 
+               [--]
+ID_OsnapEndp   [&Fine]_endp 
+ID_OsnapMIDp   [&Medio]_mID 
+ID_OsnapInte   [&Intersezione]_int 
+ID_OsnapAppa   [Intersezione &apparente]_appint 
+ID_OsnapExte   [&Estensione]_ext 
+               [--]
+ID_OsnapCent   [&Centro]_cen 
+ID_OsnapQuad   [&Quadrante]_qua 
+ID_OsnapTang   [Tan&gente]_tan 
+               [--]
+ID_OsnapPerp   [&Perpendicolare]_per 
+ID_OsnapPara   [Para&llelo]_par 
+ID_OsnapNode   [No&do]_nod 
+ID_OsnapInse   [In&serisci]_ins 
+ID_OsnapNear   [&Vicino]_nea 
+ID_OsnapNone   [&Nessuno]_non 
+               [--]
+ID_Osnap       [&Impostazioni osnap...]'_+dsettings 1 
+
+//=============================================================================
+//  MENU DISEGNO - FORME E GEOMETRIA
+//  Speculare a: toolbar DISEGNO, TB_RACCORDO_MULTIPLO, TB_ARCO_IFD,
+//               TB_FASCIA_FIANCO, MODIFICA3 (parte forme)
+//=============================================================================
+
+***POP10
+**DISEGNO
+               [&Disegno]
+
+ID_Forme       [->&Forme Base]
+ID_Rettangolo    [&Rettangolo Standard]^C^C_rectang 
+ID_RettBA        [Rettangolo Base/&Altezza]^C^C_leorettangolo 
+ID_RettRacc      [Rettangolo &Raccordato]^C^C_LeoRACRETT 
+                 [--]
+ID_RettA3        [Rettangolo &A3 (297x420)]^C^C_LeoA3 
+ID_RettA4        [Rettangolo A&4 (210x297)]^C^C_LeoA4 
+                 [--]
+ID_Trapezio      [&Trapezio per Altezza]^C^C_Trapi 
+ID_TrapezioL     [T&rapezio per Lato]^C^C_Trapl 
+ID_Poligono      [<-&Poligono Regolare]^C^C_polygon 
+
+               [--]
+ID_FormeSpec   [->&Forme Speciali]
+ID_GoldRect      [Rettangolo &Aureo]^C^C_GOLDRECT 
+ID_GoldSpiral    [Spirale A&urea]^C^C_GOLDSPIRAL 
+ID_Spirale       [&Spirale Generica]^C^C_SPIRALE 
+ID_Tasca         [&Tasca]^C^C_TASCA 
+ID_TopOpt        [<-&Top Ottimizzato]^C^C_TOPOPT 
+
+               [--]
+ID_LaySAR      [Disegna &Freccia (SAR)]^C^C_SAR 
+ID_Centro      [Trova &Centro]^C^C_Centro 
+ID_ARCOTANG    [Arco Tan&gente]^C^C_ARCOTANG 
+
+               [--]
+ID_Sviluppo    [->S&viluppo Superfici]
+ID_UnrollSw5     [&Sviluppa (Unroll Sweep 5)]^C^C_UNROLLSWEEP5 
+ID_UnrollSw5Set  [<-&Impostazioni Unroll]^C^C_UNROLLSWEEP5SET 
+
+               [--]
+ID_FormeAvanz  [->Forme A&vanzate]
+ID_QuadArchi     [&Quadrante ad Archi]^C^C_DISEGNAQUADRANGOLO
+ID_DueRett       [&Due Rettangoli]^C^C_DUERETTANGOLI 
+ID_DueRettRac    [Due Rettangoli &Raccordati]^C^C_DUERETTANGOLIRAC 
+                 [--]
+ID_FasciaFi      [Disegna &Fascia Fianco]^C^C_DISEGNAFASCIAFIANCO 
+ID_FasciaUI      [Fascia Fianco &UI]^C^C_FASCIAFIANCOUI 
+ID_FasciaMax     [Fascia Fianco &Max]^C^C_FASCIAFIANCOMAX 
+ID_FasciaExt     [<-Fascia Fianco &Ext UI]^C^C_FASCIAFIANCOEXTUI 
+
+               [--]
+ID_Raccordi    [->&Raccordi e Smussi]
+ID_RaccZero      [Raccordo Raggio &Zero]^C^C_multiple _RACCORDA_0 
+ID_RaccNorm      [&Raccordo Standard]^C^C_multiple _fillet 
+ID_Cima          [&Cima]^C^C_multiple _chamfer 
+ID_Blend         [<-&Blend Curve]^C^C_BLEND 
+
+ID_ModAvanzata [->Modifica A&vanzata]
+ID_Cookie        [&Svuota Polilinea (Cookie Cutter)]^C^C_cookiecutter 
+ID_CookieCut2    [Cookie Cutter &2]^C^C_cookiecutter2 
+ID_CookieCC      [Cookie Cutter &Alias (CC)]^C^C_CC 
+                 [--]
+ID_Break         [&Spezza in Punto]^C^C_SPEZZA_PUNTO 
+ID_SplitCir      [Spezza &Cerchio]^C^C_splitcir 
+ID_TrovaGap      [Trova &Gap]^C^C_TROVA_GAP 
+ID_Heal          [Ripara &Polilinee (Heal)]^C^C_HEAL 
+                 [--]
+ID_Mirror        [Specchia &Rapido]^C^C_QM 
+ID_SendBack      [Porta &Dietro]^C^C_ai_draworder _Back 
+ID_Perp2Ent      [Perpendicolare a &Entità]^C^C_perp2ent 
+ID_PoliJoinF     [<-Join Polilinee &Fuzzy]^C^C_pljoinfuzz 
+
+//=============================================================================
+//  MENU POLILINEE - GESTIONE COMPLETA
+//  Speculare a: toolbar POLILINEA, TB_POLI_EXT
+//=============================================================================
+
+***POP11
+**POLILINEE
+               [&Polilinee]
+
+ID_PoliCreaz   [->&Creazione]
+ID_PoliMan       [Creazione &Manuale (PJ)]^C^C_PJ 
+ID_PoliAuto      [Creazione &Automatica]^C^C_leo-poliauto 
+ID_PoliAuto1     [Polilinea Automatica &1 (legacy)]^C^C_leo-poliauto1
+ID_ChainSel      [Chain &Selection]^C^C_cs 
+ID_PoliChain     [Chain Selection &Join]^C^C_csj 
+ID_ChainConf     [Chain &Config]^C^C_chain-config
+ID_ChainStatus   [Chain S&tatus]^C^C_chain-status
+                 [--]
+ID_PoliSpline    [Da &Spline]^C^C_S2P 
+ID_PoliEll       [Da &Ellisse]^C^C_EL2PL 
+ID_PoliPell      [Da Ellisse (P&ell)]^C^C_pell 
+                 [--]
+ID_PoliJoinAll   [&Join All]^C^C_JoinAll 
+ID_PoliJoinFz    [Join &Fuzzy]^C^C_jf 
+ID_PoliY         [<-Unione Rapida &Y]^C^C_Y 
+
+ID_PoliEdit    [&Modifica Polilinea]^C^C_pedit 
+ID_PoliClose   [C&hiudi Polilinea]^C^C_PC 
+ID_MisTratt    [Misura &Tratto]^C^C_MISURATRT 
+
+               [--]
+ID_Direzione   [->&Direzione]
+ID_DireInizio    [Imposta &Direzione]^C^C_PLD 
+ID_DireShow      [&Mostra Direzione]^C^C_PLDREV_SHOW_DIRECTION 
+ID_DireInverti   [&Inverti Direzione]^C^C_RVRSLINE 
+ID_NuovoInizio   [&Nuovo Inizio]^C^C_nuovoiniziop
+                 [--]
+ID_DireSetCol    [Imposta &Colore Frecce]^C^C_PLDREV_SETCOLOR 
+ID_DireSetPos    [<-Imposta &Posizione Frecce]^C^C_PLDREV_SETPOS 
+
+               [--]
+ID_Rotazioni   [->&Rotazioni Rapide]
+ID_ZeroRot       [Rotazione &Zero]^C^C_ZR 
+ID_Rot9          [Rotazione &9 Gradi]^C^C_R9 
+ID_Rot90         [Rotazione 9&0 Gradi]^C^C_R90 
+ID_Rot90M        [Rotazione -90 Gradi]^C^C_R90M 
+ID_Rot180        [<-Rotazione &180 Gradi]^C^C_R180 
+
+               [--]
+ID_UtilPoli    [->&Utilità Polilinee]
+ID_PoliConP      [Centroide Polilinee (&CONP)]^C^C_CONP 
+ID_PoliConPC     [Cerchi in Punti (CONP_&C)]^C^C_CONP_C 
+ID_VLMR          [VL &Move Rotate]^C^C_VLMR
+ID_VLWalk        [<-&Valida Tacche Interattivo]^C^C_VLWALK
+
+//=============================================================================
+//  MENU BLOCCHI E TESTI
+//  Speculare a: toolbar TB_DICITURE, TB_FUSTELLE, TB_BLOCCHI_AVANZATI
+//=============================================================================
+
+***POP12
+**BLOCCHI
+               [&Blocchi e Testi]
+
+ID_BlocchiInd  [->&Indicazioni]
+ID_BlocchiVR     [&Verticale]^C^C_VR 
+ID_BlocchiOR     [&Orizzontale]^C^C_OR 
+                 [--]
+ID_BlocchiWAR    [&Attenzione]^C^C_WAR 
+ID_BlocchiEQ     [&Equalizzare]^C^C_EQ 
+                 [--]
+ID_BlocchiTABT   [&Tabella Testi]^C^C_TABT 
+ID_BlocchiPEL    [&Pelle]^C^C_PEL 
+ID_BlocchiFOD    [<-&Fodera]^C^C_FOD 
+
+               [--]
+ID_Fustelle    [->&Fustelle]
+ID_FustP         [Fustella &P (punto)]^C^C_LEO_FUST P 
+ID_Fust08        [Fustella &0.8]^C^C_LEO_FUST 0.8 
+                 [--]
+ID_Fust1         [Fustella &1]^C^C_LEO_FUST 1 
+ID_Fust15        [Fustella 1.&5]^C^C_LEO_FUST 1.5 
+ID_Fust2         [Fustella &2]^C^C_LEO_FUST 2 
+ID_Fust25        [Fustella 2.5]^C^C_LEO_FUST 2.5 
+ID_Fust3         [Fustella &3]^C^C_LEO_FUST 3 
+ID_Fust35        [Fustella 3.5]^C^C_LEO_FUST 3.5 
+ID_Fust4         [Fustella &4]^C^C_LEO_FUST 4 
+ID_Fust45        [Fustella 4.5]^C^C_LEO_FUST 4.5 
+ID_Fust5         [Fustella &5]^C^C_LEO_FUST 5 
+ID_Fust6         [<-Fustella &6]^C^C_LEO_FUST 6 
+
+               [--]
+ID_TestiAl     [->&Allineamento Testi]
+ID_TestiATC      [Allinea a &Curva]^C^C_ATC 
+ID_TestiZR       [Rotazione &Zero]^C^C_ZR 
+ID_TestiEDT      [<-&Ruota Testo]^C^C_EDT 
+
+               [--]
+ID_TestiMod    [->&Modifica Testi]
+ID_TestiChg      [&Sostituisci Testo]^C^C_chg 
+ID_TestiCase     [&Maiuscolo/Minuscolo]^C^C_TCASE
+ID_CambiaPB      [&Cambia Punto Base Blocco]^C^C_cbp
+ID_CambiaCol     [<-Cambia C&olore]^C^C_CAMBIACOL
+
+               [--]
+ID_TestiDic    [->&Diciture Standard]
+ID_TestiCostola  [&Costola]^C^C_EDG 
+ID_TestiFilo     [&Filo]^C^C_FIL 
+ID_TestiScar     [&Scarnire]^C^C_SCA 
+ID_TestiSott     [S&ottomettitura]^C^C_SOT 
+ID_TestiRimb     [&Rimbocco]^C^C_RIM 
+ID_TestiTaly     [&Talyn]^C^C_TAL 
+ID_TestiSalp     [S&alpa]^C^C_SAL 
+ID_TestiAnti     [&Antistrappo]^C^C_ANT 
+ID_TestiBomb     [&Bombatura]^C^C_BOM 
+ID_TestiRinf     [R&inforzo]^C^C_RIN 
+ID_TestiBord     [Bordat&ura]^C^C_BOR 
+ID_TestiVali     [<-&Valigiaia]^C^C_VAL 
+
+               [--]
+ID_TestiCuc    [->&Cucitura]
+ID_TestiC5       [CUC.ROV. &5MM]^C^C_C5 
+ID_TestiC5P      [CUC.ROV. 5MM CON &PIPING]^C^C_C5P 
+ID_TestiC7       [CUC.ROV. &7MM]^C^C_C7 
+ID_TestiC7P      [<-CUC.ROV. 7MM CON P&IPING]^C^C_C7P 
+
+               [--]
+ID_BlocchiAv   [->Blocchi &Avanzati]
+ID_BloccoRapido  [Blocco &Rapido]^C^C_BLOCCO_RAPIDO 
+ID_BlocchiInPt   [Blocchi in &Punti]^C^C_blocchi_in_punti 
+ID_InserisciBl   [&Inserisci Blocchi su Polilinea]^C^C_INSERISCI_BLOCCHI 
+                 [--]
+ID_CBP           [Cambia Punto &Base]^C^C_cbp 
+ID_CBPR          [<-Cambia Punto Base con &Riferimento]^C^C_cbpr 
+
+ID_BlocchiNum  [&Conta (Numerazione Progressiva)]^C^C_conta 
+
+//=============================================================================
+//  MENU OFFSET - STANDARD E CUCITURA
+//  Speculare a: toolbar TB_OFFSET_STANDARD
+//=============================================================================
+
+***POP13
+**OFFSET
+               [&Offset]
+ID_OffsetRing  [Offset &Ringrano]^C^C_ofi 
+ID_Tratto      [Offset Tratto di &Polilinea]^C^C_OFFSET_TRATTO  
+
+ID_OffsetStd   [->&Offset Standard]
+ID_Off2          [Offset &2]^C^C_offset;2;
+ID_Off3          [Offset &3]^C^C_offset;3;
+ID_Off4          [Offset &4]^C^C_offset;4;
+ID_Off5          [Offset &5]^C^C_offset;5;
+ID_Off6          [Offset &6]^C^C_offset;6;
+ID_Off8          [Offset &8]^C^C_offset;8;
+ID_Off10         [<-Offset 1&0]^C^C_offset;10;
+
+               [--]
+ID_OffsetTrat  [->Offset &Tratteggiato (Cucitura)]
+ID_Off2t         [Offset 2 (scala 0.3)]^C^C_oft_2 
+ID_Off3t         [Offset 3]^C^C_oft_3 
+ID_Off4t         [Offset 4]^C^C_oft_4 
+ID_Off5t         [Offset 5]^C^C_oft_5 
+ID_Off6t         [Offset 6]^C^C_oft_6 
+ID_Off8t         [Offset 8]^C^C_oft_8 
+ID_Off10t        [Offset 10]^C^C_oft_10 
+ID_Offt          [<-Offset &Variabile]^C^C_oft 
+
+               [--]
+ID_OffsetAvanz [->Offset Tratto &Avanzato]
+ID_OffSimple     [Offset Tratto &Semplice]^C^C_OFFSET_TRATTO_SIMPLE 
+ID_OffLinked     [Offset Tratto &Collegato]^C^C_OFFSET_TRATTO_LINKED 
+ID_OffHatched    [Offset Tratto &Tratteggiato]^C^C_OFFSET_TRATTO_HATCHED 
+ID_OffBreak      [Offset Tratto &Spezzato]^C^C_OFFSET_TRATTO_BREAK 
+ID_OffBreakClean [<-Offset Tratto Spezzato &Pulito]^C^C_OFFSET_TRATTO_BREAK_CLEAN 
+
+//=============================================================================
+//  MENU STAMPE E NESTING
+//  Speculare a: toolbar SBOZZO, TB_TAVOLA_DI_STAMPA, TB_NESTING_AVANZATO,
+//               TB_NESTING_BASE, TB_PLUGIN_DI_STAMPA
+//=============================================================================
+
+***POP14
+**STAMPE
+               [&Stampe e Nesting]
+
+ID_Sbozzi      [->S&bozzi]
+ID_SbozzoSing    [Sbozzo &Singolo]^C^C_SBOZZO 
+ID_SbozzoRett    [Sbozzo &Rettangolare]^C^C_SBOZZO_RETT 
+ID_SbozzoBound   [Sbozzo &Boundary]^C^C_SBOZZO_BOUND 
+ID_SbozzoMult    [Sbozzo &Multiplo (Array)]^C^C_CopyArray 
+                 [--]
+ID_DimaDef       [&Dima Standard]^C^C_DIMA 
+ID_DimaTacche    [Dima &Tacche (Atom)]^C^C_dima_tacche_atom 
+ID_SbozzoCBP     [Sbozzo &CBP]^C^C_CBP 
+                 [--]
+ID_CheckInterne  [<-&Verifica Linee Interne]^C^C_CHECK_LINEE_INTERNE 
+
+               [--]
+ID_DefSbozzo   [->&Definisci Tipo Pezzo]
+ID_DefInfust     [Definisci &Infustitura]^C^C^P_ed-infust 
+ID_DefRifilo     [Definisci &Rifilo]^C^C^P_ed-rif 
+ID_DefSboz       [Definisci S&bozzo]^C^C^P_ed-sboz 
+ID_DefFodera     [<-Definisci &Fodera]^C^C^P_ed-fod 
+
+               [--]
+ID_TavStampa   [->&Tavole di Stampa]
+ID_TavPre        [&Prestampa]^C^C_PRESTAMPA 
+ID_TavMan        [Tavola Selezione &Manuale]^C^C_TAVOLA_DI_STAMPA_ANTIBUG 
+ID_TavManA3      [Tavola Selezione &A3]^C^C_TAVOLA_DI_STAMPA_A3 
+ID_TavNest       [<-&Nesting Avanzato]^C^C_NESTING3 
+
+               [--]
+ID_Nesting     [->&Nesting Base]
+ID_NestLinea     [Nesting &Linea]^C^C_nestinglinea 
+ID_Nest1         [Nesting &Singola Linea]^C^C_nesting1 
+ID_NestArea      [Nesting &Area]^C^C_nestingarea 
+ID_Nest3         [Nesting A&vanzato (3)]^C^C_nesting3 
+                 [--]
+ID_Nest5         [Nesting Multi-&Riga (5)]^C^C_nesting5 
+ID_Nest51        [Nesting Al&ternato (51)]^C^C_nesting51 
+ID_Nest52        [<-Nesting &Ordinato (52)]^C^C_nesting52 
+
+               [--]
+ID_NestAlgor   [->Nesting Algoritmi &Avanzati]
+ID_NestBase      [Nesting &Base]^C^C_nesting 
+ID_NestBestFit   [Nesting Best &Fit]^C^C_nesting-bestfit 
+ID_NestBestFit2  [Nesting Best Fit &2]^C^C_nesting-bestfit2 
+ID_NestTrueShape [Nesting True&Shape 3]^C^C_nesting-trueshape3 
+ID_NestCentered  [Nesting &Centrato]^C^C_nesting-centered 
+ID_NestCluster   [Nesting C&luster]^C^C_nesting-cluster 
+ID_NestColumn    [Nesting C&olonna]^C^C_nesting-column 
+ID_NestGuillo    [Nesting &Ghigliottina]^C^C_nesting-guillotine 
+ID_NestHybrid    [Nesting &Ibrido]^C^C_nesting-hybrid 
+ID_NestSpiral    [Nesting &Spirale]^C^C_nesting-spiral 
+ID_NestTetris    [<-Nesting &Tetris]^C^C_nesting-tetris 
+
+               [--]
+ID_TavFogli    [->&Fogli Plotter]
+ID_Tav1          [&Singolo Foglio (650x950)]^C^C_leoum 
+ID_Tav2          [&Due Fogli (1300x950)]^C^C_leoum2 
+ID_Tav4          [<-&Quattro Fogli (1300x1800)]^C^C_leoum4 
+
+               [--]
+ID_Passante    [&Passante Tracolla]^C^C_Passante 
+
+//=============================================================================
+//  MENU TIPOLINEA - LAYER E COLORI
+//  Speculare a: toolbar LAYER
+//=============================================================================
+
+***POP15
+**TIPOLINEA
+               [&Tipolinea e Layer]
+
+ID_LinPenna    [&Penna (Layer 0)]^C^C_Penna 
+ID_LinRifilo   [&Rifilo (ENDCUT)]^C^C_Endcut 
+ID_LinTaglio   [&Taglio (OUTCUT)]^C^C_Outcut 
+ID_LinTagInt   [Taglio &Interno (INTCUT)]^C^C_Intcut 
+
+               [--]
+ID_Colori      [->&Colori Rapidi]
+ID_ColGiallo     [&Giallo (2)]^C^C(C:GGG) 
+ID_ColVerde      [&Verde (3)]^C^C(C:VVV) 
+ID_ColArancio    [&Arancione (30)]^C^C(C:AAA) 
+ID_ColMagenta    [&Magenta (6)]^C^C(C:FFF) 
+ID_ColBianco     [<-&Bianco (254)]^C^C(C:BBB) 
+
+               [--]
+ID_CuciNew     [&Nuova Cucitura]^C^C_Cucitura 
+ID_CuciCont    [Linea &Continua]^C^C_Continua 
+
+//=============================================================================
+//  MENU TACCHE
+//  Speculare a: toolbar TACCHE, TB_CONV_TACCHE
+//=============================================================================
+
+***POP16
+**TACCHE
+               [&Tacche]
+
+ID_TaccaIns    [&Inserisci Tacca]^C^C_inserisci_tacca 
+ID_TaccaDaPoli [Tacca da &Polilinea]^C^C_tacca_dapoli 
+ID_TaccaDaMis  [Tacca da &Misura]^C^C_tacca_da_misura 
+
+               [--]
+ID_TaccaMenu   [Menu &Tacche (TACCA)]^C^C_TACCA 
+
+               [--]
+ID_TaccaMod    [->&Modifica Tacche]
+ID_TaccaCopia    [&Copia Tacche]^C^C_copia_tacche 
+ID_TaccaRibalta  [&Ribalta Tacche]^C^C_ribalta_tacche 
+ID_TaccaRipos    [Ri&posiziona Tacche]^C^C_riposiziona_tacche 
+ID_TaccaSost     [&Sostituisci Tacche]^C^C_sostituisci_tacche 
+                 [--]
+ID_MettiV        [Metti &V]^C^C_METTI_V 
+ID_MettiVAuto    [<-Metti V &Automatico]^C^C_METTI_V_AUTO 
+
+               [--]
+ID_TaccaConv   [->&Conversione Tacche]
+ID_TaccheInTag   [Tacche in &Tagliate]^C^C_tacche_in_tagliate 
+ID_TagliateInT   [Ta&gliate in Tacche]^C^C_tagliate_in_tacche 
+                 [--]
+ID_TaccheInPunt  [Tacche in &Punti]^C^C_tacche_in_punti 
+ID_PuntiInTacc   [P&unti in Tacche]^C^C_punti_in_tacche 
+                 [--]
+ID_MozartInTac   [&Mozart in Tacche]^C^C_mozart_in_tacche 
+ID_TaccheInMoz   [<-Tacche in Mo&zart]^C^C_tacche_in_mozart 
+
+               [--]
+ID_TaccaValid  [&Valida Tacche Interattivo]^C^C_VLWALK
+
+//=============================================================================
+//  MENU MATERIALI E ARTICOLI
+//  Speculare a: toolbar MATERIALI, TB_DATI_PEZZO, TB_LAV_ACC, TB_GESTIONE_MAT
+//=============================================================================
+
+***POP17
+**MATERIALI
+               [&Materiali e Articoli]
+
+ID_MatGest     [->&Gestione Materiali]
+ID_MatIns        [&Inserisci Materiale]^C^C_MAT 
+ID_MatEdit       [&Modifica Materiale]^C^C^P_ed-mat 
+ID_MatEditNum    [Modifica &Quantità/Tipologia]^C^C_ED-MATERIALE 
+                 [--]
+ID_MatSost       [&Sostituisci Materiale (batch)]^C^C_sostmat 
+ID_MatVis        [&Visualizza per Materiale]^C^C_mat1 
+ID_MatSel        [Se&leziona per Materiale]^C^C_seleziona-permat 
+                 [--]
+ID_MatGestDb     [&Database Materiali]^C^C_gestmat 
+ID_Names         [<-Database &Nomi]^C^C_gnames 
+
+               [--]
+ID_ArtGest     [->Gestione &Articoli]
+ID_ArtIns        [&Inserisci Numero Articolo]^C^C_NUM 
+ID_ArtEditNum    [&Modifica Numero Articolo]^C^C_ED-NUMART 
+                 [--]
+ID_NomePezIns    [Inserisci &Nome Pezzo]^C^C_NOM 
+ID_NomePezEdit   [<-Modifica N&ome Pezzo]^C^C^P_ed-nom 
+
+               [--]
+ID_AccLav      [->Accessori e &Lavorazioni]
+ID_AccIns        [Inserisci &Accessorio]^C^C_ACC 
+ID_AccEdit       [Modifica A&ccessorio]^C^C_ED-ACC 
+ID_AccDbEdit     [Database Acc&essori]^C^C_ED-DB-ACC 
+ID_AccData       [Crea Blocco Dati Acce&ssori]^C^C_CREA-DATACC 
+                 [--]
+ID_LavIns        [Inserisci &Lavorazione]^C^C_LAV 
+ID_LavEdit       [Modifica La&vorazione]^C^C_ED-LAV 
+ID_LavDbEdit     [Database Lavora&zioni]^C^C_ED-DB-LAV 
+ID_LavData       [<-Crea Blocco Dati Lavorazio&ni]^C^C_CREA-DATLAV 
+
+               [--]
+ID_Spessore    [Gestione &Spessore]^C^C_SPESSORE 
+
+//=============================================================================
+//  MENU AAMA E EXPORT
+//  Speculare a: toolbar AAMA, TB_AAMA_RIFILO, TB_MODARIS
+//=============================================================================
+
+***POP18
+**AAMA
+               [&AAMA e Export]
+
+ID_AAMAStd     [->&AAMA Standard]
+ID_AAMANorm      [AAMA &Standard]^C^C_aama 
+ID_AAMASilent    [AAMA S&ilent (batch)]^C^C_aama-silent 
+ID_AAMASpacing   [AAMA &Spaziatura]^C^C_aama_spacing 
+ID_AAMAEstrai    [AAMA &Estrai]^C^C_AAMA_ESTRAI 
+                 [--]
+ID_AAMATest      [AAMA &Test]^C^C_aama_test 
+ID_AAMADebug     [AAMA &Debug]^C^C_aama_debug 
+ID_AAMAErrors    [AAMA &Errori]^C^C_aama_errors 
+ID_AAMAClear     [<-AAMA &Cancella Errori]^C^C_aama_clear_errors 
+
+               [--]
+ID_AAMAR       [->AAMA &Rifilo]
+ID_AAMARInit     [AAMA-R &Inizializza]^C^C_aamar_init 
+ID_AAMARMain     [AAMA-&R Principale]^C^C_aamar 
+                 [--]
+ID_AAMARMat      [AAMA-R &Materiale]^C^C_aamar_material 
+ID_AAMARTipo     [AAMA-R &Tipologia]^C^C_aamar_tipologia 
+ID_AAMARQuant    [AAMA-R &Quantità]^C^C_aamar_quantita 
+ID_AAMARSpac     [AAMA-R &Spaziatura]^C^C_aamar_spacing 
+ID_AAMARSet      [AAMA-R I&mpostazioni]^C^C_aamar_settings 
+                 [--]
+ID_AAMARTest     [AAMA-R T&est]^C^C_aamar_test 
+ID_AAMARDebug    [AAMA-R &Debug]^C^C_aamar_debug 
+ID_AAMARErr      [AAMA-R Err&ori]^C^C_aamar_errors 
+ID_AAMARClear    [<-AAMA-R &Cancella Errori]^C^C_aamar_clear_errors 
+
+               [--]
+ID_Geber       [->&Geber]
+ID_GeberConv     [Geber &Converti]^C^C_geber 
+ID_GeberTol      [<-Geber &Tolleranza]^C^C_set_geber_tolerance 
+
+               [--]
+ID_Drill       [->&Foratura e Marcatura]
+ID_Drill1M       [Drill &1]^C^C_drill1 
+ID_Drill2M       [Drill &2]^C^C_drill2 
+ID_DrillPM       [Drill &P]^C^C_drillp 
+                 [--]
+ID_Marcatura     [&Marcatura]^C^C_marcatura 
+ID_Proiezione    [<-&Proiezione]^C^C_proiezione 
+
+               [--]
+ID_Modaris     [->&Modaris]
+ID_ModarisAAMA   [Modaris &AAMA]^C^C_Modaris-AAMA 
+ID_ModarisConf   [Modaris &Config]^C^C_MA-config 
+ID_ModarisTest   [Modaris &Test]^C^C_MA-test 
+ID_ModarisDebug  [<-Modaris &Debug]^C^C_MA-debug 
+
+               [--]
+ID_Export      [->&Export Multipli]
+ID_ExpMulti      [Estrai &Multipli]^C^C_estrai-multipli 
+ID_ExpSing       [Estrai &Singolo]^C^C_estrai-singolo 
+ID_ExpTest       [<-&Test Multipli]^C^C_test-multipli 
+
+//=============================================================================
+//  MENU CONSUMI E REPORT
+//  Speculare a: toolbar TB_CONSUMI_NOG, TB_NOG_CONFIG, TB_SCHEDE
+//=============================================================================
+
+***POP19
+**CONSUMI
+               [&Consumi e Report]
+
+ID_Consumi     [->&Calcolo Consumi]
+ID_ConsumiMetro  [Consumi &Metro]^C^C_Consumi_metro 
+ID_ConsumiRot    [<-Consumi &Rotolo]^C^C_Consumi_rotolo 
+
+               [--]
+ID_CompMat     [->&Computo Materiali]
+ID_NOG           [Computo &NOG]^C^C_NOG 
+ID_NOGG          [Computo N&OGG]^C^C_NOGG 
+ID_NOGV          [Computo NOG&V]^C^C_NOGV 
+                 [--]
+ID_NOGAddMat     [NOG &Aggiungi Materiale]^C^C_NOG-ADDMAT 
+ID_NOGConfig     [<-NOG &Configurazione]^C^C_NOG-CONFIG 
+
+               [--]
+ID_Schede      [->&Schede e Report]
+ID_SchedaBase    [&Scheda Base]^C^C_SCHEDA 
+ID_SchedaEsegui  [Scheda &Esegui Tutto]^C^C_SCHEDA_ESEGUI 
+                 [--]
+ID_SchedaImg     [Scheda Pezzi &Immagini]^C^C_SCHEDA_PEZZI_IMG 
+ID_SchedaAcc     [Scheda &Accessori]^C^C_SCHEDA-ACC 
+ID_SchedaLav     [Scheda &Lavorazioni]^C^C_SCHEDA-LAV 
+ID_SchedaPezAcc  [Scheda Pezzi Acc&essori]^C^C_SCHEDA-PEZZI-ACC 
+ID_SchedaPezLav  [Scheda Pezzi La&vorazioni]^C^C_SCHEDA-PEZZI-LAV 
+                 [--]
+ID_SchedaHTML    [Genera &HTML]^C^C_SCHEDA_GENERA_HTML 
+ID_SchedaHTMLInt [<-Genera HTML &Interattivo]^C^C_SCHEDA_GENERA_HTML_INT 
+
+               [--]
+ID_Misure      [Misura &Cucitura]^C^C_MISURA-CUCITURA 
+
+//=============================================================================
+//  MENU UTILITÀ
+//  Speculare a: toolbar TB_UTILITA_SISTEMA, TB_UTILITA_EXT
+//=============================================================================
+
+***POP20
+**UTILITA
+               [&Utilità]
+
+ID_Sistema     [->&Sistema]
+ID_UtilInit2     [&Inizializza Librerie]^C^C_inizializza2 
+ID_FontTest      [&Test Font SHX]^C^C_font_test 
+ID_Converti      [<-HexDec &Converter]^C^C_HexDecConverter 
+
+               [--]
+ID_BlocchiUtil [->&Utilità Blocchi]
+ID_BloccoRapU    [Blocco &Rapido]^C^C_BLOCCO_RAPIDO 
+ID_BlocchiInP2   [Blocchi in &Punti]^C^C_blocchi_in_punti 
+ID_InserisciB2   [&Inserisci Blocchi su Polilinea]^C^C_INSERISCI_BLOCCHI 
+                 [--]
+ID_CBPU          [Cambia Punto &Base]^C^C_cbp 
+ID_CBPRU         [<-Cambia Punto Base con &Riferimento]^C^C_cbpr 
+
+               [--]
+ID_UtilGeom    [->Utilità &Geometria]
+ID_SplitCirU     [Spezza &Cerchio]^C^C_splitcir 
+ID_TrovaGapU     [Trova &Gap]^C^C_TROVA_GAP 
+ID_MisCucU       [<-&Misura Cucitura]^C^C_MISURA-CUCITURA 
+
+//=============================================================================
+//  MENU LEONARDO - INFO E LICENZA
+//=============================================================================
+
+***POP21
+**LEONARDOO
+ID_MnHelp      [LEONARDO]
+ID_Versione    [Versione 1.5.0]
+               [--]
+ID_DevHelp     [Visita Sito &Web]^C^C^C_Browser http://www.guasqui.it 
+ID_OnlineHelp  [Guida in &Linea]^C^C^C_Browser https://github.com/leongua/leonardo 
+ID_Crediti     [&Crediti]^C^C^P(if(startapp "LEONARDO.exe")(princ)) ^P
+ID_UtilInit    [&Inizializza App Sistema]^C^C_inizializza2 
+               [--]
+ID_Licenza     [->&Gestione Licenza]
+ID_LicAct        [&Attiva Licenza]^C^C_activate-license
+ID_LicSysID      [Mostra &System ID]^C^C_show-system-id
+ID_LicReset      [<-&Reset Licenza (Debug)]^C^C_reset-license
+
+//=============================================================================
+//  SEZIONE TOOLBARS - BARRE STRUMENTI
+//=============================================================================
+
+***TOOLBARS
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: PRINCIPALE
+//-----------------------------------------------------------------------------
+
+**PRINCIPALE
+ID_TbPrinc     [_Toolbar("Principale", _Top, _Show, 0, 0, 1)]
+ID_Nuovo       [_Button("Nuovo", "ZWRC_NEW", "ZWRC_NEW")]^C^C_new 
+ID_Apri        [_Button("Apri", "ZWRC_OPEN", "ZWRC_OPEN")]^C^C_open 
+ID_Salva       [_Button("Salva", "ZWRC_SAVE", "ZWRC_SAVE")]^C^C_qsave 
+ID_Stampa      [_Button("Stampa", "ZWRC_PLOT", "ZWRC_PLOT")]^C^C_plot 
+               [--]
+ID_Annulla     [_Button("Annulla", "ZWRC_UNDO", "ZWRC_UNDO")]^C^C_undo 
+ID_Ripristina  [_Button("Ripristina", "ZWRC_REDO", "ZWRC_REDO")]^C^C_redo 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: DISEGNO
+//-----------------------------------------------------------------------------
+
+**DISEGNO
+ID_TbDisegno   [_Toolbar("Disegno", _Bottom, _Show, 0, 0, 1)]
+ID_Linea       [_Button("Linea", "ZWRC_LINE", "ZWRC_LINE")]^C^C_line 
+ID_Pline       [_Button("Polilinea", "ZWRC_PLINE", "ZWRC_PLINE")]^C^C_pline 
+ID_Cerchio     [_Button("Cerchio", "ZWRC_CIRCLE", "ZWRC_CIRCLE")]^C^C_circle 
+ID_Arco        [_Button("Arco", "ZWRC_ARC", "ZWRC_ARC")]^C^C_arc 
+               [--]
+ID_RettangoloT [_Button("Rettangolo", "ZWRC_RECTAN", "ZWRC_RECTAN")]^C^C_rectang 
+ID_PoligonoT   [_Button("Poligono", "ZWRC_POLYGO", "ZWRC_POLYGO")]^C^C_polygon 
+ID_Ellisse     [_Button("Ellisse", "ZWRC_ELLIPS", "ZWRC_ELLIPS")]^C^C_ellipse 
+               [--]
+ID_Spline      [_Button("Spline", "ZWRC_SPLINE", "ZWRC_SPLINE")]^C^C_spline 
+ID_Tratteggio  [_Button("Tratteggio", "ZWRC_BHATCH", "ZWRC_BHATCH")]^C^C_bhatch 
+               [--]
+ID_TestoRiga   [_Button("Testo Riga", "ZWRC_TEXT", "ZWRC_TEXT")]^C^C_text 
+ID_TestoMulti  [_Button("Testo Multilinea", "ZWRC_MTEXT", "ZWRC_MTEXT")]^C^C_mtext 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: MODIFICA
+//-----------------------------------------------------------------------------
+
+**MODIFICA
+ID_TbModific   [_Toolbar("Modifica", _Bottom, _Show, 1, 0, 1)]
+ID_Cancella    [_Button("Cancella", "ZWRC_ERASE", "ZWRC_ERASE")]^C^C_erase 
+ID_Copia       [_Button("Copia", "ZWRC_COPY", "ZWRC_COPY")]^C^C_copy 
+ID_Specchio    [_Button("Specchio", "ZWRC_MIRROR", "ZWRC_MIRROR")]^C^C_mirror 
+ID_Offset      [_Button("Offset", "ZWRC_OFFSET", "ZWRC_OFFSET")]^C^C_offset 
+               [--]
+ID_Sposta      [_Button("Sposta", "ZWRC_MOVE", "ZWRC_MOVE")]^C^C_move 
+ID_Ruota       [_Button("Ruota", "ZWRC_ROTATE", "ZWRC_ROTATE")]^C^C_rotate 
+ID_Scala       [_Button("Scala", "ZWRC_SCALE", "ZWRC_SCALE")]^C^C_scale 
+ID_Stira       [_Button("Stira", "ZWRC_STRETC", "ZWRC_STRETC")]^C^C_stretch 
+               [--]
+ID_Taglia      [_Button("Taglia", "ZWRC_TRIM", "ZWRC_TRIM")]^C^C_trim 
+ID_Estendi     [_Button("Estendi", "ZWRC_EXTEND", "ZWRC_EXTEND")]^C^C_extend 
+ID_Spezza      [_Button("Spezza", "ZWRC_BREAK", "ZWRC_BREAK")]^C^C_break 
+ID_Raccorda    [_Button("Raccorda", "ZWRC_FILLET", "ZWRC_FILLET")]^C^C_fillet 
+ID_Smussa      [_Button("Smusso", "ZWRC_CHAMFER", "ZWRC_CHAMFER")]^C^C_chamfer 
+               [--]
+ID_Esplodi     [_Button("Esplodi", "ZWRC_EXPLOD", "ZWRC_EXPLOD")]^C^C_explode 
+ID_Allinea     [_Button("Allinea", "ZWRC_ALIGN", "ZWRC_ALIGN")]^C^C_align 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: LAYER
+//-----------------------------------------------------------------------------
+
+**LAYER
+ID_TbLayer     [_Toolbar("Layer", _Bottom, _Show, 2, 0, 1)]
+ID_Giallo      [_Button("Giallo (2)", "giallo.bmp", "giallo.bmp")]^C^C(C:GGG) 
+ID_Verde       [_Button("Verde (3)", "verde.bmp", "verde.bmp")]^C^C(C:VVV) 
+ID_Arancio     [_Button("Arancione (30)", "arancio.bmp", "arancio.bmp")]^C^C(C:AAA) 
+ID_Magenta     [_Button("Magenta (6)", "fuxia.bmp", "fuxia.bmp")]^C^C(C:FFF) 
+ID_Bianco      [_Button("Bianco (254)", "bianco.bmp", "bianco.bmp")]^C^C(C:BBB) 
+               [--]
+ID_PENNA       [_Button("Penna", "penna.bmp", "penna.bmp")]^C^C_Penna 
+ID_ENDCUT      [_Button("Rifilo (ENDCUT)", "endcut.bmp", "endcut.bmp")]^C^C_Endcut 
+ID_OUTCUT      [_Button("Taglio (OUTCUT)", "outcut.bmp", "outcut.bmp")]^C^C_Outcut 
+ID_INTCUT      [_Button("Taglio Interno (INTCUT)", "intcut.bmp", "intcut.bmp")]^C^C_Intcut 
+               [--]
+ID_CUCITURA    [_Button("Cucitura", "cucitura.bmp", "cucitura.bmp")]^C^C_Cucitura 
+ID_CONTINUA    [_Button("Continua", "continua.bmp", "continua.bmp")]^C^C_Continua 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: RACCORDO MULTIPLO
+//-----------------------------------------------------------------------------
+
+**TB_RACCORDO_MULTIPLO
+ID_TbRaccordo  [_Toolbar("Raccordo", _Bottom, _Show, 3, 0, 1)]
+ID_Raccordo0   [_Button("Raccordo Raggio Zero", "RAGGIO_0.BMP", "RAGGIO_0.BMP")]^C^C_multiple _RACCORDA_0 
+ID_Chamfer     [_Button("Cima", "Cima.bmp", "Cima.bmp")]^C^C_multiple _chamfer 
+ID_Raccordo    [_Button("Raccordo", "Racc.bmp", "Racc.bmp")]^C^C_multiple _fillet 
+ID_BlendBtn    [_Button("Blend Curve", "blend.bmp", "blend.bmp")]^C^C_BLEND 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: ARCO
+//-----------------------------------------------------------------------------
+
+**TB_ARCO_IFD
+ID_TbArcoIFD   [_Toolbar("Arco", _Bottom, _Show, 0, 1, 1)]
+ID_ArcStEnRa   [_Button("Inizio, Fine, Raggio", "ZWRC_ARCSER", "ZWRC_ARCSER")]^C^C_arc \_e \_r 
+               [--]
+ID_ArcContin   [_Button("Continua", "ZWRC_ARCCON", "ZWRC_ARCCON")]^C^C_arc ;
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: POLILINEA
+//-----------------------------------------------------------------------------
+
+**POLILINEA
+ID_TbPoli      [_Toolbar("Polilinea", _Bottom, _Show, 0, 2, 1)]
+ID_Pedit       [_Button("Edita Polilinea", "PEDI.bmp", "PEDI.bmp")]^C^C_pedit 
+ID_CreaPoMan   [_Button("Creazione Manuale (PJ)", "PJ.bmp", "PJ.bmp")]^C^C_PJ 
+ID_CreaPoAut   [_Button("Creazione Automatica", "leo-poliauto.bmp", "leo-poliauto.bmp")]^C^C_leo-poliauto2
+ID_PoliAutoSel [_Button("Polilinea Auto Selezione", "leo-poliauto-sel.bmp", "leo-poliauto-sel.bmp")]^C^C_leo-poliauto1 
+ID_ChainConfT  [_Button("Chain Config", "chainconfig.bmp", "chainconfig.bmp")]^C^C_chain-config
+               [--]
+ID_PolIDaSpli  [_Button("Da Spline", "SP2P.BMP", "SP2P.BMP")]^C^C_S2P 
+ID_PolIDaEll   [_Button("Da Ellisse", "Spl2.bmp", "Spl2.bmp")]^C^C_EL2PL 
+ID_PoliPellBtn [_Button("Da Ellisse (Pell)", "pell.bmp", "pell.bmp")]^C^C_pell 
+               [--]
+ID_KiudiUna    [_Button("Chiudi", "CHIUDI_TAGLIO.BMP", "CHIUDI_TAGLIO.BMP")]^C^C_PC 
+ID_JoinFuzz    [_Button("Join Fuzz", "JOINFUZZ.BMP", "JOINFUZZ.BMP")]^C^C_jf 
+ID_HealBtn     [_Button("Heal (Ripara)", "heal.bmp", "heal.bmp")]^C^C_HEAL 
+               [--]
+ID_PolIDire    [_Button("Visualizza e Imposta Direzione", "INIZIO_DIREZIONE.bmp", "INIZIO_DIREZIONE.bmp")]^C^C_PLD 
+ID_PoliInvert  [_Button("Inverti Direzione", "INVERTI_DIREZIONE.bmp", "INVERTI_DIREZIONE.bmp")]^C^C_RVRSLINE 
+ID_NuovoIn     [_Button("Nuovo Inizio", "nuovoiniziop.bmp", "nuovoiniziop.bmp")]^C^C_nuovoiniziop
+               [--]
+ID_SendBackT   [_Button("Porta Dietro", "ZWRC_SN2BCK", "ZWRC_SN2BCK")]^C^C_ai_draworder _Back 
+ID_VLMRT       [_Button("VL Move Rotate", "vlmoverotate.bmp", "vlmoverotate.bmp")]^C^C_VLMR
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: POLILINEA ESTESA
+//-----------------------------------------------------------------------------
+
+**TB_POLI_EXT
+ID_TbPOLI_EXT    [_Toolbar("Polilinea Estesa", _Bottom, _Show, 5, 1, 1)]
+ID_JoinAllBt     [_Button("Join All", "JoinAll.bmp", "JoinAll.bmp")]^C^C_JoinAll
+ID_YBt           [_Button("Unione Rapida Y", "Y.bmp", "Y.bmp")]^C^C_Y
+ID_JoinFuzzBt    [_Button("Join Fuzz", "JOINFUZZ.BMP", "JOINFUZZ.BMP")]^C^C_pljoinfuzz
+                 [--]
+ID_PldShowBt     [_Button("Mostra Direzione", "INIZIO_DIREZIONE.bmp", "INIZIO_DIREZIONE.bmp")]^C^C_PLDREV_SHOW_DIRECTION
+ID_PldSetColBt   [_Button("Imposta Colore Frecce", "PLDREV_SETCOLOR.bmp", "PLDREV_SETCOLOR.bmp")]^C^C_PLDREV_SETCOLOR
+ID_PldSetPosBt   [_Button("Imposta Posizione Frecce", "PLDREV_SETPOS.bmp", "PLDREV_SETPOS.bmp")]^C^C_PLDREV_SETPOS
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: TACCHE
+//  CORRETTO: comandi troncati _tacca -> _tacca_dapoli / _tacca_da_misura
+//  CORRETTO: Metti V senza ^C^C e con parametri hardcoded
+//-----------------------------------------------------------------------------
+
+**TACCHE
+ID_TbTACCHE    [_Toolbar("Tacche", _Bottom, _Show, 0, 0, 1)]
+ID_PoliMisuTr  [_Button("Misura Tratto", "MISURA_TRATTO.BMP", "MISURA_TRATTO.BMP")]^C^C_MISURATRT 
+               [--]
+ID_TACCA_INS   [_Button("Inserisci Tacca", "TakP.bmp", "TakP.bmp")]^C^C_inserisci_tacca 
+ID_TACCA_DAPOLI [_Button("Tacca da Polilinea", "TACCA_dapoli.BMP", "TACCA_dapoli.BMP")]^C^C_tacca_dapoli
+ID_Tacca_damisura [_Button("Tacca da Misura", "TACCA_DISTANZA.BMP", "TACCA_DISTANZA.BMP")]^C^C_tacca_da_misura
+               [--]
+ID_Tacca_copia [_Button("Copia Tacche", "COPIA_TACCHE.BMP", "COPIA_TACCHE.BMP")]^C^C_copia_tacche 
+ID_Tacca_RIBALTA [_Button("Ribalta Tacche", "RIBALTA.BMP", "RIBALTA.BMP")]^C^C_ribalta_tacche 
+ID_Tacca_ripos [_Button("Riposiziona Tacche", "riposiziona.BMP", "riposiziona.BMP")]^C^C_riposiziona_tacche 
+               [--]
+ID_Tacca_SOST  [_Button("Sostituisci Tacche", "SOS_TACCHE.bmp", "SOS_TACCHE.bmp")]^C^C_sostituisci_tacche 
+ID_MettiVBt    [_Button("Metti V", "METTI_V.bmp", "METTI_V.bmp")]^C^C_METTI_V 
+ID_Mettivauto  [_Button("Sostituisci tacche con rientri a V", "METTI_V_AUTO.bmp", "METTI_V_AUTO.bmp")]^C^C_METTI_V_AUTO 
+ID_INSBLOCCHI  [_Button("Inserisci Blocchi a distanza", "inserisci_blocchi.bmp", "inserisci_blocchi.bmp")]^C^C_INSERISCI_BLOCCHI 
+ID_VLWALK      [_Button("Valida tacche interattivo", "vlwalk.bmp", "vlwalk.bmp")]^C^C_VLWALK
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: CONVERSIONE TACCHE
+//-----------------------------------------------------------------------------
+
+**TB_CONV_TACCHE
+ID_TbCONV_TACCHE [_Toolbar("Conversione Tacche", _Bottom, _Show, 5, 0, 1)]
+ID_TacInTagBt    [_Button("Tacche in Tagliate", "tacche_in_tagliate.bmp", "tacche_in_tagliate.bmp")]^C^C_tacche_in_tagliate
+ID_TagInTacBt    [_Button("Tagliate in Tacche", "tagliate_in_tacche.bmp", "tagliate_in_tacche.bmp")]^C^C_tagliate_in_tacche
+                 [--]
+ID_TacInPtBt     [_Button("Tacche in Punti", "tacche_in_punti.bmp", "tacche_in_punti.bmp")]^C^C_tacche_in_punti
+ID_PtInTacBt     [_Button("Punti in Tacche", "punti_in_tacche.bmp", "punti_in_tacche.bmp")]^C^C_punti_in_tacche
+                 [--]
+ID_MozInTacBt    [_Button("Mozart in Tacche", "mozart_in_tacche.bmp", "mozart_in_tacche.bmp")]^C^C_mozart_in_tacche
+ID_TacInMozBt    [_Button("Tacche in Mozart", "tacche_in_mozart.bmp", "tacche_in_mozart.bmp")]^C^C_tacche_in_mozart
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: AAMA
+//-----------------------------------------------------------------------------
+
+**AAMA
+ID_TbAAMA      [_Toolbar("AAMA", _Left, _Show, 2, 0, 1)]
+ID_Aama        [_Button("AAMA Standard", "AAMA.bmp", "AAMA.bmp")]^C^C_aama 
+ID_AAMAR_RUN   [_Button("AAMA Standard Rifilo", "aamar_run.bmp", "aamar_run.bmp")]^C^C_aamar 
+ID_AAMA_ESTRAI [_Button("AAMA Estrai", "aama_estrai.bmp", "aama_estrai.bmp")]^C^C_aama_estrai 
+               [--]
+ID_Drill1      [_Button("Drill 1", "drill1.bmp", "drill1.bmp")]^C^C_drill1 
+ID_Drill2      [_Button("Drill 2", "drill2.bmp", "drill2.bmp")]^C^C_drill2 
+ID_DrillP      [_Button("Drill P", "drillp.bmp", "drillp.bmp")]^C^C_drillp 
+               [--]
+ID_Proiez      [_Button("Proiezione", "PROIEZIONE.bmp", "PROIEZIONE.bmp")]^C^C_proiezione 
+ID_Marc        [_Button("Marcatura", "MARCATURA.bmp", "MARCATURA.bmp")]^C^C_marcatura 
+ID_AllBlocchi  [_Button("Allinea Blocchi", "allinea_blocchi.bmp", "allinea_blocchi.bmp")]^C^C_nestinglinea 
+               [--]
+ID_GEBER_BOT   [_Button("Trasforma le tacche in punti geber", "geber.bmp", "geber.bmp")]^C^C_geber 
+ID_GEBER_TOL   [_Button("Tolleranza Geber", "set_geber_tolerance.bmp", "set_geber_tolerance.bmp")]^C^C_set_geber_tolerance 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: AAMA RIFILO
+//-----------------------------------------------------------------------------
+
+**TB_AAMA_RIFILO
+ID_TbAAMA_RIF    [_Toolbar("AAMA Rifilo", _Left, _Show, 3, 0, 1)]
+ID_AamarInitBt   [_Button("Inizializza RIFILO", "aamar_init.bmp", "aamar_init.bmp")]^C^C_aamar_init
+ID_AamarBt       [_Button("AAMA Rifilo", "aamar_run.bmp", "aamar_run.bmp")]^C^C_aamar
+                 [--]
+ID_AamarMatBt    [_Button("RIFILO - Materiale", "aamar_material.bmp", "aamar_material.bmp")]^C^C_aamar_material
+ID_AamarTipBt    [_Button("RIFILO - Tipologia", "aamar_tipologia.bmp", "aamar_tipologia.bmp")]^C^C_aamar_tipologia
+ID_AamarQtaBt    [_Button("RIFILO - Quantità", "aamar_quantita.bmp", "aamar_quantita.bmp")]^C^C_aamar_quantita
+ID_AamarSpcBt    [_Button("RIFILO - Spaziatura", "aamar_spacing.bmp", "aamar_spacing.bmp")]^C^C_aamar_spacing
+ID_AamarSetBt    [_Button("RIFILO - Impostazioni", "aamar_settings.bmp", "aamar_settings.bmp")]^C^C_aamar_settings
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: MODIFICA AVANZATA
+//  CORRETTO: rimosso duplicato ID_Raccordo0 (già in TB_RACCORDO_MULTIPLO)
+//-----------------------------------------------------------------------------
+
+**MODIFICA3
+ID_TbModifica  [_Toolbar("Modifica Avanzata", _Bottom, _Show, 1, 1, 1)]
+ID_CookieCutter [_Button("Svuota Polilinea", "cook.bmp", "cook.bmp")]^C^C_cookiecutter2
+ID_CookieCCB    [_Button("Cookie Cutter (CC)", "cc.bmp", "cc.bmp")]^C^C_CC
+ID_PERP2ENT     [_Button("Perp a Ent", "perp2ent.bmp", "perp2ent.bmp")]^C^C_perp2ent  
+ID_BreakSele    [_Button("Spezza in Punto", "SPEZZA_PUNTO.bmp", "SPEZZA_PUNTO.bmp")]^C^C_SPEZZA_PUNTO 
+ID_Raccordo0M   [_Button("Raccordo Raggio Zero", "RAGGIO_0.BMP", "RAGGIO_0.BMP")]^C^C_RACCORDA_0 
+               [--]
+ID_ZeroRottaion [_Button("Rotazione Zero", "Zero.bmp", "Zero.bmp")]^C^C_ZR 
+ID_Rot9Btn      [_Button("Rotazione 9", "r9.bmp", "r9.bmp")]^C^C_R9 
+ID_Rot90Btn     [_Button("Rotazione 90", "r90.bmp", "r90.bmp")]^C^C_R90 
+ID_Rot90MBtn    [_Button("Rotazione -90", "r90m.bmp", "r90m.bmp")]^C^C_R90M 
+ID_Rot180Btn    [_Button("Rotazione 180", "r180.bmp", "r180.bmp")]^C^C_R180 
+               [--]
+ID_CentroB     [_Button("Trova Centro", "Cent.bmp", "Cent.bmp")]^C^C_Centro 
+ID_QuickMirror [_Button("Specchia Rapido", "Quic.bmp", "Quic.bmp")]^C^C_QM 
+ID_ATC         [_Button("Allinea Testo a Curva", "ATC.bmp", "ATC.bmp")]^C^C_ATC 
+               [--]
+ID_Polygon     [_Button("Poligono", "ZWRC_POLYGO", "ZWRC_POLYGO")]^C^C_polygon 
+ID_Rectang     [_Button("Rettangolo", "ZWRC_RECTAN", "ZWRC_RECTAN")]^C^C_rectang 
+ID_LeoRettangolo [_Button("Rettangolo Base/Altezza", "RECT.bmp", "RECT.bmp")]^C^C_leorettangolo 
+               [--]
+ID_LeoRACRETT  [_Button("Rettangolo Raccordato", "rettangoloraccordato.bmp", "rettangoloraccordato.bmp")]^C^C_LeoRACRETT 
+ID_LeoA3       [_Button("Rettangolo A3", "tavola-vuota.BMP", "tavola-vuota.BMP")]^C^C_LeoA3 
+ID_LeoA4       [_Button("Rettangolo A4", "TAVOLA_STAMPA_A4.BMP", "TAVOLA_STAMPA_A4.BMP")]^C^C_LeoA4 
+               [--]
+ID_Trapi       [_Button("Trapezio per Altezza", "TRAPI.bmp", "TRAPI.bmp")]^C^C_Trapi 
+ID_Trapl       [_Button("Trapezio per Lato", "TRAPL.bmp", "TRAPL.bmp")]^C^C_Trapl 
+               [--]
+ID_GoldRectBtn [_Button("Rettangolo Aureo", "goldrect.bmp", "goldrect.bmp")]^C^C_GOLDRECT 
+ID_GoldSprlBtn [_Button("Spirale Aurea", "goldspiral.bmp", "goldspiral.bmp")]^C^C_GOLDSPIRAL 
+ID_SpiraleBtn  [_Button("Spirale", "spirale.bmp", "spirale.bmp")]^C^C_SPIRALE 
+ID_TascaBtn    [_Button("Tasca", "tasca.bmp", "tasca.bmp")]^C^C_TASCA 
+ID_TopOptBtn   [_Button("Top Ottimizzato", "topopt.bmp", "topopt.bmp")]^C^C_TOPOPT 
+               [--]
+ID_PolIDireM   [_Button("Direzione Polilinea", "INIZIO_DIREZIONE.bmp", "INIZIO_DIREZIONE.bmp")]^C^C_PLD 
+ID_PoliInvertM [_Button("Inverti Direzione", "INVERTI_DIREZIONE.bmp", "INVERTI_DIREZIONE.bmp")]^C^C_RVRSLINE 
+               [--]
+ID_PoliMisuTrM [_Button("Misura Tratto", "MISURA_TRATTO.BMP", "MISURA_TRATTO.BMP")]^C^C_MISURATRT 
+ID_cs          [_Button("Chain Selection", "cs.bmp", "cs.bmp")]^C^C_cs 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: TAVOLA DI STAMPA
+//-----------------------------------------------------------------------------
+
+**TB_TAVOLA_DI_STAMPA
+ID_TbTavola    [_Toolbar("Tavola di Stampa", _Bottom, _Show, 2, 0, 1)]
+ID_TavPreB     [_Button("Prestampa", "PRESTAMPA.bmp", "PRESTAMPA.bmp")]^C^C_PRESTAMPA 
+ID_TavSelMan   [_Button("Tavola Selezione Manuale", "TAVOLA_STAMPA.bmp", "TAVOLA_STAMPA.bmp")]^C^C_TAVOLA_DI_STAMPA_ANTIBUG 
+ID_TavSelManA3 [_Button("Tavola A3", "TAVOLA_STAMPA_A3.bmp", "TAVOLA_STAMPA_A3.bmp")]^C^C_TAVOLA_DI_STAMPA_A3 
+ID_NestAvanz   [_Button("Nesting Avanzato", "nesting.bmp", "nesting.bmp")]^C^C_NESTING3 
+               [--]
+ID_Tav         [_Button("Foglio Plotter Singolo", "TAVOLA_STAMPA_VUOTA.bmp", "TAVOLA_STAMPA_VUOTA.bmp")]^C^C_leoum 
+ID_Tav2        [_Button("2 Fogli Plotter", "leoum2.bmp", "leoum2.bmp")]^C^C_leoum2 
+ID_Tav4        [_Button("4 Fogli Plotter", "leoum4.bmp", "leoum4.bmp")]^C^C_leoum4 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: SBOZZO
+//-----------------------------------------------------------------------------
+
+**SBOZZO
+ID_TbSbo       [_Toolbar("Sbozzo", _Bottom, _Show, 1, 0, 1)]
+ID_SBOZZO      [_Button("Sbozzo Singolo", "SBOZZO.bmp", "SBOZZO.bmp")]^C^C_SBOZZO 
+ID_SBOZZOret   [_Button("Sbozzo Rettangolare", "SBOZZO_RETT.BMP", "SBOZZO_RETT.BMP")]^C^C_SBOZZO_RETT
+ID_SBOZZO_BOUND [_Button("Sbozzo Boundary", "sbozzo_bound.bmp", "sbozzo_bound.bmp")]^C^C_sbozzo_bound  
+ID_SBOZZOmult  [_Button("Sbozzo Multiplo", "sbozzomultiplo.bmp", "sbozzomultiplo.bmp")]^C^C_CopyArray 
+               [--]
+ID_DIMA        [_Button("Dima", "DIMA_ATOM.bmp", "DIMA_ATOM.bmp")]^C^C_DIMA 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: PLUGIN DI STAMPA
+//  CORRETTO: conta senza parametro hardcoded e con ^C^C
+//-----------------------------------------------------------------------------
+
+**TB_PLUGIN_DI_STAMPA
+ID_TbPlu       [_Toolbar("Plugin", _Bottom, _Show, 2, 1, 1)]
+ID_ContaBt     [_Button("Conta", "conta.bmp", "conta.bmp")]^C^C_conta 
+               [--]
+ID_passante    [_Button("Passante", "Pass.bmp", "Pass.bmp")]^C^C_Passante 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: OFFSET STANDARD
+//-----------------------------------------------------------------------------
+
+**TB_OFFSET_STANDARD
+ID_TbOffsetStd [_Toolbar("Offset", _Bottom, _Show, 1, 2, 1)]
+ID_Offset2     [_Button("Offset 2", "OF2.BMP", "OF2.BMP")]^C^C_offset;2;
+ID_Offset3     [_Button("Offset 3", "OF3.BMP", "OF3.BMP")]^C^C_offset;3;
+ID_Offset4     [_Button("Offset 4", "OF4.BMP", "OF4.BMP")]^C^C_offset;4;
+ID_Offset5     [_Button("Offset 5", "OF5.BMP", "OF5.BMP")]^C^C_offset;5;
+ID_Offset8     [_Button("Offset 8", "OF8.BMP", "OF8.BMP")]^C^C_offset;8;
+ID_Offset10    [_Button("Offset 10", "OF10.BMP", "OF10.BMP")]^C^C_offset;10;
+ID_OffsetVar   [_Button("Offset Variabile", "OF.bmp", "OF.bmp")]^C^C_offset 
+               [--]
+ID_Offset2t    [_Button("Offset 2 Tratteggiato", "OF2T.BMP", "OF2T.BMP")]^C^C_oft_2 
+ID_Offset3t    [_Button("Offset 3 Tratteggiato", "OF3T.BMP", "OF3T.BMP")]^C^C_oft_3 
+ID_Offset4t    [_Button("Offset 4 Tratteggiato", "OF4T.BMP", "OF4T.BMP")]^C^C_oft_4 
+ID_Offset5t    [_Button("Offset 5 Tratteggiato", "OF5T.BMP", "OF5T.BMP")]^C^C_oft_5 
+ID_Offset8t    [_Button("Offset 8 Tratteggiato", "OF8T.BMP", "OF8T.BMP")]^C^C_oft_8 
+ID_Offset10t   [_Button("Offset 10 Tratteggiato", "OFT10T.bmp", "OFT10T.bmp")]^C^C_oft_10 
+ID_Offsett     [_Button("Offset Tratteggiato", "OFt.bmp", "OFt.bmp")]^C^C_oft 
+               [--]
+ID_OFI         [_Button("OFI", "ofi.bmp", "ofi.bmp")]^C^C_ofi 
+               [--]
+ID_OffSimpleBtn [_Button("Offset Tratto Semplice", "offset_tratto_simple.bmp", "offset_tratto_simple.bmp")]^C^C_OFFSET_TRATTO_SIMPLE 
+ID_OffLinkedBtn [_Button("Offset Tratto Collegato", "offset_tratto_linked.bmp", "offset_tratto_linked.bmp")]^C^C_OFFSET_TRATTO_LINKED 
+ID_OffHatchBtn  [_Button("Offset Tratto Tratteggiato", "offset_tratto_hatched.bmp", "offset_tratto_hatched.bmp")]^C^C_OFFSET_TRATTO_HATCHED 
+ID_OffBreakBtn  [_Button("Offset Tratto Spezzato", "offset_tratto_break.bmp", "offset_tratto_break.bmp")]^C^C_OFFSET_TRATTO_BREAK 
+ID_OffBreakClBtn [_Button("Offset Tratto Pulito", "offset_tratto_break_clean.bmp", "offset_tratto_break_clean.bmp")]^C^C_OFFSET_TRATTO_BREAK_CLEAN 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: INTERROGA
+//-----------------------------------------------------------------------------
+
+**INTERROGA
+ID_TbInquiry   [_Toolbar("Interroga", _Floating, _Hide, 813, 562, 1)]
+ID_Dimaligne   [_Button("Quota Allineata", "ZWRC_DIMALI", "ZWRC_DIMALI")]^C^C_dimaligned 
+ID_Dimradius   [_Button("Quota Raggio", "ZWRC_DIMRAD", "ZWRC_DIMRAD")]^C^C_dimradius 
+ID_Dimdiamet   [_Button("Quota Diametro", "ZWRC_DIMDIA", "ZWRC_DIMDIA")]^C^C_dimdiameter 
+               [--]
+ID_List        [_Button("Elenca", "ZWRC_LIST", "ZWRC_LIST")]^C^C_list 
+ID_DistU       [_Button("Distanza", "ZWRC_DIST", "ZWRC_DIST")]'_dist 
+ID_AreaU       [_Button("Area", "ZWRC_AREA", "ZWRC_AREA")]^C^C_area _add _entity 
+               [--]
+ID_ImageAtta   [_Button("Attacca Immagine", "ZWRC_IMGATT", "ZWRC_IMGATT")]^C^C_imageattach 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: CONSUMI NOG
+//-----------------------------------------------------------------------------
+
+**TB_CONSUMI_NOG
+ID_TbCONSUMI_NOG [_Toolbar("CONSUMI NOG", _Bottom, _Show, 2, 3, 1)]
+ID_CONSUMI_METRO [_Button("Consumi Metro", "consumi_metro.bmp", "consumi_metro.bmp")]^C^C_consumi_metro 
+ID_CONSUMI_ROTOLO [_Button("Consumi Rotolo", "consumi_rotolo.bmp", "consumi_rotolo.bmp")]^C^C_consumi_rotolo  
+ID_COMPUTMAT    [_Button("Computo Materiali", "NOG.bmp", "NOG.bmp")]^C^C_NOG 
+ID_NOGG2        [_Button("NOGG", "nogg.bmp", "nogg.bmp")]^C^C_NOGG 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: NOG CONFIGURAZIONE
+//-----------------------------------------------------------------------------
+
+**TB_NOG_CONFIG
+ID_TbNOG_CFG     [_Toolbar("NOG Configurazione", _Bottom, _Show, 5, 3, 1)]
+ID_NogCfgBt      [_Button("Configurazione NOG", "nog_config.bmp", "nog_config.bmp")]^C^C_NOG-CONFIG
+ID_NogAddMatBt   [_Button("NOG Aggiungi Materiale", "nog_addmat.bmp", "nog_addmat.bmp")]^C^C_NOG-ADDMAT
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: SCHEDE E REPORT
+//-----------------------------------------------------------------------------
+
+**TB_SCHEDE
+ID_TbSCHEDE      [_Toolbar("Schede e Report", _Bottom, _Show, 4, 3, 1)]
+ID_SchedaBt      [_Button("Scheda Base", "scheda.bmp", "scheda.bmp")]^C^C_SCHEDA
+ID_SchedaEsBt    [_Button("Scheda Esegui Tutto", "scheda_esegui.bmp", "scheda_esegui.bmp")]^C^C_SCHEDA_ESEGUI
+                 [--]
+ID_SchedaImgBt   [_Button("Scheda Pezzi con Immagini", "scheda_img.bmp", "scheda_img.bmp")]^C^C_SCHEDA_PEZZI_IMG
+ID_SchedaAccBt   [_Button("Scheda Accessori", "scheda_acc.bmp", "scheda_acc.bmp")]^C^C_SCHEDA-ACC
+ID_SchedaLavBt   [_Button("Scheda Lavorazioni", "scheda_lav.bmp", "scheda_lav.bmp")]^C^C_SCHEDA-LAV
+ID_SchedaPzAccBt [_Button("Scheda Pezzi+Accessori", "scheda_pz_acc.bmp", "scheda_pz_acc.bmp")]^C^C_SCHEDA-PEZZI-ACC
+ID_SchedaPzLavBt [_Button("Scheda Pezzi+Lavorazioni", "scheda_pz_lav.bmp", "scheda_pz_lav.bmp")]^C^C_SCHEDA-PEZZI-LAV
+                 [--]
+ID_HtmlBt        [_Button("Genera HTML", "scheda_html.bmp", "scheda_html.bmp")]^C^C_SCHEDA_GENERA_HTML
+ID_HtmlIntBt     [_Button("Genera HTML Interattivo", "scheda_html_int.bmp", "scheda_html_int.bmp")]^C^C_SCHEDA_GENERA_HTML_INT
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: FASCIA FIANCO
+//-----------------------------------------------------------------------------
+
+**TB_FASCIA_FIANCO
+ID_TbFASCIA_FIANCO [_Toolbar("FASCIA FIANCO", _Bottom, _Show, 3, 3, 1)]
+ID_DISEGNAFF   [_Button("Disegna Fascia", "disegnafasciafianco.bmp", "disegnafasciafianco.bmp")]^C^C_fasciafianco 
+ID_FFUI        [_Button("Fascia UI", "fasciafiancoui.bmp", "fasciafiancoui.bmp")]^C^C_fasciafiancoui 
+ID_FFEXTUI     [_Button("Fascia Ext", "fasciafiancoextui.bmp", "fasciafiancoextui.bmp")]^C^C_fasciafiancoextui 
+ID_QUADARCHI   [_Button("Quadrante ad Archi", "quadrantearchi.bmp", "quadrantearchi.bmp")]^C^C_disegnaquadrangolo
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: BLOCCHI AVANZATI
+//-----------------------------------------------------------------------------
+
+**TB_BLOCCHI_AVANZATI
+ID_TbBLOCCHI_AV [_Toolbar("BLOCCHI AVANZATI", _Bottom, _Show, 5, 3, 1)]
+ID_BLOC_IN_PT  [_Button("Blocchi in Punti", "blocchi_in_punti.bmp", "blocchi_in_punti.bmp")]^C^C_blocchi_in_punti 
+ID_BLOC_RAPIDO [_Button("Blocco Rapido", "blocco_rapido.bmp", "blocco_rapido.bmp")]^C^C_blocco_rapido 
+ID_INS_BLOCCHI [_Button("Inserisci Blocchi su polilinea", "inserisci_blocchi.bmp", "inserisci_blocchi.bmp")]^C^C_inserisci_blocchi 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: UTILITA SISTEMA
+//-----------------------------------------------------------------------------
+
+**TB_UTILITA_SISTEMA
+ID_TbUTIL_SIS  [_Toolbar("UTILITA SISTEMA", _Bottom, _Show, 6, 3, 1)]
+ID_INIZIALIZZA [_Button("Inizializza", "inizializza.bmp", "inizializza.bmp")]^C^C_inizializza2 
+               [--]
+ID_CBPB        [_Button("cambia punto base blocco", "cbp.bmp", "cbp.bmp")]^C^C_cbp 
+ID_CBPRB       [_Button("cambia punto base blocco con riferimento", "cbpr.bmp", "cbpr.bmp")]^C^C_cbpr 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: UTILITÀ SISTEMA ESTESA
+//-----------------------------------------------------------------------------
+
+**TB_UTILITA_EXT
+ID_TbUTIL_EXT    [_Toolbar("Utilità Sistema Ext", _Bottom, _Show, 5, 2, 1)]
+ID_HexDecBt      [_Button("Hex/Dec Converter", "HexDecConverter.bmp", "HexDecConverter.bmp")]^C^C_HexDecConverter
+ID_FontTestBt    [_Button("Test Font SHX", "font_test.bmp", "font_test.bmp")]^C^C_font_test
+ID_CambiaColBt   [_Button("Cambia Colore", "CAMBIACOL.bmp", "CAMBIACOL.bmp")]^C^C_CAMBIACOL
+                 [--]
+ID_TCaseBt       [_Button("Maiuscolo/Minuscolo", "TCASE.bmp", "TCASE.bmp")]^C^C_TCASE
+ID_ChgBt         [_Button("Sostituisci Stringa", "chg.bmp", "chg.bmp")]^C^C_chg
+ID_EdtBt         [_Button("Ruota Testo", "EDT.bmp", "EDT.bmp")]^C^C_EDT
+                 [--]
+ID_ArcotangBt    [_Button("Arco Tangente", "ARCOTANG.bmp", "ARCOTANG.bmp")]^C^C_ARCOTANG
+ID_SplitCirBt    [_Button("Spezza Cerchio", "splitcir.bmp", "splitcir.bmp")]^C^C_splitcir
+ID_TrovaGapBt    [_Button("Trova Gap", "TROVA_GAP.bmp", "TROVA_GAP.bmp")]^C^C_TROVA_GAP
+ID_MisuraCucBt   [_Button("Misura Cucitura", "MISURA_CUCITURA.bmp", "MISURA_CUCITURA.bmp")]^C^C_MISURA-CUCITURA
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: NESTING AVANZATO
+//-----------------------------------------------------------------------------
+
+**TB_NESTING_AVANZATO
+ID_TbNESTING   [_Toolbar("NESTING AVANZATO", _Bottom, _Show, 7, 3, 1)]
+ID_NestBaseBtn [_Button("Nesting Base", "nesting.bmp", "nesting.bmp")]^C^C_nesting 
+ID_NestBestFitBtn [_Button("Nesting Best Fit", "nesting-bestfit.bmp", "nesting-bestfit.bmp")]^C^C_nesting-bestfit 
+ID_NestCenteredBtn [_Button("Nesting Centrato", "nesting-centered.bmp", "nesting-centered.bmp")]^C^C_nesting-centered 
+ID_NestClusterBtn [_Button("Nesting Cluster", "nesting-cluster.bmp", "nesting-cluster.bmp")]^C^C_nesting-cluster 
+               [--]
+ID_NestColumnBtn [_Button("Nesting Colonna", "nesting-column.bmp", "nesting-column.bmp")]^C^C_nesting-column 
+ID_NestGuilloBtn [_Button("Nesting Ghigliottina", "nesting-guillotine.bmp", "nesting-guillotine.bmp")]^C^C_nesting-guillotine 
+ID_NestHybridBtn [_Button("Nesting Ibrido", "nesting-hybrid.bmp", "nesting-hybrid.bmp")]^C^C_nesting-hybrid 
+ID_NestSpiralBtn [_Button("Nesting Spirale", "nesting-spiral.bmp", "nesting-spiral.bmp")]^C^C_nesting-spiral 
+ID_NestTetrisBtn [_Button("Nesting Tetris", "nesting-tetris.bmp", "nesting-tetris.bmp")]^C^C_nesting-tetris 
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: NESTING BASE ESTESO
+//-----------------------------------------------------------------------------
+
+**TB_NESTING_BASE
+ID_TbNEST_BASE   [_Toolbar("Nesting Base", _Bottom, _Show, 6, 3, 1)]
+ID_NestLinBt     [_Button("Nesting Linea", "nesting_linea.bmp", "nesting_linea.bmp")]^C^C_nestinglinea
+ID_Nest1Bt       [_Button("Nesting Singola Linea", "nesting1.bmp", "nesting1.bmp")]^C^C_nesting1
+ID_NestAreaBt    [_Button("Nesting Area", "nestingarea.bmp", "nestingarea.bmp")]^C^C_nestingarea
+                 [--]
+ID_Nest5Bt       [_Button("Nesting Multi-Riga", "nesting5.bmp", "nesting5.bmp")]^C^C_nesting5
+ID_Nest51Bt      [_Button("Nesting Alternato", "nesting51.bmp", "nesting51.bmp")]^C^C_nesting51
+ID_Nest52Bt      [_Button("Nesting Ordinato", "nesting52.bmp", "nesting52.bmp")]^C^C_nesting52
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: DATI PEZZO
+//-----------------------------------------------------------------------------
+
+**TB_DATI_PEZZO
+ID_TbDATI_PEZZO  [_Toolbar("Dati Pezzo", _Bottom, _Show, 0, 3, 1)]
+ID_NomeBt        [_Button("Nome Pezzo", "NOME_PEZZO.bmp", "NOME_PEZZO.bmp")]^C^C_NOM
+ID_NomeEditBt    [_Button("Modifica Nome Pezzo", "ed_nome_pezzo.bmp", "ed_nome_pezzo.bmp")]^C^C^P_ed-nom
+                 [--]
+ID_MatBt         [_Button("Materiale", "materiale.bmp", "materiale.bmp")]^C^C_MAT
+ID_MatEditBt     [_Button("Modifica Materiale", "ed_materiale.bmp", "ed_materiale.bmp")]^C^C^P_ed-mat
+ID_MatNumBt      [_Button("Modifica Quantità/Tipologia", "ed_numero_materiale.bmp", "ed_numero_materiale.bmp")]^C^C_ED-MATERIALE
+                 [--]
+ID_NumBt         [_Button("Numero Articolo", "NUM_ART.bmp", "NUM_ART.bmp")]^C^C_NUM
+ID_SpessBt       [_Button("Spessore", "SPESSORE.bmp", "SPESSORE.bmp")]^C^C_SPESSORE
+                 [--]
+ID_PelBt         [_Button("Pelle", "PELLE.bmp", "PELLE.bmp")]^C^C_PEL
+ID_FodBt         [_Button("Fodera", "FOD.bmp", "FOD.bmp")]^C^C_FOD
+                 [--]
+ID_EdInfBt       [_Button("Definisci Infustitura", "ed-infust.bmp", "ed-infust.bmp")]^C^C^P_ed-infust
+ID_EdFodBt       [_Button("Definisci Fodera", "ed-fod.bmp", "ed-fod.bmp")]^C^C^P_ed-fod
+ID_EdRifBt       [_Button("Definisci Rifilo", "ed-rif.bmp", "ed-rif.bmp")]^C^C^P_ed-rif
+ID_EdSbzBt       [_Button("Definisci Sbozzo/Taglio", "ed-sboz.bmp", "ed-sboz.bmp")]^C^C^P_ed-sboz
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: LAVORAZIONI E ACCESSORI
+//-----------------------------------------------------------------------------
+
+**TB_LAV_ACC
+ID_TbLAV_ACC     [_Toolbar("Lavorazioni e Accessori", _Bottom, _Show, 1, 3, 1)]
+ID_LavInsBt      [_Button("Inserisci Lavorazione", "lavorazione_ins.bmp", "lavorazione_ins.bmp")]^C^C_LAV
+ID_LavEditBt     [_Button("Modifica Lavorazione", "lavorazione_edit.bmp", "lavorazione_edit.bmp")]^C^C_ED-LAV
+ID_LavDbBt       [_Button("Database Lavorazioni", "lavorazione_db.bmp", "lavorazione_db.bmp")]^C^C_ED-DB-LAV
+ID_LavDataBt     [_Button("Crea Blocco Dati Lavorazioni", "lavorazione_data.bmp", "lavorazione_data.bmp")]^C^C_CREA-DATLAV
+                 [--]
+ID_AccInsBt      [_Button("Inserisci Accessorio", "accessorio_ins.bmp", "accessorio_ins.bmp")]^C^C_ACC
+ID_AccEditBt     [_Button("Modifica Accessorio", "accessorio_edit.bmp", "accessorio_edit.bmp")]^C^C_ED-ACC
+ID_AccDbBt       [_Button("Database Accessori", "accessorio_db.bmp", "accessorio_db.bmp")]^C^C_ED-DB-ACC
+ID_AccDataBt     [_Button("Crea Blocco Dati Accessori", "accessorio_data.bmp", "accessorio_data.bmp")]^C^C_CREA-DATACC
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: GESTIONE MATERIALI DATABASE
+//-----------------------------------------------------------------------------
+
+**TB_GESTIONE_MAT
+ID_TbGEST_MAT    [_Toolbar("Gestione Materiali DB", _Bottom, _Show, 2, 3, 1)]
+ID_GestMatBt     [_Button("Database Materiali", "gestmat.bmp", "gestmat.bmp")]^C^C_gestmat
+ID_GnamesBt      [_Button("Database Nomi", "gnames.bmp", "gnames.bmp")]^C^C_gnames
+                 [--]
+ID_SostMatBt     [_Button("Sostituisci Materiale (batch)", "sostmat.bmp", "sostmat.bmp")]^C^C_sostmat
+ID_Mat1Bt        [_Button("Visualizza per Materiale", "MAT1.bmp", "MAT1.bmp")]^C^C_mat1
+ID_SelMatBt      [_Button("Seleziona per Materiale", "seleziona-permat.bmp", "seleziona-permat.bmp")]^C^C_seleziona-permat
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: FUSTELLE
+//-----------------------------------------------------------------------------
+
+**TB_FUSTELLE
+ID_TbFUSTELLE    [_Toolbar("Fustelle", _Bottom, _Show, 4, 1, 1)]
+ID_FustPBt       [_Button("Fustella P", "leo_fust_P.bmp", "leo_fust_P.bmp")]^C^C_LEO_FUST P
+ID_Fust08Bt      [_Button("Fustella 0.8mm", "leo_fust_0_8.bmp", "leo_fust_0_8.bmp")]^C^C_LEO_FUST 0.8
+ID_Fust1Bt       [_Button("Fustella 1mm", "leo_fust_1.bmp", "leo_fust_1.bmp")]^C^C_LEO_FUST 1
+ID_Fust15Bt      [_Button("Fustella 1.5mm", "leo_fust_1_5.bmp", "leo_fust_1_5.bmp")]^C^C_LEO_FUST 1.5
+ID_Fust2Bt       [_Button("Fustella 2mm", "leo_fust_2.bmp", "leo_fust_2.bmp")]^C^C_LEO_FUST 2
+ID_Fust25Bt      [_Button("Fustella 2.5mm", "leo_fust_2_5.bmp", "leo_fust_2_5.bmp")]^C^C_LEO_FUST 2.5
+ID_Fust3Bt       [_Button("Fustella 3mm", "leo_fust_3.bmp", "leo_fust_3.bmp")]^C^C_LEO_FUST 3
+ID_Fust35Bt      [_Button("Fustella 3.5mm", "leo_fust_3_5.bmp", "leo_fust_3_5.bmp")]^C^C_LEO_FUST 3.5
+ID_Fust4Bt       [_Button("Fustella 4mm", "leo_fust_4.bmp", "leo_fust_4.bmp")]^C^C_LEO_FUST 4
+ID_Fust45Bt      [_Button("Fustella 4.5mm", "leo_fust_4_5.bmp", "leo_fust_4_5.bmp")]^C^C_LEO_FUST 4.5
+ID_Fust5Bt       [_Button("Fustella 5mm", "leo_fust_5.bmp", "leo_fust_5.bmp")]^C^C_LEO_FUST 5
+ID_Fust6Bt       [_Button("Fustella 6mm", "leo_fust_6.bmp", "leo_fust_6.bmp")]^C^C_LEO_FUST 6
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: MODARIS / EXPORT
+//-----------------------------------------------------------------------------
+
+**TB_MODARIS
+ID_TbMODARIS     [_Toolbar("Modaris", _Bottom, _Show, 4, 2, 1)]
+ID_ModarisAAMABt [_Button("Modaris AAMA", "Modaris-AAMA.bmp", "Modaris-AAMA.bmp")]^C^C_Modaris-AAMA
+ID_MAConfigBt    [_Button("Modaris Config", "MA-config.bmp", "MA-config.bmp")]^C^C_MA-config
+                 [--]
+ID_ConpBt        [_Button("CONP - Centroide Polilinee", "CONP.bmp", "CONP.bmp")]^C^C_CONP
+ID_ConpCBt       [_Button("CONP_C - Cerchi in Punti", "conp_c.bmp", "conp_c.bmp")]^C^C_CONP_C
+                 [--]
+ID_EstrMultBt    [_Button("Estrai Multipli", "estrai-multipli.bmp", "estrai-multipli.bmp")]^C^C_estrai-multipli
+ID_EstrSingBt    [_Button("Estrai Singolo", "estrai-singolo.bmp", "estrai-singolo.bmp")]^C^C_estrai-singolo
+
+//-----------------------------------------------------------------------------
+//  TOOLBAR: DICITURE STANDARD PELLETTERIA
+//-----------------------------------------------------------------------------
+
+**TB_DICITURE
+ID_TbDICITURE    [_Toolbar("Diciture Standard", _Bottom, _Show, 7, 0, 1)]
+ID_EdgBt         [_Button("COSTOLA", "EDG.bmp", "EDG.bmp")]^C^C_EDG
+ID_FilBt         [_Button("FILO", "FIL.bmp", "FIL.bmp")]^C^C_FIL
+ID_ScaBt         [_Button("SCARNIRE", "SCA.bmp", "SCA.bmp")]^C^C_SCA
+ID_SotBt         [_Button("SOTTOMETTITURA", "SOT.bmp", "SOT.bmp")]^C^C_SOT
+ID_RimBt         [_Button("RIMBOCCO", "RIM.bmp", "RIM.bmp")]^C^C_RIM
+ID_TalBt         [_Button("TALYN", "TAL.bmp", "TAL.bmp")]^C^C_TAL
+ID_SalBt         [_Button("SALPA", "SAL.bmp", "SAL.bmp")]^C^C_SAL
+ID_AntBt         [_Button("ANTISTRAPPO", "ANT.bmp", "ANT.bmp")]^C^C_ANT
+ID_BomBt         [_Button("BOMBATURA", "BOM.bmp", "BOM.bmp")]^C^C_BOM
+ID_RinBt         [_Button("RINFORZO", "RIN.bmp", "RIN.bmp")]^C^C_RIN
+ID_BorBt         [_Button("BORDATURA", "BOR.bmp", "BOR.bmp")]^C^C_BOR
+ID_ValBt         [_Button("VALIGIAIA", "VAL.bmp", "VAL.bmp")]^C^C_VAL
+                 [--]
+ID_C5Bt          [_Button("CUC.ROV. 5MM", "C5.bmp", "C5.bmp")]^C^C_C5
+ID_C5PBt         [_Button("CUC.ROV. 5MM + PIPING", "C5P.bmp", "C5P.bmp")]^C^C_C5P
+ID_C7Bt          [_Button("CUC.ROV. 7MM", "C7.bmp", "C7.bmp")]^C^C_C7
+ID_C7PBt         [_Button("CUC.ROV. 7MM + PIPING", "C7P.bmp", "C7P.bmp")]^C^C_C7P
+                 [--]
+ID_VrBt          [_Button("Direzione Verticale", "VR.bmp", "VR.bmp")]^C^C_VR
+ID_OrBt          [_Button("Direzione Orizzontale", "OR.bmp", "OR.bmp")]^C^C_OR
+ID_WarBt         [_Button("Attenzione", "WAR.bmp", "WAR.bmp")]^C^C_WAR
+ID_EqBt          [_Button("Equalizzare", "EQ.bmp", "EQ.bmp")]^C^C_EQ
+ID_TabtBt        [_Button("Tabella Testi", "TABT.bmp", "TABT.bmp")]^C^C_TABT
+ID_PelBt2        [_Button("Pelle", "PELLE_ind.bmp", "PELLE_ind.bmp")]^C^C_PEL
+ID_FodBt2        [_Button("Fodera", "FOD_ind.bmp", "FOD_ind.bmp")]^C^C_FOD
+
+//=============================================================================
+//  SEZIONE ACCELERATORS
+//=============================================================================
+
+***ACCELERATORS
+ID_Dimaligne   [CONTROL+"Q"]
+ID_Estendi     [CONTROL+"E"]
+ID_Taglia      [CONTROL+"W"]
+ID_CUCITURA    [TOOLBAR+"F6"]
+ID_CONTINUA    [TOOLBAR+"F5"]
+
+//=============================================================================
+//  SEZIONE HELPSTRINGS - DESCRIZIONI COMANDI
+//=============================================================================
+
+***HELPSTRINGS
+
+//--- SNAP AD OGGETTO ---------------------------------------------------------
+ID_Tracking         [Attiva/disattiva il puntamento polare]
+ID_From             [Imposta un punto di riferimento per le misurazioni]
+ID_MIDTwoPts        [Trova il punto medio tra due punti qualsiasi]
+ID_Osnap            [Apre la finestra di dialogo impostazioni snap]
+ID_OsnapEndp        [Aggancia il punto finale di una linea o arco]
+ID_OsnapMIDp        [Aggancia il punto medio di una linea o arco]
+ID_OsnapInte        [Aggancia l'intersezione tra due oggetti]
+ID_OsnapAppa        [Aggancia l'intersezione apparente tra due oggetti]
+ID_OsnapExte        [Aggancia l'estensione di una linea]
+ID_OsnapCent        [Aggancia il centro di cerchi o archi]
+ID_OsnapQuad        [Aggancia il punto quadrante di cerchi e archi]
+ID_OsnapTang        [Aggancia il punto di tangenza]
+ID_OsnapPerp        [Aggancia perpendicolarmente a un oggetto]
+ID_OsnapPara        [Aggancia parallelamente a un oggetto]
+ID_OsnapNode        [Aggancia un punto nodo]
+ID_OsnapInse        [Aggancia il punto di inserimento]
+ID_OsnapNear        [Aggancia il punto più vicino su un oggetto]
+ID_OsnapNone        [Disattiva tutti gli snap ad oggetto]
+ID_PointFilx        [Filtra la selezione solo per coordinata X]
+ID_PointFily        [Filtra la selezione solo per coordinata Y]
+ID_PointFilz        [Filtra la selezione solo per coordinata Z]
+
+//--- DISEGNO -----------------------------------------------------------------
+ID_Rettangolo       [Disegna un rettangolo standard]
+ID_RettBA           [Rettangolo da punto centrale con larghezza e altezza]
+ID_RettRacc         [Rettangolo con angoli raccordati]
+ID_RettA3           [Disegna rettangolo formato A3 (297x420mm)]
+ID_RettA4           [Disegna rettangolo formato A4 (210x297mm)]
+ID_Trapezio         [Trapezio isoscele definito per altezza]
+ID_TrapezioL        [Trapezio isoscele definito per lato obliquo]
+ID_Poligono         [Disegna un poligono regolare]
+ID_GoldRect         [Rettangolo con proporzioni auree (sezione aurea)]
+ID_GoldSpiral       [Spirale di Fibonacci / spirale aurea]
+ID_Spirale          [Spirale generica con parametri personalizzabili]
+ID_Tasca            [Forma a tasca per pattern pelletteria]
+ID_TopOpt           [Ottimizza la disposizione degli elementi nel disegno]
+ID_LaySAR           [Disegna freccia di direzione (SAR)]
+ID_Centro           [Disegna linee di mezzeria verticale e orizzontale]
+ID_ARCOTANG         [Arco tangente interattivo tra due archi esistenti]
+ID_QuadArchi        [Quadrante ad archi per borse: lati dritti con angoli ad arco]
+ID_DueRett          [Disegna due rettangoli collegati]
+ID_DueRettRac       [Disegna due rettangoli collegati con raccordi]
+ID_FasciaFi         [Disegna fascia fianco: due rettangoli collegati]
+ID_FasciaUI         [Fascia fianco con interfaccia grafica e raccordi]
+ID_FasciaMax        [Fascia fianco con parametri massimi]
+ID_FasciaExt        [Fascia fianco estesa con più parametri configurabili]
+ID_RaccZero         [Raccordo con raggio zero: unisce due linee con angolo netto]
+ID_RaccNorm         [Raccordo standard con raggio corrente]
+ID_Cima             [Cima/smusso tra due linee]
+ID_Blend            [Blend curve: crea raccordo tangente tra due curve]
+ID_Cookie           [Svuota polilinea: rimuove tutto ciò che è dentro la forma]
+ID_CookieCut2       [Cookie Cutter 2: svuota polilinea avanzato]
+ID_CookieCC         [Alias per Cookie Cutter 2 - svuota polilinea avanzato]
+ID_Break            [Interrompe una linea, arco o polilinea in un punto preciso]
+ID_SplitCir         [Spezza un cerchio in una polilinea aperta con punto di taglio]
+ID_TrovaGap         [Cerca gap tra entità e disegna cerchio di segnalazione]
+ID_Heal             [Ripara automaticamente polilinee con gap o discontinuità]
+ID_Mirror           [Specchiatura rapida degli oggetti selezionati]
+ID_SendBack         [Porta l'oggetto selezionato dietro agli altri]
+ID_Perp2Ent         [Disegna linee perpendicolari da un punto a un'entità]
+ID_PoliJoinF        [Unisce linee e polilinee con tolleranza fuzzy]
+
+//--- POLILINEE ---------------------------------------------------------------
+ID_PoliMan          [Crea polilinea manualmente unendo linee e archi (PJ)]
+ID_PoliAuto         [Crea polilinea automatica per selezione concatenata]
+ID_PoliAuto1        [Polilinea automatica v1: selezione e unione legacy]
+ID_ChainSel         [Chain Selection: selezione concatenata intelligente per endpoint]
+ID_PoliChain        [Chain Selection con join automatico]
+ID_ChainConf        [Configura parametri della chain selection]
+ID_PoliSpline       [Converte spline in polilinea con numero di segmenti definito]
+ID_PoliEll          [Converte ellisse o arco ellittico in polilinea]
+ID_PoliPell         [Converte ellisse in polilinea con metodo speciale Pell]
+ID_PoliJoinAll      [Unisce tutte le linee, archi e polilinee della selezione]
+ID_PoliJoinFz       [Unisce linee con tolleranza gap configurabile]
+ID_PoliY            [Unione rapida Y: filtra e unisce in polilinee leggere]
+ID_PoliEdit         [Editor avanzato per modificare vertici di polilinee]
+ID_PoliClose        [Chiude polilinea aperta collegando fine all'inizio]
+ID_MisTratt         [Misura la lunghezza di un tratto e inserisce il valore come testo]
+ID_DireInizio       [Visualizza direzione polilinea con marcatore e frecce]
+ID_DireShow         [Mostra direzione animata della polilinea]
+ID_DireInverti      [Inverte la direzione di linee e polilinee]
+ID_NuovoInizio      [Imposta nuovo punto di inizio sulla polilinea selezionata]
+ID_DireSetCol       [Imposta il colore delle frecce di direzione (1-7)]
+ID_DireSetPos       [Imposta posizione frecce direzione (Interne/Esterne)]
+ID_ZeroRot          [Azzera la rotazione di testi, blocchi e MLeader]
+ID_Rot9             [Ruota la selezione di 9 gradi in senso orario]
+ID_Rot90            [Ruota la selezione di 90 gradi in senso orario]
+ID_Rot90M           [Ruota la selezione di 90 gradi in senso antiorario]
+ID_Rot180           [Ruota la selezione di 180 gradi]
+ID_PoliConP         [Calcola centroide polilinee su layer "0" e inserisce punto]
+ID_PoliConPC        [Converte cerchi su layer "0" in punti al centro]
+ID_VLMR             [VL Move Rotate: sposta e ruota oggetti interattivamente]
+ID_VLWalk           [Valida tacche in modo interattivo lungo la polilinea]
+
+//--- BLOCCHI E TESTI ---------------------------------------------------------
+ID_BlocchiVR        [Inserisce blocco indicazione direzione VERTICALE materiale]
+ID_BlocchiOR        [Inserisce blocco indicazione direzione ORIZZONTALE materiale]
+ID_BlocchiWAR       [Inserisce blocco ATTENZIONE]
+ID_BlocchiEQ        [Inserisce blocco EQUALIZZARE]
+ID_BlocchiTABT      [Inserisce blocco tabella testi]
+ID_BlocchiPEL       [Inserisce blocco indicazione materiale PELLE]
+ID_BlocchiFOD       [Inserisce blocco indicazione materiale FODERA]
+ID_FustP            [Inserisce fustella tipo P (punto)]
+ID_Fust08           [Inserisce fustella diametro 0.8mm]
+ID_Fust1            [Inserisce fustella diametro 1mm]
+ID_Fust15           [Inserisce fustella diametro 1.5mm]
+ID_Fust2            [Inserisce fustella diametro 2mm]
+ID_Fust25           [Inserisce fustella diametro 2.5mm]
+ID_Fust3            [Inserisce fustella diametro 3mm]
+ID_Fust35           [Inserisce fustella diametro 3.5mm]
+ID_Fust4            [Inserisce fustella diametro 4mm]
+ID_Fust45           [Inserisce fustella diametro 4.5mm]
+ID_Fust5            [Inserisce fustella diametro 5mm]
+ID_Fust6            [Inserisce fustella diametro 6mm]
+ID_TestiATC         [Allinea testo a curva con controlli dinamici]
+ID_TestiZR          [Azzera la rotazione del testo selezionato]
+ID_TestiEDT         [Ruota testo secondo angolo definito da due punti]
+ID_TestiChg         [Sostituisce stringa in selezione multipla di testi]
+ID_TestiCase        [Converte maiuscolo/minuscolo del testo selezionato]
+ID_CambiaPB         [Cambia punto base blocco senza rilocare inserimenti]
+ID_CambiaCol        [Cambia il colore degli oggetti selezionati tramite dialog]
+ID_TestiCostola     [Inserisce testo standard "COSTOLA" sul pezzo]
+ID_TestiFilo        [Inserisce testo standard "FILO" sul pezzo]
+ID_TestiScar        [Inserisce testo standard "SCARNIRE" sul pezzo]
+ID_TestiSott        [Inserisce testo standard "SOTTOMETTITURA" sul pezzo]
+ID_TestiRimb        [Inserisce testo standard "RIMBOCCO" sul pezzo]
+ID_TestiTaly        [Inserisce testo standard "TALYN" sul pezzo]
+ID_TestiSalp        [Inserisce testo standard "SALPA" sul pezzo]
+ID_TestiAnti        [Inserisce testo standard "ANTISTRAPPO" sul pezzo]
+ID_TestiBomb        [Inserisce testo standard "BOMBATURA" sul pezzo]
+ID_TestiRinf        [Inserisce testo standard "RINFORZO" sul pezzo]
+ID_TestiBord        [Inserisce testo standard "BORDATURA" sul pezzo]
+ID_TestiVali        [Inserisce testo standard "VALIGIAIA" sul pezzo]
+ID_TestiC5          [Inserisce testo "CUC.ROV. 5MM"]
+ID_TestiC5P         [Inserisce testo "CUC.ROV. 5MM CON PIPING"]
+ID_TestiC7          [Inserisce testo "CUC.ROV. 7MM"]
+ID_TestiC7P         [Inserisce testo "CUC.ROV. 7MM CON PIPING"]
+ID_BloccoRapido     [Crea blocco con nome casuale e lo inserisce]
+ID_BlocchiInPt      [Converte blocchi PitRTak in punti al centro]
+ID_InserisciBl      [Inserisce blocchi lungo polilinea a distanza fissa]
+ID_CBP              [Cambia punto base blocco senza rilocare inserimenti]
+ID_CBPR             [Cambia punto base blocco e riloca tutti gli inserimenti]
+ID_BlocchiNum       [Inserisce blocchi numerati progressivamente (Conta)]
+
+//--- OFFSET ------------------------------------------------------------------
+ID_OffsetRing       [Offset Ringrano: originale su layer "0", offset su OUTCUT]
+ID_Tratto           [Offset di un tratto di polilinea]
+ID_Off2             [Offset a distanza 2mm]
+ID_Off3             [Offset a distanza 3mm]
+ID_Off4             [Offset a distanza 4mm]
+ID_Off5             [Offset a distanza 5mm]
+ID_Off6             [Offset a distanza 6mm]
+ID_Off8             [Offset a distanza 8mm]
+ID_Off10            [Offset a distanza 10mm]
+ID_Off2t            [Offset 2mm con linea tratteggiata tipo CUCITURA]
+ID_Off3t            [Offset 3mm con linea tratteggiata tipo CUCITURA]
+ID_Off4t            [Offset 4mm con linea tratteggiata tipo CUCITURA]
+ID_Off5t            [Offset 5mm con linea tratteggiata tipo CUCITURA]
+ID_Off6t            [Offset 6mm con linea tratteggiata tipo CUCITURA]
+ID_Off8t            [Offset 8mm con linea tratteggiata tipo CUCITURA]
+ID_Off10t           [Offset 10mm con linea tratteggiata tipo CUCITURA]
+ID_Offt             [Offset tratteggiato a distanza variabile]
+ID_OffSimple        [Offset tratto semplice: linee parallele con distanza]
+ID_OffLinked        [Offset tratto collegato: linee parallele con connessioni verticali]
+ID_OffHatched       [Offset tratto tratteggiato: pattern cucitura su offset]
+ID_OffBreak         [Offset tratto spezzato: linea con interruzioni regolari]
+ID_OffBreakClean    [Offset tratto spezzato pulito: interruzioni con spazi netti]
+
+//--- STAMPE E NESTING --------------------------------------------------------
+ID_SbozzoSing       [Sbozzo singolo: cancella tacche e offset, sposta su OUTCUT]
+ID_SbozzoRett       [Sbozzo rettangolare: bounding box + offset + nesting]
+ID_SbozzoBound      [Sbozzo boundary: disegna bounding box rettangolare]
+ID_SbozzoMult       [Sbozzo multiplo: array rettangolare con bbox complessivo]
+ID_DimaDef          [Crea dima da layer con offset automatico]
+ID_SbozzoCBP        [Sbozzo con cambio punto base]
+ID_DefInfust        [Aggiunge prefisso "Infustitura" al nome del pezzo]
+ID_DefRifilo        [Aggiunge prefisso "Rifilo" al nome del pezzo]
+ID_DefSboz          [Aggiunge prefisso "Taglio/Sbozzo" al nome del pezzo]
+ID_DefFodera        [Aggiunge prefisso "Fodera" al nome del pezzo]
+ID_TavPre           [Prepara il disegno per la stampa]
+ID_TavMan           [Prepara sagome + nesting per plotter (selezione manuale)]
+ID_TavManA3         [Prepara sagome formato A3 + nesting per plotter]
+ID_TavNest          [Nesting avanzato (NESTING3)]
+ID_NestLinea        [Nesting linea: allinea pezzi in riga orizzontale]
+ID_Nest1            [Nesting singola linea semplificato]
+ID_NestArea         [Definisce area temporanea per il nesting]
+ID_Nest3            [Nesting avanzato variante 3]
+ID_Nest5            [Nesting multi-riga con spacing configurabile]
+ID_Nest51           [Nesting alternato: righe con direzione invertita]
+ID_Nest52           [Nesting ordinato: ordina i pezzi per dimensione prima del nesting]
+ID_NestBase         [Nesting base con gestione overflow automatico]
+ID_NestBestFit      [Nesting best fit: ottimizzazione massima dell'area]
+ID_NestCentered     [Nesting centrato: disposizione simmetrica rispetto al centro]
+ID_NestCluster      [Nesting cluster: raggruppa pezzi per tipo o dimensione]
+ID_NestColumn       [Nesting colonne: dispone i pezzi in colonne verticali]
+ID_NestGuillo       [Nesting ghigliottina: tagli ortogonali progressivi]
+ID_NestHybrid       [Nesting ibrido: combina più strategie di ottimizzazione]
+ID_NestSpiral       [Nesting spirale: disposizione a spirale dall'esterno]
+ID_NestTetris       [Nesting tetris: incastro pezzi stile tetris]
+ID_Tav1             [Foglio plotter singolo 650x950mm]
+ID_Tav2             [Due fogli plotter 1300x950mm]
+ID_Tav4             [Quattro fogli plotter 1300x1800mm]
+ID_Passante         [Calcola e disegna passante tracolla perfetto]
+
+//--- TIPOLINEA E LAYER -------------------------------------------------------
+ID_LinPenna         [Ripristina layer "0" con colore BYLAYER (penna standard)]
+ID_LinRifilo        [Sposta oggetto sul layer ENDCUT (rifilo, Ciano)]
+ID_LinTaglio        [Sposta oggetto sul layer OUTCUT (taglio esterno, Rosso)]
+ID_LinTagInt        [Sposta oggetto sul layer INTCUT (taglio interno, Blu)]
+ID_ColGiallo        [Imposta colore Giallo (ACI 2) per gli oggetti selezionati]
+ID_ColVerde         [Imposta colore Verde (ACI 3) per gli oggetti selezionati]
+ID_ColArancio       [Imposta colore Arancione (ACI 30) per gli oggetti selezionati]
+ID_ColMagenta       [Imposta colore Magenta (ACI 6) per gli oggetti selezionati]
+ID_ColBianco        [Imposta colore Bianco (ACI 254) per gli oggetti selezionati]
+ID_CuciNew          [Imposta tipo linea CUCITURA (tratteggiato, scala 0.3)]
+ID_CuciCont         [Ripristina tipo linea continua (BYLAYER)]
+
+//--- TACCHE ------------------------------------------------------------------
+ID_TaccaIns         [Inserisce blocco tacca con orientamento automatico sulla polilinea]
+ID_TaccaDaPoli      [Copia distanza tra due punti della polilinea e inserisce tacca]
+ID_TaccaDaMis       [Inserisce tacca a distanza numerica specifica]
+ID_TaccaCopia       [Copia tacche da un pezzo (fianco) a un altro (quadrante/fascia)]
+ID_TaccaRibalta     [Ruota le tacche di 180 gradi (cambia verso)]
+ID_TaccaRipos       [Riposiziona tacche da polilinea netta a sbozzo]
+ID_TaccaSost        [Sostituisce tacche esistenti]
+ID_MettiV           [Inserisce rientranza V sulla polilinea (Metti V)]
+ID_MettiVAuto       [Trova tacche vicine e le sostituisce automaticamente con V]
+ID_TaccheInTag      [Converte blocchi "tacca" in "tacca_t" (tacche tagliate)]
+ID_TagliateInT      [Converte blocchi "tacca_t" in "tacca" (tacche standard)]
+ID_TaccheInPunt     [Converte blocchi tacca in punti POINT]
+ID_PuntiInTacc      [Converte punti POINT in blocchi tacca]
+ID_MozartInTac      [Converte blocchi Mozart "PitTacCT" in tacche standard]
+ID_TaccheInMoz      [Converte tacche standard in blocchi Mozart "PitTacCT"]
+ID_TaccaValid       [Valida tacche in modo interattivo lungo la polilinea]
+ID_TaccaMenu        [Menu principale tacche con selezione modalita']
+ID_ChainStatus      [Mostra lo stato corrente della chain selection]
+ID_UnrollSw5        [Sviluppa superficie curva in piano (unroll sweep)]
+ID_UnrollSw5Set     [Impostazioni per lo sviluppo superfici]
+ID_DimaTacche       [Crea dima con tacche in modalita' atomica]
+ID_CheckInterne     [Verifica anomalie sulle linee interne rispetto al contorno]
+ID_NestBestFit2     [Nesting best fit versione 2 ottimizzata]
+ID_NestTrueShape    [Nesting true shape: incastro sulla forma reale dei pezzi]
+ID_AAMASilent       [Elaborazione AAMA in modalita' silenziosa per batch]
+ID_ModarisDebug     [Debug conversione Modaris]
+ID_NOGV             [Computo materiali NOG variante V]
+
+//--- MATERIALI E ARTICOLI ----------------------------------------------------
+ID_MatIns           [Inserisce materiale del pezzo (4 schede: Pelle/Infust/Tela/Fodera)]
+ID_MatEdit          [Modifica il materiale del pezzo tramite dialog]
+ID_MatEditNum       [Modifica rapidamente quantità e tipologia del materiale]
+ID_MatSost          [Sostituisce materiale in batch mantenendo quantità e tipologia]
+ID_MatVis           [Visualizza e zooma i pezzi filtrati per materiale]
+ID_MatSel           [Seleziona sagome per materiale specifico]
+ID_MatGestDb        [Dialog gestione e modifica liste materiali]
+ID_Names            [Dialog gestione liste nomi pezzo (Nome1/2/3.txt)]
+ID_ArtIns           [Inserisce numero articolo nel disegno]
+ID_ArtEditNum       [Modifica un numero articolo esistente]
+ID_NomePezIns       [Inserisce il nome del pezzo tramite dialog a 3 liste]
+ID_NomePezEdit      [Modifica il nome del pezzo tramite dialog]
+ID_AccIns           [Inserisce accessori metallici multipli (max 16) con quantità]
+ID_AccEdit          [Modifica, aggiunge, rimuove o riordina accessori]
+ID_AccDbEdit        [Edita il database accessori (accessori.txt)]
+ID_AccData          [Crea blocco DATACC con 32 attributi per accessori]
+ID_LavIns           [Inserisce lavorazioni multiple (max 16) con ripetizioni]
+ID_LavEdit          [Modifica, aggiunge, rimuove o riordina lavorazioni]
+ID_LavDbEdit        [Edita il database lavorazioni (lavorazioni.txt)]
+ID_LavData          [Crea blocco DATLAV con 32 attributi per lavorazioni]
+ID_Spessore         [Inserisce indicazione spessore finito (SP.)]
+
+//--- AAMA E EXPORT -----------------------------------------------------------
+ID_AAMANorm         [Processa sagome AAMA standard per macchine da taglio]
+ID_AAMASpacing      [Imposta la spaziatura per elaborazione AAMA]
+ID_AAMAEstrai       [Esporta layer "1" in formato DXF per converter esterni]
+ID_AAMATest         [Test elaborazione AAMA]
+ID_AAMADebug        [Debug elaborazione AAMA]
+ID_AAMAErrors       [Mostra errori elaborazione AAMA]
+ID_AAMAClear        [Cancella gli errori AAMA segnalati]
+ID_AAMARInit        [Inizializza il sistema RIFILO (prerequisito per AAMAR)]
+ID_AAMARMain        [Esegue elaborazione AAMA Rifilo (aamar principale)]
+ID_AAMARMat         [Imposta il materiale standard per elaborazione RIFILO]
+ID_AAMARTipo        [Imposta la tipologia standard per elaborazione RIFILO]
+ID_AAMARQuant       [Imposta la quantità standard per elaborazione RIFILO]
+ID_AAMARSpac        [Imposta la spaziatura tra blocchi RIFILO]
+ID_AAMARSet         [Visualizza e modifica tutte le impostazioni correnti RIFILO]
+ID_AAMARTest        [Test elaborazione AAMA Rifilo]
+ID_AAMARDebug       [Debug elaborazione AAMA Rifilo]
+ID_AAMARErr         [Mostra errori elaborazione AAMA Rifilo]
+ID_AAMARClear       [Cancella gli errori AAMA Rifilo segnalati]
+ID_GeberConv        [Converti batch blocchi tacca in punti (formato Geber)]
+ID_GeberTol         [Imposta tolleranze per la conversione tacche Geber]
+ID_Drill1M          [Sposta punto selezionato su layer 201 (Drill 1, Giallo)]
+ID_Drill2M          [Sposta punto selezionato su layer 202 (Drill 2, Verde)]
+ID_DrillPM          [Sposta punto selezionato su layer 100 (Drill P, Ciano)]
+ID_Marcatura        [Sposta oggetto su layer 91 MARCATURA (Ciano)]
+ID_Proiezione       [Sposta oggetto su layer 90 PROIEZIONE (Fucsia)]
+ID_ModarisAAMA      [Converte blocchi Modaris v3.0 per elaborazione AAMA]
+ID_ModarisConf      [Configurazione parametri conversione Modaris-AAMA]
+ID_ModarisTest      [Test conversione Modaris]
+ID_ExpMulti         [Estrazione batch blocchi Modaris con pulizia automatica]
+ID_ExpSing          [Estrazione singolo blocco Modaris con pulizia]
+ID_ExpTest          [Test estrazione multipla]
+
+//--- CONSUMI E REPORT --------------------------------------------------------
+ID_ConsumiMetro     [Calcola consumi in metri lineari per articolo]
+ID_ConsumiRot       [Calcola consumi in rotoli per articolo]
+ID_NOG              [Computo materiali avanzato con configurazione per categoria]
+ID_NOGG             [Computo materiali NOGG]
+ID_NOGAddMat        [Aggiunge o aggiorna parametri per un materiale specifico]
+ID_NOGConfig        [Modifica configurazione generale calcolo consumi NOG]
+ID_SchedaBase       [Scheda base: esecuzione rapida report articolo]
+ID_SchedaEsegui     [Esegui tutto: genera scheda pezzi + HTML interattivo]
+ID_SchedaImg        [Genera scheda pezzi con immagini PNG automatiche]
+ID_SchedaAcc        [Genera scheda accessori metallici per articolo]
+ID_SchedaLav        [Genera scheda lavorazioni e spessori per articolo]
+ID_SchedaPezAcc     [Genera scheda pezzi con dettaglio accessori]
+ID_SchedaPezLav     [Genera scheda pezzi con dettaglio lavorazioni]
+ID_SchedaHTML       [Converte CSV in HTML con anteprime immagini]
+ID_SchedaHTMLInt    [Genera HTML interattivo con layout integrato]
+ID_Misure           [Misura cucitura: calcola lunghezze per modello]
+
+//--- UTILITÀ -----------------------------------------------------------------
+ID_UtilInit2        [Carica librerie .dll esterne (prerequisito avvio)]
+ID_FontTest         [Crea righe di test per font .shx da directory]
+ID_Converti         [Converte testo tra esadecimale e decimale]
+ID_BloccoRapU       [Crea blocco con nome casuale e lo inserisce]
+ID_BlocchiInP2      [Converte blocchi PitRTak in punti al centro]
+ID_InserisciB2      [Inserisce blocchi lungo polilinea a distanza fissa]
+ID_CBPU             [Cambia punto base blocco senza rilocare inserimenti]
+ID_CBPRU            [Cambia punto base blocco e riloca tutti gli inserimenti]
+ID_SplitCirU        [Spezza un cerchio in una polilinea aperta]
+ID_TrovaGapU        [Cerca gap tra entità e li segnala]
+ID_MisCucU          [Misura cucitura: calcola lunghezze per modello]
+
+//--- LEONARDO ----------------------------------------------------------------
+ID_DevHelp          [Apre il sito web www.guasqui.it]
+ID_OnlineHelp       [Apre la guida in linea su GitHub]
+ID_Crediti          [Mostra i crediti del software]
+ID_UtilInit         [Inizializza le librerie di sistema]
+ID_LicAct           [Attiva la licenza del software]
+ID_LicSysID         [Mostra il System ID per la registrazione]
+ID_LicReset         [Reset della licenza (solo debug)]
+
+//--- TOOLBAR (pulsanti con ID diversi dalle voci menu) ------------------------
+ID_NomeBt           [Inserisce il nome del pezzo tramite dialog a 3 liste]
+ID_NomeEditBt       [Modifica il nome del pezzo tramite dialog]
+ID_MatBt            [Inserisce materiale del pezzo]
+ID_MatEditBt        [Modifica il materiale del pezzo tramite dialog]
+ID_MatNumBt         [Modifica rapidamente quantità e tipologia del materiale]
+ID_NumBt            [Inserisce numero articolo nel disegno]
+ID_SpessBt          [Inserisce indicazione spessore finito (SP.)]
+ID_PelBt            [Inserisce blocco indicazione materiale PELLE]
+ID_FodBt            [Inserisce blocco indicazione materiale FODERA]
+ID_EdInfBt          [Aggiunge prefisso "Infustitura" al nome del pezzo]
+ID_EdFodBt          [Aggiunge prefisso "Fodera" al nome del pezzo]
+ID_EdRifBt          [Aggiunge prefisso "Rifilo" al nome del pezzo]
+ID_EdSbzBt          [Aggiunge prefisso "Taglio/Sbozzo" al nome del pezzo]
+ID_LavInsBt         [Inserisce lavorazioni multiple (max 16) con ripetizioni]
+ID_LavEditBt        [Modifica, aggiunge, rimuove o riordina lavorazioni]
+ID_LavDbBt          [Edita il database lavorazioni (lavorazioni.txt)]
+ID_LavDataBt        [Crea blocco DATLAV con 32 attributi per lavorazioni]
+ID_AccInsBt         [Inserisce accessori metallici multipli (max 16) con quantità]
+ID_AccEditBt        [Modifica, aggiunge, rimuove o riordina accessori]
+ID_AccDbBt          [Edita il database accessori (accessori.txt)]
+ID_AccDataBt        [Crea blocco DATACC con 32 attributi per accessori]
+ID_GestMatBt        [Dialog gestione e modifica liste materiali]
+ID_GnamesBt         [Dialog gestione liste nomi pezzo]
+ID_SostMatBt        [Sostituisce materiale in batch mantenendo quantità e tipologia]
+ID_Mat1Bt           [Visualizza e zooma i pezzi filtrati per materiale]
+ID_SelMatBt         [Seleziona sagome per materiale specifico]
+ID_FustPBt          [Inserisce fustella tipo P (punto)]
+ID_Fust08Bt         [Inserisce fustella diametro 0.8mm]
+ID_Fust1Bt          [Inserisce fustella diametro 1mm]
+ID_Fust15Bt         [Inserisce fustella diametro 1.5mm]
+ID_Fust2Bt          [Inserisce fustella diametro 2mm]
+ID_Fust25Bt         [Inserisce fustella diametro 2.5mm]
+ID_Fust3Bt          [Inserisce fustella diametro 3mm]
+ID_Fust35Bt         [Inserisce fustella diametro 3.5mm]
+ID_Fust4Bt          [Inserisce fustella diametro 4mm]
+ID_Fust45Bt         [Inserisce fustella diametro 4.5mm]
+ID_Fust5Bt          [Inserisce fustella diametro 5mm]
+ID_Fust6Bt          [Inserisce fustella diametro 6mm]
+ID_ModarisAAMABt    [Converte blocchi Modaris v3.0 per elaborazione AAMA]
+ID_MAConfigBt       [Configurazione parametri conversione Modaris-AAMA]
+ID_ConpBt           [Calcola centroide polilinee su layer "0" e inserisce punto]
+ID_ConpCBt          [Converte cerchi su layer "0" in punti al centro]
+ID_EstrMultBt       [Estrazione batch blocchi Modaris con pulizia automatica]
+ID_EstrSingBt       [Estrazione singolo blocco Modaris con pulizia]
+ID_AamarInitBt      [Inizializza il sistema RIFILO (prerequisito per AAMAR)]
+ID_AamarBt          [Esegue elaborazione AAMA Rifilo]
+ID_AamarMatBt       [Imposta il materiale standard per elaborazione RIFILO]
+ID_AamarTipBt       [Imposta la tipologia standard per elaborazione RIFILO]
+ID_AamarQtaBt       [Imposta la quantità standard per elaborazione RIFILO]
+ID_AamarSpcBt       [Imposta la spaziatura tra blocchi RIFILO]
+ID_AamarSetBt       [Visualizza e modifica tutte le impostazioni correnti RIFILO]
+ID_SchedaBt         [Scheda base: esecuzione rapida report articolo]
+ID_SchedaEsBt       [Esegui tutto: genera scheda pezzi + HTML interattivo]
+ID_SchedaImgBt      [Genera scheda pezzi con immagini PNG automatiche]
+ID_SchedaAccBt      [Genera scheda accessori metallici per articolo]
+ID_SchedaLavBt      [Genera scheda lavorazioni e spessori per articolo]
+ID_SchedaPzAccBt    [Genera scheda pezzi con dettaglio accessori]
+ID_SchedaPzLavBt    [Genera scheda pezzi con dettaglio lavorazioni]
+ID_HtmlBt           [Converte CSV in HTML con anteprime immagini]
+ID_HtmlIntBt        [Genera HTML interattivo con layout integrato]
+ID_TacInTagBt       [Converte blocchi "tacca" in "tacca_t" (tacche tagliate)]
+ID_TagInTacBt       [Converte blocchi "tacca_t" in "tacca" (tacche standard)]
+ID_TacInPtBt        [Converte blocchi tacca in punti POINT]
+ID_PtInTacBt        [Converte punti POINT in blocchi tacca]
+ID_MozInTacBt       [Converte blocchi Mozart "PitTacCT" in tacche standard]
+ID_TacInMozBt       [Converte tacche standard in blocchi Mozart "PitTacCT"]
+ID_JoinAllBt        [Unisce tutte le linee, archi e polilinee della selezione]
+ID_YBt              [Unione rapida Y: filtra e unisce in polilinee leggere]
+ID_JoinFuzzBt       [Unisce linee con tolleranza gap configurabile]
+ID_PldShowBt        [Mostra direzione animata della polilinea]
+ID_PldSetColBt      [Imposta il colore delle frecce di direzione (1-7)]
+ID_PldSetPosBt      [Imposta posizione frecce direzione (Interne/Esterne)]
+ID_HexDecBt         [Converte testo tra esadecimale e decimale]
+ID_FontTestBt       [Crea righe di test per font .shx da directory]
+ID_CambiaColBt      [Cambia il colore degli oggetti selezionati tramite dialog]
+ID_TCaseBt          [Converte maiuscolo/minuscolo del testo selezionato]
+ID_ChgBt            [Sostituisce stringa in selezione multipla di testi]
+ID_EdtBt            [Ruota testo secondo angolo definito da due punti]
+ID_ArcotangBt       [Arco tangente interattivo tra due archi esistenti]
+ID_SplitCirBt       [Spezza un cerchio in una polilinea aperta]
+ID_TrovaGapBt       [Cerca gap tra entità e disegna cerchio di segnalazione]
+ID_MisuraCucBt      [Misura cucitura: calcola lunghezze per modello]
+ID_NogCfgBt         [Modifica configurazione generale calcolo consumi NOG]
+ID_NogAddMatBt      [Aggiunge o aggiorna parametri per un materiale specifico]
+ID_NestLinBt        [Nesting linea: allinea pezzi in riga orizzontale]
+ID_Nest1Bt          [Nesting singola linea semplificato]
+ID_NestAreaBt       [Definisce area temporanea per il nesting]
+ID_Nest5Bt          [Nesting multi-riga con spacing configurabile]
+ID_Nest51Bt         [Nesting alternato: righe con direzione invertita]
+ID_Nest52Bt         [Nesting ordinato: ordina i pezzi per dimensione]
+ID_EdgBt            [Inserisce testo standard "COSTOLA" sul pezzo]
+ID_FilBt            [Inserisce testo standard "FILO" sul pezzo]
+ID_ScaBt            [Inserisce testo standard "SCARNIRE" sul pezzo]
+ID_SotBt            [Inserisce testo standard "SOTTOMETTITURA" sul pezzo]
+ID_RimBt            [Inserisce testo standard "RIMBOCCO" sul pezzo]
+ID_TalBt            [Inserisce testo standard "TALYN" sul pezzo]
+ID_SalBt            [Inserisce testo standard "SALPA" sul pezzo]
+ID_AntBt            [Inserisce testo standard "ANTISTRAPPO" sul pezzo]
+ID_BomBt            [Inserisce testo standard "BOMBATURA" sul pezzo]
+ID_RinBt            [Inserisce testo standard "RINFORZO" sul pezzo]
+ID_BorBt            [Inserisce testo standard "BORDATURA" sul pezzo]
+ID_ValBt            [Inserisce testo standard "VALIGIAIA" sul pezzo]
+ID_C5Bt             [Inserisce testo "CUC.ROV. 5MM"]
+ID_C5PBt            [Inserisce testo "CUC.ROV. 5MM CON PIPING"]
+ID_C7Bt             [Inserisce testo "CUC.ROV. 7MM"]
+ID_C7PBt            [Inserisce testo "CUC.ROV. 7MM CON PIPING"]
+ID_VrBt             [Inserisce blocco indicazione direzione VERTICALE materiale]
+ID_OrBt             [Inserisce blocco indicazione direzione ORIZZONTALE materiale]
+ID_WarBt            [Inserisce blocco ATTENZIONE]
+ID_EqBt             [Inserisce blocco EQUALIZZARE]
+ID_TabtBt           [Inserisce blocco tabella testi]
+ID_PelBt2           [Inserisce blocco indicazione PELLE (variante indicazione)]
+ID_FodBt2           [Inserisce blocco indicazione FODERA (variante indicazione)]
+
+//*****************************************************************************
+//  FINE FILE MENU LEONARDO PATTERN DESIGN v1.5.0
+//*****************************************************************************
