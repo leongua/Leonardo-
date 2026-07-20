@@ -42,8 +42,8 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`aama`](README_UTENTE.md#il-comando-aama) | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.bmp) | AAMA → Elaborazione AAMA → AAMA Standard | AAMA | Processa sagome per macchine taglio, crea blocchi standardizzati |
-| [`aamar`](README_UTENTE.md#aama-per-rifili) | ![aamar_init.bmp](INSTALLAZIONE/menu/LEONARDO/aamar_init.bmp) | AAMA → Elaborazione AAMA → AAMA Standard Rifilo | AAMA | Processa sagome RIFILO con materiale standard |
+| [`aama`](README_UTENTE.md#il-comando-aama) | ![AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/AAMA.BMP) | AAMA → Elaborazione AAMA → AAMA Standard | AAMA | Processa sagome per macchine taglio, crea blocchi standardizzati |
+| [`aamar`](README_UTENTE.md#aama-per-rifili) | ![aamar_run.bmp](INSTALLAZIONE/menu/LEONARDO/aamar_run.bmp) | AAMA → Elaborazione AAMA → AAMA Standard Rifilo | AAMA | Processa sagome RIFILO con materiale standard |
 | [`Modaris-AAMA`](README_UTENTE.md#modaris-aama-convertitore-leonardo--modaris) | ![Modaris-AAMA.bmp](INSTALLAZIONE/menu/LEONARDO/Modaris-AAMA.bmp) | AAMA → Elaborazione AAMA → Modaris AAMA | - | Converte blocchi Modaris v3.0 per AAMA |
 
 ### Configurazione RIFILO
@@ -157,15 +157,15 @@
 | [`WAR`](README_UTENTE.md#blocchi-di-avviso) | ![WAR.bmp](INSTALLAZIONE/menu/LEONARDO/WAR.bmp) | Blocchi → Indicazioni → ATTENZIONE | - | Blocco attenzione |
 | [`EQ`](README_UTENTE.md#blocchi-di-avviso) | ![EQ.bmp](INSTALLAZIONE/menu/LEONARDO/EQ.bmp) | Blocchi → Indicazioni → EQUALIZZARE | - | Blocco equalizzare |
 | [`TABT`](README_UTENTE.md#tabt-tabella-testi-informazioni) | ![TABT.bmp](INSTALLAZIONE/menu/LEONARDO/TABT.bmp) | Blocchi → Indicazioni → Tabella Testi | - | Blocco tabella testi |
-| [`PEL`](README_UTENTE.md#blocchi-tipo-materiale) | ![PELLE.bmp](INSTALLAZIONE/menu/LEONARDO/PELLE.bmp) | Blocchi → Indicazioni → PELLE | Dati Pezzo | Indicazione materiale pelle |
-| [`FOD`](README_UTENTE.md#blocchi-tipo-materiale) | ![FOD.bmp](INSTALLAZIONE/menu/LEONARDO/FOD.bmp) | Blocchi → Indicazioni → FODERA | Dati Pezzo | Indicazione materiale fodera |
+| [`PEL`](README_UTENTE.md#blocchi-tipo-materiale) | ![PELLE.bmp](INSTALLAZIONE/menu/LEONARDO/PELLE.BMP) | Blocchi → Indicazioni → PELLE | Dati Pezzo | Indicazione materiale pelle |
+| [`FOD`](README_UTENTE.md#blocchi-tipo-materiale) | ![FOD.bmp](INSTALLAZIONE/menu/LEONARDO/FOD.BMP) | Blocchi → Indicazioni → FODERA | Dati Pezzo | Indicazione materiale fodera |
 
 ### Blocchi Dati
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
 | [`NUM`](README_UTENTE.md#altri-blocchi-utili) | ![NUM_ART.bmp](INSTALLAZIONE/menu/LEONARDO/NUM_ART.bmp) | Materiali → Gestione Articoli → Inserisci Numero Articolo | Dati Pezzo | Inserisce numero articolo (parte dati pezzo) |
-| [`SPESSORE`](README_UTENTE.md#altri-blocchi-utili) | ![SPESSORE.bmp](INSTALLAZIONE/menu/LEONARDO/SPESSORE.bmp) | Blocchi → Indicazioni → Spessore | Dati Pezzo | Inserisce indicazione spessore finito (SP.) |
+| [`SPESSORE`](README_UTENTE.md#altri-blocchi-utili) | ![SPESSORE.bmp](INSTALLAZIONE/menu/LEONARDO/SPESSORE.BMP) | Blocchi → Indicazioni → Spessore | Dati Pezzo | Inserisce indicazione spessore finito (SP.) |
 | [`LEO_FUST`](README_UTENTE.md#leo_fust-indicazione-foro-fustella) | ![leo_fust.bmp](INSTALLAZIONE/menu/LEONARDO/leo_fust.bmp) | Blocchi → Fustelle → Varie Dimensioni | Fustelle | Inserisce indicazione dimensione foro (P, 0.8-6mm) |
 
 ### Numerazione
@@ -230,8 +230,8 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`NOM`](README_UTENTE.md#nome-del-pezzo) | ![NOME_PEZZO.bmp](INSTALLAZIONE/menu/LEONARDO/NOME_PEZZO.bmp) | Materiali → Nome Pezzo → Inserisci Nome | Dati Pezzo | Dialog 3 liste + input manuale per nome pezzo |
-| [`MAT`](README_UTENTE.md#materiale) | ![MATERIALE.bmp](INSTALLAZIONE/menu/LEONARDO/MATERIALE.bmp) | Materiali → Materiali → Inserisci Materiale | Dati Pezzo | Dialog materiale (4 schede: Pelle/Infust/Tela/Fodera) |
+| [`NOM`](README_UTENTE.md#nome-del-pezzo) | ![NOME_PEZZO.bmp](INSTALLAZIONE/menu/LEONARDO/NOME_PEZZO.BMP) | Materiali → Nome Pezzo → Inserisci Nome | Dati Pezzo | Dialog 3 liste + input manuale per nome pezzo |
+| [`MAT`](README_UTENTE.md#materiale) | ![MATERIALE.bmp](INSTALLAZIONE/menu/LEONARDO/MATERIALE.BMP) | Materiali → Materiali → Inserisci Materiale | Dati Pezzo | Dialog materiale (4 schede: Pelle/Infust/Tela/Fodera) |
 
 ### Modifica Dati
 
@@ -245,10 +245,10 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`ED-INFUST`](README_UTENTE.md#ed-infust-prefisso-infustitura) | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-infust.bmp) | Materiali → Definisci → Definisci Infustitura | Dati Pezzo | Aggiunge prefisso "Infustitura" al nome |
-| [`ED-FOD`](README_UTENTE.md#ed-fod-prefisso-fodera) | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-fod.bmp) | Materiali → Definisci → Definisci Fodera | Dati Pezzo | Aggiunge prefisso "Fodera" al nome |
-| [`ED-RIF`](README_UTENTE.md#ed-rif-prefisso-rifilo) | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-rif.bmp) | Materiali → Definisci → Definisci Rifilo | Dati Pezzo | Aggiunge prefisso "Rifilo" al nome |
-| [`ED-SBOZ`](README_UTENTE.md#ed-sboz-prefisso-tagliosbozzo) | ![ed-sboz.bmp](INSTALLAZIONE/menu/LEONARDO/ed-sboz.bmp) | Materiali → Definisci → Definisci Sbozzo | Dati Pezzo | Aggiunge prefisso "Taglio" al nome |
+| [`ED-INFUST`](README_UTENTE.md#ed-infust-prefisso-infustitura) | ![ed-infust.bmp](INSTALLAZIONE/menu/LEONARDO/ed-INFUST.bmp) | Materiali → Definisci → Definisci Infustitura | Dati Pezzo | Aggiunge prefisso "Infustitura" al nome |
+| [`ED-FOD`](README_UTENTE.md#ed-fod-prefisso-fodera) | ![ed-fod.bmp](INSTALLAZIONE/menu/LEONARDO/ed-FOD.bmp) | Materiali → Definisci → Definisci Fodera | Dati Pezzo | Aggiunge prefisso "Fodera" al nome |
+| [`ED-RIF`](README_UTENTE.md#ed-rif-prefisso-rifilo) | ![ed-rif.bmp](INSTALLAZIONE/menu/LEONARDO/ed-RIF.bmp) | Materiali → Definisci → Definisci Rifilo | Dati Pezzo | Aggiunge prefisso "Rifilo" al nome |
+| [`ED-SBOZ`](README_UTENTE.md#ed-sboz-prefisso-tagliosbozzo) | ![ed-sboz.bmp](INSTALLAZIONE/menu/LEONARDO/ed-SBOZ.bmp) | Materiali → Definisci → Definisci Sbozzo | Dati Pezzo | Aggiunge prefisso "Taglio" al nome |
 
 ---
 
@@ -268,10 +268,10 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`CS`](README_UTENTE.md#strumenti-utili) | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.bmp) | Selezione → Chain Selection | Modifica Avanzata | Selezione concatenata intelligente per endpoint |
+| [`CS`](README_UTENTE.md#strumenti-utili) | ![cs.bmp](INSTALLAZIONE/menu/LEONARDO/cs.BMP) | Selezione → Chain Selection | Modifica Avanzata | Selezione concatenata intelligente per endpoint |
 | [`CookieCutter2`](README_UTENTE.md#strumenti-utili) | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | Modifica → Svuota Polilinea | Modifica Avanzata | Trim avanzato con esplosione automatica |
 | [`RACCORDA_0`](README_UTENTE.md#strumenti-utili) | ![RAGGIO_0.bmp](INSTALLAZIONE/menu/LEONARDO/RAGGIO_0.BMP) | Disegno → Raccordi → Raccordo Raggio Zero | Modifica Avanzata / Raccordo | Raccorda con raggio 0 |
-| [`SPEZZA_PUNTO`](README_UTENTE.md#strumenti-utili) | ![Zero.bmp](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Modifica → Spezza in Punto | Modifica Avanzata | Interrompe linea/poli/arco in punto |
+| [`SPEZZA_PUNTO`](README_UTENTE.md#strumenti-utili) | ![SPEZZA_PUNTO.bmp](INSTALLAZIONE/menu/LEONARDO/SPEZZA_PUNTO.bmp) | Modifica → Spezza in Punto | Modifica Avanzata | Interrompe linea/poli/arco in punto |
 | [`splitcir`](README_UTENTE.md#splitcir-spezza-cerchio-e-crea-arco) | ![splitcir.bmp](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Modifica → Spezza Cerchio | - | Spezza cerchio → polilinea con taglio |
 | [`TROVA_GAP`](README_UTENTE.md#strumenti-utili) | ![TROVA_GAP.bmp](INSTALLAZIONE/menu/LEONARDO/TROVA_GAP.bmp) | Modifica → Trova Gap | - | Cerca gap tra entità, disegna cerchio su layer GAP |
 | [`QM`](README_UTENTE.md#strumenti-utili) | ![Quic.bmp](INSTALLAZIONE/menu/LEONARDO/Quic.bmp) | Modifica → Specchia Rapido | Modifica Avanzata | Specchiatura rapida oggetti |
@@ -293,7 +293,7 @@
 | [`gestmat`](README_UTENTE.md#gestmat-gestione-materiali-con-interfaccia-grafica) | ![gestmat.bmp](INSTALLAZIONE/menu/LEONARDO/gestmat.bmp) | Materiali → Gestione Materiali | - | Dialog gestione liste materiali |
 | [`gnames`](README_UTENTE.md#gnames-gestione-nomi-pezzi-con-interfaccia-grafica) | ![gnames.bmp](INSTALLAZIONE/menu/LEONARDO/gnames.bmp) | Materiali → Gestione Nomi | - | Dialog gestione liste nomi (Nome1/2/3.txt) |
 | [`sostmat`](README_UTENTE.md#sostmat-sostituire-materiali-in-massa) | ![sostmat.bmp](INSTALLAZIONE/menu/LEONARDO/sostmat.bmp) | Materiali → Sostituzione Materiale | Dati Pezzo | Sostituisce materiale batch (mantiene qta/tipologia) |
-| [`mat1`](README_UTENTE.md#mat1-visualizza-per-materiale) | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/MAT1.bmp) | Materiali → Visualizza per Materiali | Dati Pezzo | Visualizza e zooma pezzi per materiale |
+| [`mat1`](README_UTENTE.md#mat1-visualizza-per-materiale) | ![MAT1.bmp](INSTALLAZIONE/menu/LEONARDO/mat1.bmp) | Materiali → Visualizza per Materiali | Dati Pezzo | Visualizza e zooma pezzi per materiale |
 | [`seleziona-permat`](README_UTENTE.md#seleziona-permat-selezione-per-materiale) | ![seleziona-permat.bmp](INSTALLAZIONE/menu/LEONARDO/seleziona-permat.bmp) | Materiali → Selezione Materiale | Dati Pezzo | Seleziona sagome per materiale specifico |
 
 ### Calcolo Consumi
@@ -437,7 +437,7 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`PENNA`](README_UTENTE.md#penna-layer-di-disegno) | ![Penna.bmp](INSTALLAZIONE/menu/LEONARDO/Penna.bmp) | Layer → Penna (Layer 0) | Tipolinea e Layer | Ripristina layer "0" con colore BYLAYER |
+| [`PENNA`](README_UTENTE.md#penna-layer-di-disegno) | ![Penna.bmp](INSTALLAZIONE/menu/LEONARDO/PENNA.bmp) | Layer → Penna (Layer 0) | Tipolinea e Layer | Ripristina layer "0" con colore BYLAYER |
 | [`ENDCUT`](README_UTENTE.md#endcut-rifiliotaglio-di-finitura) | ![ENDCUT.bmp](INSTALLAZIONE/menu/LEONARDO/ENDCUT.bmp) | Layer → Rifilo (ENDCUT) | Tipolinea e Layer | Sposta su layer ENDCUT (Ciano-4) |
 | [`OUTCUT`](README_UTENTE.md#outcut-taglio-esterno) | ![OUTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/OUTCUT.bmp) | Layer → Taglio (OUTCUT) | Tipolinea e Layer | Sposta su layer OUTCUT (Rosso-1) |
 | [`INTCUT`](README_UTENTE.md#intcut-taglio-interno) | ![INTCUT.bmp](INSTALLAZIONE/menu/LEONARDO/INTCUT.bmp) | Layer → Taglio Interno (INTCUT) | Tipolinea e Layer | Sposta su layer INTCUT (Blu-5) |
@@ -460,11 +460,11 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`oft_2`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![OF2T.bmp](INSTALLAZIONE/menu/LEONARDO/OF2T.BMP) | Offset → Offset 2 Tratteggiato | Offset | Offset 2mm tipo linea CUCITURA (scala 0.3) |
+| [`oft_2`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![OF2T.bmp](INSTALLAZIONE/menu/LEONARDO/Of2T.BMP) | Offset → Offset 2 Tratteggiato | Offset | Offset 2mm tipo linea CUCITURA (scala 0.3) |
 | [`oft_3`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![OF3T.bmp](INSTALLAZIONE/menu/LEONARDO/OF3T.BMP) | Offset → Offset 3 Tratteggiato | Offset | Offset 3mm tipo linea CUCITURA |
 | [`oft_4`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![OF4T.bmp](INSTALLAZIONE/menu/LEONARDO/OF4T.BMP) | Offset → Offset 4 Tratteggiato | Offset | Offset 4mm tipo linea CUCITURA |
 | [`oft_5`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![OF5T.bmp](INSTALLAZIONE/menu/LEONARDO/OF5T.BMP) | Offset → Offset 5 Tratteggiato | Offset | Offset 5mm tipo linea CUCITURA |
-| [`oft_6`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![oft_6.bmp](INSTALLAZIONE/menu/LEONARDO/oft_6.bmp) | Offset → Offset 6 Tratteggiato | Offset | Offset 6mm tipo linea CUCITURA |
+| [`oft_6`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | - | Offset → Offset 6 Tratteggiato | Offset | Offset 6mm tipo linea CUCITURA |
 | [`oft_8`](README_UTENTE.md#oft_8-offset-8mm-rapido) | ![OF8T.bmp](INSTALLAZIONE/menu/LEONARDO/OF8T.BMP) | Offset → Offset 8 Tratteggiato | Offset | Offset 8mm tipo linea CUCITURA |
 | [`oft_10`](README_UTENTE.md#oft_2-oft_3-oft_4-oft_5-oft_6-oft_7-oft_10-offset-predefiniti) | ![OFT10T.bmp](INSTALLAZIONE/menu/LEONARDO/OFT10T.bmp) | Offset → Offset 10 Tratteggiato | Offset | Offset 10mm tipo linea CUCITURA |
 | [`oft`](README_UTENTE.md#oft-offset-personalizzato) | ![OFt.bmp](INSTALLAZIONE/menu/LEONARDO/OFt.bmp) | Offset → Offset Tratteggiato Variabile | Offset | Offset distanza personalizzata CUCITURA |
@@ -473,8 +473,8 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`CUCITURA`](README_UTENTE.md#continua-e-cucitura-gestione-tipo-linea) | ![Cuci.bmp](INSTALLAZIONE/menu/LEONARDO/Cuci.bmp) | Layer → Cucitura | Tipolinea e Layer | Imposta tipo linea CUCITURA (layer 0, scala 0.3) |
-| [`CONTINUA`](README_UTENTE.md#continua-e-cucitura-gestione-tipo-linea) | ![Cont.bmp](INSTALLAZIONE/menu/LEONARDO/Cont.bmp) | Layer → Linea Continua | Tipolinea e Layer | Ripristina tipo linea BYLAYER (continuo) |
+| [`CUCITURA`](README_UTENTE.md#continua-e-cucitura-gestione-tipo-linea) | ![cucitura.bmp](INSTALLAZIONE/menu/LEONARDO/cucitura.bmp) | Layer → Cucitura | Tipolinea e Layer | Imposta tipo linea CUCITURA (layer 0, scala 0.3) |
+| [`CONTINUA`](README_UTENTE.md#continua-e-cucitura-gestione-tipo-linea) | ![Continua.bmp](INSTALLAZIONE/menu/LEONARDO/Continua.bmp) | Layer → Linea Continua | Tipolinea e Layer | Ripristina tipo linea BYLAYER (continuo) |
 
 ---
 
@@ -722,7 +722,7 @@
 
 | Comando | Icona | Menu | Toolbar | Descrizione |
 |---------|-------|------|---------|-------------|
-| [`CC`](README_UTENTE.md#cc-alias-cookiecutter) | ![cook.bmp](INSTALLAZIONE/menu/LEONARDO/cook.bmp) | - | - | Alias per CookieCutter2 (trim avanzato) |
+| [`CC`](README_UTENTE.md#cc-alias-cookiecutter) | ![cc.bmp](INSTALLAZIONE/menu/LEONARDO/cc.bmp) | - | - | Alias per CookieCutter2 (trim avanzato) |
 | [`inizializza`](README_UTENTE.md#inizializza-carica-plugin-net) | ![inizializza.bmp](INSTALLAZIONE/menu/LEONARDO/inizializza.bmp) | Plugin → Inizializza | - | Alias per inizializza2 (carica librerie DLL) |
 
 ### Varianti Minuscole Tacche

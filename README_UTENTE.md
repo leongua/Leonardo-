@@ -95,11 +95,11 @@ Leonardo Pattern Design è il tuo assistente digitale per:
 **IMPORTANTE**: Per usare Leonardo devi avere una licenza attiva.
 
 **Per attivare la licenza**:
-1. Clicca sull'icona ![show-system-id](INSTALLAZIONE/menu/LEONARDO/show-system-id.bmp) o digita `show-system-id`
+1. Vai al menu **LEONARDO → Gestione Licenza → Mostra System ID** o digita `show-system-id`
 2. Copia il codice che appare
 3. Invialo a leonardo@guasqui.it
 4. Riceverai un codice di attivazione
-5. Clicca su ![activate-license](INSTALLAZIONE/menu/LEONARDO/activate-license.bmp) o digita `activate-license`
+5. Vai al menu **LEONARDO → Gestione Licenza → Attiva Licenza** o digita `activate-license`
 6. Inserisci il codice ricevuto
 
 ---
@@ -166,7 +166,7 @@ Leonardo include comandi per creare rapidamente rettangoli con dimensioni standa
 ##### LeoUM - Foglio Uso Mano
 
 **Comando**: `LeoUM`
-**Icona**: ![LeoUM](INSTALLAZIONE/menu/LEONARDO/LeoUM.bmp)
+**Icona**: ![LeoUM](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_VUOTA.bmp)
 **Menu**: Disegno → Forme Base → LeoUM
 
 **Dimensioni**: 650 × 950 mm
@@ -189,7 +189,7 @@ Leonardo include comandi per creare rapidamente rettangoli con dimensioni standa
 ##### LeoUM2 - Foglio Uso Mano Doppio
 
 **Comando**: `LeoUM2`
-**Icona**: ![LeoUM2](INSTALLAZIONE/menu/LEONARDO/LeoUM2.bmp)
+**Icona**: ![LeoUM2](INSTALLAZIONE/menu/LEONARDO/leoum2.bmp)
 **Menu**: Disegno → Forme Base → LeoUM2
 
 **Dimensioni**: 1300 × 950 mm
@@ -207,7 +207,7 @@ Leonardo include comandi per creare rapidamente rettangoli con dimensioni standa
 ##### LeoUM4 - Foglio Uso Mano Quadruplo
 
 **Comando**: `LeoUM4`
-**Icona**: ![LeoUM4](INSTALLAZIONE/menu/LEONARDO/LeoUM4.bmp)
+**Icona**: ![LeoUM4](INSTALLAZIONE/menu/LEONARDO/leoum4.bmp)
 **Menu**: Disegno → Forme Base → LeoUM4
 
 **Dimensioni**: 1300 × 1800 mm
@@ -225,7 +225,7 @@ Leonardo include comandi per creare rapidamente rettangoli con dimensioni standa
 ##### LeoA4 - Formato A4
 
 **Comando**: `LeoA4`
-**Icona**: ![LeoA4](INSTALLAZIONE/menu/LEONARDO/LeoA4.bmp)
+**Icona**: ![LeoA4](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A4.bmp)
 **Menu**: Disegno → Forme Base → LeoA4
 
 **Dimensioni**: 210 × 297 mm (verticale)
@@ -242,7 +242,7 @@ Leonardo include comandi per creare rapidamente rettangoli con dimensioni standa
 ##### LeoA3 - Formato A3
 
 **Comando**: `LeoA3`
-**Icona**: ![LeoA3](INSTALLAZIONE/menu/LEONARDO/LeoA3.bmp)
+**Icona**: ![LeoA3](INSTALLAZIONE/menu/LEONARDO/tavola-vuota.BMP)
 **Menu**: Disegno → Forme Base → LeoA3
 
 **Dimensioni**: 420 × 297 mm (orizzontale)
@@ -365,7 +365,7 @@ Leonardo offre diversi comandi per unire linee e archi in polilinee. La scelta d
 ##### JoinAll - Unione Batch Selezione
 
 **Comando**: `JoinAll`
-**Icona**: ![JoinAll](INSTALLAZIONE/menu/LEONARDO/JoinAll.BMP)
+**Icona**: ![JoinAll](INSTALLAZIONE/menu/LEONARDO/JoinAll.bmp)
 **Menu**: Polilinee → Unione → Join All
 
 **Cosa fa**: Unisce tutte le linee e archi già selezionati in una o più polilinee
@@ -636,7 +636,7 @@ Ogni sagoma ha una "direzione" (senso orario o antiorario). A volte devi cambiar
 |---------|-------|---------|
 | `PLD` | ![INIZIO_DIREZIONE](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Mostra direzione con frecce, permette di invertirla |
 | `RvrsLine` | ![INVERTI_DIREZIONE](INSTALLAZIONE/menu/LEONARDO/INVERTI_DIREZIONE.bmp) | Inverte direzione di linee/polilinee direttamente |
-| `PLDREV_SHOW_DIRECTION` | ![PLDREV_SHOW_DIRECTION](INSTALLAZIONE/menu/LEONARDO/PLDREV_SHOW_DIRECTION.bmp) | Mostra direzione e punto di inizio della polilinea |
+| `PLDREV_SHOW_DIRECTION` | ![PLDREV_SHOW_DIRECTION](INSTALLAZIONE/menu/LEONARDO/INIZIO_DIREZIONE.bmp) | Mostra direzione e punto di inizio della polilinea |
 
 **Personalizza le frecce di direzione**:
 
@@ -807,7 +807,7 @@ Se hai un blocco e vuoi cambiare il suo "punto di inserimento":
 
 | Comando | Icona | Cosa Fa |
 |---------|-------|---------|
-| `SPEZZA_PUNTO` (tasti: `H`) | ![Zero](INSTALLAZIONE/menu/LEONARDO/Zero.bmp) | Spezza una linea/polilinea/arco esattamente dove clicchi |
+| `SPEZZA_PUNTO` (tasti: `H`) | ![SPEZZA_PUNTO](INSTALLAZIONE/menu/LEONARDO/SPEZZA_PUNTO.bmp) | Spezza una linea/polilinea/arco esattamente dove clicchi |
 | `splitcir` | ![splitcir](INSTALLAZIONE/menu/LEONARDO/splitcir.bmp) | Spezza un cerchio e lo trasforma in polilinea aperta |
 
 **Quando usarli**: Per dividere una linea in due parti o per "aprire" un cerchio in un arco.
@@ -2646,7 +2646,7 @@ Questa è la fase più importante: trasformare i tuoi disegni in file pronti per
 ### AAMA per Rifili
 
 **Comando**: `aamar`
-**Icona**: ![aamar](INSTALLAZIONE/menu/LEONARDO/aamar.bmp)
+**Icona**: ![aamar](INSTALLAZIONE/menu/LEONARDO/aamar_run.bmp)
 
 **Cosa fa**: Come AAMA ma per pezzi di rifilo (applica materiale standard automaticamente)
 
@@ -2731,7 +2731,7 @@ Dopo AAMA, devi "disporre" i pezzi sulla superficie del materiale (tavola).
 #### Nesting Semplice in Linea
 
 **Comando**: `nestinglinea`
-**Icona**: ![nestinglinea](INSTALLAZIONE/menu/LEONARDO/nestinglinea.bmp)
+**Icona**: ![nestinglinea](INSTALLAZIONE/menu/LEONARDO/nesting_linea.bmp)
 
 **Cosa fa**: Mette i pezzi in fila ordinata
 
@@ -9163,7 +9163,7 @@ Hai 15 pezzi di una borsa da stampare su A3:
 ### TAVOLA_DI_STAMPA_A3 - Layout Automatico A3
 
 **Comando**: `TAVOLA_DI_STAMPA_A3`
-**Icona**: ![TAVOLA_DI_STAMPA](INSTALLAZIONE/menu/LEONARDO/TAVOLA_DI_STAMPA.bmp)
+**Icona**: ![TAVOLA_DI_STAMPA_A3](INSTALLAZIONE/menu/LEONARDO/TAVOLA_STAMPA_A3.bmp)
 **Menu**: File → Esportazione → Tavola di Stampa A3
 
 **Cosa fa**: Crea automaticamente un layout di stampa A3 con nesting ottimizzato delle sagome
