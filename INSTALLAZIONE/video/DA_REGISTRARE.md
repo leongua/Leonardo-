@@ -10,11 +10,11 @@ Quando un video è pronto: mettilo in questa cartella e aggiungi una riga in `VI
 | # | File | Cosa si vede | Comandi |
 |---|---|---|---|
 | 1 | `dq.mp4` | Dalla finestra del quadrante al pezzo nel disegno: cambio dei raggi, anteprima, Disegna | `DQ` |
-| 2 | `dqt.mp4` | Tracciatura fondo tondo → bocca rettangolare, sviluppo nel disegno | `DQT` |
+| 2 | `dqf.mp4` | Dalla finestra del quadrante al pezzo nel disegno: cambio dei raggi, anteprima, Disegna | `DQF` |
 | 3 | `contorni.mp4` | Contorno con un buco e tratti staccati: controllo, "Correggi i semplici", contorno chiuso | `CONTROLLA_CONTORNI` |
-| 4 | `tacche.mp4` | Tacche a misura sul contorno, poi tagliate a V | `TACCA_DA_MISURA`, `METTI_V` |
-| 5 | `dati.mp4` | Nome e materiale ai pezzi, poi la mappa colorata dei materiali | `NOM`, `MAT`, `MAPPAMAT` |
-| 6 | `nesting.mp4` | Confronto delle strategie, scelta della migliore, pezzi sulla tavola | `NESTING_CONFRONTA` |
+| 4 | `dati.mp4` | Nome e materiale ai pezzi, poi la mappa colorata dei materiali | `NOM`, `MAT`, `MAPPAMAT` |
+| 5 | `tacche.mp4` | Tacche a misura sul contorno, poi tagliate a V | `INSERISCI_TACCA`, `COPIA_TACCHE`, `METTI_V` |
+| 6 | `nesting.mp4` | Confronto delle strategie, scelta della migliore, pezzi sulla tavola | `NESTING_CONFRONTA` , `NESTING-TRUESHAPE3`|
 | 7 | `consumi.mp4` | Calcolo consumi e documento HTML dei risultati | `NOG` |
 | 8 | `aama.mp4` | Controllo dei pezzi AAMA e scrittura del DXF | `AAMA`, `AAMA_ESTRAI` |
 
