@@ -3,673 +3,671 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leonardo Pattern Design — CAD per Pelletteria e Modelleria Borse</title>
-<meta name="description" content="Leonardo Pattern Design: il software CAD professionale per pelletteria, modelleria borse, calzature e accessori moda. 288 comandi specializzati, nesting avanzato, export AAMA. Compatibile ZWCAD 2015–2026.">
+<title>Leonardo Pattern Design | Il CAD per la pelletteria su ZWCAD e AutoCAD</title>
+<meta name="description" content="Leonardo Pattern Design: oltre 340 comandi per modellisti di pelletteria su ZWCAD e AutoCAD 2024-2027. Sagome, tacche, nesting, AAMA, ATOM, consumi, DIBA.">
+<meta property="og:title" content="Leonardo Pattern Design">
+<meta property="og:description" content="Il CAD che dà forma alle tue borse, dal disegno al taglio. ZWCAD e AutoCAD 2024-2027.">
+<meta property="og:image" content="img/logo.png">
+<meta name="theme-color" content="#070a12">
+<link rel="icon" type="image/png" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#05080f;
-  --bg-2:#0a101d;
-  --card:#0c1424;
-  --card-2:#101a30;
-  --line:rgba(148,163,184,.14);
-  --cyan:#38bdf8;
-  --cyan-2:#22d3ee;
-  --blue:#3b82f6;
-  --violet:#a78bfa;
-  --violet-2:#a855f7;
-  --text:#e6edf7;
-  --muted:#9db0c7;
-  --grad:linear-gradient(92deg,#22d3ee 0%,#3b82f6 48%,#a855f7 100%);
-  --grad-soft:linear-gradient(92deg,rgba(34,211,238,.16),rgba(59,130,246,.16),rgba(168,85,247,.16));
-  --radius:18px;
-  --nav-h:72px;
+  --bg:#070a12; --bg2:#0b0f1a; --card:#111726; --card2:#151c2e; --line:rgba(255,255,255,.08);
+  --text:#e9edf5; --text2:#aab3c5; --text3:#7d879b;
+  --cyan:#22d3ee; --blue:#3b82f6; --violet:#8b5cf6; --green:#34d399; --amber:#fbbf24;
+  --grad:linear-gradient(100deg,#22d3ee 0%,#3b82f6 50%,#8b5cf6 100%);
+  --r:16px; --shadow:0 20px 60px rgba(0,0,0,.45);
+  --head:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px)}
-body{
-  font-family:'Inter','Segoe UI',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  line-height:1.6;
-}
-h1,h2,h3,.brand{font-family:'Sora','Segoe UI',system-ui,sans-serif}
-img{max-width:100%}
-a{color:inherit}
-::selection{background:rgba(59,130,246,.4)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.2;letter-spacing:-.01em}
+code,.cmd{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.8rem}
+.section{padding:96px 0}
+.section-alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{max-width:720px;margin:0 auto 56px;text-align:center}
+.section-head h2{font-size:clamp(1.7rem,3.6vw,2.6rem);margin-bottom:.8rem}
+.section-head p{color:var(--text2);font-size:1.06rem}
 
-/* ---------- utility ---------- */
-.container{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
-.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.section{padding:110px 0;position:relative}
-.section-alt{background:var(--bg-2)}
-.kicker{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.8rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--cyan);margin-bottom:1.1rem;
-}
-.kicker::before{content:'';width:34px;height:1px;background:var(--grad)}
-.section-title{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1rem}
-.section-sub{color:var(--muted);font-size:1.08rem;max-width:640px;margin-bottom:3.2rem}
-.center{text-align:center}
-.center .section-sub{margin-left:auto;margin-right:auto}
-.center .kicker{justify-content:center}
-.center .kicker::before{display:none}
-
-/* reveal on scroll */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
-.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+/* ---------- bottoni ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.4rem;border-radius:999px;font-weight:600;font-size:.98rem;border:1px solid transparent;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(59,130,246,.35)}
+.btn-grad:hover{box-shadow:0 12px 40px rgba(139,92,246,.45)}
+.btn-ghost{border-color:rgba(255,255,255,.18);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
 
 /* ---------- nav ---------- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
-  display:flex;align-items:center;
-  transition:background .35s,border-color .35s,box-shadow .35s;
-  border-bottom:1px solid transparent;
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(7,10,18,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:.6rem;color:var(--text);font-family:var(--head);font-weight:700;font-size:1.1rem;white-space:nowrap}
+.brand:hover{text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:9px}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:.7rem;color:var(--text3);letter-spacing:.06em;margin-top:-3px}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{color:var(--text2);font-size:.92rem;font-weight:500;padding:.45rem .7rem;border-radius:8px}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06);text-decoration:none}
+.nav-links .btn{padding:.55rem 1rem;font-size:.9rem;color:#fff;margin-left:6px}
+.nav-links .btn:hover{background:var(--grad)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:44px;height:40px;font-size:1.25rem;cursor:pointer}
+@media (max-width:980px){
+  .burger{display:block}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px;background:#070a12;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.5);max-height:calc(100vh - 64px);overflow-y:auto}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:.85rem .6rem;font-size:1rem;border-bottom:1px solid var(--line);border-radius:0}
+  .nav-links .btn{margin:14px 0 0;justify-content:center;border-radius:999px;border-bottom:0}
 }
-nav.scrolled{
-  background:rgba(5,8,15,.78);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom-color:var(--line);
-  box-shadow:0 10px 40px rgba(0,0,0,.45);
-}
-.nav-inner{max-width:1180px;width:100%;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
-.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(59,130,246,.55)}
-.brand .gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:1.9rem;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;font-size:.93rem;font-weight:500;color:var(--muted);transition:color .25s}
-.nav-links a:hover{color:#fff}
-.nav-cta{
-  padding:.55rem 1.25rem;border-radius:999px;background:var(--grad);
-  color:#04070d !important;font-weight:700;font-size:.9rem;text-decoration:none;
-  box-shadow:0 4px 20px rgba(59,130,246,.4);transition:transform .25s,box-shadow .25s;white-space:nowrap;
-}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,130,246,.55)}
-.nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer;line-height:1}
 
 /* ---------- hero ---------- */
-.hero{
-  min-height:100vh;display:flex;align-items:center;position:relative;
-  padding:calc(var(--nav-h) + 48px) 0 90px;overflow:hidden;
-}
-#net{position:absolute;inset:0;z-index:0;opacity:.9}
-.hero-glow{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0}
-.hero-glow.g1{width:520px;height:520px;background:rgba(34,211,238,.13);top:-140px;left:-120px}
-.hero-glow.g2{width:620px;height:620px;background:rgba(168,85,247,.12);bottom:-220px;right:-160px}
-.hero-glow.g3{width:420px;height:420px;background:rgba(59,130,246,.10);top:30%;left:55%}
-.hero-grid{
-  position:absolute;inset:0;z-index:0;opacity:.5;
-  background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,#000 30%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,#000 30%,transparent 75%);
-}
-.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:4rem;align-items:center;width:100%}
-.hero-badges{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.6rem}
-.pill{
-  display:inline-flex;align-items:center;gap:.45rem;
-  font-size:.8rem;font-weight:600;color:var(--muted);
-  padding:.42rem 1rem;border-radius:999px;
-  border:1px solid var(--line);background:rgba(255,255,255,.03);
-}
-.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.hero h1{
-  font-size:clamp(2.5rem,5.4vw,4.1rem);font-weight:800;line-height:1.08;
-  letter-spacing:-.03em;margin-bottom:1.4rem;
-}
-.hero-sub{font-size:1.18rem;color:var(--muted);max-width:560px;margin-bottom:2.4rem}
-.hero-sub strong{color:var(--text)}
-.cta-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-.btn{
-  display:inline-flex;align-items:center;gap:.6rem;
-  padding:.95rem 1.9rem;border-radius:999px;font-weight:700;font-size:1rem;
-  text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s;
-  cursor:pointer;border:0;
-}
-.btn-grad{background:var(--grad);color:#04070d;box-shadow:0 6px 26px rgba(59,130,246,.42)}
-.btn-grad:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(59,130,246,.6)}
-.btn-ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.03)}
-.btn-ghost:hover{border-color:rgba(148,163,184,.4);background:rgba(255,255,255,.06);transform:translateY(-3px)}
-.hero-visual{position:relative;display:flex;justify-content:center}
-.hero-logo-wrap{position:relative;width:min(380px,80vw);aspect-ratio:1;animation:floatLogo 7s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-@keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-@keyframes floatLogoMobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.hero-logo-wrap::before{
-  content:'';position:absolute;inset:-6%;border-radius:50%;
-  background:conic-gradient(from 0deg,#22d3ee,#3b82f6,#a855f7,#22d3ee);
-  filter:blur(28px);opacity:.45;animation:spin 14s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hero-logo-wrap img{
-  position:relative;width:100%;height:100%;object-fit:cover;border-radius:50%;
-  border:1px solid rgba(148,163,184,.25);
-  box-shadow:0 30px 80px rgba(0,0,0,.65),0 0 60px rgba(59,130,246,.25);
-}
-.orbit-chip{
-  position:absolute;padding:.55rem 1rem;border-radius:12px;
-  background:rgba(12,20,36,.85);backdrop-filter:blur(8px);
-  border:1px solid var(--line);font-size:.82rem;font-weight:600;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);white-space:nowrap;
-}
-.orbit-chip b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.chip-1{top:6%;left:-14%;animation:float 6s ease-in-out infinite .5s}
-.chip-2{bottom:14%;left:-20%;animation:float 6.5s ease-in-out infinite 1.2s}
-.chip-3{top:22%;right:-16%;animation:float 7s ease-in-out infinite .9s}
-.chip-4{bottom:0;right:-8%;animation:float 5.6s ease-in-out infinite 1.6s}
-.scroll-hint{
-  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
-  color:var(--muted);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;
-}
-.scroll-hint::after{
-  content:'';width:1px;height:38px;
-  background:linear-gradient(to bottom,var(--cyan),transparent);
-  animation:drop 1.8s ease-in-out infinite;
-}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-/* ---------- announce strip ---------- */
-.announce{
-  position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:linear-gradient(92deg,rgba(34,211,238,.08),rgba(59,130,246,.08),rgba(168,85,247,.08));
-  padding:1.15rem 0;text-align:center;font-size:1rem;
-}
-.announce b{color:var(--cyan)}
-
-/* ---------- stats ---------- */
-.stats{padding:80px 0}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
-.stat{
-  text-align:center;padding:2.1rem 1rem;border-radius:var(--radius);
-  background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden;
-}
-.stat::after{content:'';position:absolute;inset:auto 20% 0;height:2px;background:var(--grad);opacity:.7}
-.stat-num{font-family:'Sora';font-size:clamp(2.1rem,3.6vw,3rem);font-weight:800;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.stat-label{color:var(--muted);font-size:.92rem;margin-top:.35rem}
-
-/* ---------- cards ---------- */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.card{
-  position:relative;background:var(--card);border:1px solid var(--line);
-  border-radius:var(--radius);padding:2rem 1.8rem;
-  transition:transform .35s,border-color .35s,box-shadow .35s,background .35s;
-  overflow:hidden;
-}
-.card::before{
-  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
-  background:var(--grad);opacity:0;transition:opacity .35s;
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
-}
-.card:hover{transform:translateY(-7px);background:var(--card-2);box-shadow:0 24px 50px rgba(0,0,0,.5)}
-.card:hover::before{opacity:.75}
-.card-icon{
-  width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;margin-bottom:1.3rem;
-  background:var(--grad-soft);border:1px solid var(--line);
-}
-.card h3{font-size:1.22rem;font-weight:700;margin-bottom:.7rem;letter-spacing:-.01em}
-.card p{color:var(--muted);font-size:.97rem}
-
-/* ---------- gallery ---------- */
-.gallery{overflow:hidden;padding:110px 0 90px}
-.marquee{display:flex;gap:1.4rem;width:max-content;animation:scrollx 46s linear infinite;padding:1rem 0}
-@media (hover:hover) and (pointer:fine){
-  .marquee:hover{animation-play-state:paused}
-}
-@keyframes scrollx{to{transform:translateX(-50%)}}
-.shot{
-  height:230px;border-radius:14px;border:1px solid var(--line);
-  background:var(--card);padding:.7rem;display:flex;align-items:center;
-  transition:transform .35s,border-color .35s,box-shadow .35s;
-}
-.shot img{height:100%;width:auto;border-radius:8px;object-fit:contain}
-.shot:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(56,189,248,.5);box-shadow:0 20px 44px rgba(0,0,0,.55)}
-.gallery-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:1.4rem}
-
-/* ---------- workflow ---------- */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;counter-reset:step}
-.step{position:relative;padding:2rem 1.6rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
-.step::before{
-  counter-increment:step;content:counter(step,decimal-leading-zero);
-  font-family:'Sora';font-size:2.6rem;font-weight:800;line-height:1;
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  opacity:.9;display:block;margin-bottom:1rem;
-}
-.step h3{font-size:1.08rem;margin-bottom:.5rem}
-.step p{color:var(--muted);font-size:.92rem}
-
-/* ---------- pricing ---------- */
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;align-items:stretch}
-.price-card{
-  position:relative;display:flex;flex-direction:column;
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:2.2rem 1.8rem;transition:transform .35s,box-shadow .35s,border-color .35s;
-}
-.price-card:hover{transform:translateY(-7px);box-shadow:0 24px 50px rgba(0,0,0,.5)}
-.price-card.featured{
-  background:linear-gradient(var(--card-2),var(--card-2)) padding-box,var(--grad) border-box;
-  border:2px solid transparent;
-  box-shadow:0 20px 60px rgba(59,130,246,.28);
-}
-.price-badge{
-  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  background:var(--grad);color:#04070d;font-size:.74rem;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;
-  padding:.34rem 1.05rem;border-radius:999px;white-space:nowrap;
-  box-shadow:0 6px 18px rgba(59,130,246,.5);
-}
-.price-name{font-weight:700;font-size:1.05rem;margin-bottom:.3rem}
-.price-for{color:var(--muted);font-size:.85rem;min-height:2.6em;margin-bottom:1.2rem}
-.price-value{font-family:'Sora';font-size:2.35rem;font-weight:800;letter-spacing:-.03em;line-height:1}
-.price-value small{font-size:.95rem;font-weight:600;color:var(--muted);letter-spacing:0}
-.price-note{color:var(--cyan);font-size:.82rem;font-weight:600;margin-top:.55rem;min-height:1.4em}
-.price-list{list-style:none;margin:1.5rem 0 1.9rem;flex:1}
-.price-list li{
-  position:relative;padding-left:1.6rem;color:var(--muted);
-  font-size:.9rem;margin-bottom:.65rem;
-}
-.price-list li::before{content:'✓';position:absolute;left:0;color:var(--cyan);font-weight:700}
-.price-cta{
-  display:block;text-align:center;padding:.85rem;border-radius:12px;
-  font-weight:700;font-size:.95rem;text-decoration:none;
-  border:1px solid var(--line);transition:background .25s,transform .25s,box-shadow .25s;
-}
-.price-cta:hover{background:rgba(255,255,255,.06);transform:translateY(-2px)}
-.featured .price-cta{background:var(--grad);color:#04070d;border:0;box-shadow:0 6px 20px rgba(59,130,246,.4)}
-.featured .price-cta:hover{box-shadow:0 10px 30px rgba(59,130,246,.6)}
-.pricing-foot{text-align:center;color:var(--muted);font-size:.88rem;margin-top:2.2rem}
-
-/* ---------- trial banner ---------- */
-.trial{
-  position:relative;border-radius:24px;overflow:hidden;
-  background:linear-gradient(var(--card-2),var(--card-2)) padding-box,var(--grad) border-box;
-  border:2px solid transparent;
-  padding:3.4rem 3rem;text-align:center;
-}
-.trial::before{
-  content:'';position:absolute;width:480px;height:480px;border-radius:50%;
-  background:rgba(59,130,246,.14);filter:blur(90px);top:-240px;left:50%;transform:translateX(-50%);
-}
-.trial h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1rem;position:relative}
-.trial p{color:var(--muted);font-size:1.1rem;max-width:620px;margin:0 auto 2.2rem;position:relative}
-.trial p b{color:var(--text)}
-.trial .btn{position:relative}
-.trial-mail{
-  display:inline-block;margin-top:1.2rem;color:var(--cyan);font-weight:600;
-  font-size:1rem;text-decoration:none;border-bottom:1px dashed rgba(56,189,248,.5);position:relative;
+.hero{position:relative;padding:140px 0 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:900px;background:
+  radial-gradient(600px 380px at 15% 20%,rgba(34,211,238,.16),transparent 70%),
+  radial-gradient(640px 420px at 85% 10%,rgba(139,92,246,.18),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(180deg,#000 0%,transparent 75%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:48px;align-items:center}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.pill{font-size:.8rem;font-weight:600;padding:.35rem .75rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text2)}
+.pill b{color:var(--cyan);font-weight:600}
+.hero h1{font-size:clamp(2.1rem,5vw,3.6rem);font-weight:800;margin-bottom:20px}
+.hero-sub{font-size:1.15rem;color:var(--text2);max-width:560px;margin-bottom:30px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-shot{position:relative}
+.hero-shot{max-width:540px;margin:0 auto;width:100%}
+.mascot{width:100%;height:auto;border-radius:50%;aspect-ratio:1/1;object-fit:cover;object-position:42% 50%;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 71%);mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 71%);filter:drop-shadow(0 0 40px rgba(59,130,246,.35));animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.chip{position:absolute;z-index:2;display:flex;align-items:center;gap:.45rem;padding:.5rem .8rem;border-radius:12px;background:rgba(17,23,38,.92);border:1px solid var(--line);box-shadow:var(--shadow);font-size:.82rem;font-weight:600;white-space:nowrap}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip.c1{top:8%;right:0}.chip.c2{top:52%;left:-6px}.chip.c3{bottom:6%;right:6%}
+@media (max-width:900px){
+  .hero{padding:110px 0 60px}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-shot{max-width:380px}
+  .chip.c2{left:0}
 }
 
-/* ---------- integrations ---------- */
-.int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+/* ---------- finestra (cornice delle schermate) ---------- */
+.window{background:#f3f4f6;border-radius:12px;overflow:hidden;box-shadow:var(--shadow),0 0 0 1px rgba(255,255,255,.06)}
+.window-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#e5e7eb;border-bottom:1px solid #d1d5db}
+.window-bar span{width:10px;height:10px;border-radius:50%;background:#cbd5e1}
+.window-bar span:nth-child(1){background:#f87171}.window-bar span:nth-child(2){background:#fbbf24}.window-bar span:nth-child(3){background:#34d399}
+.window-bar em{margin-left:8px;font-style:normal;font-size:.75rem;color:#4b5563;font-family:ui-monospace,Consolas,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.window img{width:100%;height:auto;background:#fff}
+.zoomable{cursor:zoom-in}
+
+/* ---------- numeri ---------- */
+.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:72px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.stat{background:var(--bg);padding:26px 18px;text-align:center}
+.stat strong{display:block;font-family:var(--head);font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800}
+.stat span{color:var(--text3);font-size:.9rem}
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- novità ---------- */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .2s,border-color .2s,background .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.35);background:var(--card2)}
+.card h3{font-size:1.12rem;margin-bottom:.5rem}
+.card p{color:var(--text2);font-size:.96rem}
+.card .tag-new{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0b1220;background:var(--grad);padding:.2rem .55rem;border-radius:6px;margin-bottom:.9rem}
+.card .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.35rem;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);margin-bottom:1rem}
+@media (max-width:960px){.news-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.news-grid{grid-template-columns:1fr}}
+
+/* ---------- funzioni ---------- */
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:center;padding:44px 0}
+.feat+.feat{border-top:1px solid var(--line)}
+.feat.rev .feat-text{order:2}
+.feat-num{font-family:var(--head);font-weight:800;font-size:.85rem;color:var(--violet);letter-spacing:.1em}
+.feat h3{font-size:clamp(1.35rem,2.6vw,1.8rem);margin:.4rem 0 .8rem}
+.feat p{color:var(--text2);margin-bottom:.9rem}
+.feat ul{list-style:none;margin:0 0 1rem}
+.feat li{position:relative;padding-left:1.5rem;color:var(--text2);margin:.35rem 0;font-size:.97rem}
+.feat li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--grad)}
+.cmds{display:flex;flex-wrap:wrap;gap:6px}
+.cmd{font-size:.76rem;padding:.2rem .5rem;border-radius:6px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);color:#c4b5fd}
+@media (max-width:900px){
+  .feat{grid-template-columns:minmax(0,1fr);gap:26px;padding:36px 0}
+  .feat.rev .feat-text{order:0}
+}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.more-grid .card h3{display:flex;align-items:center;gap:.6rem}
+.more-grid .card p{margin-bottom:.9rem}
+@media (max-width:960px){.more-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.more-grid{grid-template-columns:1fr}}
+
+/* ---------- flusso ---------- */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:passo}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px 22px 70px}
+.step::before{counter-increment:passo;content:counter(passo);position:absolute;left:20px;top:22px;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-family:var(--head);font-weight:800;background:var(--grad);color:#fff}
+.step h3{font-size:1.02rem;margin-bottom:.35rem}
+.step p{font-size:.92rem;color:var(--text2)}
+@media (max-width:960px){.flow{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.flow{grid-template-columns:1fr}}
+
+/* ---------- galleria ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g-item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:zoom-in;transition:transform .2s,border-color .2s;text-align:left;color:inherit;font:inherit;padding:0}
+.g-item:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.35)}
+.g-item .thumb{aspect-ratio:16/10;background:#f3f4f6;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+.g-item .thumb img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.g-item .cap{padding:14px 16px}
+.g-item .cap b{display:block;font-family:var(--head);font-size:.98rem;margin-bottom:.15rem}
+.g-item .cap span{font-size:.86rem;color:var(--text3)}
+@media (max-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.gallery{grid-template-columns:1fr}}
+.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:28px}
+.videos:empty{display:none}
+.videos figure{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.videos video{width:100%;display:block;background:#000}
+.videos figcaption{padding:12px 16px;font-size:.9rem;color:var(--text2)}
+@media (max-width:700px){.videos{grid-template-columns:1fr}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(3,5,10,.92);display:none;align-items:center;justify-content:center;padding:56px 16px 24px;flex-direction:column;gap:14px}
+.lb.open{display:flex}
+.lb img{max-width:min(1300px,100%);max-height:calc(100vh - 140px);border-radius:10px;background:#fff;box-shadow:var(--shadow);object-fit:contain}
+.lb p{color:var(--text2);text-align:center;max-width:800px;font-size:.95rem}
+.lb-btn{position:absolute;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+.lb-btn:hover{background:rgba(255,255,255,.16)}
+.lb-close{top:12px;right:14px}.lb-prev{left:14px;top:50%}.lb-next{right:14px;top:50%}
+@media (max-width:620px){.lb-prev,.lb-next{top:auto;bottom:14px}}
+
+/* ---------- icone ---------- */
+.icons-band{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:#0e1320}
+.icons-band .mosaic{position:absolute;inset:0;background:url("img/icone.png") center/720px auto repeat;opacity:.22;filter:saturate(1.1)}
+.icons-band .mosaic::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,19,32,.55) 0%,rgba(14,19,32,.95) 70%)}
+.icons-band .inner{position:relative;padding:72px 24px;text-align:center}
+.icons-band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);margin-bottom:.8rem}
+.icons-band p{color:var(--text2);max-width:640px;margin:0 auto}
+
+/* ---------- compatibilità ---------- */
+.compat{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cad-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.cad-table th,.cad-table td{padding:.7rem .4rem;border-bottom:1px solid var(--line);text-align:left}
+.cad-table th{color:var(--text3);font-weight:600;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.cad-table td:last-child{text-align:right}
+.ok{display:inline-block;padding:.15rem .55rem;border-radius:6px;font-size:.78rem;font-weight:600;background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.3)}
+.fmt{display:flex;flex-wrap:wrap;gap:8px;margin-top:.4rem}
+.fmt span{padding:.4rem .75rem;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:.88rem;color:var(--text2)}
+.fmt span b{color:var(--text)}
+@media (max-width:860px){.compat{grid-template-columns:1fr}}
+
+/* ---------- licenza ---------- */
+.lic{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:56px}
+@media (max-width:860px){.lic{grid-template-columns:1fr}}
+
+/* ---------- prezzi ---------- */
+.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.price{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 22px}
+.price.best{border-color:transparent;background:linear-gradient(var(--card2),var(--card2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 18px 50px rgba(59,130,246,.18)}
+.badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:.74rem;font-weight:700;padding:.25rem .8rem;border-radius:999px;white-space:nowrap}
+.price h3{font-size:1.1rem;margin-bottom:.3rem}
+.price .for{color:var(--text3);font-size:.88rem;min-height:2.6em}
+.price .val{font-family:var(--head);font-size:2.2rem;font-weight:800;margin:.9rem 0 .1rem}
+.price .val small{font-size:.95rem;font-weight:500;color:var(--text3)}
+.price .note{font-size:.84rem;color:var(--green);min-height:1.4em}
+.price ul{list-style:none;margin:1rem 0 1.4rem;flex:1}
+.price li{padding:.38rem 0 .38rem 1.5rem;position:relative;font-size:.93rem;color:var(--text2);border-bottom:1px dashed rgba(255,255,255,.06)}
+.price li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
+.price .btn{justify-content:center}
+.price-foot{text-align:center;color:var(--text3);font-size:.9rem;margin-top:24px}
+@media (max-width:1060px){.pricing{grid-template-columns:repeat(2,1fr);row-gap:30px}}
+@media (max-width:560px){.pricing{grid-template-columns:1fr}}
+
+.trial{margin-top:56px;text-align:center;padding:48px 24px;border-radius:22px;background:radial-gradient(500px 220px at 20% 0%,rgba(34,211,238,.16),transparent 70%),radial-gradient(500px 220px at 80% 100%,rgba(139,92,246,.18),transparent 70%),var(--card);border:1px solid var(--line)}
+.trial h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:.7rem}
+.trial p{color:var(--text2);max-width:620px;margin:0 auto 1.6rem}
+
+/* ---------- chi sono ---------- */
+.about{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start}
+.about-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;text-align:center}
+.about-card img{width:120px;height:120px;border-radius:28px;margin:0 auto 1rem}
+.about-card h3{font-size:1.2rem}
+.about-card p{color:var(--text3);font-size:.92rem}
+.about-text p{color:var(--text2);margin-bottom:1rem;font-size:1.03rem}
+.about-text h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:1rem}
+.timeline{list-style:none;margin-top:1.4rem;border-left:2px solid rgba(139,92,246,.4);padding-left:22px}
+.timeline li{position:relative;margin-bottom:1.1rem;color:var(--text2);font-size:.96rem}
+.timeline li::before{content:"";position:absolute;left:-29px;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--grad)}
+.timeline b{color:var(--text)}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
 
 /* ---------- faq ---------- */
-.faq-wrap{max-width:820px;margin:0 auto}
-.faq-item{
-  border:1px solid var(--line);border-radius:14px;margin-bottom:.9rem;
-  background:var(--card);overflow:hidden;transition:border-color .3s;
-}
-.faq-item.open{border-color:rgba(56,189,248,.45)}
-.faq-q{
-  width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;
-  padding:1.3rem 1.5rem;background:none;border:0;color:var(--text);
-  font-family:inherit;font-size:1.02rem;font-weight:600;text-align:left;cursor:pointer;
-}
-.faq-q .arrow{
-  flex:none;width:26px;height:26px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid var(--line);font-size:.7rem;color:var(--cyan);
-  transition:transform .35s,background .35s;
-}
-.faq-item.open .arrow{transform:rotate(180deg);background:rgba(56,189,248,.14)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.faq-a-inner{padding:0 1.5rem 1.4rem;color:var(--muted);font-size:.96rem}
+.faq{max-width:820px;margin:0 auto}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:18px 52px 18px 20px;font-weight:600;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--cyan);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{padding:0 20px 18px;color:var(--text2)}
 
-/* ---------- contact ---------- */
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:900px;margin:0 auto}
-.contact-card{
-  text-align:center;padding:2.2rem 1.4rem;border-radius:var(--radius);
-  background:var(--card);border:1px solid var(--line);
-  transition:transform .3s,border-color .3s;
-}
-.contact-card:hover{transform:translateY(-5px);border-color:rgba(56,189,248,.4)}
-.contact-card .ico{font-size:2rem;margin-bottom:.8rem}
-.contact-card h3{font-size:1rem;color:var(--muted);font-weight:600;margin-bottom:.4rem}
-.contact-card a,.contact-card .val{font-weight:700;font-size:1.05rem;text-decoration:none;color:var(--text)}
-.contact-card a:hover{color:var(--cyan)}
+/* ---------- contatti / footer ---------- */
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact .card{text-align:center}
+.contact .ico{margin:0 auto 1rem}
+.contact a,.contact span{font-weight:600}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-size:.88rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center}
+.foot .brand{font-size:1rem}
 
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:3rem 0 2.4rem;background:var(--bg)}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.footer-inner .brand{font-size:1.1rem}
-.footer-inner .brand img{width:32px;height:32px}
-footer p{color:var(--muted);font-size:.88rem}
-.top-link{color:var(--muted);font-size:.85rem;text-decoration:none}
-.top-link:hover{color:var(--cyan)}
-
-/* ---------- responsive ---------- */
-@media (max-width:1000px){
-  .hero-inner{grid-template-columns:1fr;gap:3rem;text-align:center}
-  .hero-sub{margin-left:auto;margin-right:auto}
-  .cta-row{justify-content:center}
-  .hero-badges{justify-content:center}
-  .hero-visual{order:-1}
-  .hero-logo-wrap{width:min(280px,70vw);animation:floatLogoMobile 5s ease-in-out infinite}
-  .chip-1{left:-4%}.chip-2{left:-6%}.chip-3{right:-4%}.chip-4{right:-2%}
-  .grid-3,.steps,.stats-grid,.int-grid{grid-template-columns:repeat(2,1fr)}
-  .pricing-grid{grid-template-columns:repeat(2,1fr)}
-  .contact-grid{grid-template-columns:1fr}
-}
-@media (max-width:640px){
-  .section{padding:80px 0}
-  .grid-3,.steps,.stats-grid,.int-grid,.pricing-grid{grid-template-columns:1fr}
-  .nav-links{
-    position:fixed;inset:var(--nav-h) 0 auto 0;flex-direction:column;gap:0;
-    background:rgba(5,8,15,.97);backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--line);padding:1rem 24px 1.6rem;
-    display:none;
-  }
-  .nav-links.open{display:flex}
-  .nav-links li{width:100%}
-  .nav-links a{display:block;padding:.85rem 0;font-size:1.05rem}
-  .nav-toggle{display:block}
-  .orbit-chip{display:none}
-  .trial{padding:2.4rem 1.4rem}
-  .shot{height:170px}
-  .scroll-hint{display:none}
-}
+/* ---------- comparsa ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
-  .marquee{animation:scrollx 70s linear infinite !important}
-  .hero-logo-wrap{animation:floatLogoMobile 5s ease-in-out infinite !important}
   html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.card,.g-item{transition:none}
+  .mascot{animation:none}
 }
 </style>
 </head>
 <body>
 
 <!-- ============ NAV ============ -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#top" class="brand"><img src="log.jpg" alt="Leonardo logo">Leonardo<span class="gt">&gt;</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#perche">Perché Leonardo</a></li>
-      <li><a href="#funzioni">Funzionalità</a></li>
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Leonardo Pattern Design, torna su">
+      <img src="img/logo.png" alt="">
+      <span>Leonardo<small>PATTERN DESIGN</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul class="nav-links" id="menu">
+      <li><a href="#novita">Novità</a></li>
+      <li><a href="#funzioni">Funzioni</a></li>
+      <li><a href="#flusso">Flusso</a></li>
       <li><a href="#galleria">Galleria</a></li>
+      <li><a href="#compatibilita">Compatibilità</a></li>
       <li><a href="#prezzi">Prezzi</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contatti">Contatti</a></li>
+      <li><a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo">Prova gratis</a></li>
     </ul>
-    <div style="display:flex;align-items:center;gap:.9rem">
-      <a class="nav-cta" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo">Prova Gratis</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
-    </div>
   </div>
-</nav>
-
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <canvas id="net"></canvas>
-  <div class="hero-grid"></div>
-  <div class="hero-glow g1"></div><div class="hero-glow g2"></div><div class="hero-glow g3"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badges">
-          <span class="pill"><span class="dot"></span>Versione 3.2.0</span>
-          <span class="pill">ZWCAD 2015–2026</span>
-          <span class="pill">288 comandi</span>
-        </div>
-        <h1>Il CAD che dà forma alle <span class="grad-text">tue borse</span>, dal disegno al taglio.</h1>
-        <p class="hero-sub">
-          Leonardo Pattern Design è il software professionale per <strong>pelletteria, modelleria borse e accessori moda</strong>:
-          288 comandi specializzati per disegnare sagome, gestire tacche e materiali, ottimizzare il nesting
-          ed esportare verso qualsiasi macchina da taglio.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo">🎁 Copia di valutazione gratuita</a>
-          <a class="btn btn-ghost" href="#prezzi">Scopri i prezzi</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-logo-wrap">
-          <img src="log.jpg" alt="Leonardo Pattern Design">
-          <div class="orbit-chip chip-1">✂️ <b>Tacche</b> automatiche</div>
-          <div class="orbit-chip chip-2">📦 <b>Nesting</b> 10 algoritmi</div>
-          <div class="orbit-chip chip-3">📐 <b>Sviluppo 3D</b> fasce</div>
-          <div class="orbit-chip chip-4">🔪 Export <b>AAMA</b></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-hint">Scorri</div>
 </header>
 
-<!-- ============ ANNOUNCE ============ -->
-<div class="announce reveal">
-  ✅ <b>Leonardo è ora compatibile con ZWCAD 2026!</b> &nbsp;Tutti i 288 comandi testati e validati su ZWCAD 2015–2026.
-</div>
+<main id="top">
 
-<!-- ============ STATS ============ -->
-<section class="stats">
+<!-- ============ HERO ============ -->
+<section class="hero">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat reveal"><div class="stat-num" data-count="288">0</div><div class="stat-label">Comandi specializzati</div></div>
-      <div class="stat reveal d1"><div class="stat-num" data-count="25">0</div><div class="stat-label">Categorie funzionali</div></div>
-      <div class="stat reveal d2"><div class="stat-num" data-count="17">0</div><div class="stat-label">Toolbar tematiche</div></div>
-      <div class="stat reveal d3"><div class="stat-num" data-count="10">0</div><div class="stat-label">Algoritmi di nesting</div></div>
+    <div class="hero-grid">
+      <div>
+        <div class="pills">
+          <span class="pill">Versione <b>5.2</b></span>
+          <span class="pill"><b>ZWCAD</b> e <b>AutoCAD</b> 2024–2027</span>
+          <span class="pill">Oltre <b>340</b> comandi</span>
+        </div>
+        <h1>Il CAD che dà forma alle tue borse, <span class="grad-text">dal disegno al taglio.</span></h1>
+        <p class="hero-sub">Leonardo Pattern Design è l'aggiunta per ZWCAD e AutoCAD pensata per la modellistica di pelletteria. Disegni le sagome, metti le tacche e i dati del pezzo, prepari il taglio e calcoli consumi e costi, senza uscire dal CAD.</p>
+        <div class="hero-cta">
+          <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo">Richiedi una copia di prova</a>
+          <a class="btn btn-ghost" href="#funzioni">Guarda cosa fa →</a>
+        </div>
+      </div>
+      <div class="hero-shot">
+        <span class="chip c1"><i style="background:var(--cyan)"></i>Sagome con anteprima</span>
+        <span class="chip c2"><i style="background:var(--violet)"></i>Tacche in 8 forme</span>
+        <span class="chip c3"><i style="background:var(--green)"></i>Pronto per il taglio</span>
+        <img class="mascot" src="img/mascotte.jpg" width="513" height="403" alt="La mascotte di Leonardo: un volto stilizzato con la barba, in blu e viola, dentro un anello luminoso">
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><strong class="grad-text">340+</strong><span>comandi</span></div>
+      <div class="stat"><strong class="grad-text">8</strong><span>versioni di CAD</span></div>
+      <div class="stat"><strong class="grad-text">16</strong><span>strategie di nesting</span></div>
+      <div class="stat"><strong class="grad-text">8</strong><span>forme di tacca</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============ PERCHÉ ============ -->
-<section class="section section-alt" id="perche">
+<!-- ============ NOVITÀ ============ -->
+<section class="section section-alt" id="novita">
   <div class="container">
-    <span class="kicker reveal">Perché Leonardo</span>
-    <h2 class="section-title reveal">Nato in laboratorio,<br>non in una software house.</h2>
-    <p class="section-sub reveal">Ogni comando è stato sviluppato ascoltando le esigenze reali dei modellisti di pelletteria. Niente funzioni generiche: solo strumenti che usi davvero, ogni giorno.</p>
-    <div class="grid-3">
-      <div class="card reveal">
-        <div class="card-icon">🎯</div>
-        <h3>Specifico per Pelletteria</h3>
-        <p>288 comandi progettati per il settore pellettiero: diciture standard, fustelle, costole, rimbocchi, fasce fianco. Il linguaggio del tuo mestiere, dentro il CAD.</p>
-      </div>
-      <div class="card reveal d1">
-        <div class="card-icon">⚡</div>
-        <h3>Workflow Ottimizzato</h3>
-        <p>Gestione automatizzata di tacche, simmetrie, nesting e preparazione stampa. Quello che prima richiedeva ore di lavoro manuale, ora si fa in pochi click.</p>
-      </div>
-      <div class="card reveal d2">
-        <div class="card-icon">🔧</div>
-        <h3>Integrazione Completa</h3>
-        <p>Compatibile con ZWCAD 2015–2026, AutoCAD e Modaris. Importa ed esporta in formato AAMA standard verso tutti i principali sistemi di taglio.</p>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">📚</div>
-        <h3>Documentazione Completa</h3>
-        <p>Guida utente dettagliata pensata per pellettieri e modellisti, con appendice completa dei 288 comandi, esempi pratici e scorciatoie da tastiera.</p>
-      </div>
-      <div class="card reveal d1">
-        <div class="card-icon">💶</div>
-        <h3>Prezzi Chiari</h3>
-        <p>Abbonamenti trasparenti senza costi nascosti, piani dedicati a studenti e scuole, e copie di valutazione gratuite per provare tutto prima di decidere.</p>
-      </div>
-      <div class="card reveal d2">
-        <div class="card-icon">🚀</div>
-        <h3>Aggiornamenti Continui</h3>
-        <p>Software in continua evoluzione: la versione 3.2.0 porta 48 nuovi comandi tra nesting avanzato, sviluppo superfici 3D e strumenti di riparazione geometrie.</p>
-      </div>
+    <div class="section-head reveal">
+      <span class="kicker">Novità di ottobre 2026</span>
+      <h2>Cosa c'è di nuovo nella <span class="grad-text">5.2</span></h2>
+      <p>Gran parte dei comandi storici è stata riscritta in moduli .NET più veloci, con gli stessi nomi di sempre: il menu e le abitudini restano quelli.</p>
+    </div>
+    <div class="news-grid">
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>DIBA, la distinta base in Excel</h3><p>Scheda tecnica e distinta base del modello in un file Excel, con logo e foto dei pezzi. Si scrive anche senza Excel installato.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>ATOM Layout dentro il CAD</h3><p>Il piazzamento per la macchina ATOM si prepara nel disegno e si salva in <code>.lay</code>, <code>.die</code> e <code>.shc</code>, senza passare da altri programmi.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Tacche tagliate in 8 forme</h3><p>V, arco, U, rettangolo, coda di rondine, fessura, poligono, anche raccordate. Con anteprima, in AAMA e nelle tacche.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Confronto dei nesting</h3><p>Lancia tutte le strategie insieme e scegli la migliore: tavole usate, occupazione e anteprima in una sola finestra.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Anagrafiche e controllo</h3><p>Materiali con fornitore, prezzo e colore; mappa colorata dei materiali e un controllo che trova i pezzi senza nome o materiale prima del taglio.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Un installatore, sei CAD</h3><p>Un solo setup chiede dove installare: ZWCAD o AutoCAD, dal 2025 al 2027. Fa da solo la copia di sicurezza dei file del CAD.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ FUNZIONALITÀ ============ -->
+<!-- ============ FUNZIONI ============ -->
 <section class="section" id="funzioni">
   <div class="container">
-    <span class="kicker reveal">Funzionalità</span>
-    <h2 class="section-title reveal">Tutto il ciclo di lavoro,<br>in un unico strumento.</h2>
-    <p class="section-sub reveal">Dal primo tratto alla tavola di taglio: Leonardo copre ogni fase della modelleria.</p>
-    <div class="grid-3">
-      <div class="card reveal">
-        <div class="card-icon">✂️</div>
-        <h3>Gestione Tacche</h3>
-        <p>Creazione, copia, ribaltamento e conversione tacche con orientamento automatico. Supporto standard industriali e validazione interattiva lungo la polilinea.</p>
+    <div class="section-head reveal">
+      <span class="kicker">Funzioni</span>
+      <h2>Tutto il lavoro del modellista, <span class="grad-text">in un menu solo</span></h2>
+      <p>Dalla prima linea al file per la macchina da taglio. Ogni comando ha la sua icona nel menu LEONARDO e si può anche digitare.</p>
+    </div>
+
+    <div class="feat reveal">
+      <div class="feat-text">
+        <span class="feat-num">01 · SAGOME</span>
+        <h3>Quadranti, fasce, pence e cannoni</h3>
+        <p>Compili una finestra e vedi il pezzo nascere nell'anteprima. Ogni misura si può prendere dal disegno con un clic.</p>
+        <ul>
+          <li>Quadranti con raggi e lati ad arco, fasce a misura, pence e cannoni.</li>
+          <li>Costruzioni pronte di fianchi, fondi, soffietti e fodere.</li>
+          <li>Pezzi già completi di pieghe, tacche e nomi.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">DQ</span><span class="cmd">DQL</span><span class="cmd">DQF</span><span class="cmd">DQFM</span><span class="cmd">DQP</span></div>
       </div>
-      <div class="card reveal d1">
-        <div class="card-icon">📦</div>
-        <h3>Nesting Avanzato</h3>
-        <p>10 algoritmi di piazzamento: best fit, true shape sulla forma reale, cluster, ghigliottina, tetris e altri. Overflow multi-tavola automatico per ridurre lo sfrido.</p>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>DQ · Disegnatore figure quadrangolari</em></div><img class="zoomable" loading="lazy" src="img/dq.png" alt="Finestra DQ: quadrante con larghezze, altezza e raggi dei raccordi, con anteprima quotata" data-cap="DQ: il quadrante con raggi diversi in alto e in basso, quotato nell'anteprima."></div>
+    </div>
+
+    <div class="feat rev reveal">
+      <div class="feat-text">
+        <span class="feat-num">02 · TRACCIATURE E SVILUPPI</span>
+        <h3>Tramogge, secchielli e superfici sviluppate in piano</h3>
+        <p>Dal fondo alla bocca: Leonardo sviluppa la superficie che li unisce, con le generatrici vere e le misure di controllo.</p>
+        <ul>
+          <li>Raccordi fra due figure, tubolari, manici a spicchi, tasche innestate.</li>
+          <li>Sviluppo in piano di fasce 3D, conservando le lunghezze vere.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">DQT</span><span class="cmd">UNROLLSWEEP6</span><span class="cmd">PASSANTE</span></div>
       </div>
-      <div class="card reveal d2">
-        <div class="card-icon">📐</div>
-        <h3>Sviluppo Superfici 3D</h3>
-        <p>Srotola fasce e superfici curve 3D sul piano preservando le distanze reali: il cartamodello piano di una fascia fianco in un solo comando.</p>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>DQT · Tracciatura</em></div><img class="zoomable" loading="lazy" src="img/dqt.png" alt="Finestra Tracciatura: raccordo fra un fondo tondo e una bocca rettangolare, sviluppato in un pezzo" data-cap="DQT: raccordo fra un fondo tondo e una bocca rettangolare, sviluppato con le generatrici."></div>
+    </div>
+
+    <div class="feat reveal">
+      <div class="feat-text">
+        <span class="feat-num">03 · GUANTI</span>
+        <h3>Il cartamodello del guanto, dalle misure della mano</h3>
+        <p>Inserisci le misure o scegli la taglia: Leonardo disegna tranca, pollice, forchette e quirk, con cuciture, pieghe e tacche.</p>
+        <ul>
+          <li>Guanto classico, a due pezzi, sportivo e da guida.</li>
+          <li>Sei tipi di pollice e tabella taglie dell'azienda, con preset salvabili.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">DISEGNAGUANTI</span><span class="cmd">DG</span></div>
       </div>
-      <div class="card reveal">
-        <div class="card-icon">📊</div>
-        <h3>Dati Pezzi e Materiali</h3>
-        <p>Nomi, materiali, quantità, spessori, lavorazioni e accessori metallici con database configurabili. Schede tecniche HTML ed Excel con anteprime dei pezzi.</p>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>DISEGNAGUANTI</em></div><img class="zoomable" loading="lazy" src="img/disegnaguanti.png" alt="Finestra Disegna guanti con la mano di misura e i pezzi del guanto" data-cap="DISEGNAGUANTI: dalla mano di misura a tutti i pezzi del guanto."></div>
+    </div>
+
+    <div class="feat rev reveal">
+      <div class="feat-text">
+        <span class="feat-num">04 · CONTORNI</span>
+        <h3>Contorni puliti, pronti per il taglio</h3>
+        <p>Una sola finestra controlla tutto il disegno: contorni aperti, tratti non uniti, buchi, doppioni e verso. Quelli semplici si correggono da soli.</p>
+        <ul>
+          <li>Unione dei tratti in polilinee chiuse, anche senza PEDIT.</li>
+          <li>Stesso verso per tutti i contorni e nuovo punto di inizio.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">CONTROLLA_CONTORNI</span><span class="cmd">CATENA_UNISCI</span><span class="cmd">TROVA_GAP</span><span class="cmd">VERSO_UNIFORME</span><span class="cmd">Y</span><span class="cmd">PC</span></div>
       </div>
-      <div class="card reveal d1">
-        <div class="card-icon">📈</div>
-        <h3>Calcolo Consumi</h3>
-        <p>Computo materiali con 4 livelli di configurazione degli sfridi, consumi a metro e a rotolo, report dettagliati esportabili verso gestionali e PDM.</p>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>CONTROLLA_CONTORNI</em></div><img class="zoomable" loading="lazy" src="img/controlla_contorni.png" alt="Finestra Controllo dei contorni con l'elenco dei problemi trovati" data-cap="CONTROLLA_CONTORNI: errori e avvisi del disegno, con un clic l'oggetto si accende."></div>
+    </div>
+
+    <div class="feat reveal">
+      <div class="feat-text">
+        <span class="feat-num">05 · TACCHE</span>
+        <h3>Tacche a misura, copiate e convertite</h3>
+        <p>Metti le tacche a una distanza precisa, riportale fra i pezzi che si cuciono e convertile per la tua macchina.</p>
+        <ul>
+          <li>Formati: tacca, tacca tagliata, Mozart, punto Geber.</li>
+          <li>Tacche tagliate nel contorno in otto forme, anche raccordate.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">TACCA</span><span class="cmd">TACCA_DA_MISURA</span><span class="cmd">COPIA_TACCHE</span><span class="cmd">SOSTITUISCI_TACCHE</span><span class="cmd">METTI_V</span></div>
       </div>
-      <div class="card reveal d2">
-        <div class="card-icon">🖨️</div>
-        <h3>Stampa e Taglio</h3>
-        <p>Sbozzi automatici, tavole di stampa A3/A4 e fogli plotter, elaborazione AAMA con controlli di qualità integrati (gap, linee interne, riparazione geometrie).</p>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>METTI_V · Impostazioni tacca</em></div><img class="zoomable" loading="lazy" src="img/metti_v.png" alt="Finestra METTI_V: tipo di tacca, larghezza e profondità con anteprima" data-cap="METTI_V: tacca triangolare, rettangolare o semicircolare tagliata nel contorno."></div>
+    </div>
+
+    <div class="feat rev reveal">
+      <div class="feat-text">
+        <span class="feat-num">06 · DATI DEL PEZZO</span>
+        <h3>Nome, materiale, lavorazioni e accessori</h3>
+        <p>Ogni pezzo porta con sé i suoi dati, scelti da elenchi: viaggiano con il disegno, senza file a parte.</p>
+        <ul>
+          <li>Anagrafica materiali con fornitore, prezzo, pelle o rotolo, colore.</li>
+          <li>Mappa colorata per materiale o categoria, con legenda.</li>
+          <li>Controllo dei pezzi senza nome o senza materiale.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">NOM</span><span class="cmd">MAT</span><span class="cmd">LAV</span><span class="cmd">ACC</span><span class="cmd">MAPPAMAT</span><span class="cmd">CONTROLLA</span></div>
       </div>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>MAPPAMAT · Mappa dei materiali</em></div><img class="zoomable" loading="lazy" src="img/mappamat.png" alt="Finestra Mappa dei materiali con legenda e pezzi da sistemare" data-cap="MAPPAMAT: i pezzi colorati per materiale, e in evidenza quelli da sistemare."></div>
+    </div>
+
+    <div class="feat reveal">
+      <div class="feat-text">
+        <span class="feat-num">07 · TAGLIO</span>
+        <h3>AAMA, ATOM, Geber e Modaris</h3>
+        <p>Dalle sagome ai file per la macchina da taglio, senza toccare il disegno. Prima di scrivere, una finestra mostra errori e avvisi: un clic porta al pezzo.</p>
+        <ul>
+          <li>DXF AAMA in un file unico o un file per pezzo, anche per cartelle intere.</li>
+          <li>Layout ATOM con file <code>.lay</code>, <code>.die</code>, <code>.shc</code>.</li>
+          <li>Tacche Geber, dime e conversione da Modaris (Lectra).</li>
+        </ul>
+        <div class="cmds"><span class="cmd">AAMA</span><span class="cmd">AAMA_ESTRAI</span><span class="cmd">AAMA-BATCH</span><span class="cmd">ATOM-LAYOUT</span><span class="cmd">GEBER</span><span class="cmd">MODARIS-AAMA</span></div>
+      </div>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>AAMA · Controllo dei pezzi</em></div><img class="zoomable" loading="lazy" src="img/aama-controllo.png" alt="Finestra Controllo dei pezzi AAMA con errori e avvisi" data-cap="AAMA: il controllo dei pezzi prima di creare i blocchi per la macchina da taglio."></div>
+    </div>
+
+    <div class="feat rev reveal">
+      <div class="feat-text">
+        <span class="feat-num">08 · NESTING</span>
+        <h3>Meno sfrido sulla tavola e sulla pelle</h3>
+        <p>Dispone i pezzi per usare meno materiale. Puoi provare tutte le strategie insieme e tenere la migliore.</p>
+        <ul>
+          <li>Nesting sulla forma vera, con zone vietate per difetti e morsetti.</li>
+          <li>Ottimizzazione a tempo e confronto fra 16 strategie.</li>
+          <li>I pezzi originali restano dove sono.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">NESTING_CONFRONTA</span><span class="cmd">NESTING-OTTIMIZZA</span><span class="cmd">NESTING-TRUESHAPE3</span><span class="cmd">NESTING-BESTFIT</span></div>
+      </div>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>NESTING_CONFRONTA</em></div><img class="zoomable" loading="lazy" src="img/nesting_confronta.png" alt="Finestra Confronto dei nesting con 16 strategie e anteprima della tavola" data-cap="NESTING_CONFRONTA: 16 strategie a confronto, la migliore segnata con la stella."></div>
+    </div>
+
+    <div class="feat reveal">
+      <div class="feat-text">
+        <span class="feat-num">09 · CONSUMI E COSTI</span>
+        <h3>Consumi, costo del modello e distinta base</h3>
+        <p>Calcola i consumi per pelle, infustiture, tele, fodere e accessori, con gli sfridi spiegati passo per passo.</p>
+        <ul>
+          <li>Scarto misurato piazzando i pezzi su una pelle campione, anche con i difetti.</li>
+          <li>Costo del modello: materiali, accessori, lavorazioni e cuciture, con ricarico.</li>
+          <li>Documenti HTML, CSV ed Excel, e la DIBA.</li>
+        </ul>
+        <div class="cmds"><span class="cmd">NOG</span><span class="cmd">COMPUTO_COSTI</span><span class="cmd">RIEPILOGO_MATERIALI</span><span class="cmd">DIBA</span></div>
+      </div>
+      <div class="window"><div class="window-bar"><span></span><span></span><span></span><em>NOG · Risultati dei consumi</em></div><img class="zoomable" loading="lazy" src="img/nog-risultati.png" alt="Risultati del calcolo consumi con tabella di pelle, tele e fodere" data-cap="NOG: consumi netti e lordi in dm² per pelle, tele e fodere, con lo sfrido."></div>
+    </div>
+
+    <div class="more-grid">
+      <div class="card reveal"><h3><span class="ico" style="margin:0">〰️</span>Offset e cuciture</h3><p>Linee di cucitura da 2 a 10 mm, ringrano, offset incrementali e offset di un solo tratto in cinque varianti.</p><div class="cmds"><span class="cmd">OFT_2…10</span><span class="cmd">OFI</span><span class="cmd">OFFSET_TRATTO</span></div></div>
+      <div class="card reveal"><h3><span class="ico" style="margin:0">🖨️</span>Tavole e sbozzi</h3><p>Il cartamodello pronto per il plotter, anche su A3, e gli sbozzi a spigoli vivi o arrotondati.</p><div class="cmds"><span class="cmd">PRESTAMPA</span><span class="cmd">SBOZZO</span><span class="cmd">SBOZZO_RETT</span></div></div>
+      <div class="card reveal"><h3><span class="ico" style="margin:0">📄</span>Schede tecniche</h3><p>Schede dei pezzi con le immagini, in HTML interattivo e CSV, e schede di accessori e lavorazioni con i costi.</p><div class="cmds"><span class="cmd">SCHEDAPRO</span><span class="cmd">SCHEDA-ACC</span><span class="cmd">SCHEDA-LAV</span></div></div>
+      <div class="card reveal"><h3><span class="ico" style="margin:0">🔍</span>Cerca sagome nell'archivio</h3><p>Trova in tutti i DWG di una cartella i pezzi uguali a una sagoma, anche ruotati, specchiati o con un offset.</p><div class="cmds"><span class="cmd">CERCASAGOME3</span><span class="cmd">CS3</span></div></div>
+      <div class="card reveal"><h3><span class="ico" style="margin:0">✏️</span>Forme e strumenti</h3><p>Ovali, ovoli, ellissi, cicloidi, rettangolo aureo, squadratura, diciture rapide e layer di taglio con un clic.</p><div class="cmds"><span class="cmd">OVALE</span><span class="cmd">OVOLO</span><span class="cmd">CENTRO</span><span class="cmd">OUTCUT</span></div></div>
+      <div class="card reveal"><h3><span class="ico" style="margin:0">🧵</span>Passanti</h3><p>Lo sviluppo del passante dalla vista di fianco della tracolla, con anteprima.</p><div class="cmds"><span class="cmd">PASSANTE</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICONE ============ -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="icons-band reveal">
+      <div class="mosaic" aria-hidden="true"></div>
+      <div class="inner">
+        <span class="kicker">Il menu LEONARDO</span>
+        <h2>Oltre <span class="grad-text">340 comandi</span>, ognuno con la sua icona</h2>
+        <p>Menu e barre degli strumenti divisi per fasi di lavoro: Disegno, Polilinee, Offset, Tacche, Materiali e Articoli, AAMA ed Export, Consumi e Report. Una guida in italiano spiega ogni comando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLUSSO ============ -->
+<section class="section section-alt" id="flusso">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Flusso di lavoro</span>
+      <h2>Dalla sagoma al taglio <span class="grad-text">in 9 passi</span></h2>
+      <p>Il percorso normale di un modello in Leonardo.</p>
+    </div>
+    <div class="flow">
+      <div class="step reveal"><h3>Disegna le sagome</h3><p>Forme base, quadranti, fasce, pence, tracciature, passanti, guanti.</p></div>
+      <div class="step reveal"><h3>Sistema i contorni</h3><p>Polilinee chiuse, buchi trovati, tutto controllato con <code>CONTROLLA_CONTORNI</code>.</p></div>
+      <div class="step reveal"><h3>Dai i layer di taglio</h3><p>Contorno esterno su <code>OUTCUT</code>, tagli interni su <code>INTCUT</code>, rifili su <code>ENDCUT</code>.</p></div>
+      <div class="step reveal"><h3>Inserisci i dati del pezzo</h3><p>Nome, materiale, lavorazioni, accessori. Poi <code>CONTROLLA</code> e <code>MAPPAMAT</code>.</p></div>
+      <div class="step reveal"><h3>Metti le tacche</h3><p>A misura, copiate fra i pezzi che si cuciono, o tagliate nel contorno.</p></div>
+      <div class="step reveal"><h3>Offset, cuciture, sbozzi</h3><p>Linee di cucitura, ringrano, sbozzi e dime.</p></div>
+      <div class="step reveal"><h3>Prepara il taglio</h3><p>DXF AAMA, layout ATOM o Geber, secondo la tua macchina.</p></div>
+      <div class="step reveal"><h3>Stampa il cartamodello</h3><p><code>PRESTAMPA</code> e un nesting sulla tavola.</p></div>
+      <div class="step reveal"><h3>Consumi e documenti</h3><p>Consumi, costo del modello, schede dei pezzi e distinta base.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ============ GALLERIA ============ -->
-<section class="gallery section-alt" id="galleria">
-  <div class="container center">
-    <span class="kicker reveal">Galleria</span>
-    <h2 class="section-title reveal">Leonardo in azione</h2>
-    <p class="section-sub reveal">Interfacce pensate per chi lavora la pelle, non per gli informatici.</p>
+<section class="section" id="galleria">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Galleria</span>
+      <h2>Leonardo <span class="grad-text">in azione</span></h2>
+      <p>Le finestre dei comandi così come le vedi nel CAD. Tocca un'immagine per ingrandirla.</p>
+    </div>
+    <div class="videos" id="videos"></div>
+    <div class="gallery" id="gallery"></div>
   </div>
-  <!-- Le immagini vengono caricate automaticamente dalla cartella "galleria/":
-       basta aggiungere lì i file jpg/png/webp/gif. Vedi galleria/LEGGIMI.txt -->
-  <div class="marquee" id="marquee"></div>
-  <p class="gallery-note">Schermate reali del software · passa il mouse per mettere in pausa</p>
 </section>
 
-<!-- ============ WORKFLOW ============ -->
-<section class="section">
+<!-- ============ COMPATIBILITÀ ============ -->
+<section class="section section-alt" id="compatibilita">
   <div class="container">
-    <span class="kicker reveal">Il flusso di lavoro</span>
-    <h2 class="section-title reveal">Dal modello al taglio in 4 passi</h2>
-    <div class="steps">
-      <div class="step reveal"><h3>Disegna</h3><p>Sagome, fasce, quadranti e forme parametriche con strumenti dedicati alla pelletteria e precisione millimetrica.</p></div>
-      <div class="step reveal d1"><h3>Completa</h3><p>Tacche, diciture, materiali, lavorazioni e accessori: ogni pezzo porta con sé tutti i suoi dati di produzione.</p></div>
-      <div class="step reveal d2"><h3>Ottimizza</h3><p>Nesting automatico su tavola, calcolo consumi e schede tecniche generate in un click.</p></div>
-      <div class="step reveal d3"><h3>Taglia</h3><p>Export AAMA verso plotter, laser e sistemi a getto d'acqua. Dal file alla macchina, senza passaggi intermedi.</p></div>
+    <div class="section-head reveal">
+      <span class="kicker">Compatibilità</span>
+      <h2>Funziona con il <span class="grad-text">tuo CAD</span></h2>
+      <p>Windows 10 o successivo, 64 bit. Lo stesso menu e gli stessi comandi su ZWCAD e su AutoCAD.</p>
+    </div>
+    <div class="compat">
+      <div class="card reveal">
+        <h3 style="margin-bottom:.6rem">CAD supportati</h3>
+        <table class="cad-table">
+          <thead><tr><th>Programma</th><th>Versioni</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>ZWCAD</b></td><td>2024 · 2025 · 2026 · 2027</td><td><span class="ok">Sì</span></td></tr>
+            <tr><td><b>AutoCAD</b></td><td>2024 · 2025 · 2026 · 2027</td><td><span class="ok">Sì</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1rem;font-size:.92rem">Hai una versione più vecchia? <a href="mailto:leonardo@guasqui.it?subject=Leonardo%20su%20versione%20CAD%20precedente">Scrivimi</a>: si valuta caso per caso.</p>
+      </div>
+      <div class="card reveal">
+        <h3 style="margin-bottom:.6rem">File e macchine</h3>
+        <p style="font-size:.95rem">Legge e scrive i formati che usi già in laboratorio.</p>
+        <div class="fmt">
+          <span><b>DWG / DXF</b> disegni</span>
+          <span><b>DXF AAMA</b> macchine da taglio</span>
+          <span><b>ATOM</b> .lay .die .shc</span>
+          <span><b>Geber</b> tacche</span>
+          <span><b>Modaris</b> conversione</span>
+          <span><b>Mozart</b> tacche</span>
+          <span><b>Excel</b> XLS / XLSX</span>
+          <span><b>HTML / CSV</b> schede e consumi</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ PREZZI ============ -->
-<section class="section section-alt" id="prezzi">
+<section class="section" id="prezzi">
   <div class="container">
-    <div class="center">
-      <span class="kicker reveal">Prezzi</span>
-      <h2 class="section-title reveal">Un piano per ogni laboratorio</h2>
-      <p class="section-sub reveal">Prezzi chiari, nessun costo nascosto. E prima di scegliere, puoi provare Leonardo gratuitamente.</p>
+    <div class="section-head reveal">
+      <span class="kicker">Licenza e prezzi</span>
+      <h2>Un piano per <span class="grad-text">ogni laboratorio</span></h2>
+      <p>Prezzi chiari, nessun costo nascosto. Prima di scegliere puoi provare Leonardo gratis.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <div class="price-name">Standard Mensile</div>
-        <div class="price-for">Per professionisti e aziende, massima flessibilità</div>
-        <div class="price-value">€199<small>/mese</small></div>
-        <div class="price-note">&nbsp;</div>
-        <ul class="price-list">
-          <li>Tutti i 288 comandi</li>
-          <li>Aggiornamenti inclusi</li>
-          <li>Supporto tecnico via email</li>
-          <li>Nessun vincolo di durata</li>
-        </ul>
-        <a class="price-cta" href="mailto:leonardo@guasqui.it?subject=Licenza%20Standard%20Mensile%20Leonardo">Richiedi licenza</a>
-      </div>
-      <div class="price-card featured reveal d1">
-        <div class="price-badge">Più conveniente</div>
-        <div class="price-name">Standard Annuale</div>
-        <div class="price-for">Per professionisti e aziende, fatturazione annuale</div>
-        <div class="price-value">€179,10<small>/mese</small></div>
-        <div class="price-note">Risparmi il 10% rispetto al mensile</div>
-        <ul class="price-list">
-          <li>Tutti i 288 comandi</li>
-          <li>Aggiornamenti inclusi</li>
-          <li>Supporto tecnico prioritario</li>
-          <li>Fatturazione annuale</li>
-        </ul>
-        <a class="price-cta" href="mailto:leonardo@guasqui.it?subject=Licenza%20Standard%20Annuale%20Leonardo">Richiedi licenza</a>
-      </div>
-      <div class="price-card reveal d2">
-        <div class="price-name">Studenti e Privati</div>
-        <div class="price-for">Per uso personale e formazione individuale</div>
-        <div class="price-value">€49,99<small>/mese</small></div>
-        <div class="price-note">&nbsp;</div>
-        <ul class="price-list">
-          <li>Tutti i 288 comandi</li>
-          <li>Aggiornamenti inclusi</li>
-          <li>Uso non commerciale</li>
-          <li>Documentazione completa</li>
-        </ul>
-        <a class="price-cta" href="mailto:leonardo@guasqui.it?subject=Licenza%20Studenti%20e%20Privati%20Leonardo">Richiedi licenza</a>
-      </div>
-      <div class="price-card reveal d3">
-        <div class="price-name">Scuole e Istituti</div>
-        <div class="price-for">Per studenti e scuole con riconoscimento ufficiale</div>
-        <div class="price-value">€29,99<small>/3 mesi</small></div>
-        <div class="price-note">Con attestato di iscrizione</div>
-        <ul class="price-list">
-          <li>Tutti i 288 comandi</li>
-          <li>Pensato per corsi e laboratori</li>
-          <li>Richiede documentazione di iscrizione a corso o istituto riconosciuto</li>
-        </ul>
-        <a class="price-cta" href="mailto:leonardo@guasqui.it?subject=Licenza%20Scuole%20e%20Istituti%20Leonardo">Richiedi licenza</a>
-      </div>
-    </div>
-    <p class="pricing-foot reveal">Prezzi IVA esclusa. Per licenze multiple, piani aziendali personalizzati o migrazione da altri software, <a href="mailto:leonardo@guasqui.it" style="color:var(--cyan)">contattaci</a>.</p>
-  </div>
-</section>
 
-<!-- ============ TRIAL ============ -->
-<section class="section">
-  <div class="container">
+    <div class="lic">
+      <div class="card reveal"><div class="ico">🔑</div><h3>Licenza online</h3><p>Ricevi una chiave con l'acquisto e la attivi dal CAD con <code>ACTIVATE-LICENSE</code>. Si convalida in rete.</p></div>
+      <div class="card reveal"><div class="ico">💾</div><h3>Licenza senza rete</h3><p>Per i PC non collegati a internet: un file di licenza legato alla postazione.</p></div>
+      <div class="card reveal"><div class="ico">🖥️</div><h3>Legata alla postazione</h3><p><code>SHOW-SYSTEM-ID</code> mostra il codice del PC, <code>LICENSE-INFO</code> lo stato e la scadenza.</p></div>
+    </div>
+
+    <div class="pricing">
+      <div class="price reveal">
+        <h3>Standard Mensile</h3>
+        <p class="for">Per professionisti e aziende, massima flessibilità</p>
+        <div class="val">€199<small>/mese</small></div>
+        <div class="note">&nbsp;</div>
+        <ul><li>Tutti i comandi</li><li>Aggiornamenti inclusi</li><li>Supporto via email</li><li>Nessun vincolo di durata</li></ul>
+        <a class="btn btn-ghost" href="mailto:leonardo@guasqui.it?subject=Licenza%20Standard%20Mensile%20Leonardo">Richiedi licenza</a>
+      </div>
+      <div class="price best reveal">
+        <span class="badge">Più conveniente</span>
+        <h3>Standard Annuale</h3>
+        <p class="for">Per professionisti e aziende, fatturazione annuale</p>
+        <div class="val">€179,10<small>/mese</small></div>
+        <div class="note">Risparmi il 10% rispetto al mensile</div>
+        <ul><li>Tutti i comandi</li><li>Aggiornamenti inclusi</li><li>Supporto prioritario</li><li>Fatturazione annuale</li></ul>
+        <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Licenza%20Standard%20Annuale%20Leonardo">Richiedi licenza</a>
+      </div>
+      <div class="price reveal">
+        <h3>Studenti e Privati</h3>
+        <p class="for">Per uso personale e formazione individuale</p>
+        <div class="val">€49,99<small>/mese</small></div>
+        <div class="note">&nbsp;</div>
+        <ul><li>Tutti i comandi</li><li>Aggiornamenti inclusi</li><li>Uso non commerciale</li><li>Guida completa in italiano</li></ul>
+        <a class="btn btn-ghost" href="mailto:leonardo@guasqui.it?subject=Licenza%20Studenti%20e%20Privati%20Leonardo">Richiedi licenza</a>
+      </div>
+      <div class="price reveal">
+        <h3>Scuole e Istituti</h3>
+        <p class="for">Per corsi e laboratori riconosciuti</p>
+        <div class="val">€29,99<small>/3 mesi</small></div>
+        <div class="note">Con attestato di iscrizione</div>
+        <ul><li>Tutti i comandi</li><li>Pensato per corsi e laboratori</li><li>Serve l'iscrizione a un corso o istituto riconosciuto</li></ul>
+        <a class="btn btn-ghost" href="mailto:leonardo@guasqui.it?subject=Licenza%20Scuole%20e%20Istituti%20Leonardo">Richiedi licenza</a>
+      </div>
+    </div>
+    <p class="price-foot">Prezzi IVA esclusa. Per più postazioni, piani aziendali o passaggio da altri programmi, <a href="mailto:leonardo@guasqui.it">scrivimi</a>.</p>
+
     <div class="trial reveal">
-      <h2>🎁 Prova Leonardo <span class="grad-text">gratuitamente</span></h2>
-      <p>Sono disponibili <b>copie di valutazione per chiunque voglia provare Leonardo</b>: nessuna carta di credito, nessun impegno. Scrivici una mail e ricevi la tua copia con la documentazione completa.</p>
-      <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo&body=Buongiorno%2C%0A%0Avorrei%20ricevere%20una%20copia%20di%20valutazione%20di%20Leonardo%20Pattern%20Design.%0A%0AGrazie">Richiedi la tua copia di valutazione</a>
-      <br>
-      <a class="trial-mail" href="mailto:leonardo@guasqui.it">leonardo@guasqui.it</a>
+      <h2>Prova Leonardo <span class="grad-text">gratis</span></h2>
+      <p>Le copie di valutazione sono per chiunque voglia provarlo: nessuna carta di credito, nessun impegno. Scrivi una mail e ricevi l'installatore con la guida completa.</p>
+      <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo&amp;body=Buongiorno%2C%0A%0Avorrei%20ricevere%20una%20copia%20di%20valutazione%20di%20Leonardo%20Pattern%20Design.%0A%0ACAD%20e%20versione%20che%20uso%3A%20%0A%0AGrazie">Richiedi la copia di prova</a>
     </div>
   </div>
 </section>
 
-<!-- ============ INTEGRAZIONI ============ -->
-<section class="section section-alt">
+<!-- ============ CHI SONO ============ -->
+<section class="section section-alt" id="chi">
   <div class="container">
-    <div class="center">
-      <span class="kicker reveal">Compatibilità</span>
-      <h2 class="section-title reveal">Si integra con il tuo ecosistema</h2>
-    </div>
-    <div class="int-grid">
-      <div class="card center reveal"><div class="card-icon" style="margin:0 auto 1.3rem">📋</div><h3>CAD</h3><p>ZWCAD 2015–2026, AutoCAD, estrazione da Modaris</p></div>
-      <div class="card center reveal d1"><div class="card-icon" style="margin:0 auto 1.3rem">🔪</div><h3>Sistemi di Taglio</h3><p>Plotter, laser, getto d'acqua via standard AAMA</p></div>
-      <div class="card center reveal d2"><div class="card-icon" style="margin:0 auto 1.3rem">💼</div><h3>Gestionali</h3><p>Export verso PDM, ERP e sistemi di inventario</p></div>
-      <div class="card center reveal d3"><div class="card-icon" style="margin:0 auto 1.3rem">📊</div><h3>Formati</h3><p>DWG, DXF, AAMA, Excel, HTML, PDF</p></div>
+    <div class="about">
+      <div class="about-card reveal">
+        <img src="img/logo.png" alt="">
+        <h3>Leonardo Guasqui</h3>
+        <p>Ideatore e sviluppatore<br>Montespertoli, Toscana</p>
+      </div>
+      <div class="about-text reveal">
+        <span class="kicker">Chi c'è dietro</span>
+        <h2>Nato in laboratorio, <span class="grad-text">non in una software house</span></h2>
+        <p>Leonardo nasce dentro una manifattura toscana di pelletteria di lusso, dove lavoro come responsabile tecnico e sviluppatore. Ogni comando è partito da un problema vero del reparto modelli: un'operazione che prendeva ore, un file che la macchina da taglio non leggeva, un consumo da ricalcolare a mano.</p>
+        <p>Il progetto è cresciuto un comando alla volta, prima in AutoLISP e oggi in moduli .NET, sempre con lo stesso obiettivo: far lavorare il modellista sul modello, non sul CAD.</p>
+        <ul class="timeline">
+          <li><b>Le origini</b>: autodidatta, dai primi programmi in Visual Basic all'elettronica e ai microcontrollori.</li>
+          <li><b>Dal 2017</b>: software per la pelletteria in azienda, collegato alle macchine da taglio. Nasce Leonardo.</li>
+          <li><b>Oggi</b>: Leonardo su ZWCAD e AutoCAD, più consulenze su automazione, software su misura e corsi di formazione.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -677,39 +675,19 @@ footer p{color:var(--muted);font-size:.88rem}
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="container">
-    <div class="center">
-      <span class="kicker reveal">FAQ</span>
-      <h2 class="section-title reveal">Domande frequenti</h2>
+    <div class="section-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2>Domande frequenti</h2>
     </div>
-    <div class="faq-wrap reveal">
-      <div class="faq-item">
-        <button class="faq-q">Con quali software è compatibile Leonardo?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Leonardo funziona perfettamente con tutte le versioni di ZWCAD dal 2015 al 2026, ha compatibilità parziale con AutoCAD e supporta l'estrazione da Modaris. Si integra con tutti i principali sistemi di taglio (plotter, laser, getto d'acqua) tramite lo standard AAMA.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Posso provare Leonardo prima di acquistarlo?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Sì! Sono disponibili copie di valutazione gratuite per chiunque voglia provare il software. Basta inviare una mail a <a href="mailto:leonardo@guasqui.it" style="color:var(--cyan)">leonardo@guasqui.it</a> e riceverai la tua copia con la documentazione completa, senza alcun impegno.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Quanto costa Leonardo?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">La licenza standard costa €199/mese, oppure €179,10/mese con fatturazione annuale (risparmi il 10%). Studenti e privati pagano €49,99/mese, mentre studenti e scuole con riconoscimento ufficiale possono accedere al piano da €29,99 per 3 mesi presentando documentazione che attesti l'iscrizione a un corso o istituto riconosciuto.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Qual è il tempo di apprendimento?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">I modellisti che arrivano da Mozart sono immediatamente operativi. La curva di apprendimento è molto rapida grazie a menu e toolbar organizzati per fasi di lavoro e a una guida utente scritta appositamente per pellettieri, senza tecnicismi informatici.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Come funziona il calcolo dei consumi?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Leonardo offre un metodo automatico con 4 livelli di scarto configurabili (generale, per categoria, per materiale specifico) e un metodo di piazzamento manuale per controllo totale. Genera report in formato testo, HTML o Excel, esportabili verso gestionali e PDM.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Posso usare i miei file attuali?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Sì! Leonardo legge file DWG, DXF, AAMA e importa da Modaris. La migrazione da altri software è guidata dal nostro supporto tecnico, incluso l'aiuto nella conversione dei tuoi archivi attuali.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Che supporto ricevo?<span class="arrow">▼</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Supporto tecnico via email con risposta entro 24 ore, documentazione completa in italiano con guide passo-passo per ogni comando, e aggiornamenti continui con miglioramenti basati sui feedback degli utenti.</div></div>
-      </div>
+    <div class="faq reveal">
+      <details><summary>Con quali CAD funziona Leonardo?</summary><p>Con ZWCAD e AutoCAD dalla versione 2024 alla 2027, su Windows 10 o successivo a 64 bit. Menu, icone e comandi sono gli stessi sui due programmi.</p></details>
+      <details><summary>Posso provarlo prima di acquistarlo?</summary><p>Sì. Scrivi a <a href="mailto:leonardo@guasqui.it">leonardo@guasqui.it</a> indicando CAD e versione che usi: ricevi una copia di valutazione con la guida completa, senza impegno.</p></details>
+      <details><summary>Come si installa?</summary><p>Con un installatore: scegli il CAD e la versione, lui trova dove è installato, fa una copia di sicurezza dei file che sostituisce e mette menu, icone, blocchi ed elenchi. All'avvio del CAD i comandi sono già pronti.</p></details>
+      <details><summary>Arrivo da Mozart o da un altro programma: quanto ci metto a imparare?</summary><p>Poco. Chi arriva da Mozart ritrova le sue tacche e le converte con un comando. Il menu è diviso per fasi di lavoro e la guida in italiano spiega ogni comando con le sue finestre.</p></details>
+      <details><summary>Posso usare i miei disegni attuali?</summary><p>Sì: Leonardo lavora su normali file DWG e DXF. Converte anche i file Modaris e le tacche dei formati più usati. Per passaggi più grandi ti aiuto io.</p></details>
+      <details><summary>Come funziona il calcolo dei consumi?</summary><p>Il comando <code>NOG</code> calcola per categoria la superficie netta e poi aggiunge gli sfridi, mostrando ogni passaggio. Lo sfrido si può impostare o misurare piazzando i pezzi su una pelle campione, anche con i difetti.</p></details>
+      <details><summary>Funziona con la mia macchina da taglio?</summary><p>Leonardo scrive il DXF AAMA che leggono la maggior parte delle macchine, i file per ATOM e le tacche Geber, con configurazioni di layer e colori per ogni macchina. Se hai dubbi, mandami un file di esempio.</p></details>
+      <details><summary>Che supporto ricevo?</summary><p>Supporto via email con risposta entro 24 ore, la guida completa in italiano e gli aggiornamenti inclusi nella licenza. Su richiesta, corsi di formazione.</p></details>
     </div>
   </div>
 </section>
@@ -717,195 +695,125 @@ footer p{color:var(--muted);font-size:.88rem}
 <!-- ============ CONTATTI ============ -->
 <section class="section section-alt" id="contatti">
   <div class="container">
-    <div class="center">
-      <span class="kicker reveal">Contatti</span>
-      <h2 class="section-title reveal">Parliamone</h2>
-      <p class="section-sub reveal">Domande, demo personalizzate o preventivi: siamo a tua disposizione.</p>
+    <div class="section-head reveal">
+      <span class="kicker">Contatti</span>
+      <h2>Parliamone</h2>
+      <p>Domande, una dimostrazione o un preventivo: scrivimi.</p>
     </div>
-    <div class="contact-grid">
-      <div class="contact-card reveal"><div class="ico">📧</div><h3>Email</h3><a href="mailto:leonardo@guasqui.it">leonardo@guasqui.it</a></div>
-      <div class="contact-card reveal d1"><div class="ico">🌐</div><h3>Sito Web</h3><a href="https://www.guasqui.it" target="_blank" rel="noopener">www.guasqui.it</a></div>
-      <div class="contact-card reveal d2"><div class="ico">💬</div><h3>Supporto</h3><span class="val">Risposta entro 24h</span></div>
+    <div class="contact">
+      <div class="card reveal"><div class="ico">✉️</div><h3>Email</h3><a href="mailto:leonardo@guasqui.it">leonardo@guasqui.it</a></div>
+      <div class="card reveal"><div class="ico">🌐</div><h3>Sito</h3><a href="https://www.guasqui.it" target="_blank" rel="noopener">www.guasqui.it</a></div>
+      <div class="card reveal"><div class="ico">💬</div><h3>Supporto</h3><span>Risposta entro 24 ore</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+</main>
+
 <footer>
-  <div class="container footer-inner">
-    <a href="#top" class="brand"><img src="log.jpg" alt="">Leonardo<span class="gt">&gt;</span></a>
-    <p>© 2026 Leonardo Guasqui — Tutti i diritti riservati · Leonardo Pattern Design v3.2.0</p>
-    <a class="top-link" href="#top">↑ Torna su</a>
+  <div class="container foot">
+    <a class="brand" href="#top"><img src="img/logo.png" alt="">Leonardo Pattern Design</a>
+    <span>© 2026 Leonardo Guasqui · versione 5.2 · ZWCAD e AutoCAD sono marchi dei rispettivi proprietari</span>
+    <a href="#top">↑ Torna su</a>
   </div>
 </footer>
 
+<!-- lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Chiudi">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Precedente">‹</button>
+  <img id="lbImg" src="" alt="">
+  <p id="lbCap"></p>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Successiva">›</button>
+</div>
+
 <script>
+// Galleria: elenco scritto qui, così funziona anche aprendo il file dal disco (niente fetch).
+// Per aggiungere un'immagine: mettila in img/ e aggiungi una riga.
+var GALLERIA = [
+  ["dqt.png","Tracciatura","DQT · raccordo fra fondo tondo e bocca rettangolare"],
+  ["dq.png","Quadrante","DQ · quadrante con raggi e misure"],
+  ["disegnaguanti.png","Guanti","DISEGNAGUANTI · dalla mano ai pezzi"],
+  ["passante.png","Passante","PASSANTE · sviluppo dalla vista di fianco"],
+  ["controlla_contorni.png","Controllo dei contorni","CONTROLLA_CONTORNI · errori e avvisi"],
+  ["offset_tratto.png","Offset di un tratto","OFFSET_TRATTO · cinque varianti"],
+  ["metti_v.png","Tacche nel contorno","METTI_V · tipo, larghezza, profondità"],
+  ["mappamat.png","Mappa dei materiali","MAPPAMAT · legenda e pezzi da sistemare"],
+  ["aama-controllo.png","Controllo AAMA","AAMA · errori prima dei blocchi"],
+  ["atom-layout.png","Layout ATOM","ATOM-DATI · foglio e materiale"],
+  ["nesting_confronta.png","Confronto dei nesting","NESTING_CONFRONTA · 16 strategie"],
+  ["nog-risultati.png","Consumi","NOG · pelle, tele e fodere in dm²"],
+  ["computo_costi.png","Costo del modello","COMPUTO_COSTI · materiali e lavorazioni"],
+  ["schedapro.png","Scheda dei pezzi","SCHEDAPRO · HTML, CSV, immagini"],
+  ["cercasagome3.png","Cerca sagome","CERCASAGOME3 · pezzi uguali in archivio"]
+];
+// Video: quando ci sono, metti i file in video/ e aggiungi una riga ["file.mp4","Didascalia"].
+var VIDEO = [];
+
 (function(){
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- nav ---- */
-  var nav = document.getElementById('nav');
-  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 30); };
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  toggle.addEventListener('click', function(){ links.classList.toggle('open'); });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ links.classList.remove('open'); });
+  var gal = document.getElementById('gallery');
+  GALLERIA.forEach(function(g){
+    var b = document.createElement('button');
+    b.className = 'g-item reveal';
+    b.type = 'button';
+    b.innerHTML = '<div class="thumb"><img loading="lazy" src="img/'+g[0]+'" alt="'+g[1]+'"></div><div class="cap"><b>'+g[1]+'</b><span>'+g[2]+'</span></div>';
+    b.dataset.src = 'img/'+g[0];
+    b.dataset.cap = g[1]+' · '+g[2];
+    gal.appendChild(b);
+  });
+  var vid = document.getElementById('videos');
+  VIDEO.forEach(function(v){
+    var f = document.createElement('figure');
+    f.className = 'reveal';
+    f.innerHTML = '<video src="video/'+v[0]+'" controls muted playsinline preload="metadata"></video><figcaption>'+v[1]+'</figcaption>';
+    vid.appendChild(f);
   });
 
-  /* ---- reveal on scroll ---- */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-
-  /* ---- animated counters ---- */
-  var cio = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting) return;
-      cio.unobserve(e.target);
-      var el = e.target, target = parseInt(el.dataset.count,10), t0 = null, dur = 1600;
-      if(reduced){ el.textContent = target; return; }
-      function tick(t){
-        if(!t0) t0 = t;
-        var p = Math.min((t - t0)/dur, 1);
-        p = 1 - Math.pow(1-p, 3);
-        el.textContent = Math.round(target * p);
-        if(p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    });
-  }, {threshold:.6});
-  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
-
-  /* ---- FAQ accordion ---- */
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    var q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
-    q.addEventListener('click', function(){
-      var open = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(o){
-        o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null;
-      });
-      if(!open){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
-    });
+  // lightbox su galleria e schermate
+  var items = [];
+  document.querySelectorAll('.g-item, img.zoomable').forEach(function(el){
+    var src = el.dataset.src || el.getAttribute('src');
+    var cap = el.dataset.cap || el.getAttribute('alt') || '';
+    var i = items.length;
+    items.push({src:src, cap:cap});
+    el.addEventListener('click', function(){ open(i); });
+  });
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap'), cur = 0;
+  function show(){ lbImg.src = items[cur].src; lbImg.alt = items[cur].cap; lbCap.textContent = items[cur].cap; }
+  function open(i){ cur = i; show(); lb.classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('lbClose').focus(); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  function step(d){ cur = (cur + d + items.length) % items.length; show(); }
+  document.getElementById('lbClose').onclick = close;
+  document.getElementById('lbPrev').onclick = function(){ step(-1); };
+  document.getElementById('lbNext').onclick = function(){ step(1); };
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
   });
 
-  /* ---- galleria dinamica: legge le immagini dalla cartella galleria/ ----
-     Ordine di caricamento:
-     1. galleria/manifest.json (se presente): elenco esplicito dei file
-     2. directory listing del server sulla cartella galleria/
-     3. lista predefinita di ripiego                                        */
-  var mq = document.getElementById('marquee');
-  if(mq){
-    var EXT = /\.(jpe?g|png|webp|gif|bmp)$/i;
-    var fallback = ['materiali.png','nome-pezzo.png','gmats.png','gnames.png','sostmat.png','mat1.png','nog-config.png','DQC_soffietto_facce_ruotate.png','DQT_altri_tipi.png','poliauto.png','tacche.png']
-      .map(function(n){ return 'galleria/' + n; });
+  // menu su telefono
+  var burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  burger.addEventListener('click', function(){
+    var o = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', o);
+    burger.textContent = o ? '✕' : '☰';
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){
+    menu.classList.remove('open'); burger.setAttribute('aria-expanded', false); burger.textContent = '☰';
+  }); });
 
-    function render(list){
-      if(!list || !list.length) list = fallback;
-      mq.innerHTML = list.map(function(src){
-        return '<div class="shot"><img src="' + src + '" alt="Schermata Leonardo" onerror="this.parentElement.remove()"></div>';
-      }).join('');
-      mq.style.animationDuration = Math.max(24, list.length * 4.6) + 's';
-      mq.innerHTML += mq.innerHTML; /* duplica per il loop continuo */
-    }
-
-    function fromListing(html){
-      var doc = new DOMParser().parseFromString(html, 'text/html');
-      var seen = {};
-      return Array.prototype.slice.call(doc.querySelectorAll('a'))
-        .map(function(a){ return (a.getAttribute('href') || '').split('?')[0]; })
-        .filter(function(h){ return EXT.test(h); })
-        .map(function(h){
-          h = h.split('/').pop();
-          try { return decodeURIComponent(h); } catch(e){ return h; }
-        })
-        .filter(function(n){ if(seen[n]) return false; seen[n] = 1; return true; })
-        .sort()
-        .map(function(n){ return 'galleria/' + encodeURIComponent(n); });
-    }
-
-    fetch('galleria/manifest.json', {cache:'no-store'})
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(j){
-        if(Array.isArray(j) && j.length){
-          render(j.map(function(n){ return 'galleria/' + encodeURIComponent(n); }));
-        } else { throw 0; }
-      })
-      .catch(function(){
-        fetch('galleria/', {cache:'no-store'})
-          .then(function(r){ if(!r.ok) throw 0; return r.text(); })
-          .then(function(html){ var l = fromListing(html); render(l.length ? l : null); })
-          .catch(function(){ render(null); });
-      });
-  }
-
-  /* ---- particle network hero ---- */
-  var canvas = document.getElementById('net');
-  if(canvas && !reduced){
-    var ctx = canvas.getContext('2d'), W, H, pts = [], mouse = {x:-9999,y:-9999};
-    var N = window.innerWidth < 700 ? 34 : 70, LINK = 150;
-    function resize(){
-      W = canvas.width = canvas.offsetWidth * devicePixelRatio;
-      H = canvas.height = canvas.offsetHeight * devicePixelRatio;
-    }
-    function init(){
-      pts = [];
-      for(var i=0;i<N;i++){
-        pts.push({
-          x:Math.random()*W, y:Math.random()*H,
-          vx:(Math.random()-.5)*.22*devicePixelRatio,
-          vy:(Math.random()-.5)*.22*devicePixelRatio,
-          r:(Math.random()*1.6+.8)*devicePixelRatio
-        });
-      }
-    }
-    function frame(){
-      ctx.clearRect(0,0,W,H);
-      var L = LINK*devicePixelRatio;
-      for(var i=0;i<N;i++){
-        var p = pts[i];
-        p.x += p.vx; p.y += p.vy;
-        if(p.x<0||p.x>W) p.vx*=-1;
-        if(p.y<0||p.y>H) p.vy*=-1;
-        var dm = Math.hypot(p.x-mouse.x, p.y-mouse.y);
-        if(dm < 120*devicePixelRatio){ p.x += (p.x-mouse.x)*.004; p.y += (p.y-mouse.y)*.004; }
-      }
-      for(var i=0;i<N;i++){
-        for(var j=i+1;j<N;j++){
-          var a=pts[i], b=pts[j], d=Math.hypot(a.x-b.x,a.y-b.y);
-          if(d<L){
-            var o = (1-d/L)*.34;
-            var g = ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-            g.addColorStop(0,'rgba(34,211,238,'+o+')');
-            g.addColorStop(1,'rgba(168,85,247,'+o+')');
-            ctx.strokeStyle = g;
-            ctx.lineWidth = devicePixelRatio*.6;
-            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
-          }
-        }
-      }
-      for(var i=0;i<N;i++){
-        var p=pts[i];
-        ctx.fillStyle='rgba(96,165,250,.75)';
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-      }
-      requestAnimationFrame(frame);
-    }
-    var hero = canvas.parentElement;
-    hero.addEventListener('mousemove', function(e){
-      var r = canvas.getBoundingClientRect();
-      mouse.x = (e.clientX-r.left)*devicePixelRatio;
-      mouse.y = (e.clientY-r.top)*devicePixelRatio;
-    });
-    hero.addEventListener('mouseleave', function(){ mouse.x=-9999; mouse.y=-9999; });
-    window.addEventListener('resize', function(){ resize(); init(); });
-    resize(); init(); requestAnimationFrame(frame);
+  // comparsa allo scorrimento
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    }, {rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  } else {
+    els.forEach(function(e){ e.classList.add('in'); });
   }
 })();
 </script>
