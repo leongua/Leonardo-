@@ -165,12 +165,22 @@ code,.cmd{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
 .g-item .cap span{font-size:.86rem;color:var(--text3)}
 @media (max-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.gallery{grid-template-columns:1fr}}
-.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:28px}
-.videos:empty{display:none}
-.videos figure{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.videos video{width:100%;display:block;background:#000}
-.videos figcaption{padding:12px 16px;font-size:.9rem;color:var(--text2)}
-@media (max-width:700px){.videos{grid-template-columns:1fr}}
+/* lettore video: filmato grande + elenco dei comandi */
+.player{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start}
+.player-main{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.player-main video{width:100%;display:block;background:#000;aspect-ratio:1280/974}
+.player-cap{display:flex;gap:14px;align-items:baseline;justify-content:space-between;padding:14px 18px;flex-wrap:wrap}
+.player-cap b{font-family:var(--head);font-size:1.08rem}
+.player-cap span{color:var(--text2);font-size:.94rem;flex:1 1 260px}
+.player-cap em{font-style:normal;font-size:.8rem;color:var(--text3)}
+.playlist{list-style:none;display:flex;flex-direction:column;gap:8px;max-height:640px;overflow-y:auto;padding-right:4px}
+.playlist button{width:100%;display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;color:inherit;font:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.playlist button:hover{border-color:rgba(34,211,238,.35);background:var(--card2)}
+.playlist button.on{border-color:rgba(34,211,238,.7);background:var(--card2);box-shadow:inset 3px 0 0 #22d3ee}
+.playlist img{width:96px;aspect-ratio:1280/974;object-fit:cover;border-radius:8px;display:block;background:#000}
+.playlist .t{display:block;font-weight:600;font-size:.92rem;line-height:1.3}
+.playlist .d{display:block;font-size:.78rem;color:var(--text3);margin-top:2px}
+@media (max-width:900px){.player{grid-template-columns:1fr}.playlist{max-height:none;padding-right:0}}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(3,5,10,.92);display:none;align-items:center;justify-content:center;padding:56px 16px 24px;flex-direction:column;gap:14px}
@@ -286,6 +296,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
       <li><a href="#novita">Novità</a></li>
       <li><a href="#funzioni">Funzioni</a></li>
       <li><a href="#flusso">Flusso</a></li>
+      <li><a href="#video">Video</a></li>
       <li><a href="#galleria">Galleria</a></li>
       <li><a href="#compatibilita">Compatibilità</a></li>
       <li><a href="#prezzi">Prezzi</a></li>
@@ -311,7 +322,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
         <p class="hero-sub">Leonardo Pattern Design è l'aggiunta per ZWCAD e AutoCAD pensata per la modellistica di pelletteria. Disegni le sagome, metti le tacche e i dati del pezzo, prepari il taglio e calcoli consumi e costi, senza uscire dal CAD.</p>
         <div class="hero-cta">
           <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Richiesta%20copia%20di%20valutazione%20Leonardo">Richiedi una copia di prova</a>
-          <a class="btn btn-ghost" href="#funzioni">Guarda cosa fa →</a>
+          <a class="btn btn-ghost" href="#video">▶ Guarda i video</a>
         </div>
       </div>
       <div class="hero-shot">
@@ -537,15 +548,32 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
   </div>
 </section>
 
+<!-- ============ VIDEO ============ -->
+<section class="section" id="video">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Video</span>
+      <h2>Guarda Leonardo <span class="grad-text">al lavoro</span></h2>
+      <p>Brevi filmati registrati in ZWCAD, senza audio. Scegli un comando dall'elenco: alla fine passa da solo al successivo.</p>
+    </div>
+    <div class="player reveal">
+      <div class="player-main">
+        <video id="pv" controls muted playsinline preload="metadata"></video>
+        <div class="player-cap"><b id="pvTitolo"></b><span id="pvTesto"></span><em id="pvNum"></em></div>
+      </div>
+      <ol class="playlist" id="playlist"></ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ GALLERIA ============ -->
-<section class="section" id="galleria">
+<section class="section" id="galleria" style="padding-top:0">
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker">Galleria</span>
       <h2>Leonardo <span class="grad-text">in azione</span></h2>
       <p>Le finestre dei comandi così come le vedi nel CAD. Tocca un'immagine per ingrandirla.</p>
     </div>
-    <div class="videos" id="videos"></div>
     <div class="gallery" id="gallery"></div>
   </div>
 </section>
@@ -747,8 +775,17 @@ var GALLERIA = [
   ["schedapro.png","Scheda dei pezzi","SCHEDAPRO · HTML, CSV, immagini"],
   ["cercasagome3.png","Cerca sagome","CERCASAGOME3 · pezzi uguali in archivio"]
 ];
-// Video: quando ci sono, metti i file in video/ e aggiungi una riga ["file.mp4","Didascalia"].
-var VIDEO = [];
+// Video: metti file.mp4 e file.jpg (copertina) in video/ e aggiungi una riga ["file.mp4","Didascalia"].
+var VIDEO = [
+  ["dq.mp4","DQ · dal quadrante al pezzo: raggi, lati ad arco, anteprima e Disegna"],
+  ["dqf.mp4","DQF · la fascia che gira attorno al quadrante, divisa nei suoi tratti"],
+  ["contorni.mp4","CONTROLLA_CONTORNI · buchi, doppioni e oggetti non uniti, corretti in un clic"],
+  ["dati.mp4","NUM, NOM, MAT e MAPPAMAT · articolo, nome e materiale ai pezzi, poi la mappa colorata"],
+  ["tacche.mp4","INSERISCI_TACCA, COPIA_TACCHE e METTI_V · tacche dal quadrante alla fascia, poi tagliate a V"],
+  ["nesting.mp4","NESTING_CONFRONTA · 17 strategie a confronto, la migliore va sulla tavola"],
+  ["consumi.mp4","NOG · consumi di pelle, tele e fodere per 15 pezzi, con il documento dei risultati"],
+  ["aama.mp4","AAMA e AAMA_ESTRAI · i pezzi diventano blocchi AAMA e poi un DXF per il taglio"]
+];
 
 (function(){
   var gal = document.getElementById('gallery');
@@ -761,13 +798,42 @@ var VIDEO = [];
     b.dataset.cap = g[1]+' · '+g[2];
     gal.appendChild(b);
   });
-  var vid = document.getElementById('videos');
-  VIDEO.forEach(function(v){
-    var f = document.createElement('figure');
-    f.className = 'reveal';
-    f.innerHTML = '<video src="video/'+v[0]+'" controls muted playsinline preload="metadata"></video><figcaption>'+v[1]+'</figcaption>';
-    vid.appendChild(f);
+  // lettore video: "COMANDI · testo" diventa titolo e descrizione
+  var pv = document.getElementById('pv'), lista = document.getElementById('playlist'), bottoni = [], corrente = 0;
+  function mmss(s){ s = Math.round(s); return Math.floor(s/60)+':'+('0'+s%60).slice(-2); }
+  function parti(v){ var p = v[1].split(' · '); return {titolo:p[0], testo:p.slice(1).join(' · ')}; }
+  function scegli(i, parti_subito){
+    corrente = i;
+    var v = VIDEO[i], p = parti(v);
+    pv.src = 'video/'+v[0];
+    pv.poster = 'video/'+v[0].replace(/\.mp4$/,'.jpg');
+    document.getElementById('pvTitolo').textContent = p.titolo;
+    document.getElementById('pvTesto').textContent = p.testo;
+    document.getElementById('pvNum').textContent = (i+1)+' di '+VIDEO.length;
+    bottoni.forEach(function(b, k){ b.classList.toggle('on', k === i); b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    if (parti_subito) { var pr = pv.play(); if (pr && pr.catch) pr.catch(function(){}); }
+  }
+  VIDEO.forEach(function(v, i){
+    var p = parti(v), li = document.createElement('li'), b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<img loading="lazy" alt="" src="video/'+v[0].replace(/\.mp4$/,'.jpg')+'"><span><span class="t"></span><span class="d"></span></span>';
+    b.querySelector('.t').textContent = p.titolo;
+    b.querySelector('.d').textContent = p.testo;
+    b.addEventListener('click', function(){
+      scegli(i, true);
+      // sul telefono l'elenco è sotto il filmato: si torna al filmato
+      var r = pv.getBoundingClientRect();
+      if (r.top < 60 || r.bottom > innerHeight) pv.scrollIntoView({block:'center'});
+    });
+    li.appendChild(b); lista.appendChild(li); bottoni.push(b);
+    // durata accanto al testo, letta dal file
+    var m = document.createElement('video');
+    m.preload = 'metadata';
+    m.addEventListener('loadedmetadata', function(){ b.querySelector('.d').textContent = mmss(m.duration)+' · '+p.testo; });
+    m.src = 'video/'+v[0];
   });
+  pv.addEventListener('ended', function(){ if (corrente < VIDEO.length-1) scegli(corrente+1, true); });
+  if (VIDEO.length) scegli(0, false); else document.getElementById('video').style.display = 'none';
 
   // lightbox su galleria e schermate
   var items = [];
