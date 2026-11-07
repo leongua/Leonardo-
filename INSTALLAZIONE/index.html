@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leonardo Pattern Design | Il CAD per la pelletteria su ZWCAD e AutoCAD</title>
-<meta name="description" content="Leonardo Pattern Design: oltre 340 comandi per modellisti di pelletteria su ZWCAD e AutoCAD 2024-2027. Sagome, tacche, nesting, AAMA, ATOM, consumi, DIBA.">
+<meta name="description" content="Leonardo Pattern Design: oltre 350 comandi per modellisti di pelletteria su ZWCAD 2024-2027 e AutoCAD 2018 e 2024-2027. Sagome, tacche, nesting, AAMA, ATOM, consumi, DIBA.">
 <meta property="og:title" content="Leonardo Pattern Design">
-<meta property="og:description" content="Il CAD che dà forma alle tue borse, dal disegno al taglio. ZWCAD e AutoCAD 2024-2027.">
+<meta property="og:description" content="Il CAD che dà forma alle tue borse, dal disegno al taglio. ZWCAD 2024-2027, AutoCAD 2018 e 2024-2027.">
 <meta property="og:image" content="img/logo.png">
 <meta name="theme-color" content="#070a12">
 <link rel="icon" type="image/png" href="img/logo.png">
@@ -61,7 +61,7 @@ code,.cmd{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
 .nav-links .btn{padding:.55rem 1rem;font-size:.9rem;color:#fff;margin-left:6px}
 .nav-links .btn:hover{background:var(--grad)}
 .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:44px;height:40px;font-size:1.25rem;cursor:pointer}
-@media (max-width:980px){
+@media (max-width:1200px){
   .burger{display:block}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px;background:#070a12;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.5);max-height:calc(100vh - 64px);overflow-y:auto}
   .nav-links.open{display:flex}
@@ -122,6 +122,22 @@ code,.cmd{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
 .card .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.35rem;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);margin-bottom:1rem}
 @media (max-width:960px){.news-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:620px){.news-grid{grid-template-columns:1fr}}
+
+/* ---------- assistente IA ---------- */
+.section-ia{background:radial-gradient(900px 420px at 85% 0%,rgba(139,92,246,.16),transparent 70%),radial-gradient(700px 380px at 0% 100%,rgba(34,211,238,.10),transparent 70%)}
+.ia-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:40px}
+.ia-text p{color:var(--text2);margin-bottom:1rem;font-size:1.03rem}
+.ia-text .avail{display:inline-block;font-size:.85rem;font-weight:600;padding:.45rem .8rem;border-radius:10px;border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.08);color:var(--text)}
+.chat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.chat-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--text3)}
+.chat-bar b{color:var(--text);font-family:var(--head)}
+.chat-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:.65rem .9rem;border-radius:14px;font-size:.93rem;line-height:1.45}
+.msg.u{align-self:flex-end;background:rgba(59,130,246,.22);border:1px solid rgba(59,130,246,.35)}
+.msg.a{align-self:flex-start;background:var(--card2);border:1px solid var(--line);color:var(--text2)}
+.msg.a code{font-size:.85em}
+.chat-note{padding:0 16px 14px;font-size:.75rem;color:var(--text3)}
+@media (max-width:900px){.ia-grid{grid-template-columns:1fr}}
 
 /* ---------- funzioni ---------- */
 .feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:center;padding:44px 0}
@@ -217,7 +233,7 @@ code,.cmd{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
 @media (max-width:860px){.lic{grid-template-columns:1fr}}
 
 /* ---------- prezzi ---------- */
-.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:stretch;max-width:780px;margin:0 auto}
 .price{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 22px}
 .price.best{border-color:transparent;background:linear-gradient(var(--card2),var(--card2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 18px 50px rgba(59,130,246,.18)}
 .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:.74rem;font-weight:700;padding:.25rem .8rem;border-radius:999px;white-space:nowrap}
@@ -231,8 +247,10 @@ code,.cmd{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace}
 .price li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
 .price .btn{justify-content:center}
 .price-foot{text-align:center;color:var(--text3);font-size:.9rem;margin-top:24px}
-@media (max-width:1060px){.pricing{grid-template-columns:repeat(2,1fr);row-gap:30px}}
-@media (max-width:560px){.pricing{grid-template-columns:1fr}}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:28px;padding:22px 26px;border-radius:var(--r);background:linear-gradient(100deg,rgba(34,211,238,.10),rgba(139,92,246,.14));border:1px solid rgba(139,92,246,.35)}
+.buy b{display:block;font-family:var(--head);font-size:1.15rem;margin-bottom:.2rem}
+.buy span{color:var(--text2);font-size:.94rem}
+@media (max-width:620px){.pricing{grid-template-columns:1fr;row-gap:30px}}
 
 .trial{margin-top:56px;text-align:center;padding:48px 24px;border-radius:22px;background:radial-gradient(500px 220px at 20% 0%,rgba(34,211,238,.16),transparent 70%),radial-gradient(500px 220px at 80% 100%,rgba(139,92,246,.18),transparent 70%),var(--card);border:1px solid var(--line)}
 .trial h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:.7rem}
@@ -294,6 +312,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
     <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu">☰</button>
     <ul class="nav-links" id="menu">
       <li><a href="#novita">Novità</a></li>
+      <li><a href="#ia">Assistente IA</a></li>
       <li><a href="#funzioni">Funzioni</a></li>
       <li><a href="#flusso">Flusso</a></li>
       <li><a href="#video">Video</a></li>
@@ -315,8 +334,9 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
       <div>
         <div class="pills">
           <span class="pill">Versione <b>5.2</b></span>
-          <span class="pill"><b>ZWCAD</b> e <b>AutoCAD</b> 2024–2027</span>
-          <span class="pill">Oltre <b>340</b> comandi</span>
+          <span class="pill"><b>ZWCAD</b> 2024–2027 · <b>AutoCAD</b> 2018, 2024–2027</span>
+          <span class="pill">Oltre <b>350</b> comandi</span>
+          <a class="pill" href="#ia">Nuovo: <b>assistente IA</b></a>
         </div>
         <h1>Il CAD che dà forma alle tue borse, <span class="grad-text">dal disegno al taglio.</span></h1>
         <p class="hero-sub">Leonardo Pattern Design è l'aggiunta per ZWCAD e AutoCAD pensata per la modellistica di pelletteria. Disegni le sagome, metti le tacche e i dati del pezzo, prepari il taglio e calcoli consumi e costi, senza uscire dal CAD.</p>
@@ -334,8 +354,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
     </div>
 
     <div class="stats reveal">
-      <div class="stat"><strong class="grad-text">340+</strong><span>comandi</span></div>
-      <div class="stat"><strong class="grad-text">8</strong><span>versioni di CAD</span></div>
+      <div class="stat"><strong class="grad-text">350+</strong><span>comandi</span></div>
+      <div class="stat"><strong class="grad-text">9</strong><span>versioni di CAD</span></div>
       <div class="stat"><strong class="grad-text">16</strong><span>strategie di nesting</span></div>
       <div class="stat"><strong class="grad-text">8</strong><span>forme di tacca</span></div>
     </div>
@@ -355,8 +375,46 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
       <div class="card reveal"><span class="tag-new">Nuovo</span><h3>ATOM Layout dentro il CAD</h3><p>Il piazzamento per la macchina ATOM si prepara nel disegno e si salva in <code>.lay</code>, <code>.die</code> e <code>.shc</code>, senza passare da altri programmi.</p></div>
       <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Tacche tagliate in 8 forme</h3><p>V, arco, U, rettangolo, coda di rondine, fessura, poligono, anche raccordate. Con anteprima, in AAMA e nelle tacche.</p></div>
       <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Confronto dei nesting</h3><p>Lancia tutte le strategie insieme e scegli la migliore: tavole usate, occupazione e anteprima in una sola finestra.</p></div>
-      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Anagrafiche e controllo</h3><p>Materiali con fornitore, prezzo e colore; mappa colorata dei materiali e un controllo che trova i pezzi senza nome o materiale prima del taglio.</p></div>
-      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Un installatore, sei CAD</h3><p>Un solo setup chiede dove installare: ZWCAD o AutoCAD, dal 2025 al 2027. Fa da solo la copia di sicurezza dei file del CAD.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Anagrafiche di materiali e accessori</h3><p>Per ogni materiale codice, fornitore, prezzo, pelle o rotolo e colore; per ogni accessorio codice e fornitore (<code>ED-DB-ACC</code>). Le usano consumi, costi e DIBA, e si scambiano con Excel in CSV. Più la mappa colorata dei materiali e il controllo dei pezzi senza nome o materiale.</p></div>
+      <div class="card reveal"><span class="tag-new">Nuovo</span><h3>Un installatore, nove CAD</h3><p>Un solo setup chiede dove installare: AutoCAD 2018, 2024, 2025, 2026, 2027 o ZWCAD 2024, 2025, 2026, 2027, e ti dice quali hai sul PC. Fa da solo la copia di sicurezza dei file del CAD.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSISTENTE IA ============ -->
+<section class="section section-ia" id="ia">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Novità · Assistente IA</span>
+      <h2>Chiedi al disegno, <span class="grad-text">in italiano</span></h2>
+      <p>Un assistente di intelligenza artificiale dentro il CAD, che conosce il mestiere del modellista e i comandi di Leonardo.</p>
+    </div>
+
+    <div class="ia-grid">
+      <div class="ia-text reveal">
+        <p>Con il comando <code>LEO_IA</code> si apre una chat accanto al disegno. Fai la domanda come la faresti a un collega: l'assistente legge i pezzi, i materiali e le quantità dai blocchi <code>DATIM</code> e <code>DATIT</code>, le tavole, i testi e i layer, e ti risponde. Se serve guarda un'immagine del disegno, confronta due pezzi ed evidenzia quelli di cui parla.</p>
+        <p>Può anche lanciare i comandi di Leonardo che gli permetti, chiedendoti conferma prima di toccare il disegno; e quello che ha fatto si annulla con un clic. I conti li fa Leonardo, come sempre: consumi, costi e distinte escono dai suoi comandi.</p>
+        <span class="avail">Disponibile per ogni versione: ZWCAD 2024–2027, AutoCAD 2018 e 2024–2027</span>
+      </div>
+      <div class="chat reveal" aria-label="Esempio di conversazione con l'assistente">
+        <div class="chat-bar"><b>Leonardo IA</b> · profilo Modellista</div>
+        <div class="chat-body">
+          <div class="msg u">Quali pezzi non hanno ancora il materiale?</div>
+          <div class="msg a">Due: <b>Fascia</b> e <b>Fodera tasca</b>. Li ho evidenziati nel disegno. Vuoi che apra <code>MAT</code> su di loro?</div>
+          <div class="msg u">Sì, poi calcola i consumi.</div>
+          <div class="msg a">Fatto. Prima di lanciare <code>NOG</code> ti chiedo conferma: il calcolo lo fa Leonardo, io ti spiego il risultato.</div>
+        </div>
+        <div class="chat-note">Esempio di conversazione.</div>
+      </div>
+    </div>
+
+    <div class="news-grid">
+      <div class="card reveal"><div class="ico">🔎</div><h3>Legge e guarda il disegno</h3><p>Pezzi, materiali e quantità, tavole, testi e layer; un'immagine del disegno quando serve; due pezzi a confronto, con le differenze di forma in millimetri.</p></div>
+      <div class="card reveal"><div class="ico">✅</div><h3>Comandi con conferma</h3><p>Lancia solo i comandi di Leonardo ammessi, chiede conferma prima di scrivere nel disegno e l'ultimo comando si annulla con un clic.</p></div>
+      <div class="card reveal"><div class="ico">🧑‍🎨</div><h3>Profili per ogni lavoro</h3><p>Modellista, Esperto Python, Disegnatore polilinee, Esperto anagrafiche: scegli chi ti risponde. Puoi aprire più finestre, ognuna con il suo profilo.</p></div>
+      <div class="card reveal"><div class="ico">🔐</div><h3>La tua IA, la tua chiave</h3><p>Scegli tu il fornitore e il modello, con la tua chiave. I dati del disegno vanno solo al fornitore che hai scelto.</p></div>
+      <div class="card reveal"><div class="ico">🔌</div><h3>Anche con Claude, via MCP</h3><p>Leonardo si collega a Claude attraverso MCP (<code>LeonardoMcp.exe</code>): gli stessi strumenti, dal programma che usi già.</p></div>
+      <div class="card reveal"><div class="ico">🪟</div><h3>Più chat, più disegni</h3><p>Apri più finestre di chat insieme, ognuna con la sua conversazione, il suo modello e il suo profilo, e scegli per ognuna su quale disegno aperto lavorare.</p></div>
     </div>
   </div>
 </section>
@@ -519,7 +577,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
       <div class="mosaic" aria-hidden="true"></div>
       <div class="inner">
         <span class="kicker">Il menu LEONARDO</span>
-        <h2>Oltre <span class="grad-text">340 comandi</span>, ognuno con la sua icona</h2>
+        <h2>Oltre <span class="grad-text">350 comandi</span>, ognuno con la sua icona</h2>
         <p>Menu e barre degli strumenti divisi per fasi di lavoro: Disegno, Polilinee, Offset, Tacche, Materiali e Articoli, AAMA ed Export, Consumi e Report. Una guida in italiano spiega ogni comando.</p>
       </div>
     </div>
@@ -593,9 +651,10 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
           <thead><tr><th>Programma</th><th>Versioni</th><th></th></tr></thead>
           <tbody>
             <tr><td><b>ZWCAD</b></td><td>2024 · 2025 · 2026 · 2027</td><td><span class="ok">Sì</span></td></tr>
-            <tr><td><b>AutoCAD</b></td><td>2024 · 2025 · 2026 · 2027</td><td><span class="ok">Sì</span></td></tr>
+            <tr><td><b>AutoCAD</b></td><td>2018 · 2024 · 2025 · 2026 · 2027</td><td><span class="ok">Sì</span></td></tr>
           </tbody>
         </table>
+        <p style="margin-top:1rem;font-size:.92rem">Un solo installatore per tutte e nove: nella prima pagina scegli su quale programma installare e ti dice quali hai sul PC. Su AutoCAD 2018 e 2024 i moduli usano .NET Framework 4.8, quindi lì non serve il runtime .NET 10.</p>
         <p style="margin-top:1rem;font-size:.92rem">Hai una versione più vecchia? <a href="mailto:leonardo@guasqui.it?subject=Leonardo%20su%20versione%20CAD%20precedente">Scrivimi</a>: si valuta caso per caso.</p>
       </div>
       <div class="card reveal">
@@ -626,47 +685,35 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
     </div>
 
     <div class="lic">
-      <div class="card reveal"><div class="ico">🔑</div><h3>Licenza online</h3><p>Ricevi una chiave con l'acquisto e la attivi dal CAD con <code>ACTIVATE-LICENSE</code>. Si convalida in rete.</p></div>
-      <div class="card reveal"><div class="ico">💾</div><h3>Licenza senza rete</h3><p>Per i PC non collegati a internet: un file di licenza legato alla postazione.</p></div>
-      <div class="card reveal"><div class="ico">🖥️</div><h3>Legata alla postazione</h3><p><code>SHOW-SYSTEM-ID</code> mostra il codice del PC, <code>LICENSE-INFO</code> lo stato e la scadenza.</p></div>
+      <div class="card reveal"><div class="ico">🔑</div><h3>Licenza online</h3><p>Acquisti online e ricevi una chiave: la attivi dal CAD e si convalida in rete.</p></div>
+      <div class="card reveal"><div class="ico">💾</div><h3>Licenza senza rete</h3><p>Per i PC non collegati a internet: un file di licenza <code>.lic</code> legato alla postazione.</p></div>
+      <div class="card reveal"><div class="ico">🖥️</div><h3>Gestione licenza</h3><p>Il comando <code>LEO-LICENZA</code>, o il menu LEONARDO › Gestione Licenza, apre una finestra con stato, attivazione e funzioni incluse.</p></div>
     </div>
+    <p class="price-foot" style="margin:-30px 0 40px">Basta una licenza valida, statica o online, e Leonardo funziona: una sola licenza per tutto.</p>
 
     <div class="pricing">
-      <div class="price reveal">
-        <h3>Standard Mensile</h3>
-        <p class="for">Per professionisti e aziende, massima flessibilità</p>
-        <div class="val">€199<small>/mese</small></div>
+      <div class="price best reveal">
+        <h3>Pro Mensile</h3>
+        <p class="for">Per professionisti e aziende, fatturazione mensile</p>
+        <div class="val">€199,99<small>/mese</small></div>
         <div class="note">&nbsp;</div>
         <ul><li>Tutti i comandi</li><li>Aggiornamenti inclusi</li><li>Supporto via email</li><li>Nessun vincolo di durata</li></ul>
-        <a class="btn btn-ghost" href="mailto:leonardo@guasqui.it?subject=Licenza%20Standard%20Mensile%20Leonardo">Richiedi licenza</a>
-      </div>
-      <div class="price best reveal">
-        <span class="badge">Più conveniente</span>
-        <h3>Standard Annuale</h3>
-        <p class="for">Per professionisti e aziende, fatturazione annuale</p>
-        <div class="val">€179,10<small>/mese</small></div>
-        <div class="note">Risparmi il 10% rispetto al mensile</div>
-        <ul><li>Tutti i comandi</li><li>Aggiornamenti inclusi</li><li>Supporto prioritario</li><li>Fatturazione annuale</li></ul>
-        <a class="btn btn-grad" href="mailto:leonardo@guasqui.it?subject=Licenza%20Standard%20Annuale%20Leonardo">Richiedi licenza</a>
+        <a class="btn btn-grad" href="https://guasqui.lemonsqueezy.com" target="_blank" rel="noopener">Acquista</a>
       </div>
       <div class="price reveal">
         <h3>Studenti e Privati</h3>
-        <p class="for">Per uso personale e formazione individuale</p>
+        <p class="for">Tariffa agevolata per uso non commerciale</p>
         <div class="val">€49,99<small>/mese</small></div>
         <div class="note">&nbsp;</div>
         <ul><li>Tutti i comandi</li><li>Aggiornamenti inclusi</li><li>Uso non commerciale</li><li>Guida completa in italiano</li></ul>
-        <a class="btn btn-ghost" href="mailto:leonardo@guasqui.it?subject=Licenza%20Studenti%20e%20Privati%20Leonardo">Richiedi licenza</a>
-      </div>
-      <div class="price reveal">
-        <h3>Scuole e Istituti</h3>
-        <p class="for">Per corsi e laboratori riconosciuti</p>
-        <div class="val">€29,99<small>/3 mesi</small></div>
-        <div class="note">Con attestato di iscrizione</div>
-        <ul><li>Tutti i comandi</li><li>Pensato per corsi e laboratori</li><li>Serve l'iscrizione a un corso o istituto riconosciuto</li></ul>
-        <a class="btn btn-ghost" href="mailto:leonardo@guasqui.it?subject=Licenza%20Scuole%20e%20Istituti%20Leonardo">Richiedi licenza</a>
+        <a class="btn btn-ghost" href="https://guasqui.lemonsqueezy.com" target="_blank" rel="noopener">Acquista</a>
       </div>
     </div>
-    <p class="price-foot">Prezzi IVA esclusa. Per più postazioni, piani aziendali o passaggio da altri programmi, <a href="mailto:leonardo@guasqui.it">scrivimi</a>.</p>
+    <div class="buy reveal">
+      <div><b>Acquista la licenza online</b><span>Pagamento sicuro sul negozio di Leonardo Pattern Design, su Lemon Squeezy.</span></div>
+      <a class="btn btn-grad" href="https://guasqui.lemonsqueezy.com" target="_blank" rel="noopener">Vai al negozio →</a>
+    </div>
+    <p class="price-foot">Prezzi IVA esclusa. Per scuole e istituti, più postazioni, piani aziendali o passaggio da altri programmi, <a href="mailto:leonardo@guasqui.it">scrivimi</a>.</p>
 
     <div class="trial reveal">
       <h2>Prova Leonardo <span class="grad-text">gratis</span></h2>
@@ -708,9 +755,11 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--text3);font-s
       <h2>Domande frequenti</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>Con quali CAD funziona Leonardo?</summary><p>Con ZWCAD e AutoCAD dalla versione 2024 alla 2027, su Windows 10 o successivo a 64 bit. Menu, icone e comandi sono gli stessi sui due programmi.</p></details>
+      <details><summary>Con quali CAD funziona Leonardo?</summary><p>Con ZWCAD dalla versione 2024 alla 2027 e con AutoCAD 2018 e dalla 2024 alla 2027, su Windows 10 o successivo a 64 bit. Menu, icone e comandi sono gli stessi sui due programmi.</p></details>
+      <details><summary>Cos'è l'assistente IA?</summary><p>Una chat dentro il CAD (comando <code>LEO_IA</code>): chiedi in italiano e l'assistente legge il disegno, guarda i pezzi, li confronta e, se gli dai il permesso, lancia i comandi di Leonardo chiedendoti conferma. Scegli tu il fornitore di IA e usi la tua chiave; si collega anche a Claude via MCP. È disponibile per ogni versione: ZWCAD 2024–2027, AutoCAD 2018 e 2024–2027.</p></details>
+      <details><summary>Come compro la licenza?</summary><p>Online, sul <a href="https://guasqui.lemonsqueezy.com" target="_blank" rel="noopener">negozio di Leonardo su Lemon Squeezy</a>: ricevi la chiave e la attivi dal CAD nella finestra Gestione licenza (<code>LEO-LICENZA</code>). Per un PC senza internet c'è la licenza su file. Basta una licenza valida, statica o online.</p></details>
       <details><summary>Posso provarlo prima di acquistarlo?</summary><p>Sì. Scrivi a <a href="mailto:leonardo@guasqui.it">leonardo@guasqui.it</a> indicando CAD e versione che usi: ricevi una copia di valutazione con la guida completa, senza impegno.</p></details>
-      <details><summary>Come si installa?</summary><p>Con un installatore: scegli il CAD e la versione, lui trova dove è installato, fa una copia di sicurezza dei file che sostituisce e mette menu, icone, blocchi ed elenchi. All'avvio del CAD i comandi sono già pronti.</p></details>
+      <details><summary>Come si installa?</summary><p>Con un installatore unico: nella prima pagina scegli su quale programma installare, fra nove voci (AutoCAD 2018, 2024, 2025, 2026, 2027 e ZWCAD 2024, 2025, 2026, 2027), e ti dice quali sono installati sul PC. Poi trova dove è installato il CAD, fa una copia di sicurezza dei file che sostituisce e mette menu, icone, blocchi ed elenchi. All'avvio del CAD i comandi sono già pronti.</p></details>
       <details><summary>Arrivo da Mozart o da un altro programma: quanto ci metto a imparare?</summary><p>Poco. Chi arriva da Mozart ritrova le sue tacche e le converte con un comando. Il menu è diviso per fasi di lavoro e la guida in italiano spiega ogni comando con le sue finestre.</p></details>
       <details><summary>Posso usare i miei disegni attuali?</summary><p>Sì: Leonardo lavora su normali file DWG e DXF. Converte anche i file Modaris e le tacche dei formati più usati. Per passaggi più grandi ti aiuto io.</p></details>
       <details><summary>Come funziona il calcolo dei consumi?</summary><p>Il comando <code>NOG</code> calcola per categoria la superficie netta e poi aggiunge gli sfridi, mostrando ogni passaggio. Lo sfrido si può impostare o misurare piazzando i pezzi su una pelle campione, anche con i difetti.</p></details>
