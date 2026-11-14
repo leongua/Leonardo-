@@ -48,11 +48,17 @@ Serve la fustella di un pezzo già fatto? Leonardo cerca in tutti i disegni di u
 ### 🧵 Nesting che fa risparmiare pelle
 Algoritmi TrueShape sulla forma reale, Best Fit, MaxRects e confronto automatico che applica il miglior incolo. Meno sfrido, più margine su ogni pellame.
 
-### 📊 Consumi al metro e al rotolo
-Computo materiali con approssimazione, sfrido e documento riepilogativo: sapete sempre quanto pellame serve prima di comprare.
+### 📊 Consumi e costi al metro e al rotolo
+Computo materiali con approssimazione, sfrido e documento riepilogativo: sapete sempre quanto pellame serve e quanto costa prima di comprare.
 
 ### ✅ Controllo contorni prima del taglio
 Prima di mandare il file alla macchina, Leonardo controlla i contorni e segnala buchi, doppioni e vertici difettosi. Niente sorprese in produzione.
+
+### 📋 Distinta base in Excel
+Scheda tecnica e distinta base del modello in un file Excel, con logo e foto dei pezzi: il documento che va in reparto e al cliente, generato dal disegno. Si scrive anche senza Excel installato.
+
+### 🗂️ Anagrafiche di materiali e accessori
+Per ogni materiale: codice, fornitore, prezzo, pelle o rotolo, colore. Per ogni accessorio: codice e fornitore. Le anagrafiche alimentano consumi, costi e distinte base, si scambiano con Excel in CSV e la mappa colorata dei materiali vi mostra a colpo d'occhio i pezzi senza nome o senza materiale.
 
 ---
 
