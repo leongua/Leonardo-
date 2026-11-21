@@ -464,10 +464,12 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a onclick="go('cosa')">Cosa faccio</a>
+  <a onclick="go('leonardo')">Leonardo</a>
   <a onclick="go('progetti')">Progetti</a>
   <a onclick="go('storia')">Storia</a>
   <a onclick="go('perchi')">Per chi</a>
   <a onclick="go('contatti')">Contatti</a>
+  <a href="modelleria/" style="color:var(--accent)">Modelleria</a>
 </div>
 
 <!-- NAV -->
@@ -475,10 +477,12 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
   <div class="nav-logo">Leonardo Guasqui</div>
   <div class="nav-links">
     <a onclick="go('cosa')">Cosa faccio</a>
+    <a onclick="go('leonardo')">Leonardo</a>
     <a onclick="go('progetti')">Progetti</a>
     <a onclick="go('storia')">Storia</a>
     <a onclick="go('perchi')">Per chi</a>
     <a onclick="go('contatti')">Contatti</a>
+    <a href="modelleria/" style="color:var(--accent)">Modelleria</a>
   </div>
   <button class="hamburger" id="hbg" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -522,12 +526,14 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
     <div class="m-item">ZWCAD</div><div class="m-item">Raspberry Pi</div><div class="m-item">Klipper</div>
     <div class="m-item">C / C++</div><div class="m-item">Machine Learning</div><div class="m-item">CAD Automation</div>
     <div class="m-item">IoT</div><div class="m-item">Excel / CSV</div>
+    <div class="m-item">.NET</div><div class="m-item">AutoCAD</div><div class="m-item">MCP</div><div class="m-item">Node.js</div><div class="m-item">Obsidian</div>
     <!-- duplicate for seamless loop -->
     <div class="m-item">Python</div><div class="m-item">VB.NET</div><div class="m-item">AutoLISP</div>
     <div class="m-item">Arduino</div><div class="m-item">ESP32</div><div class="m-item">RAG / LLM</div>
     <div class="m-item">ZWCAD</div><div class="m-item">Raspberry Pi</div><div class="m-item">Klipper</div>
     <div class="m-item">C / C++</div><div class="m-item">Machine Learning</div><div class="m-item">CAD Automation</div>
     <div class="m-item">IoT</div><div class="m-item">Excel / CSV</div>
+    <div class="m-item">.NET</div><div class="m-item">AutoCAD</div><div class="m-item">MCP</div><div class="m-item">Node.js</div><div class="m-item">Obsidian</div>
   </div>
 </div>
 
@@ -538,12 +544,12 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
     <div class="stat-label">anni di informatica</div>
   </div>
   <div class="stat-item reveal" style="transition-delay:.1s">
-    <div class="stat-num" data-target="6" data-suffix="+">0</div>
+    <div class="stat-num" data-target="9" data-suffix="+">0</div>
     <div class="stat-label">anni professionali</div>
   </div>
   <div class="stat-item reveal" style="transition-delay:.2s">
-    <div class="stat-num" data-target="240" data-suffix="+">0</div>
-    <div class="stat-label">automazioni CAD</div>
+    <div class="stat-num" data-target="350" data-suffix="+">0</div>
+    <div class="stat-label">comandi CAD in Leonardo</div>
   </div>
   <div class="stat-item reveal" style="transition-delay:.3s">
     <div class="stat-num" data-target="100" data-suffix="%">0</div>
@@ -599,14 +605,109 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
   </div>
 </div>
 
+
+<!-- LEONARDO -->
+<div id="leonardo">
+  <div class="sec-wrap" style="padding-top:0">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Leonardo Pattern Design 5.2</span>
+    </div>
+    <div class="target-grid">
+      <div class="tc featured reveal">
+        <div class="tc-badge">Progetto principale · 2026</div>
+        <h3>Il CAD per la pelletteria che ho costruito da zero</h3>
+        <p>Nato in produzione come sistema interno, oggi è un prodotto: un'aggiunta per ZWCAD (2024–2027) e AutoCAD (2018 e 2024–2027) dedicata alla modelleria di borse.</p>
+        <div class="tc-list">
+          <div class="tc-item">Oltre 350 comandi: sagome, sviluppi in piano di superfici 3D, tacche, controllo contorni</div>
+          <div class="tc-item">Vecchi comandi LISP riscritti come plugin .NET, installer unico</div>
+          <div class="tc-item">Nesting con 16 strategie confrontabili</div>
+          <div class="tc-item">File di taglio AAMA, ATOM e Gerber · conversione da Modaris</div>
+          <div class="tc-item">Consumi, costi e distinta base in Excel, CSV e HTML</div>
+          <div class="tc-item">Licenze online con attivazione dal CAD · licenza statica per PC offline</div>
+        </div>
+        <div class="cta-row" style="justify-content:flex-start;margin-top:1.8rem"><a class="btn-primary" href="https://www.guasqui.it" style="text-decoration:none;display:inline-block">Scopri Leonardo ↗</a></div>
+      </div>
+      <div class="tc reveal" style="transition-delay:.15s">
+        <div class="tc-badge">Novità · LEO_IA</div>
+        <h3>Il modellista IA dentro il CAD</h3>
+        <p>Una chat accanto al disegno che conosce il mestiere del modellista e i comandi di Leonardo.</p>
+        <div class="tc-list">
+          <div class="tc-item">Legge pezzi, materiali e quantità dal disegno</div>
+          <div class="tc-item">Confronta due sagome e mostra le differenze in millimetri</div>
+          <div class="tc-item">Lancia i comandi solo dopo conferma · ogni azione si annulla</div>
+          <div class="tc-item">Più finestre e profili insieme, fornitore di IA a scelta</div>
+          <div class="tc-item">Collegamento a Claude tramite MCP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PROGETTI -->
 <div class="proj-wrap" id="progetti">
   <div class="proj-inner">
     <div class="sec-head reveal">
-      <span class="sec-num" style="color:#2a2a2a">02</span>
+      <span class="sec-num" style="color:#2a2a2a">03</span>
       <span class="sec-title">Progetti</span>
     </div>
     <div class="proj-grid stagger">
+      <div class="pc reveal">
+        <div class="pc-num">016 · 2026</div>
+        <span class="pt t-sw">Web</span>
+        <div class="pc-title">Sito di modelleria multilingue</div>
+        <div class="pc-desc">Il sito della mia attività di modellista: classi di difficoltà delle borse da A a H con prezzo fisso, scheda tecnica guidata, sette lingue compreso l'arabo da destra a sinistra. Generato con Node da un unico set di testi.</div>
+        <div class="pills"><span class="pill">Node.js</span><span class="pill">HTML/CSS</span><span class="pill">7 lingue</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">015 · 2026</div>
+        <span class="pt t-ai">AI</span>
+        <div class="pc-title">Agente clienti</div>
+        <div class="pc-desc">Cerca aziende di un settore, scrive con l'IA una bozza di messaggio per ciascuna e prepara l'invio. Prima campagna: le concerie. Solo libreria standard di Python.</div>
+        <div class="pills"><span class="pill">Python 3.11</span><span class="pill">LLM</span><span class="pill">Groq</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">014 · 2026</div>
+        <span class="pt t-ai">AI</span>
+        <div class="pc-title">Vault di produzione in Obsidian</div>
+        <div class="pc-desc">Schede modello e dashboard per cliente più una dashboard generale, aggiornate in automatico. Quando arriva un PDF di produzione, l'IA capisce a quale cliente appartiene e crea le schede.</div>
+        <div class="pills"><span class="pill">Obsidian</span><span class="pill">Dataview</span><span class="pill">AI</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">013 · 2026</div>
+        <span class="pt t-cad">CAD</span>
+        <div class="pc-title">Simulatore dei consumi</div>
+        <div class="pc-desc">Pannello interattivo sull'export dei consumi di Leonardo: offset, scarti e numero di pezzi si muovono in tempo reale e i metri quadri si ricalcolano dal vivo.</div>
+        <div class="pills"><span class="pill">JavaScript</span><span class="pill">CSV</span><span class="pill">Leonardo</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">012 · 2026</div>
+        <span class="pt t-sw">Software</span>
+        <div class="pc-title">Banco di prova per plugin ZWCAD</div>
+        <div class="pc-desc">Un ZWCAD finto e programmabile che gira su Linux: compila i plugin contro uno stub delle API e prova misure, prompt, finestre e comandi dall'inizio alla fine, senza aprire il CAD.</div>
+        <div class="pills"><span class="pill">.NET</span><span class="pill">Mono</span><span class="pill">Test automatici</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">011 · 2026</div>
+        <span class="pt t-ai">AI</span>
+        <div class="pc-title">Verifica dei documenti di produzione</div>
+        <div class="pc-desc">Confronto incrociato tra DDT, distinte base, assegnazioni e abbinamenti colore: trova differenze di quantità, codici e accessori e genera report di tracciabilità.</div>
+        <div class="pills"><span class="pill">Python</span><span class="pill">PDF</span><span class="pill">AI</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">010 · 2026</div>
+        <span class="pt t-sw">Automazione</span>
+        <div class="pc-title">Invii automatici per un'associazione</div>
+        <div class="pc-desc">Campagna sponsor per un'associazione motociclistica: invio a ondate con intervalli, lista contatti con esclusioni e registro degli invii.</div>
+        <div class="pills"><span class="pill">Python</span><span class="pill">Gmail</span><span class="pill">CSV</span></div>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-num">009 · 2026</div>
+        <span class="pt t-art">Editoria</span>
+        <div class="pc-title">Collana illustrata per Amazon KDP</div>
+        <div class="pc-desc">"Fisica per curiosi": libri illustrati che spiegano la fisica ai bambini, con un flusso di lavoro dal testo al caricamento su Amazon KDP.</div>
+        <div class="pills"><span class="pill">KDP</span><span class="pill">Illustrazione</span><span class="pill">Automazione</span></div>
+      </div>
       <div class="pc reveal">
         <div class="pc-num">001</div>
         <span class="pt t-cad">CAD</span>
@@ -671,7 +772,7 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
 <div class="tl-wrap" id="storia">
   <div class="tl-inner">
     <div class="sec-head reveal" style="border-bottom-color:rgba(255,255,255,0.04)">
-      <span class="sec-num" style="color:#2a2a3a">03</span>
+      <span class="sec-num" style="color:#2a2a3a">04</span>
       <span class="sec-title" style="color:#e0d8f0">Come ci sono arrivato</span>
     </div>
     <div class="timeline stagger">
@@ -700,7 +801,7 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
         <div class="tl-dot gold"></div>
         <div class="tl-year">2017 — oggi · Professionale</div>
         <div class="tl-title">Sviluppo software industriale per pelletteria di lusso</div>
-        <div class="tl-desc">Responsabile tecnico e sviluppatore presso una manifattura toscana. Costruito da zero un sistema CAD proprietario con 240+ comandi, integrato con macchine da taglio industriali. Poi AI, automazione, IoT.</div>
+        <div class="tl-desc">Responsabile tecnico e sviluppatore presso una manifattura toscana. Costruito da zero un sistema CAD proprietario integrato con macchine da taglio industriali, da cui è nato Leonardo. Poi AI, automazione, IoT.</div>
         <span class="tl-badge b-pro">Professionale</span>
       </div>
       <div class="tl-item reveal">
@@ -710,6 +811,13 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
         <div class="tl-desc">Disponibile per progetti esterni: software su misura, AI aziendale, hardware programmabile, automazione. Vent'anni di curiosità al servizio di chi ha un problema da risolvere.</div>
         <span class="tl-badge b-now">Disponibile ora</span>
       </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot gold"></div>
+        <div class="tl-year">2026 · Oggi</div>
+        <div class="tl-title">Leonardo diventa un prodotto</div>
+        <div class="tl-desc">Leonardo Pattern Design 5.2 per ZWCAD e AutoCAD: oltre 350 comandi, plugin .NET, licenze online e il modellista IA nel CAD. Nasce anche l'attività di modellista freelance, con un sito in sette lingue.</div>
+        <span class="tl-badge b-pro">Novità</span>
+      </div>
     </div>
   </div>
 </div>
@@ -718,7 +826,7 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
 <div id="perchi">
   <div class="sec-wrap">
     <div class="sec-head reveal">
-      <span class="sec-num">04</span>
+      <span class="sec-num">05</span>
       <span class="sec-title">Per chi lavoro</span>
     </div>
     <div class="target-grid">
@@ -732,6 +840,7 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
           <div class="tc-item">AI su documenti e archivi interni</div>
           <div class="tc-item">Integrazione tra sistemi già esistenti</div>
           <div class="tc-item">Software gestionale su misura</div>
+          <div class="tc-item">Pelletterie: modelli per borse su commissione · <a href="modelleria/" style="color:var(--accent)">sito Modelleria</a></div>
           <div class="tc-item">Prima consulenza gratuita · NDA disponibile</div>
         </div>
       </div>
@@ -757,8 +866,8 @@ footer p { font-family: var(--mono); font-size: 10px; color: var(--text-4); }
   <h2>Hai un problema da risolvere?</h2>
   <p>Raccontami cosa ti serve. Troveremo insieme la strada più semplice.</p>
   <div class="cta-row">
-    <button class="cb" onclick="sendPrompt('Voglio contattare Leonardo Guasqui per un progetto software, aiutami a descrivere la mia idea o problema in modo chiaro')">Descrivi il tuo progetto ↗</button>
-    <button class="cb out" onclick="sendPrompt('Quali servizi offre Leonardo Guasqui che potrebbero essere utili per la mia azienda o il mio progetto personale?')">Esplora i servizi ↗</button>
+    <a class="cb" href="mailto:leonardo@guasqui.it?subject=Nuovo%20progetto" style="text-decoration:none">Descrivi il tuo progetto ↗</a>
+    <button class="cb out" onclick="go('cosa')">Esplora i servizi ↗</button>
   </div>
 </div>
 
@@ -788,7 +897,7 @@ function heroIn() {
 
 // ── NAV SCROLL + ACTIVE
 const mainNav = document.getElementById('mainNav');
-const sectionIds = ['cosa','progetti','storia','perchi','contatti'];
+const sectionIds = ['cosa','leonardo','progetti','storia','perchi','contatti'];
 window.addEventListener('scroll', () => {
   mainNav.classList.toggle('scrolled', window.scrollY > 50);
   const links = document.querySelectorAll('.nav-links a');
