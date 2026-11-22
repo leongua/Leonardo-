@@ -123,3 +123,22 @@ section{padding:84px 0}
 
 [dir=rtl] .eyebrow{letter-spacing:0}
 [lang=zh] .eyebrow{letter-spacing:.08em}
+
+/* request form */
+.req-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:48px;align-items:start}
+@media (max-width:860px){.req-grid{grid-template-columns:1fr}}
+.req-side .checklist p{color:var(--silver);font-size:16px}
+.req-form{gap:20px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+@media (max-width:560px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;font-weight:600;color:var(--silver)}
+.field .opt{font-weight:400;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:11px 12px;min-height:46px;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field textarea{resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--silver);cursor:pointer}
+.consent input{width:20px;height:20px;margin-top:3px;accent-color:var(--gold);flex:none}
+.small{font-size:13px;color:var(--muted)}
+.hp{display:none}
+.req-side .checklist{flex:none}
